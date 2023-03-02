@@ -1,8 +1,8 @@
 <?php
-    $host="Localhost";
+    $host="34.168.203.215";
     $puerto="3306";
-    $usuario="root";
-    $contrasena="";
+    $usuario="admindb";
+    $contrasena="Te-k3li-L!";
     $baseDeDatos="apeajaldb";
 
     $enlace=mysqli_connect($host.":".$puerto, $usuario, $contrasena, $baseDeDatos);
