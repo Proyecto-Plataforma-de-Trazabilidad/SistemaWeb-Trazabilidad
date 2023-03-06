@@ -9,11 +9,12 @@
 <br>
       <form class="row g-4 container-fluid" id="frm" method="POST" action="MuniVehiculosArchivos/insertar.php" onsubmit="return valdez()" enctype="multipart/form-data">
 
-      <div class="col-sm-4">
-      <label for="inmuni" class="form-label">Municipio</label>
-      <select name="inmuni" id="inmuni" class="form-select">
-      </select>
-    </div>
+      <div class="col-md-4">
+    <label for="inmuni" class="form-label">Municipio</label>
+    <select name="inmuni" id="inmuni" class="form-select">
+
+    </select>
+  </div>
 
         <div class="col-sm-4">
           <label for="indes" class="form-label">Descripción</label>
@@ -62,7 +63,6 @@
             <thead>
                 <tr>
                     <th scope="col">idMunicipio</th>
-                    <th scope="col">Concecutivo</th>
                     <th scope="col">Descripción</th>
                     <th scope="col">TipoVehículo</th>
                     <th scope="col">Capacidad (kg)</th>
@@ -79,47 +79,14 @@
         </center>
       </div>
       <br>
-       <script>
-        function valdez()
-        {
-          const conce =document.getElementById("inconc").value;
-          const des=document.getElementById("indes").value;
-          let tipo=document.getElementById("intipo").value;
-          let cap=document.getElementById("incap").value;
-          let marca=document.getElementById("inmarca").value;
-          let placa=document.getElementById("inplaca").value;
-          if(conce.length>10){
-            alert("Campo concecutivo demasiado largo");
-            return false;
-          }
-          if(des.length>30){
-            alert("El campo: Descripcion, es demasiado largo");
-            return false;
-          }
-          if(tipo.length>30){
-            alert("El campo: Tipo, es demasiado largo");
-            return false;
-          }
-          if(cap.length>30){
-            alert("El campo: Capacidad(kg), es demasiado largo");
-            return false;
-          }
-          if(marca.length>30){
-            alert("El campo: Marca, es demasiado largo");
-            return false;
-          }
-          if(placa.length>6 || placa.length<6){
-            alert("El campo: Placa, es invalido");
-            return false;
-          }
-          return 0;   
-        }
-    </script>
-      <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="datatables.min.js"></script>
-    <script type="text/javascript" src="MuniVehiculosArchivos/funcionesMuniVehiculos.js"></script>
-    <script src="menujs.js"></script>
+       
+<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="datatables.min.js"></script>
+<script type="text/javascript" src="MuniVehiculosArchivos/funcionesCont.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
+<script src="menujs.js"></script>
+</body>
       
 </body>
 </html>
