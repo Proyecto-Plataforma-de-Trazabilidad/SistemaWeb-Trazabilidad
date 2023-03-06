@@ -105,6 +105,7 @@ include "navMenu.php";
     <!-- Linea para separar el detalle -->
     <div>
         <hr class="divider">
+        <label class="divider-titulo">Detalle de orden: 001</label>
     </div>
 
     <section class="form-Detalle">
@@ -159,7 +160,7 @@ include "navMenu.php";
 
 
         <div class="form-Detalle-table">
-            <h6 class="form-Detalle-titulo">Detalle de orden: 001</h6>
+            
             <table class="table table-striped" id="tabla">
                 <thead>
                     <tr>
@@ -183,6 +184,7 @@ include "navMenu.php";
                     </tr>
                 </tbody>
             </table>
+            <label for="" class="form-Detalle-mensaje">Detalles de orden</label>
             <button type="submit" class="btn btn-success button-registrar" onclick="" name="Registrar">Registrar</button>
         </div>
     </section>
