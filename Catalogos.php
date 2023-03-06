@@ -2,89 +2,96 @@
 include('navMenu.php')
 ?>
 
-<h1>Índice de Catálogos</h1>
+<!DOCTYPE html>
+<html lang="es">
 
-<center>
-<div class="row">
-    <div class="col-md-4">
-        <a href="Cat.php" class="btn-ghost round">Centro de Acopio Temporal</a>
-    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/menu-movimientos/menu-movimientos.css">
+    <title>APEJAL-Movimientos</title>
+</head>
 
+<body>
+    <main>
+        <h1>Índice de Catálogos</h1>
 
-    <div class="col-md-4">
-        <a href="Contenedores.php" class="btn-ghost round">Contenedores</a>
-    </div>
+        <div class="Menu">
+            <div class="menu-item" id="Ordenes" onclick="location.href='ResponsableCAT.php'">
+                <img src="Recursos/Iconos/ResponsableCat.svg" alt="Responsables Cat" class="menu-item-imagen">
+                <p  class="menu-item-titulo">Responsables Cat</p>
+            </div>
 
-    <div class="col-md-4">
-        <a href="Distribuidores.php" class="btn-ghost round">Distribuidores</a>
-    </div>
+            <div class="menu-item" id="Ordenes" onclick="location.href='Cat.php'">
+                <img src="Recursos/Iconos/CAT.svg" alt="Icono de CAT" class="menu-item-imagen">
+                <p  class="menu-item-titulo">CAT<br/><small>(Centro de Acopio Temporal)</small></p>
+            </div>
+            <div class="menu-item" id="Ordenes" onclick="location.href='Distribuidores.php'">
+                <img src="Recursos/Iconos/Distribuidores.svg" alt="Icono de Distribuidores" class="menu-item-imagen">
+                <p  class="menu-item-titulo">Distribuidores</p>
+            </div>
 
-    <div class="col-md-4">
-        <a href="EmpresaRecPrivada.php" class="btn-ghost round">Empresa Recolectora Privada</a>
-    </div>
+            <div class="menu-item" id="Ordenes" onclick="location.href='Productores.php'">
+                <img src="Recursos/Iconos/Productores.svg" alt="Icono de Productores" class="menu-item-imagen">
+                <p  class="menu-item-titulo">Productores</p>
+            </div>
 
-    <div class="col-md-4">
-        <a href="Municipio.php" class="btn-ghost round">Municipio</a>
-    </div>
+            <div class="menu-item" id="Ordenes" onclick="location.href='Huertos.php'">
+                <img src="Recursos/Iconos/Huertos.svg" alt="Icono de Huertos" class="menu-item-imagen">
+                <p  class="menu-item-titulo">Huertos</p>
+            </div>
 
-    <div class="col-md-4">
-        <a href="Productores.php" class="btn-ghost round">Productores</a>
-    </div>
+            <div class="menu-item" id="Ordenes" onclick="location.href='TipoQuimico.php'">
+                <img src="Recursos/Iconos/TipoQuimicos.svg" alt="Icono de Tipo Químico" class="menu-item-imagen">
+                <p  class="menu-item-titulo">Tipo Químico</p>
+            </div>
 
-    <div class="col-md-4">
-        <a href="ResponsableCAT.php" class="btn-ghost round">Responsable Cat</a>
-    </div>
+            <div class="menu-item" id="Ordenes" onclick="location.href='EmpresaRecPrivada.php'">
+                <img src="Recursos/Iconos/EP.svg" alt="Icono de ERP" class="menu-item-imagen">
+                <p  class="menu-item-titulo">ERP<br/><small>(Empresa Recolectora Privada)</small></p>
+            </div>
 
-    <div class="col-md-4">
-        <a href="EmpresaDestino.php" class="btn-ghost round">Empresa Destino</a>
-    </div>
+            <div class="menu-item" id="Ordenes" onclick="location.href='ErpVehiculos.php'">
+                <img src="Recursos/Iconos/ERPVehiculos.svg" alt="Icono de ERP Vehículos" class="menu-item-imagen">
+                <p  class="menu-item-titulo">ERP Vehículos</p>
+            </div>
 
-    <div class="col-md-4">
-        <a href="Huertos.php" class="btn-ghost round">Huertos</a>
-    </div>
+            <div class="menu-item" id="Ordenes" onclick="location.href='DistVehiculos.php'">
+                <img src="Recursos/Iconos/distribuidoresVehiculos.svg" alt="Icono de Distribuidores Vehiculos" class="menu-item-imagen">
+                <p  class="menu-item-titulo">Distribuidores Vehiculos</p>
+            </div>
 
-    <div class="col-md-4">
-        <a href="ErpVehiculos.php" class="btn-ghost round">ERP Vehículos</a>
-    </div>
+            <div class="menu-item" id="Ordenes" onclick="location.href='Contenedores.php'">
+                <img src="Recursos/Iconos/Contenedores.svg" alt="Icono de Contenedores" class="menu-item-imagen">
+                <p  class="menu-item-titulo">Contenedores</p>
+            </div>
 
-    <div class="col-md-4">
-        <a href="DistVehiculos.php" class="btn-ghost round">Distribuidores Vehículos</a>
-    </div>
+            <div class="menu-item" id="Ordenes" onclick="location.href='TiposCont.php'">
+                <img src="Recursos/Iconos/TipoContenedores.svg" alt="Icono de Tipo Contenedor" class="menu-item-imagen">
+                <p  class="menu-item-titulo">Tipo Contenedor</p>
+            </div>
 
-    <div class="col-md-4">
-        <a href="TiposCont.php" class="btn-ghost round">Tipo Contenedor</a>
-    </div>
+            <div class="menu-item" id="Ordenes" onclick="location.href='EmpresaDestino.php'">
+                <img src="Recursos/Iconos/EmpresaDestino.svg" alt="Icono de Empresa Destino" class="menu-item-imagen">
+                <p  class="menu-item-titulo">Empresa Destino</p>
+            </div>
 
-    <div class="col-md-4">
-        <a href="MuniVehiculos.php" class="btn-ghost round">Vehículos Municipio</a>
-    </div>
+            <div class="menu-item" id="Ordenes" onclick="location.href='Municipio.php'">
+                <img src="Recursos/Iconos/Municipio.svg" alt="Icono de Municipio" class="menu-item-imagen">
+                <p  class="menu-item-titulo">Municipio</p>
+            </div>
 
-    <div class="col-md-4">
-        <a href="TipoQuimico.php" class="btn-ghost round">Tipo Químicos</a>
-    </div>
-</div>
-</center>
+            <div class="menu-item" id="Ordenes" onclick="location.href='MuniVehiculos.php'">
+                <img src="Recursos/Iconos/MunicipioVehiculos.svg" alt="Icono de Vehículos Municipales" class="menu-item-imagen">
+                <p  class="menu-item-titulo">Vehículos Municipales</p>
+            </div>
+            
+        </div>
+        
+    </main>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</main>
-
-<script src="menujs.js"></script>
+    <script src="menujs.js"></script>
 
 </body>
 
