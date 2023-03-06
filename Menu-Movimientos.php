@@ -9,7 +9,7 @@ include('navMenu.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/menu-movimientos/menu-movimientos.css">
+    <link rel="stylesheet" href="css/menu-MovCat/menu-MovCat.css">
     <title>APEJAL-Movimientos</title>
 </head>
 
@@ -18,7 +18,7 @@ include('navMenu.php');
         <h1>Índice de Movimientos</h1>
 
         <div class="Menu">
-            <div class="menu-item" id="Ordenes" onclick="location.href='inicio.php'">
+            <div class="menu-item" id="Ordenes" onclick="location.href='Ordenes.php'">
                 <img src="Recursos/Iconos/Ordenes.svg" alt="Icono de Ordenes" class="menu-item-imagen">
                 <p  class="menu-item-titulo">Ordenes</p>
             </div>
