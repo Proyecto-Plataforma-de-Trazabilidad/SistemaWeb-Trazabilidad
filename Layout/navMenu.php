@@ -7,8 +7,7 @@ if ($varses == null || $varses == '') {
     die();
 }
 
-include('../conexion.php');
-$r = "SELECT "
+
 
 ?>
 
