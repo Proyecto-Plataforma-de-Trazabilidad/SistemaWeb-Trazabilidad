@@ -121,7 +121,7 @@
                     <th scope="col">Puntos acumulados</th>
                     <th scope="col">Opciones</th>
                 </tr>
-              </thead>
+            </thead>
             <tbody id="bodyTabla">
 
             </tbody>

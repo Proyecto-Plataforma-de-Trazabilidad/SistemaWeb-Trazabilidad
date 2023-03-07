@@ -6,6 +6,10 @@ if ($varses == null || $varses == '') {
     echo "Primero inicie sesión";
     die();
 }
+
+include('../conexion.php');
+$r = "SELECT "
+
 ?>
 
 <!DOCTYPE html>
@@ -84,6 +88,8 @@ if ($varses == null || $varses == '') {
                     <h4>Ayuda</h4>
                 </div>
             </a>
+
+            
 
             <!--Salir-->
             <a href="salir.php" onclick="return res()">
