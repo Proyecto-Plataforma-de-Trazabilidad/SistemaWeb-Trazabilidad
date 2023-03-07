@@ -15,7 +15,7 @@
         </div>
 
         <div class="col-sm-4">
-          <label for="nom" class="form-label">Nombre</label>
+          <label for="nom" class="form-label">Nombra</label>
           <input type="text" class="form-control" id="nom"  name="nom" maxlength="40" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" required placeholder="Ingresa el nombre">
         </div>
 
