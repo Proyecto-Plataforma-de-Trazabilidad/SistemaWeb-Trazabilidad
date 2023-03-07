@@ -23,12 +23,12 @@ include('navMenu.php');
                 <p  class="menu-item-titulo">Ordenes</p>
             </div>
 
-            <div class="menu-item" id="Entregas" onclick="location.href='inicio.php'">
+            <div class="menu-item" id="Entregas" onclick="location.href='Entregas.php'">
                 <img src="Recursos/Iconos/Entregas.svg" alt="Icono de Entregas" class="menu-item-imagen">
                 <p class="menu-item-titulo">Entregas</p>
             </div>
 
-            <div class="menu-item" id="Extraviados" onclick="location.href='inicio.php'">
+            <div class="menu-item" id="Extraviados" onclick="location.href='Extraviados.php'">
                 <img src="Recursos/Iconos/Extraviados.svg" alt="Icono de Extraviados" class="menu-item-imagen">
                 <p class="menu-item-titulo">Extraviados</p>
             </div>
