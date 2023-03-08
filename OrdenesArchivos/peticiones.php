@@ -15,10 +15,18 @@
             'Concepto' => $fila[1]
         );
     }
-    
+    mysqli_free_result($comando);
+
+    $comando = mysqli_query($enlace, "SELECT * FROM productores");
+    while($fila1 = mysqli_fetch_array($comando)){
+        $productores[] = array(
+            'IdProductor' => $fila1[0],
+            'Nombre' => $fila1[1]
+        );
+    }
     
     //Mando datos al front
-    $datos = json_encode(array('orden' => $row, 'usuario' => $_SESSION['usuario'], 'quimicos' => $qumicos));
+    $datos = json_encode(array('orden' => $row, 'usuario' => $_SESSION['usuario'], 'quimicos' => $qumicos, 'produtores' => $productores));
     echo $datos;
     
     mysqli_close($enlace);
