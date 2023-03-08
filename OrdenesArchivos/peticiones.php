@@ -1,0 +1,25 @@
+<?php
+    include("../conexion.php");
+
+    session_start();
+
+    $comando = mysqli_query($enlace, "SELECT count(*) from ordenproductos");
+    $row =  mysqli_fetch_column($comando) + 1;
+    
+    mysqli_free_result($comando);
+
+    $comando = mysqli_query($enlace, "SELECT * from tipoquimico");
+    while($fila = mysqli_fetch_array($comando)){
+        $qumicos[] = array(
+            'IdTipo' => $fila[0],
+            'Concepto' => $fila[1]
+        );
+    }
+    
+    
+    //Mando datos al front
+    $datos = json_encode(array('orden' => $row, 'usuario' => $_SESSION['usuario'], 'quimicos' => $qumicos));
+    echo $datos;
+    
+    mysqli_close($enlace);
+?>
