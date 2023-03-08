@@ -43,12 +43,12 @@ include "navMenu.php";
     </section>
 
     <section class="form-Principal">
-        <form class="row g-4 container-fluid" id="frm" method="POST"
+        <form class="row g-4 container-fluid" id="frmOrden" method="POST"
             action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return 0">
 
             <div class="form-Principal-encabezado">
                 <div class="form-Principal-encabezado-numero">
-                    <label for="">Numero de orden: 002 </label>
+                    <label for="" id="numOrden">Numero de orden: 003 </label>
                 </div>
                 <div>
                     <label for="startDate">Seleccionar Fecha: &nbsp;</label>
@@ -59,10 +59,10 @@ include "navMenu.php";
                 </div>
             </div>
 
-            <div class="col-sm-4">
-                <label for="OrdNombre" class="form-label">Nombre de Distribuidor</label>
+            <div class="col-sm-4" id="nom">
+                <label for="OrdNombre" class="form-label">Nombre del distribuidor</label>
                 <!-- debe de cargar dependiendo el inicio de seccion  -->
-                <input disabled type="text" id="innombre" name="nomDistribuidor" class="form-control" maxlength="30"
+                <input disabled type="text" id="nomDistri" name="nomDistribuidor" class="form-control" maxlength="30"
                     required placeholder="Nombre del distribuidor">
             </div>
 
@@ -109,16 +109,14 @@ include "navMenu.php";
     </div>
 
     <section class="form-Detalle">
-        <form class="row g-4 container-fluid" id="frm" method="POST"
+        <form class="row g-4 container-fluid" id="frmDetalle" method="POST"
             action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return 0">
 
             <div class="col-sm-4">
                 <div>
                     <label for="inestado" class="form-label">Tipo de Químico</label>
-                    <select name="inestado" id="inestado" class="form-select" required>
+                    <select name="inestado" id="tipoQuimi" class="form-select" required>
                         <option hidden>Selecciona un tipo</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
                     </select>
                 </div>
             </div>
@@ -128,8 +126,9 @@ include "navMenu.php";
                     <label for="inestado" class="form-label">Tipo de Envase</label>
                     <select name="inestado" id="inestado" class="form-select" required>
                         <option hidden>Selecciona un tipo</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
+                        <option value="1">Rígidos lavable</option>
+                        <option value="2">Rígidos no lavable</option>
+                        <option value="3">Flexible</option>
                     </select>
                 </div>
             </div>
@@ -139,8 +138,10 @@ include "navMenu.php";
                     <label for="inestado" class="form-label">Color</label>
                     <select name="inestado" id="inestado" class="form-select" required>
                         <option hidden>Selecciona un color</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
+                        <option value="1">Verde</option>
+                        <option value="2">Azul</option>
+                        <option value="3">Amarillo</option>
+                        <option value="4">Rojo</option>
                     </select>
                 </div>
             </div>
@@ -192,8 +193,10 @@ include "navMenu.php";
     <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
-    <script type="text/javascript" src=""></script> <!-- scrip para la funcion del la tabla detalle orden  -->
+    <script type="text/javascript" src="./OrdenesArchivos/funcionesOrdenes.js"></script> <!-- scrip para la funcion del la tabla detalle orden  -->
     <script src="menujs.js"></script>
+    
+    
     <script type="text/javascript">
         $(function () {
             $('#datepicker').datepicker();
