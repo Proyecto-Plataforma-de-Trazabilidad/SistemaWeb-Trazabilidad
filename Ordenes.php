@@ -11,6 +11,7 @@ include "navMenu.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/movimientos/Orden/orden.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css">
     <title>APEJAL-Ordenes</title>
 </head>
 
@@ -80,10 +81,8 @@ include "navMenu.php";
             <div class="col-sm-4">
                 <div>
                     <label for="inestado" class="form-label">Nombre de Productor</label>
-                    <select name="inestado" id="inestado" class="form-select" required>
+                    <select name="inestado" id="nomProdu" class="form-select" required>
                         <option hidden>Selecciona un productor registrado</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
                     </select>
                 </div>
             </div>
@@ -124,11 +123,11 @@ include "navMenu.php";
             <div class="col-sm-4">
                 <div>
                     <label for="inestado" class="form-label">Tipo de Envase</label>
-                    <select name="inestado" id="inestado" class="form-select" required>
+                    <select name="inestado" id="tipoEnva" class="form-select" required>
                         <option hidden>Selecciona un tipo</option>
-                        <option value="1">Rígidos lavable</option>
-                        <option value="2">Rígidos no lavable</option>
-                        <option value="3">Flexible</option>
+                        <option value="Rígidos lavable">Rígidos lavable</option>
+                        <option value="Rígidos no lavable">Rígidos no lavable</option>
+                        <option value="Flexible">Flexible</option>
                     </select>
                 </div>
             </div>
@@ -136,33 +135,33 @@ include "navMenu.php";
             <div class="col-sm-4">
                 <div>
                     <label for="inestado" class="form-label">Color</label>
-                    <select name="inestado" id="inestado" class="form-select" required>
+                    <select name="inestado" id="color" class="form-select" required>
                         <option hidden>Selecciona un color</option>
-                        <option value="1">Verde</option>
-                        <option value="2">Azul</option>
-                        <option value="3">Amarillo</option>
-                        <option value="4">Rojo</option>
+                        <option value="Verde">Verde</option>
+                        <option value="Azul">Azul</option>
+                        <option value="Amarillo">Amarillo</option>
+                        <option value="Rojo">Rojo</option>
                     </select>
                 </div>
             </div>
 
             <div class="col-sm-4">
                 <div class="col-6">
-                    <label for="incap" class="form-label">Capacidad de piezas</label>
-                    <input type="number" class="form-control" id="incap" maxlength="10" name="incap" required
+                    <label for="incap" class="form-label">Cantidad de piezas</label>
+                    <input type="number" class="form-control" id="cantiPza" maxlength="10" name="incap" required
                         placeholder="Ingrese la cantidad">
                 </div>            
             </div>
 
             <div class="col-sm-4">                            
-                <button type="submit" class="btn btn-primary button-aceptar" onclick="" name="Aceptar">Aceptar</button>
+                <button id="aceptar" type="button" class="btn btn-primary button-aceptar"  name="Aceptar">Aceptar</button>
             </div>
         </form>
 
 
         <div class="form-Detalle-table">
             
-            <table class="table table-striped" id="tabla">
+            <table class="table table-striped" id="detalle">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -175,14 +174,7 @@ include "navMenu.php";
                     </tr>
                 </thead>
                 <tbody id="bodyTabla">
-                    <tr>
-                    <th scope="col">1</th>
-                        <th scope="col">Ejemplo 1</th>
-                        <th scope="col">Ejemplo 1</th>
-                        <th scope="col">Ejemplo 1</th>
-                        <th scope="col">Ejemplo 1</th>
-                        <th scope="col">Ejemplo 1</th>
-                    </tr>
+
                 </tbody>
             </table>
             <label for="" class="form-Detalle-mensaje">Detalles de orden</label>
@@ -193,15 +185,11 @@ include "navMenu.php";
     <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="./OrdenesArchivos/funcionesOrdenes.js"></script> <!-- scrip para la funcion del la tabla detalle orden  -->
     <script src="menujs.js"></script>
-    
-    
-    <script type="text/javascript">
-        $(function () {
-            $('#datepicker').datepicker();
-        });
-    </script>
+    <script type="text/javascript" src="./OrdenesArchivos/llenarTabla.js"></script>
+
 </body>
 
 </html>
