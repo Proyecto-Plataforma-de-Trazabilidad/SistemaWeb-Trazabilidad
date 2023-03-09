@@ -56,7 +56,7 @@ include "navMenu.php";
                 </div>
 
                 <div class="col-sm-2">
-                    <input id="startDate" class="form-control" type="date" />
+                    <input id="fecha" class="form-control" type="date" />
                 </div>
             </div>
 
@@ -64,7 +64,7 @@ include "navMenu.php";
                 <label for="OrdNombre" class="form-label">Nombre del distribuidor</label>
                 <!-- debe de cargar dependiendo el inicio de seccion  -->
                 <input disabled type="text" id="nomDistri" name="nomDistribuidor" class="form-control" maxlength="30"
-                    required placeholder="Nombre del distribuidor">
+                    required placeholder="Nombre del distribuidor" data-id-distribuidor="2">
             </div>
 
             <div class="col-sm-4">
@@ -75,7 +75,7 @@ include "navMenu.php";
 
             <div class="col-sm-4">
                 <label for="formFileMultiple" class="form-label">Subir Factura</label>
-                <input class="form-control" type="file" id="formFileMultiple" multiple>
+                <input class="form-control" type="file" id="archFac" multiple>
             </div>
 
             <div class="col-sm-4">
@@ -89,13 +89,13 @@ include "navMenu.php";
 
             <div class="col-sm-4">
                 <label for="OrdFact" class="form-label">Cédula de receta</label>
-                <input type="text" id="factOrden" name="facturaOrden" class="form-control" maxlength="30"
+                <input type="text" id="cedReceta" name="facturaOrden" class="form-control" maxlength="30"
                     pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" placeholder="Número de cédula">
             </div>
 
             <div class="col-sm-4">
                 <label for="formFileMultiple" class="form-label">Subir Receta</label>
-                <input class="form-control" type="file" id="formFileMultiple" multiple>
+                <input class="form-control" type="file" id="archReceta" multiple>
             </div>
 
         </form>
@@ -178,7 +178,7 @@ include "navMenu.php";
                 </tbody>
             </table>
             <label for="" class="form-Detalle-mensaje">Detalles de orden</label>
-            <button type="submit" class="btn btn-success button-registrar" onclick="" name="Registrar">Registrar</button>
+            <button type="submit" class="btn btn-success button-registrar" id="registrar" name="Registrar" form="frmOrden">Registrar</button>
         </div>
     </section>
 
@@ -187,6 +187,7 @@ include "navMenu.php";
     <script type="text/javascript" src="datatables.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="./OrdenesArchivos/funcionesOrdenes.js"></script> <!-- scrip para la funcion del la tabla detalle orden  -->
+    <script type="text/javascript" src="./OrdenesArchivos/btn_Registrar.js"></script> <!-- scrip para la funcion del boton registrar  -->
     <script src="menujs.js"></script>
     <script type="text/javascript" src="./OrdenesArchivos/llenarTabla.js"></script>
 
