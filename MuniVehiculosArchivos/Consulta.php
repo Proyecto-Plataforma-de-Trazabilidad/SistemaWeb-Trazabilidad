@@ -9,7 +9,7 @@
 <br>
         <?php 
             include '../conexion.php';
-            $r="SELECT * FROM municipiovehiculos WHERE IdMunicipio=".$_GET['id'];
+            $r="SELECT * FROM municipiovehiculos WHERE Consecutivo=".$_GET['id'];
             $comando= mysqli_query($enlace, $r);
             $row=mysqli_fetch_array($comando);
         ?>
@@ -17,12 +17,12 @@
 
         <div class="col-2">
           <label for="inid" class="form-label">IdMunicipio</label>
-          <input type="text" class="form-control" id="inid"  name="inid" readonly maxlength="60" required value="<?php echo($row[0]);?>">
+          <input type="text" class="form-control" id="inid"  name="inid" readonly maxlength="60" required value="<?php echo($row[1]);?>">
         </div>
 
         <div class="col-sm-3">
           <label for="incon" class="form-label">Consecutivo</label>
-          <input type="text" class="form-control" id="incon"  name="incon" maxlength="60" disabled required value="<?php echo($row[1]);?>">
+          <input type="text" class="form-control" id="incon"  name="incon" maxlength="60" readonly  required value="<?php echo($row[0]);?>">
         </div>
 
         <div class="col-sm-4">
@@ -95,7 +95,6 @@
     <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../datatables.min.js"></script>
-    <script type="text/javascript" src="MuniVehiculosArchivos/funcionesMuniVehiculos.js"></script>
     <script src="../js/menujs.js"></script>
 </body>
 </html>
