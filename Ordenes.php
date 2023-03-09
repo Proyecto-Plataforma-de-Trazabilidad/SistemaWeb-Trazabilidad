@@ -44,8 +44,8 @@ include "navMenu.php";
     </section>
 
     <section class="form-Principal">
-        <form class="row g-4 container-fluid" id="frmOrden" method="POST"
-            action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return 0">
+        <form id="formOrden" class="row g-4 container-fluid" id="frmOrden" method="POST"
+            action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return 0" enctype="multipart/form-data" >
 
             <div class="form-Principal-encabezado">
                 <div class="form-Principal-encabezado-numero">
@@ -63,7 +63,7 @@ include "navMenu.php";
             <div class="col-sm-4" id="nom">
                 <label for="OrdNombre" class="form-label">Nombre del distribuidor</label>
                 <!-- debe de cargar dependiendo el inicio de seccion  -->
-                <input disabled type="text" id="nomDistri" name="nomDistribuidor" class="form-control" maxlength="30"
+                <input disabled type="text" id="nomDistri" data-precio="1" name="nomDistribuidor" class="form-control" maxlength="30"
                     required placeholder="Nombre del distribuidor">
             </div>
 
@@ -104,7 +104,7 @@ include "navMenu.php";
     <!-- Linea para separar el detalle -->
     <div>
         <hr class="divider">
-        <label class="divider-titulo">Detalle de orden: 001</label>
+        <label id="numDetalle" class="divider-titulo">Detalle de orden: 00</label>
     </div>
 
     <section class="form-Detalle">
@@ -153,11 +153,11 @@ include "navMenu.php";
                 </div>            
             </div>
 
-            <div class="col-sm-4">                            
+            <div class="col-sm-4">  <!--Agrega el detalle a la tabla-->
                 <button id="aceptar" type="button" class="btn btn-primary button-aceptar"  name="Aceptar">Aceptar</button>
             </div>
         </form>
-
+ 
 
         <div class="form-Detalle-table">
             
@@ -178,7 +178,8 @@ include "navMenu.php";
                 </tbody>
             </table>
             <label for="" class="form-Detalle-mensaje">Detalles de orden</label>
-            <button type="submit" class="btn btn-success button-registrar" onclick="" name="Registrar">Registrar</button>
+
+            <button id="registrar" type="button" class="btn btn-success button-registrar" name="Registrar">Registrar</button>
         </div>
     </section>
 
@@ -189,6 +190,7 @@ include "navMenu.php";
     <script type="text/javascript" src="./OrdenesArchivos/funcionesOrdenes.js"></script> <!-- scrip para la funcion del la tabla detalle orden  -->
     <script src="menujs.js"></script>
     <script type="text/javascript" src="./OrdenesArchivos/llenarTabla.js"></script>
+    <script type="text/javascript" src="./OrdenesArchivos/registrar.js"></script>
 
 </body>
 
