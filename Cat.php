@@ -2,29 +2,6 @@
 include "Layout/navMenu.php";
 ?>
 
-  <head>
-  <style>
-        input:invalid{
-            border-color: red;
-            
-        }
-
-        
-        input:valid {
-            border-color: green;
-        }  
-
-        select:invalid{
-            border-color: red;
-        }
-
-        select:valid{
-            border-color: green;
-        }
-    </style>
-  </head>
-
-
   <div class="container">
     <h2>Registrar Centro de Acopio Temporal</h2>
   </div>

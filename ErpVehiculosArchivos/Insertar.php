@@ -1,7 +1,7 @@
 <?php
 
     include '../conexion.php';
-    $con=$_POST['incon'];
+    $erp=$_POST['inerp'];
     $des=$_POST['indes'];
     $tipo=$_POST['intipo'];
     $cap=$_POST['incap'];
@@ -22,14 +22,14 @@
         $arregloArchivo=explode(".",$nombre_base);
         $extension=strtolower(end($arregloArchivo));
         if(in_array($extension, $permitidos)){
-            $r="INSERT INTO erpvehiculos VALUES(NULL,".$con.",'".$des."','".$tipo."',".$cap.",'".$marca."','".$placa."','0')";
+            $r="INSERT INTO erpvehiculos VALUES(null,".$erp.",'".$des."','".$tipo."',".$cap.",'".$marca."','".$placa."','0')";
             $resultado=mysqli_query($enlace,$r);
             $lastid=mysqli_insert_id($enlace);
             $nombre_base=basename(($_FILES["infile"]["name"]));
-            $ruta="SCTERP/" .$con."".$lastid.".".$extension;
+            $ruta="SCTERP/" .$lastid."".$erp.".".$extension;
             $subir_archivo=move_uploaded_file($_FILES["infile"]["tmp_name"], $ruta);
             if($subir_archivo){
-                $r="UPDATE erpvehiculos SET SCT='".$ruta."' WHERE IdERP=".$lastid;
+                $r="UPDATE erpvehiculos SET SCT='".$ruta."' WHERE Consecutivo=".$lastid;
                 $resultado=mysqli_query($enlace,$r);
                 if($resultado){
                     echo "<script>alert('Archivo subido'); window.location='../ErpVehiculos.php'</script>";

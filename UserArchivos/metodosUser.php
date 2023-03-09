@@ -2,9 +2,20 @@
     include '../conexion.php';
     $tipo = $_POST['tipo'];
 
+    if ($tipo == "combo1") {
+        $r = "SELECT Idtipousuario, Descripcion FROM tipousuario";
+        $comando = mysqli_query($enlace, $r);
+        while ($row = mysqli_fetch_array($comando)) {
+            echo "<option value='".$row[0]."'>".$row[1]."</option>";
+        }
+    }
+
+
     if ($tipo == null) {
         cargarTabla();
     }
+
+    
 
     function cargarTabla(){
         include '../conexion.php';
@@ -23,5 +34,7 @@
         }
         mysqli_close($enlace);
     }
+
+    
 
 ?>

@@ -1,5 +1,11 @@
 <?php
-include('navMenu.php')
+include('Layout/navMenu.php');
+
+include 'conexion.php';
+$r = "SELECT * FROM usuarios where nombre = '$varses'";
+$res = mysqli_query($enlace, $r);
+$filas = mysqli_fetch_array($res);
+
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +23,15 @@ include('navMenu.php')
     <main>
         <h1>Índice de Catálogos</h1>
 
+        
+
         <div class="Menu">
+            
+            <?php
+            #MENU DEL ADMINISTRADOR
+                if ($filas['Idtipousuario'] == 1) {
+                    
+                ?>
             <div class="menu-item" id="Ordenes" onclick="location.href='ResponsableCAT.php'">
                 <img src="Recursos/Iconos/ResponsableCat.svg" alt="Responsables Cat" class="menu-item-imagen">
                 <p  class="menu-item-titulo">Responsables Cat</p>
@@ -86,6 +100,25 @@ include('navMenu.php')
                 <img src="Recursos/Iconos/MunicipioVehiculos.svg" alt="Icono de Vehículos Municipales" class="menu-item-imagen">
                 <p  class="menu-item-titulo">Vehículos Municipales</p>
             </div>
+                <?php
+
+                }
+                #Menu de los Productores
+                elseif ($filas['Idtipousuario'] == 2) {
+                    
+                ?>
+            <div class="menu-item" id="Ordenes" onclick="location.href='MuniVehiculos.php'">
+                <img src="Recursos/Iconos/MunicipioVehiculos.svg" alt="Icono de Vehículos Municipales" class="menu-item-imagen">
+                <p  class="menu-item-titulo">Vehículos Municipales</p>
+            </div>       
+                <?php    
+                }
+                
+            ?>
+            
+
+            
+            
             
         </div>
         
