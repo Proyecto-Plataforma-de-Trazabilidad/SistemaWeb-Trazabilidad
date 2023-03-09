@@ -1,7 +1,5 @@
 <?php
-    include("../conexion.php");
-
-    //$enlace es la conexion a db
+    include("../conexion.php");//$enlace es la conexion a db
 
     //verificar conexion 
     if($enlace->connect_error){
@@ -15,8 +13,8 @@
         //iniciar con la transaccion  
         $enlace->begin_transaction();
         try{
-            //queryOrden                               num, idDistri, idProduc, numFact, Factura, NumReceta, Receta  
-            $orden=("INSERT INTO ordenproductos VALUES (null, null, null, 'null', 'null', 'null', 'null')");
+            //queryOrden                               num, idDistri, idProduc, numFact, Factura, NumReceta, Receta, fecha 
+            $orden=("INSERT INTO ordenproductos VALUES (null, null, null, 'null', 'null', 'null', 'null', 'Null')");
             mysqli_query($enlace,$orden);
 
             //ciclo con el tamaño del arreglo de detalle ordenes 
