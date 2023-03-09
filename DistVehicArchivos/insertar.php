@@ -22,7 +22,7 @@
         $arregloArchivo=explode(".",$nombre_base);
         $extension=strtolower(end($arregloArchivo));
         if(in_array($extension, $permitidos)){
-            $r="INSERT INTO distribuidorvehiculos VALUES('',".$dist.",'".$des."','".$tipo."',".$cap.",'".$marca."','".$placa."','0')";
+            $r="INSERT INTO distribuidorvehiculos VALUES(NULL,".$dist.",'".$des."','".$tipo."',".$cap.",'".$marca."','".$placa."','0')";
             $resultado=mysqli_query($enlace,$r);
             $lastid=mysqli_insert_id($enlace);
             $ruta="SCTDistribuidor/" .$lastid."".$dist.".".$extension;
