@@ -6,8 +6,9 @@
     
     
     function añadirQumicos(qumico){
-        let quimico = qumico;
-        tipoQuimi.insertAdjacentHTML('beforeend', `<option value="${quimico.Concepto}">${quimico.Concepto}</option>`);
+        let qumico = qumico;
+        tipoQuimi.insertAdjacentHTML('beforeend', `<option value="${qumico.IdTipo}">${qumico.Concepto}</option>`);
+        
     }
 
     function añadirProductor(productor){
@@ -27,5 +28,7 @@
             datos.produtores.map(productor => añadirProductor(productor));//Rellena la combo proveedores      
         }
     })
+
+
 
 
