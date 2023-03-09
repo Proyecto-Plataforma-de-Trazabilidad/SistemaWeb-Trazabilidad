@@ -25,7 +25,7 @@
             $r="INSERT INTO municipiovehiculos VALUES(NULL,".$inmuni.",'".$des."','".$tipo."',".$cap.",'".$marca."','".$placa."','0')";
             $resultado=mysqli_query($enlace,$r);
             $lastid=mysqli_insert_id($enlace);
-            $ruta="SCTMunicipio/" .$lastid.".".$extension;
+            $ruta="SCTMunicipio/" .$lastid."".$inmuni.".".$extension;
             $subir_archivo=move_uploaded_file($_FILES["infile"]["tmp_name"], $ruta);
             if($subir_archivo){
                 $r="UPDATE municipiovehiculos SET SCT='".$ruta."' WHERE Consecutivo=".$lastid;
