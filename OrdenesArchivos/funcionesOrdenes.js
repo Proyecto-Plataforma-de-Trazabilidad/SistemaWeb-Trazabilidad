@@ -1,4 +1,4 @@
-$(document).ready(function(){
+
     const usuario = document.getElementById("nomDistri");
     const orden = document.getElementById("numOrden");
     const tipoQuimi = document.getElementById("tipoQuimi");
@@ -29,4 +29,3 @@ $(document).ready(function(){
     })
 
 
-})

@@ -13,31 +13,7 @@ $(document).ready(function(){
         });
     }
     combocat();
-    function actualizarTabla(){
-        $.ajax({
-            url:'Cat-Archivos/metodosCat.php',
-            type:'POST',
-            data: {"tipo":"cargarTabla2"},
-            success:function(response){
-                let tabla=$('#tabla').DataTable({
-                    scrollX:true,
-                    ajax: response,
-                });   
-            }
-        });
-    }
-    actualizarTabla();
-    //$.ajax({
-      //  url:'Cat-Archivos/metodosCat.php',
-        //type:'POST',
-        //data: {"tipo":""},
-        //success:function(response){
-          //  $('#bodyTabla').html(response);
-            //$('#tabla').DataTable({
-             //   scrollX:true,
-            //});
-        //}
-    //});
+ 
 
 
     $('#frm').submit(function(e){
@@ -93,6 +69,7 @@ $(document).ready(function(){
                 scrollX:true,
             });
         }
+
     });
     window.addEventListener('resize', function(event){
         $('#tabla').DataTable().fnDestroy();

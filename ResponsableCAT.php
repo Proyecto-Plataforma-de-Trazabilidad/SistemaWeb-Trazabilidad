@@ -1,28 +1,6 @@
 <?php
-    include "navMenu.php";
+include "Layout/navMenu.php";
 ?>
-
-<header>
-<style>
-        input:invalid{
-            border-color: red;
-            
-        }
-
-        
-        input:valid {
-            border-color: green;
-        }  
-
-        select:invalid{
-            border-color: red;
-        }
-
-        select:valid{
-            border-color: green;
-        }
-    </style>
-</header>
 
 <div class="container">
   <h1>Responsable del CAT</h1>
@@ -32,37 +10,37 @@
 
         <div class="col-sm-4">
             <label for="innombre" class="form-label">Nombre</label>
-            <input type="text" id="innombre" name="innombre" class="form-control" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" required placeholder="Ingresa el nombre">
+            <input type="text" id="innombre" name="innombre" class="form-control" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" placeholder="Ingresa el nombre">
         </div>
 
         <div class="col-sm-4">
             <label for="indom" class="form-label">Domicilio</label>
-            <input type="text" id="indom" name="indom" class="form-control" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" required placeholder="Ingresa el dimicilio">
+            <input type="text" id="indom" name="indom" class="form-control" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" placeholder="Ingresa el dimicilio">
         </div>
 
         <div class="col-4">
             <label for="incp" class="form-label">Código Postal</label>
-            <input type="text" id="incp" name="incp" class="form-control" maxlength="5" pattern="[0-9]{5}" required placeholder="49000">
+            <input type="text" id="incp" name="incp" class="form-control" maxlength="5" pattern="[0-9]{5}"  placeholder="49000">
         </div>
 
         <div class="col-4">
             <label for="inmuni" class="form-label">Municipio</label>
-            <input type="text" id="inmuni" name="inmuni" class="form-control" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" required placeholder="Ingresa el municipio">
+            <input type="text" id="inmuni" name="inmuni" class="form-control" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}"  placeholder="Ingresa el municipio">
         </div>
 
         <div class="col-4">
             <label for="inedo" class="form-label">Estado</label>
-            <input type="text" id="inedo" name="inedo" class="form-control" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" required placeholder="Ingresa el estado">
+            <input type="text" id="inedo" name="inedo" class="form-control" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" placeholder="Ingresa el estado">
         </div>
 
         <div class="col-sm-4">
             <label for="intel" class="form-label">Teléfono</label>
-            <input type="text" id="intel" name="intel" class="form-control" maxlength="14" pattern="[0-9]{10}" required placeholder="5521234567">
+            <input type="text" id="intel" name="intel" class="form-control" maxlength="14" pattern="[0-9]{10}"  placeholder="5521234567">
         </div>
 
         <div class="col-sm-4">
             <label for="incorr" class="form-label">Correo</label>
-            <input type="text" id="incorr" name="incorr" class="form-control" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#@0-_9.,-]{1,30}" required placeholder="ejemplo@gmail.com">
+            <input type="text" id="incorr" name="incorr" class="form-control" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#@0-_9.,-]{1,30}" placeholder="ejemplo@gmail.com">
         </div>
 
         <div class="col-4">

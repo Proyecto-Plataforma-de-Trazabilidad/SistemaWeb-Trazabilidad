@@ -1,30 +1,7 @@
 <?php
-    include "Layout/navMenu.php";
+include "Layout/navMenu.php";
 ?>
 
-<header>
-<style>
-        input:invalid{
-            border-color: red;
-            
-        }
-
-        
-        input:valid {
-            border-color: green;
-        }  
-
-        select:invalid{
-            border-color: red;
-        }
-
-        select:valid{
-            border-color: green;
-        }
-    </style>
-</header>
-
-<br><br>
 <div class="container">
   <h1>Registrar Municipio Ayuntamiento</h1>
 </div>
@@ -33,37 +10,37 @@
 
         <div class="col-sm-4">
           <label for="innom" class="form-label">Nombre Lugar</label>
-          <input type="text" class="form-control" id="innom"  name="innom" maxlength="40" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" required placeholder="Ingresa el nombre">
+          <input type="text" class="form-control" id="innom"  name="innom" maxlength="40" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}"  placeholder="Ingresa el nombre">
         </div>
 
         <div class="col-sm-4">
           <label for="indom" class="form-label">Domicilio</label>
-          <input type="text" class="form-control" id="indom"  name="indom" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" required placeholder="ingresa el domicilio">
+          <input type="text" class="form-control" id="indom"  name="indom" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}"  placeholder="ingresa el domicilio">
         </div>
 
         <div class="col-4">
             <label for="intel" class="form-label">Teléfono</label>
-            <input type="text" class="form-control" id="intel" maxlength="10" name="intel" pattern="[0-9]{10}" required placeholder="5521234567">
+            <input type="text" class="form-control" id="intel" maxlength="10" name="intel" pattern="[0-9]{10}"  placeholder="5521234567">
         </div>
       
         <div class="col-4">
             <label for="incp" class="form-label">Código Postal</label>
-            <input type="text" class="form-control" id="incp" maxlength="5" name="incp" pattern="[0-9]{5}" required placeholder="49000">
+            <input type="text" class="form-control" id="incp" maxlength="5" name="incp" pattern="[0-9]{5}"  placeholder="49000">
         </div>
 
         <div class="col-4">
           <label for="inest" class="form-label">Estado</label>
-          <input type="text" class="form-control" id="inest"  name="inest" maxlength="60" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" required placeholder="Ingresa el estado">
+          <input type="text" class="form-control" id="inest"  name="inest" maxlength="60" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}"  placeholder="Ingresa el estado">
         </div>
 
         <div class="col-sm-4">
           <label for="incorr" class="form-label">Correo</label>
-          <input type="text" class="form-control" id="incorr"  name="incorr" maxlength="60" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#@0-_9.,-]{1,30}" required placeholder="ejemplo@gmail.com">
+          <input type="text" class="form-control" id="incorr"  name="incorr" maxlength="60" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#@0-_9.,-]{1,30}"  placeholder="ejemplo@gmail.com">
         </div>
 
         <div class="col-sm-4">
           <label for="inres" class="form-label">Responsable</label>
-          <input type="text" class="form-control" id="inres"  name="inres" maxlength="60" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" required placeholder="Ingresa el nombre del responsable">
+          <input type="text" class="form-control" id="inres"  name="inres" maxlength="60" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}"  placeholder="Ingresa el nombre del responsable">
         </div>
 
         <div class="col-sm-6">
@@ -74,12 +51,12 @@
 
         <div class="col-sm-4">
             <label for="inlat" class="form-label">Latitud</label>
-            <input type="text" class="form-control" id="inlat" maxlength="20" name="inlat" required placeholder="Ingresa la latitud">
+            <input type="text" class="form-control" id="inlat" maxlength="20" name="inlat"  placeholder="Ingresa la latitud">
         </div>
 
         <div class="col-sm-4">
             <label for="inlon" class="form-label">Longitud</label>
-            <input type="text" class="form-control" id="inlon" maxlength="20" name="inlon" required placeholder="Ingresa la longitud">
+            <input type="text" class="form-control" id="inlon" maxlength="20" name="inlon"  placeholder="Ingresa la longitud">
         </div>
         <div class="col-sm-4">
             

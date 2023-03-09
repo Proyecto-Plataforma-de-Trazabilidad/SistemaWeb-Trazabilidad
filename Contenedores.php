@@ -1,26 +1,10 @@
 <?php
-include "navMenu.php";
+include "Layout/navMenu.php";
 ?>
 
 <head>
   <style>
-    input:invalid {
-      border-color: red;
-
-    }
-
-
-    input:valid {
-      border-color: green;
-    }
-
-    select:invalid {
-      border-color: red;
-    }
-
-    select:valid {
-      border-color: green;
-    }
+    
 
     #mapa {
       height: 50vh;
@@ -56,21 +40,21 @@ include "navMenu.php";
 
   <div class="col-4">
     <label for="incap" class="form-label">Capacidad (Kg)</label>
-    <input type="text" class="form-control" id="incap" maxlength="10" name="incap" pattern="[0-9]{0-30}" required placeholder="Ingresa la capacidad">
+    <input type="text" class="form-control" id="incap" maxlength="10" name="incap" pattern="[0-9]{0-30}"  placeholder="Ingresa la capacidad">
   </div>
   <div class="col-4">
     <label for="instatus" class="form-label">Capacidad status</label>
-    <input type="text" class="form-control" id="instatus" maxlength="10" name="instatus"  pattern="[0-9]{0-30}" required placeholder="Capacidad actual">
+    <input type="text" class="form-control" id="instatus" maxlength="10" name="instatus"  pattern="[0-9]{0-30}"  placeholder="Capacidad actual">
   </div>
 
   <div class="col-4">
     <label for="indes" class="form-label">Descripción</label>
-    <input type="text" class="form-control" id="indes" name="indes" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-_]{1,30}" required placeholder="Ingresa la descripcion">
+    <input type="text" class="form-control" id="indes" name="indes" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-_]{1,30}"  placeholder="Ingresa la descripcion">
   </div>
 
   <div class="col-sm-4">
     <label for="inulti" class="form-label">Última recolección</label>
-    <input type="date" class="form-control" id="inulti" name="inulti" maxlength="12" required>
+    <input type="date" class="form-control" id="inulti" name="inulti" maxlength="12" >
   </div>
 
   <div class="col-sm-4">
@@ -81,17 +65,17 @@ include "navMenu.php";
 
   <div class="col-12">
     <label for="inman" class="form-label">Instrucciones de manejo</label>
-    <textarea name="inman" id="inman" cols="30" rows="4" class="form-control" required placeholder="Escribe las instrucciones"></textarea>
+    <textarea name="inman" id="inman" cols="30" rows="4" class="form-control"  placeholder="Escribe las instrucciones"></textarea>
   </div>
 
   <div class="col-sm-4">
     <label for="inlat" class="form-label">Latitud</label>
-    <input type="text" class="form-control" id="inlat" name="inlat" maxlength="60" required placeholder="Ingresa la longitud">
+    <input type="text" class="form-control" id="inlat" name="inlat" maxlength="60"  placeholder="Ingresa la longitud">
   </div>
 
   <div class="col-sm-4">
     <label for="inlon" class="form-label">Longitud</label>
-    <input type="text" class="form-control" id="inlon" name="inlon" maxlength="60" required placeholder="Ingresa la latitud">
+    <input type="text" class="form-control" id="inlon" name="inlon" maxlength="60"  placeholder="Ingresa la latitud">
   </div>
   <div class="col-sm-4">
 
