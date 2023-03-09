@@ -8,7 +8,7 @@ $(document).ready(function(){
             data:parametros,
             type: 'POST',
             success:function(response){
-                $('#inerp').html(response);
+                $('#tipUser').html(response);
             }
         });
     }

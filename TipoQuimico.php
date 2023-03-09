@@ -1,7 +1,7 @@
 <?php
-    include "navMenu.php";
+include "Layout/navMenu.php";
 ?>
-<br><br>
+
 <div class="container">
   <h1>Registrar Tipo de Químico</h1>
 </div>
@@ -9,7 +9,7 @@
       <form class="row g-4 container-fluid" id="frm" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" onsubmit="return 0">
         <div class="col-md-6">
           <label for="inconc" class="form-label">Concepto</label>
-          <input type="text" class="form-control" id="inconc"  name="inconc" maxlength="60" required placeholder="Ingresa el concepto">
+          <input type="text" class="form-control" id="inconc"  name="inconc" maxlength="60"  placeholder="Ingresa el concepto">
         </div>
        
         <div class="col-12">

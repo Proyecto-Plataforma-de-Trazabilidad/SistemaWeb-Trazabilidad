@@ -1,5 +1,5 @@
 <?php
-include "navMenu.php";
+include "Layout/navMenu.php";
 ?>
 
 
@@ -18,15 +18,15 @@ include "navMenu.php";
 
       <div class="col-sm-2">
         <label for="inhue" class="form-label">HUE</label>
-        <input type="number" class="form-control" id="inhue" maxlength="10" name="inhue" required placeholder="Ingrese el HUE">
+        <input type="number" class="form-control" id="inhue" maxlength="10" name="inhue"  placeholder="Ingrese el HUE">
       </div>
       <div class="col-sm-3">
         <label for="inlat" class="form-label">Latitud</label>
-        <input type="text" class="form-control" id="inlat" maxlength="10" name="inlat" required placeholder="Ingrese la latitud">
+        <input type="text" class="form-control" id="inlat" maxlength="10" name="inlat"  placeholder="Ingrese la latitud">
       </div>
       <div class="col-sm-3">
         <label for="inlon" class="form-label">Longitud</label>
-        <input type="text" class="form-control" id="inlon" maxlength="10" name="inlon" required placeholder="Ingrese la longitud">
+        <input type="text" class="form-control" id="inlon" maxlength="10" name="inlon"  placeholder="Ingrese la longitud">
       </div>
 
       <div class="col-3">

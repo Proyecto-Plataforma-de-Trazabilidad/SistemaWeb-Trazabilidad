@@ -8,7 +8,6 @@ if ($varses == null || $varses == '') {
 }
 
 
-
 ?>
 
 <!DOCTYPE html>

@@ -5,7 +5,7 @@
     <h2>Registrar Nuevo Usuario</h2>
     <br>
 
-    <form class="row g-4 container-fluid" action="">
+    <form class="row g-4 container-fluid" id="frm" method="POST" action="UserArchivos/insertar.php" onsubmit="return 0">
 
         <div class="col-sm-4">
         <label for="tipUser" class="form-label">Tipo Usuario</label>
@@ -15,8 +15,13 @@
         </div>
 
         <div class="col-sm-4">
-          <label for="nom" class="form-label">Nombra</label>
+          <label for="nom" class="form-label">Nombre</label>
           <input type="text" class="form-control" id="nom"  name="nom" maxlength="40" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" required placeholder="Ingresa el nombre">
+        </div>
+
+        <div class="col-sm-4">
+          <label for="cont" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="cont"  name="cont" maxlength="40" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" required placeholder="Ingresa la contraseña">
         </div>
 
         <div class="col-sm-4">
@@ -33,7 +38,7 @@
 
     <!--Tabla para mostrar los usuarios registrados-->
     <div class="container text-center">
-        <h5>Productores Registrados</h5>
+        <h5>Usuarios Registrados</h5>
     </div>
 
     <div class="container col-12">
@@ -61,7 +66,7 @@
 <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
-    <script type="text/javascript" src="UserArchivos/funcionesUser.js"></script>
+    <script type="text/javascript" src="UserArchivos/funcionesUsuarios.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
     <script src="menujs.js"></script>
 </body>
