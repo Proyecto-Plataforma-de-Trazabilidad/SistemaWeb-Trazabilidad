@@ -16,7 +16,7 @@
         $arregloArchivo=explode(".",$nombre_base);
         $extension=strtolower(end($arregloArchivo));
         if(in_array($extension, $permitidos)){
-            $r="SELECT SCT FROM municipiovehiculpos WHERE IdMunicipio=$id";
+            $r="SELECT SCT FROM municipiovehiculos WHERE IdMunicipio=$id";
             $resultado=mysqli_query($enlace,$r);
             $row=mysqli_fetch_array($resultado);
             $sct=$row[0];
@@ -26,7 +26,7 @@
             }
             $subir_archivo=move_uploaded_file($_FILES["infile"]["tmp_name"], $ruta);
             if($subir_archivo){
-                $r="UPDATE municipiovehiculos SET Consecutivo=".$con.", Descripcion='".$des."', TipoVehiculo='".$tipo."', Capacidad=".$cap.", Marca='".$marca."', Placa='".$placa."', SCT='".$ruta."' WHERE IdMunicipio=".$id;
+                $r="UPDATE municipiovehiculos SET Consecutivo=".$con.", Descripcion='".$des."', TipoVehiculo='".$tipo."', Capacidad=".$cap.", Marca='".$marca."', Placa='".$placa."', SCT='".$ruta."' WHERE Consecutivo=".$con;
                 $resultado=mysqli_query($enlace,$r);
                 if($resultado){
                     echo "<script>alert('Archivo subido'); window.location='../MuniVehiculos.php'</script>";
@@ -44,7 +44,7 @@
         }
     }
     else{
-        $r="UPDATE municipiovehiculos SET Consecutivo=".$con.", Descripcion='".$des."', TipoVehiculo='".$tipo."', Capacidad=".$cap.", Marca='".$marca."', Placa='".$placa."' WHERE IdMunicipio=".$id;;
+        $r="UPDATE municipiovehiculos SET Consecutivo=".$con.", Descripcion='".$des."', TipoVehiculo='".$tipo."', Capacidad=".$cap.", Marca='".$marca."', Placa='".$placa."' WHERE Consecutivo=".$con;
         $resultado=mysqli_query($enlace,$r);
         if($resultado){
             echo "<script>window.location='../MuniVehiculos.php'</script>";

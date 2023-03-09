@@ -16,7 +16,7 @@
         $arregloArchivo=explode(".",$nombre_base);
         $extension=strtolower(end($arregloArchivo));
         if(in_array($extension, $permitidos)){
-            $r="SELECT SCT FROM distribuidorvehiculpos WHERE IdDistribuidor=$id";
+            $r="SELECT SCT FROM distribuidorvehiculos WHERE IdDistribuidor=$id";
             $resultado=mysqli_query($enlace,$r);
             $row=mysqli_fetch_array($resultado);
             $sct=$row[0];
@@ -26,7 +26,7 @@
             }
             $subir_archivo=move_uploaded_file($_FILES["infile"]["tmp_name"], $ruta);
             if($subir_archivo){
-                $r="UPDATE distribuidorvehiculos SET Consecutivo=".$con.", Descripcion='".$des."', TipoVehiculo='".$tipo."', Capacidad=".$cap.", Marca='".$marca."', Placa='".$placa."', SCT='".$ruta."' WHERE IdDistribuidor=".$id;
+                $r="UPDATE distribuidorvehiculos SET  Descripcion='".$des."', TipoVehiculo='".$tipo."', Capacidad=".$cap.", Marca='".$marca."', Placa='".$placa."', SCT='".$ruta."' WHERE Consecutivo=".$con;
                 $resultado=mysqli_query($enlace,$r);
                 if($resultado){
                     echo "<script>alert('Archivo subido'); window.location='../DistVehiculos.php'</script>";
@@ -44,7 +44,7 @@
         }
     }
     else{
-        $r="UPDATE distribuidorvehiculos SET Consecutivo=".$con.", Descripcion='".$des."', TipoVehiculo='".$tipo."', Capacidad=".$cap.", Marca='".$marca."', Placa='".$placa."' WHERE IdDistribuidor=".$id;;
+        $r="UPDATE distribuidorvehiculos SET Descripcion='".$des."', TipoVehiculo='".$tipo."', Capacidad=".$cap.", Marca='".$marca."', Placa='".$placa."' WHERE Consecutivo=".$con;
         $resultado=mysqli_query($enlace,$r);
         if($resultado){
             echo "<script>window.location='../DistVehiculos.php'</script>";

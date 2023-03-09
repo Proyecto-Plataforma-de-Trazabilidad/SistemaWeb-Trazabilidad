@@ -8,23 +8,12 @@
 <br>
       <form class="row g-4 container-fluid" id="frm" method="POST" action="DistVehicArchivos/insertar.php" onsubmit="return valdez()" enctype="multipart/form-data">
 
-      <div class="col-sm-4">
-      <?php
-      //se incluye la conexion para hacer lo mismo que en sql 
-      include 'conexion.php';
+      <div class="col-md-4">
+    <label for="indist" class="form-label">Distribuidor</label>
+    <select name="indist" id="indist" class="form-select">
 
-      //creamos una variable que guardara la instruccion que usaremos en sql
-      $n = "SELECT COUNT(*) FROM distribuidorvehiculos";
-      //en la variable resultado guardamos todos lo encontrado en ofertas 
-      //el comando mysqli_query nos permite crear comandos de sql 
-      $resultado = mysqli_query($enlace, $n);
-      //con el comando mysqli_num_rows cuentas todos los campos que existen en ofertas
-      $row= mysqli_num_rows($resultado);
-      $row = $row+1;
-      echo"<label for='incon' class='form-label'>Concecutivo</label>";
-      echo"<input type='number' class='form-control' id='incon' maxlength='10' name='incon' value='$row' readonly>";
-      ?>
-      </div> 
+    </select>
+  </div>
          
       
         <div class="col-sm-4">
@@ -73,7 +62,7 @@
         <table class="table table-striped" id="tabladistv">
             <thead>
                 <tr>
-                    <th scope="col">idDistrinuidor</th>
+                    <th scope="col">idDistribuidor</th>
                     <th scope="col">Descripción</th>
                     <th scope="col">TipoVehículo</th>
                     <th scope="col">Capacidad (kg)</th>
@@ -90,22 +79,11 @@
         </center>
       </div>
       <br>
-       <script>
-        function valdez()
-        {
-            let placa=document.getElementById("inplaca").value
-            if(placa.length<6 || placa.length>7){
-              alert("El campo Placa, no es valido");
-              return false;
-            }
-            return 0;
-            
-        }
-      </script>
-      <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+       
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
-    <script type="text/javascript" src="DistVehicArchivos/funcionesDistVehic.js"></script>
+    <script type="text/javascript" src="DistVehicArchivos/funcionesVeiDis.js"></script>
     <script src="menujs.js"></script>
       
 </body>
