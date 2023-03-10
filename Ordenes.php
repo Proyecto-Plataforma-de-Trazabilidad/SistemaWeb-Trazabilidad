@@ -49,7 +49,7 @@ include "navMenu.php";
 
             <div class="form-Principal-encabezado">
                 <div class="form-Principal-encabezado-numero">
-                    <label for="" id="numOrden">Numero de orden: 003 </label>
+                    <label for="" id="numOrden" data-numOrden="">Numero de orden: </label> 
                 </div>
                 <div>
                     <label for="startDate">Seleccionar Fecha: &nbsp;</label>
