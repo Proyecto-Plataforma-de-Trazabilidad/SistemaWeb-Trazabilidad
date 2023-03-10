@@ -49,7 +49,7 @@ include "navMenu.php";
 
             <div class="form-Principal-encabezado">
                 <div class="form-Principal-encabezado-numero">
-                    <label for="" id="numOrden">Numero de orden: 000 </label>
+                    <label for="" id="numOrden" data-numOrden="">Numero de orden: </label> 
                 </div>
                 <div>
                     <label for="startDate">Seleccionar Fecha: &nbsp;</label>
@@ -104,7 +104,7 @@ include "navMenu.php";
     <!-- Linea para separar el detalle -->
     <div>
         <hr class="divider">
-        <label id="numDetalle" class="divider-titulo">Detalle de orden: 001</label>
+        <label id="numDetalle" class="divider-titulo">Detalle de orden: 00</label>
     </div>
 
     <section class="form-Detalle">
