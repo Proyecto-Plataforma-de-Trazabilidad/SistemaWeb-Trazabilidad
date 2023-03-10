@@ -1,12 +1,33 @@
 
 $(document).ready(function(){
     let numDetalle = document.getElementById("numDetalle");
+    let valColor, aplica;
     let i = 1;
+
+    $("#tipoQuimi").change(function() {
+      let opcionQuimico = $("#tipoQuimi option:selected").text();
+
+      if (opcionQuimico != "Plaguicidas") {
+          
+          $("#color").prop('disabled', true);
+          aplica = false;
+
+      } else {
+          $("#color").prop('disabled', false);
+          aplica = true;
+      }
+    });
+
     $('#aceptar').click(function() {
         let valQuimico = document.getElementById("tipoQuimi").value;
         let valEnvase = document.getElementById("tipoEnva").value;
-        let valColor = document.getElementById("color").value;
         let valPiezas = document.getElementById("cantiPza").value;
+
+        if(aplica == true)
+          valColor = document.getElementById("color").value;
+        else
+          valColor = "No Aplica";
+
 
         let fila = '<tr id="row' + i + '"><td>' + i + '</td><td>' + valQuimico + '</td><td>' + valEnvase + '</td><td>' + valColor + '</td><td>' + valPiezas + '</td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Eliminar</button></td></tr>';
         i++;
