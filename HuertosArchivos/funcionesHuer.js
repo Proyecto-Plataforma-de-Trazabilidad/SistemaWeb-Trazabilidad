@@ -21,8 +21,9 @@ $(document).ready(function(){
         }
     });
     
+    
 
-    /*$('#frm').submit(function(e){
+    $('#frm').submit(function(e){
         e.preventDefault();
         
         let prod=document.getElementById("inprod").value;
@@ -37,13 +38,12 @@ $(document).ready(function(){
             type:'POST',
             success:function(response){
                 $('#bodyTabla').html(response);
-                $('#tabla').DataTable({
-                    scrollX:true,
-                });
+                tabla.ajax.reload();
             }
         });
+        
         $('#frm').trigger('reset');
-    });*/
+    });
 
     window.addEventListener('resize', function(event){
         $('#tabla').DataTable().fnDestroy();
