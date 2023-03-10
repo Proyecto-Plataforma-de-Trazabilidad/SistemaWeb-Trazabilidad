@@ -16,8 +16,8 @@ $(document).ready(function(){
 
     $.ajax({
         url:'DistVehicArchivos/metodosDistVehic.php',
+        data:{"tipo":""},
         type:'POST',
-        data: {"tipo":""},
         success:function(response){
             $('#bodyTabla').html(response);
             $('#tabladistv').DataTable({
@@ -25,4 +25,10 @@ $(document).ready(function(){
             });
         }
     });
+    window.addEventListener('resize', function(event){
+        $('#tabladistv').DataTable().fnDestroy();
+        $('#tabladistv').DataTable({
+            scrollX:true,
+        });
+    },true);
 });
