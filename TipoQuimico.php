@@ -38,51 +38,7 @@ include "Layout/navMenu.php";
         </center>
       </div>
       <br>
-       <script>
-        function valdez()
-        {
-            var Nombre, dom, tel;
-            Nombre=document.getElementById('inputNombre').value;
-            
-            dom=document.getElementById('inputAddress').value;
-            
-            tel=document.getElementById('inputTel').value;
-
-            if(Nombre=='' || dom=='' || tel=='')
-            {
-                alert("Todos los campos son obligatorios");
-                return false;
-            }
-            
-            else if(Nombre.length>40)
-            {
-                alert("El campo: Nombre es demasiado largo");
-                return false;
-            }
-            else if(dom.length>150)
-            {
-                alert("El campo: Domiciio es demasiado largo");
-                return false;
-            }
-            
-            else if(tel.length>10)
-            {
-                alert("El campo: Telefono es demasiado largo");
-                return false;
-            }
-            else if(tel.length<10)
-            {
-                alert("El campo: Telefono es demasiado corto");
-                return false;
-            }
-            else if(isNaN(tel))
-            {
-                alert("El campo: Telefono debe ser solo numeros");
-                return false;
-            }
-            
-        }
-    </script>
+        
       <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>

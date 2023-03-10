@@ -2,8 +2,8 @@ $(document).ready(function(){
 
     $.ajax({
         url:'ProductoresArchivos/metodosProd.php',
+        data:{"tipo":""},
         type:'POST',
-        data: {"tipo":""},
         success:function(response){
             $('#bodyTabla').html(response);
             $('#tabla').DataTable({
@@ -11,6 +11,13 @@ $(document).ready(function(){
             });
         }
     });
+    window.addEventListener('resize', function(event){
+        $('#tabla').DataTable().fnDestroy();
+        $('#tabla').DataTable({
+            scrollX:true,
+        });
+    },true);
+
 
     $('#frm').submit(function(e){
         e.preventDefault();
@@ -32,19 +39,6 @@ $(document).ready(function(){
                         "muni":muni, "est":est, "tel":tel, "corr":corr, 
                         "puntos":puntos,"orden":orden,"entrega":entrega,
                         "giro":giro, "tipo":tipofuncion}
-        $.ajax({
-            url:'ProductoresArchivos/metodosProd.php',
-            data:parametros,
-            type:'POST',
-            success:function(response){
-                $('#bodyTabla').html(response);
-                $('#tabla').DataTable({
-                    scrollX:true,
-                });
-            }
-        });
-        
-        $('#frm').trigger('reset');
-    });
+    })
 
 });
