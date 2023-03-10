@@ -16,13 +16,19 @@ $(document).ready(function(){
 
     $.ajax({
         url: 'ErpVehiculosArchivos/metodosErpVehic.php',
-        data: {"tipo":""},
-        type: 'POST',
+        data:{"tipo":""},
+        type:'POST',
         success:function(response){
-            $('#bodytabla').html(response);
+            $('#bodyTabla').html(response);
             $('#tabla').DataTable({
                 scrollX:true,
             });
         }
     });
+    window.addEventListener('resize', function(event){
+        $('#tabla').DataTable().fnDestroy();
+        $('#tabla').DataTable({
+            scrollX:true,
+        });
+    },true);
 });
