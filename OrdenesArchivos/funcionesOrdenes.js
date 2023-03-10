@@ -6,9 +6,10 @@
     const nombreProdu = document.getElementById("nomProdu");
     
     
-    function añadirQumicos(qumico){
-        let quimico = qumico;
-        tipoQuimi.insertAdjacentHTML('beforeend', `<option value="${quimico.IdTipo}">${quimico.Concepto}</option>`);
+    function añadirQumicos(quimico){
+        let quimi = quimico;
+        tipoQuimi.insertAdjacentHTML('beforeend', `<option value="${quimi.IdTipo}">${quimi.Concepto}</option>`);
+        
     }
 
     function añadirProductor(productor){
@@ -29,5 +30,9 @@
             datos.produtores.map(productor => añadirProductor(productor));//Rellena la combo proveedores      
         }
     })
+
+
+
+
 
 

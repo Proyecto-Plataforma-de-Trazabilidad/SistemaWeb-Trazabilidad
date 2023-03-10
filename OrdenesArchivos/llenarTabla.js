@@ -1,16 +1,36 @@
 
 $(document).ready(function(){
     let numDetalle = document.getElementById("numDetalle");
+    let valColor, aplica;
     let i = 1;
+
+    $("#tipoQuimi").change(function() {
+      let opcionQuimico = $("#tipoQuimi option:selected").text();
+
+      if (opcionQuimico != "Plaguicidas") {
+          
+          $("#color").prop('disabled', true);
+          aplica = false;
+
+      } else {
+          $("#color").prop('disabled', false);
+          aplica = true;
+      }
+    });
+
     $('#aceptar').click(function() {
         //let valQuimico = document.getElementById("tipoQuimi").textContent; tomar el texto de option quimico
         let valQuimico = $("#tipoQuimi option:selected").text(); //texto del tipoquimico
         let numQuimco= document.getElementById('tipoQuimi').value;
         let valEnvase = document.getElementById("tipoEnva").value;
-        let valColor = document.getElementById("color").value;
         let valPiezas = document.getElementById("cantiPza").value;
-        
-        //                                                          en DOM SE GUARDA COMO 'tableIdquimico'
+
+        if(aplica == true)
+          valColor = document.getElementById("color").value;
+        else
+          valColor = "No Aplica";
+
+        //en DOM SE GUARDA COMO 'tableIdquimico'
         let fila = '<tr  id="row' + i + '"><td>' + i + '</td><td id="celdaIdQuimico" data-table-idQuimico='+numQuimco+'>' + valQuimico + '</td><td>' + valEnvase + '</td><td>' + valColor + '</td><td>' + valPiezas + '</td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Eliminar</button></td></tr>';
         
         numDetalle.textContent = "Detalle de orden: 00" + i;

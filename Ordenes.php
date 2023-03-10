@@ -191,7 +191,7 @@ include "navMenu.php";
     <script src="menujs.js"></script>
     <script type="text/javascript" src="./OrdenesArchivos/llenarTabla.js"></script>
     <script type="text/javascript" src="./OrdenesArchivos/registrar.js"></script>
-
+        
 </body>
 
 </html>
