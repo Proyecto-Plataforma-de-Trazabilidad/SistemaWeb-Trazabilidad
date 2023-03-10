@@ -4,7 +4,7 @@ $(document).ready(function(){
         let tipoFuncion = "combo1";
         let parametros = {"tipo":tipoFuncion}
         $.ajax({
-            url:'ErpVehiculosArchivos/metodosErpVehiculos.php',
+            url:'ErpVehiculosArchivos/metodosErpVehic.php',
             data:parametros,
             type: 'POST',
             success:function(response){
@@ -15,7 +15,7 @@ $(document).ready(function(){
     comboerp();
 
     $.ajax({
-        url: 'ErpVehiculosArchivos/metodosErpVehiculos.php',
+        url: 'ErpVehiculosArchivos/metodosErpVehic.php',
         data: {"tipo":""},
         type: 'POST',
         success:function(response){

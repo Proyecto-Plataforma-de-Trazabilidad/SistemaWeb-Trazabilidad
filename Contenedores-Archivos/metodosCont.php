@@ -28,7 +28,7 @@
 
     function cargarTabla(){
         include "conexion.php";
-        $r="SELECT c.IdContenedor, t.Concepto, c.Capacidad, c.Descripcion, c.UltimaFechaRecoleccion, c.ReferenciaPermiso FROM tipocontenedor AS t INNER JOIN contenedores AS c ON c.IdTipoCont=t.IdTipoCont";
+        $r="SELECT c.IdContenedor, t.Concepto, c.Origen, c.Capacidad, c.CapacidadStatus, c.Descripcion, c.UltimaFechaRecoleccion, c.ReferenciaPermiso FROM tipocontenedor AS t INNER JOIN contenedores AS c ON c.IdTipoCont=t.IdTipoCont";
         $comando= mysqli_query($enlace, $r);
         while($row=mysqli_fetch_array($comando)){
             echo "
@@ -38,7 +38,9 @@
                 <td>".$row[2]."</td>
                 <td>".$row[3]."</td>
                 <td>".$row[4]."</td>
-                <td><a href='Contenedores-Archivos/".$row[5]."'>Permiso</a></td>                
+                <td>".$row[5]."</td>
+                <td>".$row[6]."</td>
+                <td><a href='Contenedores-Archivos/".$row[7]."'>Permiso</a></td>                
                 <td><a href='Contenedores-Archivos/Consulta.php?id=".$row[0]."'><input type='button' value='Consultar' class='btn btn-primary'></td>
             </tr>";
         }
