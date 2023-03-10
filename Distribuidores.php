@@ -116,10 +116,14 @@ include "Layout/navMenu.php";
         <table class="table table-striped" id="tabla">
             <thead>
                 <tr>
-                    <th scope="col">idDistribuidor</th>
+                    <th scope="col">Id Distribuidor</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Representante</th>
                     <th scope="col">Domicilio</th>
+                    <th scope="col">Ciudad</th>
+                    <th scope="col">Estado</th>
                     <th scope="col">Teléfono</th>
+                    <th scope="col">Email</th>
                     <th scope="col">BUMA</th>
                     <th scope="col">SEMARNAT</th>
                     <th scope="col">Licencia</th>

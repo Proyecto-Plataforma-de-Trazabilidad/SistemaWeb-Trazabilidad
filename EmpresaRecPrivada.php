@@ -114,7 +114,10 @@ include "Layout/navMenu.php";
                     <th scope="col">Nombre</th>
                     <th scope="col">Domicilio</th>
                     <th scope="col">Telefono</th>
+                    <th scope="col">CP</th>
                     <th scope="col">Municipio</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Correo</th>
                     <th scope="col">Permiso</th>
                     <th scope="col">SEMARNAT</th>
                     <th scope="col">Opciones</th>

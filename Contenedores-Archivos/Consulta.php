@@ -55,7 +55,7 @@
         
         <div class="col-sm-4">
           <label for="inulti" class="form-label">Última recolección</label>
-          <input type="text" class="form-control" id="inulti"  name="inulti" maxlength="60" disabled required value="<?php echo($row[7]);?>">
+          <input type="date" class="form-control" id="inulti"  name="inulti" maxlength="60" disabled required value="<?php echo($row[7]);?>">
         </div>
 
         <div class="col-md-4">

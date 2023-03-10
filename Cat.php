@@ -22,7 +22,7 @@ include "Layout/navMenu.php";
 
     <div class="col-4">
       <label for="inNra" class="form-label">Número de registro ambiental</label>
-      <input type="text" class="form-control" id="inNra" maxlength="10" name="inNra" pattern="[0-9]{10}" placeholder="Ingresa el número de registro">
+      <input type="number" class="form-control" id="inNra" maxlength="10" name="inNra"  placeholder="Ingresa el número de registro">
     </div>
     <div class="col-4">
       <label for="indom" class="form-label">Domicilio</label>
@@ -110,7 +110,8 @@ include "Layout/navMenu.php";
       <table class="table table-striped" id="tabla">
         <thead>
           <tr>
-            <th scope="col">idCAT</th>
+            <th scope="col">Id</th>
+            <th scope="col">Responsable</th>
             <th scope="col">Nombre Centro</th>
             <th scope="col">Núm. de Reg. Ambiental</th>
             <th scope="col">Domicilio</th>

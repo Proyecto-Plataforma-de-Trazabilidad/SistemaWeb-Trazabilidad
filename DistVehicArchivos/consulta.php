@@ -65,7 +65,7 @@
         </div>
 
         <div class="col-3">
-          <button type="submit" class="btn btn-success" onclick="" id="btnGuardar" disabled name="Registrar">Registrar</button>
+          <button type="submit" class="btn btn-success" onclick="" id="btnGuardar" disabled name="Registrar">Guardar</button>
         </div>
         
       </form>

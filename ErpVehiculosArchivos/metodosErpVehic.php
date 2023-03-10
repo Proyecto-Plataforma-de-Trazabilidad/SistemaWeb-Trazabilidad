@@ -30,7 +30,7 @@
                 <td>".$row[4]."</td>
                 <td>".$row[5]."</td>
                 <td>".$row[6]."</td>
-                <td><a href='SCTERP/".$row[7]."'>Ver SCT</a></td>
+                <td><a href='ErpVehiculosArchivos/".$row[7]."'>Ver SCT</a></td>
                 <td><a href='ErpVehiculosArchivos/Consulta.php?id=".$row[0]."'><input type='button' value='Consultar' class='btn btn-primary'></td>
             </tr>
             ";

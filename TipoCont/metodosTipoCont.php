@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-    include 'conexion.php';
+    include '../conexion.php';
     $tipo=$_POST['tipo'];
 
     if($tipo==null)
@@ -12,7 +12,7 @@ session_start();
     if($tipo=="registrar")
     {
         $conc=$_POST['conc'];
-        $r="Insert into tipocontenedor values('', '".$conc."')";
+        $r="INSERT into tipocontenedor values(null, '".$conc."')";
         mysqli_query($enlace,$r);
         cargarTabla();
     }

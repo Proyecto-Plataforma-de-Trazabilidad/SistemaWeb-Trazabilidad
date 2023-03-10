@@ -22,7 +22,7 @@
         $hue=$_POST['hue'];
         $lat=$_POST['lat'];
         $lon=$_POST['lon'];
-        $r="INSERT INTO huertos VALUES('null',".$prod.",".$lat.", ".$lon.",'".$hue."')";
+        $r="INSERT INTO huertos VALUES(null,".$prod.",".$lat.", ".$lon.",'".$hue."')";
         mysqli_query($enlace,$r);
         cargarTabla();
     }
