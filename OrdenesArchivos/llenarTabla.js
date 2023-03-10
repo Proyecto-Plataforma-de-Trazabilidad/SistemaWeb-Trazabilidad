@@ -35,7 +35,7 @@ $(document).ready(function(){
         
         numDetalle.textContent = "Detalle de orden: 00" + i;
         i++;
-        $('#detalle tbody:first').after(fila);
+        $('#detalle tbody:first').before(fila);
 
         document.getElementById("tipoQuimi").value ="";
         document.getElementById("tipoEnva").value = "";
@@ -58,8 +58,18 @@ $(document).ready(function(){
             //Borrar el elemento de la tabla
             var button_id = $(this).attr("id");
             $('#row' + button_id + '').remove();
+            //Recalcular indices
             i--;
             numDetalle.textContent = "Detalle de orden: 00" + i;
+            let container = document.querySelector('#detalle');
+            let celdasId = container.querySelectorAll('tr');
+            if(celdasId.length > 1){
+              for (let i = 1; i < celdasId.length; i++) {
+                celdasId[i].id = "row"+i;
+                celdasId[i].firstChild.textContent = i; 
+                celdasId[i].lastChild.childNodes[0].id = i;
+              }
+            }
             Swal.fire(
               'Borrado!',
               'El elemento se borro correctamente.',

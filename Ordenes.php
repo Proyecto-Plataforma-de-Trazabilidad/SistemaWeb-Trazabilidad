@@ -44,8 +44,8 @@ include "navMenu.php";
     </section>
 
     <section class="form-Principal">
-        <form id="formOrden" class="row g-4 container-fluid" id="frmOrden" method="POST"
-            action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return 0" enctype="multipart/form-data" >
+        <form class="row g-4 container-fluid" id="frmOrden" method="POST"
+             enctype="multipart/form-data" >
 
             <div class="form-Principal-encabezado">
                 <div class="form-Principal-encabezado-numero">
@@ -81,7 +81,7 @@ include "navMenu.php";
             <div class="col-sm-4">
                 <div>
                     <label for="inestado" class="form-label">Nombre de Productor</label>
-                    <select name="inestado" id="nomProdu" class="form-select" required>
+                    <select name="nomProdu" id="nomProdu" class="form-select" required>
                         <option hidden>Selecciona un productor registrado</option>
                     </select>
                 </div>
@@ -178,7 +178,7 @@ include "navMenu.php";
                 </tbody>
             </table>
             <label for="" class="form-Detalle-mensaje">Detalles de orden</label>
-            <button type="submit" class="btn btn-success button-registrar" id="registrar" name="Registrar" form="frmOrden">Registrar</button>
+            <button type="button" class="btn btn-success button-registrar" id="registrar" name="Registrar">Registrar</button>
         </div>
     </section>
 
