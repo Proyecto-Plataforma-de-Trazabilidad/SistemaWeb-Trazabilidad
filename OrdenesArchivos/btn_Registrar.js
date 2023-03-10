@@ -23,7 +23,7 @@ $('#registrar').click(function (e) {
         "receta":receta,
         "fecha":fecha,
     }
-    console.log(datos);
+    //console.log(datos);
 
 
     //tomar los valores de la tabla detalle 
@@ -48,15 +48,15 @@ $('#registrar').click(function (e) {
         arreglo.push(fila);
     }
     
-    console.log(arreglo);
+    //console.log(arreglo);
 
     //mandar arreglo con ajax
     $.ajax({
         url:'OrdenesArchivos/insertar.php',
-        data:{datos,"detalle":JSON.stringify(arreglo)},
+        data:{orden: datos, detalle: arreglo},
         type:'POST',
         success:function(response){
-            alert("Datos enviados");
+            //console.log(response);
         }
     });
 });
