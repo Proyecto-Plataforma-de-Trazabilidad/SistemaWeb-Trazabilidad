@@ -71,12 +71,14 @@
         <?php 
             mysqli_close($enlace);
         ?>
-        <div class="col-3">
-          <button type="button" class="btn btn-success" onclick="" id="btnGuardar" name="Registrar">Guardar</button>
-        </div>
+
         <div class="col-3">
           <button type="button" class="btn btn-primary" onclick="" id="btnEditar" name="Editar">Editar</button>
         </div>
+        <div class="col-3">
+          <button type="button" class="btn btn-success" onclick="" id="btnGuardar" name="Registrar">Guardar</button>
+        </div>
+        
       </form>
     
       <br><br>

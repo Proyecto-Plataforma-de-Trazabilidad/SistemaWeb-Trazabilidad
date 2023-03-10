@@ -62,12 +62,12 @@ include "Layout/navMenu.php";
     <table class="table table-striped" id="tabladistv">
       <thead>
         <tr>
-          <th scope="col">idDistribuidor</th>
+          <th scope="col">Distribuidor</th>
           <th scope="col">Descripción</th>
           <th scope="col">TipoVehículo</th>
           <th scope="col">Capacidad (kg)</th>
           <th scope="col">Marca</th>
-          <th scope="col">Placa</th>
+          <th scope="col">Placas</th>
           <th scope="col">SCT</th>
           <th scope="col">Opciones</th>
         </tr>

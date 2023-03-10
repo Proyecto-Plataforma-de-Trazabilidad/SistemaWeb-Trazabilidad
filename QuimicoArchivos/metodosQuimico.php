@@ -10,7 +10,7 @@
     if($tipo=="registrar")
     {
         $conc=$_POST['conc'];
-        $r="INSERT INTO tipoquimico VALUES('null', '".$conc."')";
+        $r="INSERT INTO tipoquimico VALUES(null, '".$conc."')";
         mysqli_query($enlace,$r);
         cargarTabla();
     }

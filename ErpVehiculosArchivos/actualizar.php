@@ -16,9 +16,9 @@
         $arregloArchivo=explode(".",$nombre_base);
         $extension=strtolower(end($arregloArchivo));
         if(in_array($extension, $permitidos)){
-            $r="SELECT SCT FROM erpvehiculpos WHERE IdERP=$id";
+            $r="SELECT SCT FROM erpvehiculos WHERE IdERP=$id";
             $resultado=mysqli_query($enlace,$r);
-            $row=mysqli_fetch_array($comando);
+            $row=mysqli_fetch_array($resultado);
             $sct=$row[0];
 
             $ruta="SCTERP/" .$con."".$id.".".$extension;

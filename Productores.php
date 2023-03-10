@@ -17,7 +17,7 @@ include "Layout/navMenu.php";
 
         <div class="col-sm-4">
           <label for="inreg" class="form-label">RegistroProductor</label>
-          <input type="text" class="form-control" id="inreg"  name="inreg" maxlength="15" pattern="[1-9A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}"  placeholder="Ingresa el registro">
+          <input type="date" class="form-control" id="inreg"  name="inreg" maxlength="15" pattern="[1-9A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}"  placeholder="Ingresa el registro">
         </div>
 
         <div class="col-4">
@@ -91,13 +91,16 @@ include "Layout/navMenu.php";
         <table class="table table-striped" id="tabla">
             <thead>
                 <tr>
-                    <th scope="col">idProductor</th>
+                    <th scope="col">Id</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Fecha Registro</th>
                     <th scope="col">Domicilio</th>
-                    <th scope="col">Ciudad</th>
+                    <th scope="col">Municipio</th>
+                    <th scope="col">Estado</th>
                     <th scope="col">Teléfono</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Puntos acumulados</th>
+                    <th scope="col">Puntos</th>
+                    <th scope="col">Piezas Orden</th>
+                    <th scope="col">Piezas entregadas</th>
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
