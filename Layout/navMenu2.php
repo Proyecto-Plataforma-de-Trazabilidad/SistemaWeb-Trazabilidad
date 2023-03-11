@@ -74,6 +74,14 @@ if ($varses == null || $varses == '') {
                 </div>
             </a>
 
+            <!--Reportes-->
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-file-circle-check" title="Reportes"></i>
+                    <h4>Reportes</h4>
+                </div>
+            </a>
+
             <!--Ayuda-->
             <a href="#">
                 <div class="option">
