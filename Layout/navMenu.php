@@ -64,7 +64,7 @@ if ($varses == null || $varses == '') {
             <!--Catálogos-->
             <a href="Catalogos.php">
                 <div class="option">
-                    <i class="fa-sharp fa-solid fa-book"></i>
+                    <i class="fa-sharp fa-solid fa-book" title="Catálogos"></i>
                     <h4>Catálogos</h4>
                 </div>
 
@@ -74,15 +74,23 @@ if ($varses == null || $varses == '') {
             <!--Movimientos-->
             <a href="Menu-Movimientos.php">
                 <div class="option">
-                    <i class="fa-sharp fa-solid fa-paper-plane"></i>
+                    <i class="fa-sharp fa-solid fa-paper-plane" title="Movimientos"></i>
                     <h4>Movimientos</h4>
+                </div>
+            </a>
+
+            <!--Reportes-->
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-file-circle-check" title="Reportes"></i>
+                    <h4>Reportes</h4>
                 </div>
             </a>
 
             <!--Ayuda-->
             <a href="#">
                 <div class="option">
-                    <i class="fa-sharp fa-solid fa-circle-info"></i>
+                    <i class="fa-sharp fa-solid fa-circle-info" title="Ayuda"></i>
                     <h4>Ayuda</h4>
                 </div>
             </a>
@@ -92,7 +100,7 @@ if ($varses == null || $varses == '') {
             <!--Salir-->
             <a href="salir.php" onclick="return res()">
                 <div class="option">
-                    <i class="fa-sharp fa-solid fa-right-from-bracket"></i>
+                    <i class="fa-sharp fa-solid fa-right-from-bracket" title="Salir"></i>
                     <h4>Salir</h4>
                 </div>
             </a>
