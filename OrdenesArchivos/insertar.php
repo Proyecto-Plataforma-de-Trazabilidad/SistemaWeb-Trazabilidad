@@ -31,7 +31,7 @@ if ($enlace->connect_error) {
                 try {
                     //queryOrden num, idDistri, idProduc, numFact, Factura, NumReceta, Receta, fecha
                     $orden = "INSERT INTO ordenproductos VALUES (null, $dis, $prod, '$numFac', '$factura', '$numRec', '$receta', '$fecha')";
-                    echo($orden);
+                    //echo($orden);
                     mysqli_query($enlace, $orden);
 
                     //ciclo con el tamaño del arreglo de detalle ordenes
@@ -39,15 +39,18 @@ if ($enlace->connect_error) {
                     foreach($detalle as $t){
                         //query detalle orden                      idOrden, Consecutivo, IdQuimico, tipoEnvase, Color, Cantidad Piezas
                         $detalle = "INSERT INTO detalleorden VALUES (" . $t['idOrden'] . "," . $t['consecutivo'] . "," . $t['idquimico'] . ",'" . $t['tipoEnvase'] . "','" . $t['color'] . "'," . $t['piezas'] . ")";
-                        echo($detalle);
+                        //echo($detalle);
                         mysqli_query($enlace, $detalle);                        
                         //query de actualizar numero de envases al productor
                         $productor = "UPDATE productores SET TotalPiezasOrden = TotalPiezasOrden + " . $t['piezas'] . " WHERE IdProductor = " . $prod;
-                        echo($productor);
+                        //echo($productor);
                         mysqli_query($enlace, $productor);
                     }
                     //ejecutar transaccion
                     $enlace->commit();
+
+                    //mandar response 
+                    echo ("correcto");
                 } catch (Exception $ex) {
                     $enlace->rollback();
                     // Manejar la excepción
