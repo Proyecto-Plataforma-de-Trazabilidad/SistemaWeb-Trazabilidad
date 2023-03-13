@@ -9,11 +9,11 @@ if ($enlace->connect_error) {
 
     //traer los datos ajax
     if (isset($_POST['orden'])) { //validar que se mando bien la orden
-
         if (isset($_POST['detalle'])) { //validar que se mando bien el detalle
 
-            $tipo = $_POST['orden']['accion'];//si la orden tare la accion RegistrarOrden Inicia xd
+            //Creación de directorios
 
+            $tipo = $_POST['orden']['accion'];
             if ($tipo == "registrarOrden") {
                 //orden
                 $dis = $_POST['orden']['idDis'];
@@ -31,7 +31,7 @@ if ($enlace->connect_error) {
                 try {
                     //queryOrden num, idDistri, idProduc, numFact, Factura, NumReceta, Receta, fecha
                     $orden = "INSERT INTO ordenproductos VALUES (null, $dis, $prod, '$numFac', '$factura', '$numRec', '$receta', '$fecha')";
-                    echo($orden);
+                    //echo($orden);
                     mysqli_query($enlace, $orden);
 
                     //ciclo con el tamaño del arreglo de detalle ordenes
@@ -39,15 +39,16 @@ if ($enlace->connect_error) {
                     foreach($detalle as $t){
                         //query detalle orden                      idOrden, Consecutivo, IdQuimico, tipoEnvase, Color, Cantidad Piezas
                         $detalle = "INSERT INTO detalleorden VALUES (" . $t['idOrden'] . "," . $t['consecutivo'] . "," . $t['idquimico'] . ",'" . $t['tipoEnvase'] . "','" . $t['color'] . "'," . $t['piezas'] . ")";
-                        echo($detalle);
+                        //echo($detalle);
                         mysqli_query($enlace, $detalle);                        
                         //query de actualizar numero de envases al productor
                         $productor = "UPDATE productores SET TotalPiezasOrden = TotalPiezasOrden + " . $t['piezas'] . " WHERE IdProductor = " . $prod;
-                        echo($productor);
+                        //echo($productor);
                         mysqli_query($enlace, $productor);
                     }
                     //ejecutar transaccion
                     $enlace->commit();
+                    echo("correcto");
                 } catch (Exception $ex) {
                     $enlace->rollback();
                     // Manejar la excepción
@@ -64,19 +65,4 @@ mysqli_autocommit($enlace, false);
 //cerrar conexion
 mysqli_close($enlace);
 
-
-
-                    //ciclo con el tamaño del arreglo de detalle ordenes
-                    // for($i=0; $i<$tamano; $i++){
-                    //     //titulo
-                    //     $titulo = each($arreglo);
-                    //     //query detalle orden                      idOrden, Consecutivo, IdQuimico, tipoEnvase, Color, Cantidad Piezas
-                    //     $detalle = ("INSERT INTO detalleorden VALUES ($titulo['idOrden'],null,null,'null','null',null)");
-                    //     mysqli_query($enlace, $detalle);
-                    //     $detalle = ("INSERT INTO detalleorden VALUES (null,null,null,'null','null',null)");
-                    //     mysqli_query($enlace, $detalle);
-                    //     //query de actualizar numero de envases al productor
-                    //     $productor = ("UPDATE productores SET TotalPiezasOrden= TotalPiezasOrden + null WHERE IdProductor= null ");
-                    //     mysqli_query($enlace, $productor);
-                    // }
 ?>

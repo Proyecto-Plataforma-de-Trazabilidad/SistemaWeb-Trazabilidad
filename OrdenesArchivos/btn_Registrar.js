@@ -1,30 +1,8 @@
-$('#registrar').click(function (e) {
+$('#frmOrden').submit(function(e) {
     //detener la carga de la pagina 
     e.preventDefault();
 
-    //tomar los valores del formulario 
-    let accion="registrarOrden";
-    
-    let idDis= document.getElementById('nomDistri').getAttribute('data-id-distribuidor');
-    let idProd= document.getElementById('nomProdu').value;
-    let NumFac= document.getElementById('factOrden').value;
-    let factura= document.getElementById('archFac').value;
-    let numRec= document.getElementById('cedReceta').value;
-    let receta= document.getElementById('archReceta').value;
-    let fecha= document.getElementById('fecha').value;
-
-    let datos={
-        "accion":accion,
-        "idDis":idDis,
-        "idProd":idProd,
-        "NumFac":NumFac,
-        "factura": factura,
-        "numRec":numRec,
-        "receta":receta,
-        "fecha":fecha,
-    }
-    //console.log(datos);
-
+    let formData = new FormData(this);
 
     //tomar los valores de la tabla detalle 
     let arreglo= new Array();
@@ -47,16 +25,28 @@ $('#registrar').click(function (e) {
         }
         arreglo.push(fila);
     }
-    
-    //console.log(arreglo);
 
-    //mandar arreglo con ajax
+    //mandar archivo con ajax
     $.ajax({
-        url:'OrdenesArchivos/insertar.php',
-        data:{orden: datos, detalle: arreglo},
+        url:'OrdenesArchivos/insertar2.php',
         type:'POST',
+        data:formData,
+        contentType: false,
+        cache: false,
+        processData:false,
         success:function(response){
             //console.log(response);
         }
     });
+
+    //mandar orden y detalle con ajax
+    $.ajax({
+        url:'OrdenesArchivos/insertar2.php',
+        data:{orden: datos, detalle: arreglo},
+        type:'POST',
+        success:function(response){
+            console.log(response);
+        }
+    });
+
 });
