@@ -1,8 +1,8 @@
-
-$('#registrar').click(function (e) {
+$('#frmOrden').submit(function(e) {
     //detener la carga de la pagina
     e.preventDefault();
-
+  
+    let formData = new FormData(this);
     //tomar los valores del formulario
     let accion = 'registrarOrden';
 
@@ -52,7 +52,21 @@ $('#registrar').click(function (e) {
     }
     console.log(arreglo);
 
-    //mandar arreglo con ajax
+
+    //mandar archivo con ajax
+    $.ajax({
+        url:'OrdenesArchivos/insertar2.php',
+        type:'POST',
+        data:formData,
+        contentType: false,
+        cache: false,
+        processData:false,
+        success:function(response){
+            //console.log(response);
+        }
+    });
+
+    //mandar orden y detalle con ajax
     $.ajax({
         url: 'OrdenesArchivos/insertar.php',
         data: { orden: datos, detalle: arreglo },
@@ -91,7 +105,6 @@ $('#registrar').click(function (e) {
             });
         },
     });
-
 });
 
 function limpiar() {

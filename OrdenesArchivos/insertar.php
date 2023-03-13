@@ -9,11 +9,11 @@ if ($enlace->connect_error) {
 
     //traer los datos ajax
     if (isset($_POST['orden'])) { //validar que se mando bien la orden
-
         if (isset($_POST['detalle'])) { //validar que se mando bien el detalle
 
-            $tipo = $_POST['orden']['accion'];//si la orden tare la accion RegistrarOrden Inicia xd
+            //Creación de directorios
 
+            $tipo = $_POST['orden']['accion'];
             if ($tipo == "registrarOrden") {
                 //orden
                 $dis = $_POST['orden']['idDis'];
@@ -51,6 +51,7 @@ if ($enlace->connect_error) {
 
                     //mandar response 
                     echo ("correcto");
+
                 } catch (Exception $ex) {
                     $enlace->rollback();
                     // Manejar la excepción
@@ -67,19 +68,4 @@ mysqli_autocommit($enlace, false);
 //cerrar conexion
 mysqli_close($enlace);
 
-
-
-                    //ciclo con el tamaño del arreglo de detalle ordenes
-                    // for($i=0; $i<$tamano; $i++){
-                    //     //titulo
-                    //     $titulo = each($arreglo);
-                    //     //query detalle orden                      idOrden, Consecutivo, IdQuimico, tipoEnvase, Color, Cantidad Piezas
-                    //     $detalle = ("INSERT INTO detalleorden VALUES ($titulo['idOrden'],null,null,'null','null',null)");
-                    //     mysqli_query($enlace, $detalle);
-                    //     $detalle = ("INSERT INTO detalleorden VALUES (null,null,null,'null','null',null)");
-                    //     mysqli_query($enlace, $detalle);
-                    //     //query de actualizar numero de envases al productor
-                    //     $productor = ("UPDATE productores SET TotalPiezasOrden= TotalPiezasOrden + null WHERE IdProductor= null ");
-                    //     mysqli_query($enlace, $productor);
-                    // }
 ?>

@@ -45,7 +45,7 @@ include "navMenu.php";
 
     <section class="form-Principal">
         <form class="row g-4 container-fluid" id="frmOrden" method="POST"
-             enctype="multipart/form-data" >
+             enctype="multipart/form-data" action="OrdenesArchivos/insertar2.php">
 
             <div class="form-Principal-encabezado">
                 <div class="form-Principal-encabezado-numero">
@@ -75,7 +75,7 @@ include "navMenu.php";
 
             <div class="col-sm-4">
                 <label for="formFileMultiple" class="form-label">Subir Factura</label>
-                <input class="form-control" type="file" id="archFac" multiple>
+                <input class="form-control" type="file" id="archFac" name="archFac" multiple>
             </div>
 
             <div class="col-sm-4">
@@ -95,7 +95,7 @@ include "navMenu.php";
 
             <div class="col-sm-4">
                 <label for="formFileMultiple" class="form-label">Subir Receta</label>
-                <input class="form-control" type="file" id="archReceta" multiple>
+                <input class="form-control" type="file" id="archReceta"  multiple>
             </div>
 
         </form>
@@ -104,7 +104,7 @@ include "navMenu.php";
     <!-- Linea para separar el detalle -->
     <div>
         <hr class="divider">
-        <label id="numDetalle" class="divider-titulo">Detalle de orden: 00</label>
+        <label id="numDetalle" class="divider-titulo">Detalle de orden: 001</label>
     </div>
 
     <section class="form-Detalle">
@@ -178,7 +178,7 @@ include "navMenu.php";
                 </tbody>
             </table>
             <label for="" class="form-Detalle-mensaje">Detalles de orden</label>
-            <button type="button" class="btn btn-success button-registrar" id="registrar" name="Registrar">Registrar</button>
+            <button type="submit" class="btn btn-success button-registrar" id="registrar" name="Registrar" form="frmOrden">Registrar</button>
         </div>
     </section>
 
@@ -197,7 +197,6 @@ include "navMenu.php";
     <script type="text/javascript" src="./OrdenesArchivos/btn_Registrar.js"></script> <!-- scrip para la funcion del boton registrar  -->
     <script src="menujs.js"></script>
     <script type="text/javascript" src="./OrdenesArchivos/llenarTabla.js"></script>
-    <!-- <script type="text/javascript" src="./OrdenesArchivos/registrar.js"></script> -->        
 </body>
 
 </html>

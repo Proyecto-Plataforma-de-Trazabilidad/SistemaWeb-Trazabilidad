@@ -33,8 +33,10 @@ $(document).ready(function(){
         //en DOM SE GUARDA COMO 'tableIdquimico'
         let fila = '<tr  id="row' + i + '"><td>' + i + '</td><td id="celdaIdQuimico" data-table-idQuimico='+numQuimco+'>' + valQuimico + '</td><td>' + valEnvase + '</td><td>' + valColor + '</td><td>' + valPiezas + '</td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Eliminar</button></td></tr>';
         
-        numDetalle.textContent = "Detalle de orden: 00" + i;
         i++;
+        
+        numDetalle.textContent = "Detalle de orden: 00" + i;
+        
         $('#detalle tbody:first').before(fila);
 
         document.getElementById("tipoQuimi").value ="";
@@ -78,4 +80,5 @@ $(document).ready(function(){
           }
         })
     });
+
 });
