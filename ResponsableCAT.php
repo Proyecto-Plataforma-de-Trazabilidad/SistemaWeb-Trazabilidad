@@ -67,10 +67,14 @@ include "Layout/navMenu.php";
         <table class="table table-striped" id="tabla">
             <thead>
                 <tr>
-                    <th scope="col">idResponsableCAT</th>
+                    <th scope="col">Id</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Domicilio</th>
+                    <th scope="col">CP</th>
+                    <th scope="col">Municipio</th>
+                    <th scope="col">Entidad Federativa</th>
                     <th scope="col">Teléfono</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Opciones</th>
                 </tr>

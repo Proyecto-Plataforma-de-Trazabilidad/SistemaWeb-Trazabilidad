@@ -10,7 +10,7 @@
     if($tipo=="registrar")
     {
         $conc=$_POST['conc'];
-        $r="INSERT INTO tipoquimico VALUES('null', '".$conc."')";
+        $r="INSERT INTO tipoquimico VALUES(null, '".$conc."')";
         mysqli_query($enlace,$r);
         cargarTabla();
     }
@@ -42,7 +42,7 @@
     if($tipo=='borrar')
     {
         include '../conexion.php';
-        $r="Delete from Cat where idCAT=".$_POST['idcat'];
+        $r="Delete from tipoquimico where IdTipoQuimico=".$_POST['idtipo'];
         $comando= mysqli_query($enlace, $r);
         mysqli_close($enlace);
     }

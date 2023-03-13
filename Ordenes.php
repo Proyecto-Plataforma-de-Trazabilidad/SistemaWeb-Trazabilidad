@@ -56,7 +56,7 @@ include "navMenu.php";
                 </div>
 
                 <div class="col-sm-2">
-                    <input id="fecha" class="form-control" type="date" />
+                    <input id="fecha" class="form-control" type="date" required/>
                 </div>
             </div>
 
@@ -182,6 +182,13 @@ include "navMenu.php";
         </div>
     </section>
 
+    <script>
+        //fecha del sistema 
+        const inputFecha= document.getElementById('fecha');
+        const hoy = new Date().toISOString().slice(0,10);
+        inputFecha.value=hoy;
+    </script>
+
     <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
@@ -190,8 +197,6 @@ include "navMenu.php";
     <script type="text/javascript" src="./OrdenesArchivos/btn_Registrar.js"></script> <!-- scrip para la funcion del boton registrar  -->
     <script src="menujs.js"></script>
     <script type="text/javascript" src="./OrdenesArchivos/llenarTabla.js"></script>
-
-        
 </body>
 
 </html>

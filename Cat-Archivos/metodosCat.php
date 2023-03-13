@@ -38,7 +38,7 @@
         $lon=$_POST['lon'];
         $plan=$_POST['plan'];
         echo("Paso por aqui php");
-        $r="INSERT INTO centroacopiotemporal VALUES('null',".$res.",'".$nom."',".$nra.",'".$des."','".$dom."','".$cp."','".$muni."','".$est."',
+        $r="INSERT INTO centroacopiotemporal VALUES(null,".$res.",'".$nom."',".$nra.",'".$des."','".$dom."','".$cp."','".$muni."','".$est."',
         '".$tel."','".$corr."','".$hor."','".$lat."','".$lon."','".$plan."')";
         mysqli_query($enlace,$r);
         
@@ -50,7 +50,8 @@
     function cargarTabla()
     {
         include '../conexion.php';
-        $r="SELECT IdCat, NombreCentro, NumRegAmbiental, Domicilio, Municipio, Telefono, HorarioDiasLaborales FROM centroacopiotemporal";
+        $r="SELECT c.IdCat, r.Nombre, c.NombreCentro, c.NumRegAmbiental, c.Domicilio, c.Municipio, c.Telefono, c.HorarioDiasLaborales FROM centroacopiotemporal as c inner join responsablecat as r on c.IdResponsableCat = r.IdCAT";
+        
         $comando= mysqli_query($enlace, $r);
         while($row=mysqli_fetch_array($comando)){
             echo "
@@ -62,6 +63,7 @@
                 <td>".$row[4]."</td>
                 <td>".$row[5]."</td>
                 <td>".$row[6]."</td>
+                <td>".$row[7]."</td>
                 <td><a href='Cat-Archivos/Consulta.php?id=".$row[0]."'><input type='button' value='Consultar' class='btn btn-primary'></td>
             </tr>";
         }

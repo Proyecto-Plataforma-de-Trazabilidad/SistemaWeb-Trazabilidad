@@ -61,9 +61,9 @@ include "Layout/navMenu.php";
         <table class="table table-striped" id="tabla">
             <thead>
                 <tr>
-                    <th scope="col">idERP</th>
+                    <th scope="col">Id ERP</th>
                     <th scope="col">Descripción</th>
-                    <th scope="col">TipoVehiculo</th>
+                    <th scope="col">Tipo Vehiculo</th>
                     <th scope="col">Capacidad (kg)</th>
                     <th scope="col">Marca</th>
                     <th scope="col">Placa</th>
@@ -93,7 +93,7 @@ include "Layout/navMenu.php";
       <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
-    <script type="text/javascript" src="ErpVehiculosArchivos/funcionesErpVehic.js"></script>
+    <script type="text/javascript" src="ErpVehiculosArchivos/funcionesErpVehi.js"></script>
     <script src="menujs.js"></script>
       
 </body>

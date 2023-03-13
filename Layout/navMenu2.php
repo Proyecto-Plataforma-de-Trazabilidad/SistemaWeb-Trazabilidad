@@ -67,10 +67,18 @@ if ($varses == null || $varses == '') {
             </a>
 
             <!--Movimientos-->
-            <a href="">
+            <a href="../Menu-Movimientos.php">
                 <div class="option">
                     <i class="fa-sharp fa-solid fa-paper-plane" title="Movimientos"></i>
                     <h4>Movimientos</h4>
+                </div>
+            </a>
+
+            <!--Reportes-->
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-file-circle-check" title="Reportes"></i>
+                    <h4>Reportes</h4>
                 </div>
             </a>
 

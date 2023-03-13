@@ -108,11 +108,13 @@ include "Layout/navMenu.php";
     <table class="table table-striped" id="tabla">
       <thead>
         <tr>
-          <th scope="col">idContenedor</th>
-          <th scope="col">Tipo</th>
-          <th scope="col">Capacidad</th>
+          <th scope="col">Id Contenedor</th>
+          <th scope="col">Tipo Contenedor</th>
+          <th scope="col">Origen</th>
+          <th scope="col">Max. Capacidad</th>
+          <th scope="col">Capacidad Actual</th>
           <th scope="col">Descripción</th>
-          <th scope="col">Última recolección</th>
+          <th scope="col">Última Recolección</th>
           <th scope="col">Permiso</th>
           <th scope="col">Opciones</th>
         </tr>

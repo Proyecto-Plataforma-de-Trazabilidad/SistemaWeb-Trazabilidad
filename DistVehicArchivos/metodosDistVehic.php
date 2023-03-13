@@ -18,7 +18,8 @@
     function cargarTabla()
     {
         include '../conexion.php';
-        $r="SELECT * FROM distribuidorvehiculos";
+        
+        $r="SELECT d.IdDistribuidor, d.Nombre, v.Descripcion, v.TipoVehiculo, v.Capacidad, v.Marca, v.Placa, v.SCT FROM distribuidorvehiculos AS v inner join distribuidores as d on v.IdDistribuidor = d.IdDistribuidor";
         $comando= mysqli_query($enlace, $r);
         while($row=mysqli_fetch_array($comando)){
             echo "

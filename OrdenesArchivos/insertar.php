@@ -48,7 +48,10 @@ if ($enlace->connect_error) {
                     }
                     //ejecutar transaccion
                     $enlace->commit();
-                    echo("correcto");
+
+                    //mandar response 
+                    echo ("correcto");
+
                 } catch (Exception $ex) {
                     $enlace->rollback();
                     // Manejar la excepción
