@@ -11,6 +11,7 @@ include "Layout/navMenu.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/movimientos/Entregas/entregas.css">
+    <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script> <!-- iconos -->
     <title>APEJAL-Entregas</title>
 </head>
 
@@ -39,6 +40,9 @@ include "Layout/navMenu.php";
     <section class="titulo">
         <div>
             <h1>Entregas</h1>
+        </div>
+        <div>            
+            <button type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-magnifying-glass"></i> &nbsp;Consultar</button>
         </div>
     </section>
 
