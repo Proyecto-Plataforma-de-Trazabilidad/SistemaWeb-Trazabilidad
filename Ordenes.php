@@ -45,7 +45,7 @@ include "navMenu.php";
 
     <section class="form-Principal">
         <form class="row g-4 container-fluid" id="frmOrden" method="POST"
-             enctype="multipart/form-data" action="OrdenesArchivos/insertar2.php">
+             enctype="multipart/form-data" action="OrdenesArchivos/insertarArchivo.php">
 
             <div class="form-Principal-encabezado">
                 <div class="form-Principal-encabezado-numero">
@@ -95,7 +95,7 @@ include "navMenu.php";
 
             <div class="col-sm-4">
                 <label for="formFileMultiple" class="form-label">Subir Receta</label>
-                <input class="form-control" type="file" id="archReceta"  multiple>
+                <input class="form-control" type="file" id="archReceta" name="archRece" multiple>
             </div>
 
         </form>
