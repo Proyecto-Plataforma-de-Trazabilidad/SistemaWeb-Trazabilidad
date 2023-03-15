@@ -1,6 +1,6 @@
 <!-- Incluir menu lateral -->
 <?php
-include "navMenu.php";
+include "Layout/navMenu.php";
 ?>
 
 <!DOCTYPE html>
