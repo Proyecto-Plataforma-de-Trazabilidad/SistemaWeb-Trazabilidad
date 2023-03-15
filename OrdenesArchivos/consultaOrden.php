@@ -1,6 +1,6 @@
 <!-- Incluir menu lateral -->
 <?php
-include "../Layout/navMenu.php";
+include "../Layout/navMenu2.php";
 ?>
 
 <!DOCTYPE html>
@@ -29,56 +29,32 @@ include "../Layout/navMenu.php";
     </section>
 
     <section class="filtro">
-        <form class="row g-4 container-fluid" id="frmConsulta" method="POST"
-            action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return 0">
+        <div class="filtro-form">
+            <form class="row g-4 container-fluid" id="frmConsulta" method="POST"
+                action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return 0" style="justify-content:center;">
 
-            <div class="col-sm-2">
-                <div>
-                    <label for="inestado" class="form-label">Nom. Distribuidor</label>
-                    <select name="inestado" id="tipoQuimi" class="form-select" disabled>
-                        <option hidden>Selecciona un tipo</option>
-                    </select>
+                <div class="col-sm-2">
+                    <div>
+                        <label for="incap" class="form-label">Fecha Inicio</label>
+                        <input id="fecha" class="form-control" type="date" required />
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-sm-2">
-                <div>
-                    <label for="inestado" class="form-label">Nom. Productor</label>
-                    <select name="inestado" id="tipoQuimi" class="form-select" >
-                        <option hidden>Selecciona un tipo</option>
-                    </select>
+                <div class="col-sm-2">
+                    <div>
+                        <label for="incap" class="form-label">Fecha Fin</label>
+                        <input id="fecha" class="form-control" type="date" required />
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-sm-2">
-                <div>
-                    <label for="incap" class="form-label">Factura</label>
-                    <input type="text" id="factOrden" name="facturaOrden" class="form-control" maxlength="30"
-                        pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" required placeholder="Número de cédula">
-                </div>
-            </div>
+                <div class="col-sm-2 button-buscar"> <!--Agrega el detalle a la tabla-->
+                    <div class="">
+                        <button id="aceptar" type="button" class="btn btn-outline-dark" name="Aceptar"><i
+                                class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+            </form>
+        </div>
 
-            <div class="col-sm-2">
-                <div>
-                    <label for="incap" class="form-label">Cédula Receta</label>
-                    <input type="text" id="factOrden" name="facturaOrden" class="form-control" maxlength="30"
-                        pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" required placeholder="Número de cédula">
-                </div>
-            </div>
-
-            <div class="col-sm-2">
-                <div>
-                    <label for="incap" class="form-label">Fecha</label>
-                    <input id="fecha" class="form-control" type="date" required />
-                </div>
-            </div>
-
-            <div class="col-sm-2 button-buscar"> <!--Agrega el detalle a la tabla-->
-                <div class="">
-                    <button id="aceptar" type="button" class="btn btn-outline-dark" name="Aceptar"><i
-                            class="fa-solid fa-magnifying-glass"></i></button>
-                </div>
-        </form>
     </section>
 
     <section class="Orden-tabla">
@@ -101,7 +77,7 @@ include "../Layout/navMenu.php";
                     </tr>
                 </thead>
                 <tbody id="bodyTabla1">
-                    
+
                 </tbody>
             </table>
         </div>
