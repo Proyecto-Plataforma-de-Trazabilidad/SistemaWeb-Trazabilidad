@@ -4,9 +4,11 @@
         $roluser = $_POST['tipUser'];
         $nombre = $_POST['nom'];
         $psw = $_POST['cont'];
-        $mail = $_POST['email'];
+        $Email = $_POST['Email'];
 
-        $r = "INSERT INTO usuarios values('', '".$roluser."','".$nombre."', '".$psw."', '".$mail."' )";
+        $r = "INSERT INTO usuarios values(null, '".$roluser."','".$nombre."', '".$psw."', '".$Email."' )";
         mysqli_query($enlace, $r);
+
+        echo "<script>window.location='../rusers.php'</script>";
 
 ?>

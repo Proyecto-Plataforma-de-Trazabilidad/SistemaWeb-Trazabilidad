@@ -25,8 +25,8 @@
         </div>
 
         <div class="col-sm-4">
-            <label for="email" class="form-label">Email</label>
-            <input type="text" class="form-control" id="email" maxlength="50" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#@0-_9.,-]{1,30}" placeholder="Ingresa el email">
+            <label for="Email" class="form-label">Email</label>
+            <input type="text" class="form-control" id="Email"  name="Email" maxlength="50" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#@0-_9.,-]{1,30}" placeholder="Ingresa el email">
         </div>
 
         <div class="col-12">
@@ -50,6 +50,7 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Email</th>
                         <th scope="col">Rol</th>
+                        <th scope="col">Opción</th>
                         
                     </tr>
                 </thead>

@@ -28,13 +28,29 @@
                     <td>".$row[1]."</td>
                     <td>".$row[2]."</td>
                     <td>".$row[3]."</td>
-                    <td><a href='UserArchivos/Consulta.php?id=".$row[0]."'><input type='button' value='Consultar' class='btn btn-primary'></td>
+                    <td><a href='UserArchivos/editar.php?id=".$row[0]."'><input type='button' value='Consultar' class='btn btn-primary'></td>
                 </tr>
             ";
         }
         mysqli_close($enlace);
     }
 
-    
+    if($tipo=="actualizar"){
+        include '../conexion.php';
+        $iduser=$_POST["iduser"];
+        $nomb=$_POST["nomb"];
+        $tuser=$_POST['tuser'];
+        $correo=$_POST['correo'];
+        $contra=$_POST['contra'];
+        $r="UPDATE usuarios SET Idtipousuario=".$tuser.", Nombre='".$nomb."', Contrasena='".$contra."', Correo='".$correo."' WHERE IdUsuario=".$iduser;
+        $comando= mysqli_query($enlace, $r);
+        if($comando){
+            echo"<script>window.location='../rusers.php';</script>";
+        }
+        else{
+            echo(mysqli_error($enlace));
+        }
+        mysqli_close($enlace);
+    }
 
 ?>
