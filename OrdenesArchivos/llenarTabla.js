@@ -31,7 +31,7 @@ $(document).ready(function(){
           valColor = "No Aplica";
 
         //en DOM SE GUARDA COMO 'tableIdquimico'
-        let fila = '<tr  id="row' + i + '"><td>' + i + '</td><td id="celdaIdQuimico" data-table-idQuimico='+numQuimco+'>' + valQuimico + '</td><td>' + valEnvase + '</td><td>' + valColor + '</td><td>' + valPiezas + '</td><td><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Eliminar</button></td></tr>';
+        let fila = '<tr  id="row' + i + '"><td>' + i + '</td><td id="celdaIdQuimico" data-table-idQuimico='+numQuimco+'>' + valQuimico + '</td><td>' + valEnvase + '</td><td>' + valColor + '</td><td>' + valPiezas + '</td><td><button style="background-color: #dc3545 !important" type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Eliminar</button></td></tr>';
         
         i++;
         
