@@ -42,7 +42,7 @@
             }
         }
         else{
-            echo "<script>alert('Solo se permiten archivos con extensión .pdf .jpg .jpeg .png');</script>";
+            echo "<script>alert('Solo se permiten archivos con extensión .pdf .jpg .jpeg .png'); window.location='../Contenedores.php'</script>";
         }
     }
     else{
