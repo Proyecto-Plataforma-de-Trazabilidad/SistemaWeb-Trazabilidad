@@ -42,7 +42,7 @@ include "Layout/navMenu.php";
             <h1>Entregas</h1>
         </div>
         <div>            
-            <button type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-magnifying-glass"></i> &nbsp;Consultar</button>
+            <button onclick="window.location.href='EntregasArchivos/consultaEntregas.php'" type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-magnifying-glass"></i> &nbsp;Consultar</button>
         </div>
     </section>
 
@@ -63,32 +63,27 @@ include "Layout/navMenu.php";
                 </div>
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <label for="OrdNombre" class="form-label">Tipo de recolector</label>
                 <!-- debe de cargar dependiendo el inicio de seccion  -->
                 <input disabled type="text" id="innombre" name="nomDistribuidor" class="form-control" maxlength="30"
                     required placeholder="Empresa, Distribuidor, CAT, Municipio">
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <label for="OrdNombre" class="form-label">Nombre de recolector</label>
                 <!-- debe de cargar dependiendo el inicio de seccion  -->
                 <input disabled type="text" id="innombre" name="nomDistribuidor" class="form-control" maxlength="30"
                     required placeholder="Nombre de Empresa, Distribuidor, CAT, Municipio">
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <label for="OrdNombre" class="form-label">Número de recolector</label>
                 <!-- debe de cargar dependiendo el inicio de seccion  -->
                 <input disabled type="text" id="innombre" name="nomDistribuidor" class="form-control" maxlength="30"
                     required placeholder="Número de recolector">
             </div>
-
-            <div class="col-sm-3">
-                <label for="formFileMultiple" class="form-label">Subir documento de entrega <small>(con
-                        firmas)</small></label>
-                <input class="form-control" type="file" id="formFileMultiple" multiple>
-            </div>
+            
 
             <div class="col-sm-4">
                 <div>
