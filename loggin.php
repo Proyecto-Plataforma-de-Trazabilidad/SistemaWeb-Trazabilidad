@@ -13,12 +13,12 @@
 
 
     <style>
-        .btn-primary{
+        .btn-primary {
             background: #285430;
             border: #285430;
         }
 
-        .btn-primary:hover{
+        .btn-primary:hover {
             background: #5F8D4E;
             border: #5F8D4E;
             font-weight: bold;
@@ -35,7 +35,7 @@
         }
 
         .bg {
-            background-image: url(Logos/cate.jpg.png);
+            background-image: url(Logos/pead.jpg);
             background-position: center right;
             margin: 5px;
 
@@ -73,8 +73,12 @@
             </div>
             <div class="col">
                 <div class="text-end">
-                    <img src="Logos/AMOCALI.jpg" width="100" alt="logo">
-                    <img src="Logos/ASICA.jpg" width="100" alt="logo">
+                    <center>
+                        <br>
+                        <img src="Logos/APEAJAL2.jpg" width="80" alt="logo">
+                        <img src="Logos/AMOCALI.jpg" width="80" alt="logo">
+                        <img src="Logos/ASICA.jpg" width="80" alt="logo">
+                    </center>
                 </div>
 
                 <h2 class="fw-bold text-center py-5">Bienvenido</h2>
