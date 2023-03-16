@@ -31,19 +31,20 @@ include "../Layout/navMenu2.php";
     <section class="filtro">
         <div class="filtro-form">
             <form class="row g-4 container-fluid" id="frmConsulta" method="POST"
-                action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return 0" style="justify-content:center;">
+                action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return 0"
+                style="justify-content:center;">
 
                 <div class="col-sm-2">
                     <div>
                         <label for="incap" class="form-label">Fecha Inicio</label>
-                        <input id="fecha" class="form-control" type="date" required />
+                        <input id="fechaInicio" class="form-control" type="date" required />
                     </div>
                 </div>
 
                 <div class="col-sm-2">
                     <div>
                         <label for="incap" class="form-label">Fecha Fin</label>
-                        <input id="fecha" class="form-control" type="date" required />
+                        <input id="fechafin" class="form-control" type="date" required />
                     </div>
                 </div>
 
@@ -77,7 +78,7 @@ include "../Layout/navMenu2.php";
                     </tr>
                 </thead>
                 <tbody id="bodyTabla1">
-
+                
                 </tbody>
             </table>
         </div>
@@ -106,7 +107,7 @@ include "../Layout/navMenu2.php";
                     </tr>
                 </thead>
                 <tbody id="bodyTabla2">
-
+                    
                 </tbody>
             </table>
         </div>
@@ -123,6 +124,7 @@ include "../Layout/navMenu2.php";
 <script type="text/javascript" src="../datatables.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../menujs.js"></script>
+<script type="text/javascript" src="detalleFunciones.js"></script>
 
 
 <!-- buscador de las tablas -->
