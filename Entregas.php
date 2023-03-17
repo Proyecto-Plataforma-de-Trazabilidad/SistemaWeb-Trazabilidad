@@ -15,31 +15,10 @@ include "Layout/navMenu.php";
     <title>APEJAL-Entregas</title>
 </head>
 
-<!-- Estilos de validacion de los campos esto se puede agregar a una hoja de estilo principal. (para no repetir este codigo en todos) -->
-<!-- <header>
-    <style>
-        input:invalid {
-            border-color: red;
-        }
-
-        input:valid {
-            border-color: green;
-        }
-
-        select:invalid {
-            border-color: red;
-        }
-
-        select:valid {
-            border-color: green;
-        }
-    </style>
-</header> -->
-
 <body>
     <section class="titulo">
         <div>
-            <h1>Entregas</h1>
+            <h1>Entregas</h1>       
         </div>
         <div>            
             <button onclick="window.location.href='EntregasArchivos/consultaEntregas.php'" type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-magnifying-glass"></i> &nbsp;Consultar</button>
@@ -52,59 +31,55 @@ include "Layout/navMenu.php";
 
             <div class="form-Principal-encabezado">
                 <div class="form-Principal-encabezado-numero">
-                    <label for="">Número de entrega: 002 </label>
+                    <label id="numEntrega" for="">Número de entrega: 000 </label>
                 </div>
                 <div>
                     <label for="fecha">Seleccionar Fecha: &nbsp;</label>
                 </div>
 
                 <div class="col-sm-2">
-                    <input id="fechainput" class="form-control" type="date" />
+                    <input id="fecha" class="form-control" type="date" required/>
                 </div>
             </div>
 
             <div class="col-sm-4">
                 <label for="OrdNombre" class="form-label">Tipo de recolector</label>
                 <!-- debe de cargar dependiendo el inicio de seccion  -->
-                <input disabled type="text" id="innombre" name="nomDistribuidor" class="form-control" maxlength="30"
+                <input disabled type="text" id="tipoRecol" name="nomDistribuidor" class="form-control" maxlength="30"
                     required placeholder="Empresa, Distribuidor, CAT, Municipio">
             </div>
 
             <div class="col-sm-4">
                 <label for="OrdNombre" class="form-label">Nombre de recolector</label>
                 <!-- debe de cargar dependiendo el inicio de seccion  -->
-                <input disabled type="text" id="innombre" name="nomDistribuidor" class="form-control" maxlength="30"
+                <input disabled type="text" id="nomRecol" name="nomDistribuidor" class="form-control" maxlength="30"
                     required placeholder="Nombre de Empresa, Distribuidor, CAT, Municipio">
             </div>
 
             <div class="col-sm-4">
                 <label for="OrdNombre" class="form-label">Número de recolector</label>
-                <!-- debe de cargar dependiendo el inicio de seccion  -->
                 <input disabled type="text" id="innombre" name="nomDistribuidor" class="form-control" maxlength="30"
                     required placeholder="Número de recolector">
             </div>
-            
 
             <div class="col-sm-4">
                 <div>
                     <label for="inestado" class="form-label">Nombre de Productor</label>
-                    <select name="inestado" id="inestado" class="form-select" required>
+                    <select name="inestado" id="nomProdu" class="form-select" required>
                         <option hidden>Selecciona un productor registrado</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
                     </select>
                 </div>
             </div>
 
             <div class="col-sm-4">
                 <label for="OrdFact" class="form-label">Nombre del responsable de entrega</label>
-                <input type="text" id="factOrden" name="facturaOrden" class="form-control" maxlength="30"
+                <input type="text" id="nomResEntrega" name="facturaOrden" class="form-control" maxlength="30"
                     pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" placeholder="Escribe el nombre" required>
             </div>
 
             <div class="col-sm-4">
                 <label for="OrdFact" class="form-label">Nombre del responsable de recepción</label>
-                <input type="text" id="factOrden" name="facturaOrden" class="form-control" maxlength="30"
+                <input type="text" id="nomResRecep" name="facturaOrden" class="form-control" maxlength="30"
                     pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" placeholder="Escribe el nombre" required>
             </div>
         </form>
@@ -113,7 +88,7 @@ include "Layout/navMenu.php";
     <!-- Linea para separar el detalle -->
     <div>
         <hr class="divider">
-        <label class="divider-titulo">Detalle de entrega: 002</label>
+        <label class="divider-titulo">Detalle de entrega: 001</label>
     </div>
 
     <section class="form-Detalle">
@@ -125,36 +100,41 @@ include "Layout/navMenu.php";
                     <label for="inestado" class="form-label">Tipo de Envase</label>
                     <select name="inestado" id="inestado" class="form-select" required>
                         <option hidden>Selecciona una opción</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
+                        <option value="Rígidos lavable">Rígidos lavable</option>
+                        <option value="Rígidos no lavable">Rígidos no lavable</option>
+                        <option value="Flexible">Flexible</option>
+                        <option value="Tapas">Cubetas</option>
+                        <option value="Tapas">Cartón</option>
+                        <option value="Tapas">Tambos</option>
+                        <option value="Tapas">Metal</option>
                     </select>
                 </div>
             </div>
 
             <div class="col-sm-4">
                 <div>
-                    <label for="incap" class="form-label">Número de piezas</label>
-                    <input type="number" class="form-control" id="incap" maxlength="10" name="incap" required
+                    <label for="incap" class="form-label">Cantidad de piezas</label>
+                    <input type="number" class="form-control" id="cantiPza" maxlength="10" name="cantiPza" required
                         placeholder="Ingrese una cantidad">
                 </div>
             </div>
 
             <div class="col-sm-4">
                 <div>
-                    <label for="incap" class="form-label">Peso <small>Opcional</small> </label>
-                    <input type="number" class="form-control" id="incap" maxlength="10" name="incap" required
+                    <label for="incap" class="form-label">Peso <small>(Opcional)</small> </label>
+                    <input type="number" class="form-control" id="peso" maxlength="10" name="peso" required
                         placeholder="Ingrese una cantidad">
                 </div>
             </div>
 
             <div class="col-sm-4">
                 <label for="exampleFormControlTextarea1" class="form-label">Observaciones</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required
+                <textarea class="form-control" id="observa" rows="3" required
                     placeholder="Escribe una descripción"></textarea>
             </div>
 
             <div class="col-sm-4">
-                <button type="submit" class="btn btn-primary button-aceptar" onclick="" name="Aceptar">Aceptar</button>
+                <button type="button" id="aceptar" class="btn btn-primary button-aceptar" onclick="" name="Aceptar">Aceptar</button>
             </div>
         </form>
 
@@ -185,39 +165,25 @@ include "Layout/navMenu.php";
                 </tbody>
             </table>
             <label for="" class="form-Detalle-mensaje">Detalles de entregas</label>
-            <button type="submit" class="btn btn-success button-registrar" onclick=""
+            <button type="submit" id="registrar" class="btn btn-success button-registrar" onclick=""
                 name="Registrar">Registrar</button>
         </div>
     </section>
+    
+    <script>
+        //fecha del sistema 
+        const inputFecha= document.getElementById('fecha');
+        const hoy = new Date().toISOString().slice(0,10);
+        inputFecha.value=hoy;
+    </script>
 
     <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
-    <script type="text/javascript" src=""></script> <!-- scrip para la funcion del la tabla detalle orden  -->
+    <script type="text/javascript" src="./EntregasArchivos/llenarCampos.js"></script> <!-- scrip para llenar los campos del form  -->
     <script src="menujs.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            $('#datepicker').datepicker();
-        });
+    
 
-        //fecha actual en el datepicker
-        var fechaInput = document.getElementById('#fechainput');
-        // Obtener la fecha actual
-        var fechaActual = new Date();
-
-        // Obtener el día, mes y año en formato de dos dígitos
-        var dia = ("0" + fechaActual.getDate()).slice(-2);
-        var mes = ("0" + (fechaActual.getMonth() + 1)).slice(-2);
-        var anio = fechaActual.getFullYear();
-
-        // Crear una cadena con el formato (DD-MM-YYYY)
-        var fechaFormateada = dia + "-" + mes + "-" + anio;
-
-        // Establecer la fecha formateada como el valor del input type date
-        fechaInput.value = fechaFormateada;
-        console.log(fechaInput.value);
-
-    </script>
 </body>
 
 </html>

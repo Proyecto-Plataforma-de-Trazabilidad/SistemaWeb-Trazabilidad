@@ -4,8 +4,6 @@ include "Layout/navMenu.php";
 
 <head>
   <style>
-    
-
     #mapa {
       height: 50vh;
     }
@@ -40,21 +38,21 @@ include "Layout/navMenu.php";
 
   <div class="col-4">
     <label for="incap" class="form-label">Capacidad (Kg)</label>
-    <input type="text" class="form-control" id="incap" maxlength="10" name="incap" pattern="[0-9]{0-30}"  placeholder="Ingresa la capacidad">
+    <input type="text" class="form-control" id="incap" maxlength="10" name="incap" pattern="[0-9]{0-30}" placeholder="Ingresa la capacidad">
   </div>
   <div class="col-4">
     <label for="instatus" class="form-label">Capacidad status</label>
-    <input type="text" class="form-control" id="instatus" maxlength="10" name="instatus"  pattern="[0-9]{0-30}"  placeholder="Capacidad actual">
+    <input type="text" class="form-control" id="instatus" maxlength="10" name="instatus" pattern="[0-9]{0-30}" placeholder="Capacidad actual">
   </div>
 
   <div class="col-4">
     <label for="indes" class="form-label">Descripción</label>
-    <input type="text" class="form-control" id="indes" name="indes" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-_]{1,30}"  placeholder="Ingresa la descripcion">
+    <input type="text" class="form-control" id="indes" name="indes" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-_]{1,30}" placeholder="Ingresa la descripcion">
   </div>
 
   <div class="col-sm-4">
     <label for="inulti" class="form-label">Última recolección</label>
-    <input type="date" class="form-control" id="inulti" name="inulti" maxlength="12" >
+    <input type="date" class="form-control" id="inulti" name="inulti" maxlength="12">
   </div>
 
   <div class="col-sm-4">
@@ -65,36 +63,37 @@ include "Layout/navMenu.php";
 
   <div class="col-12">
     <label for="inman" class="form-label">Instrucciones de manejo</label>
-    <textarea name="inman" id="inman" cols="30" rows="4" class="form-control"  placeholder="Escribe las instrucciones"></textarea>
+    <textarea name="inman" id="inman" cols="30" rows="4" class="form-control" placeholder="Escribe las instrucciones"></textarea>
   </div>
 
   <div class="col-sm-4">
     <label for="inlat" class="form-label">Latitud</label>
-    <input type="text" class="form-control" id="inlat" name="inlat" maxlength="60"  placeholder="Ingresa la longitud">
+    <input type="text" class="form-control" id="inlat" name="inlat" maxlength="60" placeholder="Ingresa la longitud">
   </div>
 
   <div class="col-sm-4">
     <label for="inlon" class="form-label">Longitud</label>
-    <input type="text" class="form-control" id="inlon" name="inlon" maxlength="60"  placeholder="Ingresa la latitud">
+    <input type="text" class="form-control" id="inlon" name="inlon" maxlength="60" placeholder="Ingresa la latitud">
   </div>
   <div class="col-sm-4">
 
   </div>
 
   <div class="col-3">
-    <button type="submit" class="btn btn-success" onclick="" name="Registrar">Registrar</button>
+    <button type="submit" class="btn btn-success" onclick="" name="Registrar" id="registrar">Registrar</button>
   </div>
+
   <div class="col-3">
-    <a href="Contenedores-Archivos/ConsultaMaps.php"><button type="button" class="btn btn-primary" onclick="" name="Registrar">Ubicaciones</button></a>
+    <a href="Contenedores-Archivos/ConsultaMaps.php"><button type="button" class="btn btn-primary" onclick="" name="Ubicaciones">Ubicaciones</button></a>
   </div>
 
   <div class="row g-4 container-fluid">
-          <div class="col-md-12">
-              <div id="mapa" style="width: 100%; height: 500px">
+    <div class="col-md-12">
+      <div id="mapa" style="width: 100%; height: 500px">
 
-              </div>
-          </div>
-        </div>
+      </div>
+    </div>
+  </div>
 
 </form>
 
@@ -127,42 +126,45 @@ include "Layout/navMenu.php";
 </div>
 <br>
 <script>
-function initMap() {
-      let latitud = 19.7047732
-      let longitud = -103.5031816;
-      cordenadas = {
-        lat: latitud,
-        lng: longitud
-      }
-
-      generarMapa(cordenadas);
-
+  function initMap() {
+    let latitud = 19.7047732
+    let longitud = -103.5031816;
+    cordenadas = {
+      lat: latitud,
+      lng: longitud
     }
 
-    function generarMapa(coordenadas) {
-      let mapa = new google.maps.Map(document.getElementById('mapa'), {
-        zoom: 12,
-        center: new google.maps.LatLng(coordenadas.lat, coordenadas.lng)
-      });
+    generarMapa(cordenadas);
 
-      marcador = new google.maps.Marker({
-        map: mapa,
-        draggable: true,
-        position: new google.maps.LatLng(coordenadas.lat, coordenadas.lng)
-      });
+  }
 
-      marcador.addListener("dragend", function(event) {
-        document.getElementById("inlat").value = this.getPosition().lat();
-        document.getElementById("inlon").value = this.getPosition().lng();
-      })
-    }
+  function generarMapa(coordenadas) {
+    let mapa = new google.maps.Map(document.getElementById('mapa'), {
+      zoom: 12,
+      center: new google.maps.LatLng(coordenadas.lat, coordenadas.lng)
+    });
 
-    function obtenerTamaño() {
-      let ancho = document.documentElement.clientWidth;
-      ancho.addListener("change", function(event) {
+    marcador = new google.maps.Marker({
+      map: mapa,
+      draggable: true,
+      position: new google.maps.LatLng(coordenadas.lat, coordenadas.lng)
+    });
 
-      })
-    }
+    marcador.addListener("dragend", function(event) {
+      document.getElementById("inlat").value = this.getPosition().lat();
+      document.getElementById("inlon").value = this.getPosition().lng();
+    })
+  }
+
+  function obtenerTamaño() {
+    let ancho = document.documentElement.clientWidth;
+    ancho.addListener("change", function(event) {
+
+    })
+  }
+
+  //Boton que te muestra un mensaje de confirmación perzonalizado
+  
 </script>
 
 
@@ -174,6 +176,7 @@ function initMap() {
 <script type="text/javascript" src="Contenedores-Archivos/funcionesCont.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
 <script src="menujs.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>

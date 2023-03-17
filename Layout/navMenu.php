@@ -7,6 +7,11 @@ if ($varses == null || $varses == '') {
     die();
 }
 
+include('conexion.php');
+$consulta = "SELECT * FROM usuarios where Nombre = '$varses'";
+$res = mysqli_query($enlace, $consulta);
+$filas = mysqli_fetch_array($res);
+
 
 ?>
 
@@ -19,16 +24,22 @@ if ($varses == null || $varses == '') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APEAJAL</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!--SWEET ALERT-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="Datatables-1.11.3/css/dataTables.bootstrap5.min.css">
 
 
     <link rel="stylesheet" href="menucss.css">
     <link rel="stylesheet" href="botones.css">
-    
+
     <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script>
 
-    
+
 
 
 
@@ -68,7 +79,7 @@ if ($varses == null || $varses == '') {
                     <h4>Catálogos</h4>
                 </div>
 
-                
+
             </a>
 
             <!--Movimientos-->
@@ -95,7 +106,22 @@ if ($varses == null || $varses == '') {
                 </div>
             </a>
 
-            
+            <?php
+            if ($filas[1] == 1) {
+
+            ?>
+                <!--Registrar Usuarios-->
+                <a href="rusers.php">
+                    <div class="option">
+                        <i class="fa-solid fa-user-pen"></i>
+                        <h4>Usuarios</h4>
+                    </div>
+                </a>
+            <?php
+            }
+            ?>
+
+
 
             <!--Salir-->
             <a href="salir.php" onclick="return res()">
@@ -126,3 +152,17 @@ if ($varses == null || $varses == '') {
     </script>
 
     <main>
+        
+            <div class="row">
+            <div class="col-sm-4">
+                <center><img class="mb-4" src="Logos/APEAJAL2.jpg" alt="" width="80"></center>
+            </div>
+
+            <div class="col-sm-4">
+                <center><img class="mb-4" src="Logos/AMOCALI.jpg" alt="" width="80"></center>
+            </div>
+            <div class="col-sm-4">
+                <center><img class="mb-4" src="Logos/ASICA.jpg" alt="" width="80"></center>
+            </div>
+            </div>
+        
