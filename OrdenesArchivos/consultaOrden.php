@@ -18,13 +18,13 @@ include "../Layout/navMenu2.php";
     <!-- js de tabla  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    <title>APEJAL-Consulta Órdenes</title>
+    <title>APEJAL-Consulta Ordenes</title>
 </head>
 
 <body>
     <section class="titulo">
         <div>
-            <h1>Consulta de Órdenes</h1>
+            <h1>Consulta de Ordenes</h1>
         </div>
     </section>
 
@@ -59,7 +59,7 @@ include "../Layout/navMenu2.php";
     </section>
 
     <section class="Orden-tabla">
-        <h3>Órdenes</h3>
+        <h3>Ordenes</h3>
         <div class="form-Orden-table">
             <table class="table table-striped" id="orden">
                 <thead>
@@ -78,7 +78,7 @@ include "../Layout/navMenu2.php";
                     </tr>
                 </thead>
                 <tbody id="bodyTabla1">
-
+                
                 </tbody>
             </table>
         </div>
@@ -93,7 +93,7 @@ include "../Layout/navMenu2.php";
         <h3>Detalle Orden</h3>
         <div class="form-Detalle-table">
 
-            <table class="table table-striped" id="detalle" style="justify-content: center;">
+            <table class="table table-striped" id="detalle">
                 <thead>
                     <tr>
                         <th scope="col">Número de Orden</th>
@@ -107,7 +107,7 @@ include "../Layout/navMenu2.php";
                     </tr>
                 </thead>
                 <tbody id="bodyTabla2">
-
+                    
                 </tbody>
             </table>
         </div>
@@ -121,32 +121,26 @@ include "../Layout/navMenu2.php";
 <!-- jquery para traer los datos con ajax y json -->
 <script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="../bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../DataTables-1.11.3/datatables.min.js"></script>
+<script type="text/javascript" src="../datatables.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../menujs.js"></script>
 <script type="text/javascript" src="detalleFunciones.js"></script>
 
 
-<!-- buscador de las tablas
+<!-- buscador de las tablas -->
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#orden').DataTable({
-            "paging": true,
-            "ordering": true,
-            "searching": true
-        });
+    $(document).ready(function () {
+        $('#orden').DataTable();
+        windows.location.reload();
     });
 </script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#detalle').DataTable({
-            "paging": true,
-            "ordering": true,
-            "searching": true
-        });
+    $(document).ready(function () {
+        $('#detalle').DataTable();
+        windows.location.reload();
     });
-</script> -->
+</script>
 
 
 
