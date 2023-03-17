@@ -10,7 +10,7 @@ if ($varses == null || $varses == '') {
 include('conexion.php');
 $consulta = "SELECT * FROM usuarios where Nombre = '$varses'";
 $res = mysqli_query($enlace, $consulta);
-$filas = mysqli_fetch_array($res);
+$filass = mysqli_fetch_array($res);
 
 
 ?>
@@ -107,7 +107,7 @@ $filas = mysqli_fetch_array($res);
             </a>
 
             <?php
-            if ($filas[1] == 1) {
+            if ($filass[1] == 1) {
 
             ?>
                 <!--Registrar Usuarios-->
@@ -152,8 +152,8 @@ $filas = mysqli_fetch_array($res);
     </script>
 
     <main>
-        
-            <div class="row">
+
+        <div class="row">
             <div class="col-sm-4">
                 <center><img class="mb-4" src="Logos/APEAJAL2.jpg" alt="" width="80"></center>
             </div>
@@ -164,5 +164,10 @@ $filas = mysqli_fetch_array($res);
             <div class="col-sm-4">
                 <center><img class="mb-4" src="Logos/ASICA.jpg" alt="" width="80"></center>
             </div>
+
+            <div class="col-sm-12">
+                <center><p style="font-family:'Times New Roman', Times, serif; font-style:italic; font-size:20px; font-weight:bold;">"Combatiendo la piratería de agroquímicos"</p></center>
             </div>
-        
+        </div>
+
+        <hr style="background-color: green; height:5px;">
