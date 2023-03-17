@@ -42,6 +42,7 @@ header{
     
 }
 
+
 .icon__menu i{
     font-size: 20px;
     cursor: pointer;
@@ -101,7 +102,7 @@ header{
 }
 
 .options__menu a{
-    color: #5F8D4E;
+    color: white;
     cursor: default;
     display: block;
     position: relative;
@@ -110,7 +111,12 @@ header{
 
 .options__menu a:hover{
     color: white;
+    font-weight: bold;
     
+}
+
+label{
+    font-weight: bold;
 }
 
 .options__menu .option{

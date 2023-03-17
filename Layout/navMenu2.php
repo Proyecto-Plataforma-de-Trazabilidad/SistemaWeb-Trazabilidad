@@ -7,7 +7,7 @@ if ($varses == null || $varses == '') {
     die();
 }
 
-include ('../conexion.php');
+include('../conexion.php');
 $consulta = "SELECT * FROM usuarios where Nombre = '$varses'";
 $res = mysqli_query($enlace, $consulta);
 $filas = mysqli_fetch_array($res);
@@ -32,9 +32,9 @@ $filas = mysqli_fetch_array($res);
 
     <link rel="stylesheet" href="../css/menucss.css">
 
-    
+
     <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script>
-    
+
 </head>
 
 <body id="body">
@@ -71,7 +71,7 @@ $filas = mysqli_fetch_array($res);
                     <h4>Catálogos</h4>
                 </div>
 
-                
+
             </a>
 
             <!--Movimientos-->
@@ -97,6 +97,21 @@ $filas = mysqli_fetch_array($res);
                     <h4>Ayuda</h4>
                 </div>
             </a>
+
+            <?php
+            if ($filas[1] == 1) {
+
+            ?>
+                <!--Registrar Usuarios-->
+                <a href="../rusers.php">
+                    <div class="option">
+                        <i class="fa-solid fa-user-pen"></i>
+                        <h4>Usuarios</h4>
+                    </div>
+                </a>
+            <?php
+            }
+            ?>
 
             <!--Salir-->
             <a href="../salir.php" onclick="return res()">
@@ -127,3 +142,16 @@ $filas = mysqli_fetch_array($res);
     </script>
 
     <main>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <center><img class="mb-4" src="../Logos/APEAJAL2.jpg" alt="" width="80"></center>
+            </div>
+
+            <div class="col-sm-4">
+                <center><img class="mb-4" src="../Logos/AMOCALI.jpg" alt="" width="80"></center>
+            </div>
+            <div class="col-sm-4">
+                <center><img class="mb-4" src="../Logos/ASICA.jpg" alt="" width="80"></center>
+            </div>
+        </div>
