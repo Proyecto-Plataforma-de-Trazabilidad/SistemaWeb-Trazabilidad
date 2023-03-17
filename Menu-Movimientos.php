@@ -20,7 +20,7 @@ include('Layout/navMenu.php');
         <div class="Menu">
             <div class="menu-item" id="Ordenes" onclick="location.href='Ordenes.php'">
                 <img src="Recursos/Iconos/Ordenes.svg" alt="Icono de Ordenes" class="menu-item-imagen">
-                <p  class="menu-item-titulo">Ordenes</p>
+                <p  class="menu-item-titulo">Órdenes</p>
             </div>
 
             <div class="menu-item" id="Entregas" onclick="location.href='Entregas.php'">

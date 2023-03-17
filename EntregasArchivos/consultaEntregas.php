@@ -18,13 +18,13 @@ include "../Layout/navMenu2.php";
     <!-- js de tabla  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    <title>APEJAL-Consulta Órdenes</title>
+    <title>APEJAL-Consulta Entregas</title>
 </head>
 
 <body>
     <section class="titulo">
         <div>
-            <h1>Consulta de Órdenes</h1>
+            <h1>Consulta de Entregas</h1>
         </div>
     </section>
 
@@ -59,22 +59,20 @@ include "../Layout/navMenu2.php";
     </section>
 
     <section class="Orden-tabla">
-        <h3>Órdenes</h3>
+        <h3>Entrega</h3>
         <div class="form-Orden-table">
             <table class="table table-striped" id="orden">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Distribuidor</th>
-                        <th scope="col">Factura</th>
-                        <th scope="col">Archivo Factura</th>
-                        <th scope="col">Cédula Receta</th>
-                        <th scope="col">Archivo Receta</th>
-                        <th scope="col">Productor</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Mostrar detalle</th>
-                        <th scope="col">Editar</th>
-                        <!-- aqui agregamos el icono y funcion de eliminar por si se equivoca en algo -->
+                        <th scope="col">Tipo Recolector</th>
+                        <th scope="col">Nombre Recolector</th>
+                        <th scope="col">Número Recolector</th>
+                        <th scope="col">Nombre Productor</th>
+                        <th scope="col">Nombre Responsable Entrega</th>
+                        <th scope="col">Nombre Responsable Recepción</th>
+                        <th scope="col">Consulta</th>
+                        <th scope="col">Editar</th>                        
                     </tr>
                 </thead>
                 <tbody id="bodyTabla1">
@@ -90,20 +88,17 @@ include "../Layout/navMenu2.php";
     </div> -->
 
     <section class="detalle-tabla">
-        <h3>Detalle Orden</h3>
+        <h3>Detalle Entrega</h3>
         <div class="form-Detalle-table">
 
-            <table class="table table-striped" id="detalle" style="justify-content: center;">
+            <table class="table table-striped" id="detalle">
                 <thead>
                     <tr>
-                        <th scope="col">Número de Orden</th>
-                        <th scope="col">Número Consecutivo</th>
-                        <th scope="col">Tipo Químico</th>
                         <th scope="col">Tipo Envase</th>
-                        <th scope="col">Color</th>
-                        <th scope="col">Piezas</th>
-                        <th scope="col">Editar</th>
-                        <!-- aqui agregamos el icono y funcion de eliminar por si se equivoca en algo -->
+                        <th scope="col">Número Piezas</th>
+                        <th scope="col">Peso</th>
+                        <th scope="col">Observaciones</th>
+                        <th scope="col">Editar</th>                        
                     </tr>
                 </thead>
                 <tbody id="bodyTabla2">
@@ -125,29 +120,5 @@ include "../Layout/navMenu2.php";
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../menujs.js"></script>
 <script type="text/javascript" src="detalleFunciones.js"></script>
-
-
-<!-- buscador de las tablas
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#orden').DataTable({
-            "paging": true,
-            "ordering": true,
-            "searching": true
-        });
-    });
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#detalle').DataTable({
-            "paging": true,
-            "ordering": true,
-            "searching": true
-        });
-    });
-</script> -->
-
-
 
 </html>

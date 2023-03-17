@@ -56,14 +56,15 @@ td.iconos {
     margin: 2.25rem 0 1.25rem 0;
 }
 
+
 .detalle-tabla {
-    margin-top: 3rem;
     display: flex;
+    margin-top: 3rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .form-Detalle-table {
-    width: 95%;
+    width:auto;
 }

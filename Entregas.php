@@ -18,10 +18,10 @@ include "Layout/navMenu.php";
 <body>
     <section class="titulo">
         <div>
-            <h1>Entregas</h1>
+            <h1>Entregas</h1>       
         </div>
         <div>            
-            <button type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-magnifying-glass"></i> &nbsp;Consultar</button>
+            <button onclick="window.location.href='EntregasArchivos/consultaEntregas.php'" type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-magnifying-glass"></i> &nbsp;Consultar</button>
         </div>
     </section>
 
@@ -56,17 +56,11 @@ include "Layout/navMenu.php";
                     required placeholder="Nombre de Empresa, Distribuidor, CAT, Municipio">
             </div>
 
-            <!-- <div class="col-sm-3">
+            <div class="col-sm-4">
                 <label for="OrdNombre" class="form-label">Número de recolector</label>
                 <input disabled type="text" id="innombre" name="nomDistribuidor" class="form-control" maxlength="30"
                     required placeholder="Número de recolector">
             </div>
-
-            <div class="col-sm-3">
-                <label for="formFileMultiple" class="form-label">Subir documento de entrega <small>(con
-                        firmas)</small></label>
-                <input class="form-control" type="file" id="formFileMultiple" multiple>
-            </div> -->
 
             <div class="col-sm-4">
                 <div>
