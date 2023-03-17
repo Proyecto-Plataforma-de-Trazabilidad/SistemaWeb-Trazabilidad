@@ -1,8 +1,12 @@
 $('#aceptar').click(function () {
+
+    
+
     var fi = document.getElementById('fechaInicio').value;
     var fechaFin = document.getElementById('fechafin').value;
 
     if (fi === '' && fechaFin === '') {
+        //window.location.reload();
         //cargar orden
         $.ajax({
             url: 'metodosConsulta.php',
@@ -15,7 +19,14 @@ $('#aceptar').click(function () {
                 });
             },
         });
+        window.addEventListener('resize', function(event){
+            $('#orden').DataTable().fnDestroy();
+            $('#orden').DataTable({
+                scrollX:true,
+            });
+        },true);
     } else {
+        //window.location.reload();
         //cargar orden
         $.ajax({
             url: 'metodosConsulta.php',
@@ -28,6 +39,12 @@ $('#aceptar').click(function () {
                 });
             },
         });
+        window.addEventListener('resize', function(event){
+            $('#orden').DataTable().fnDestroy();
+            $('#orden').DataTable({
+                scrollX:true,
+            });
+        },true);
     }
 
     $.ajax({
@@ -41,6 +58,12 @@ $('#aceptar').click(function () {
             });
         },
     });
+    window.addEventListener('resize', function(event){
+        $('#orden').DataTable().fnDestroy();
+        $('#orden').DataTable({
+            scrollX:true,
+        });
+    },true);
 });
 
 $('#iconDetalle').click(function (evento) { });

@@ -13,7 +13,7 @@ include "navMenu.php";
     <link rel="stylesheet" href="css/movimientos/Orden/orden.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css">
     <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script> <!-- iconos -->
-    <title>APEJAL-Ordenes</title>
+    <title>APEJAL-Órdenes</title>
 </head>
 
 <!-- Estilos de validacion de los campos esto se puede agregar a una hoja de estilo principal. (para no repetir este codigo en todos) -->

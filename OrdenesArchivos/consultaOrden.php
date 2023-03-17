@@ -18,13 +18,13 @@ include "../Layout/navMenu2.php";
     <!-- js de tabla  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    <title>APEJAL-Consulta Ordenes</title>
+    <title>APEJAL-Consulta Órdenes</title>
 </head>
 
 <body>
     <section class="titulo">
         <div>
-            <h1>Consulta de Ordenes</h1>
+            <h1>Consulta de Órdenes</h1>
         </div>
     </section>
 
@@ -59,7 +59,7 @@ include "../Layout/navMenu2.php";
     </section>
 
     <section class="Orden-tabla">
-        <h3>Ordenes</h3>
+        <h3>Órdenes</h3>
         <div class="form-Orden-table">
             <table class="table table-striped" id="orden">
                 <thead>
@@ -93,7 +93,7 @@ include "../Layout/navMenu2.php";
         <h3>Detalle Orden</h3>
         <div class="form-Detalle-table">
 
-            <table class="table table-striped" id="detalle">
+            <table class="table table-striped" id="detalle" style="justify-content: center;">
                 <thead>
                     <tr>
                         <th scope="col">Número de Orden</th>
