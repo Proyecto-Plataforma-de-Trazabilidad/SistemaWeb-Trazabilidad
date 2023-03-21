@@ -11,8 +11,12 @@
     <!-- Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     
-    <!--SweetAlert-->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--SweetAlert en linea-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+    <!--SweetAlert en local por mis webos-->
+    <link rel="stylesheet" href="plugins\Sweetalert2\sweetalert2.min.css">
+    <script src="plugins\Sweetalert2\sweetalert2.all.min.js"></script>
 
 
 
@@ -96,38 +100,39 @@
                 <h2 class="fw-bold text-center py-5">Bienvenido</h2>
 
                 <!--Login-->
-                <form id="frmlogin" method="POST" action="validar.php">
+                <form id="frmlogin" method="POST" action="" >
                     <div class="b-2">
-                        <label for="floatingInput">Usuario</label>
-                        <input type="text" class="form-control" id="floatingInput" name="usuario">
+                        <label for="user">Usuario</label>
+                        <input type="text" class="form-control" id="user" name="usuario">
                     </div>
 
                     <div class="b-2">
-                        <label for="floatingPassword">Contraseña</label>
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="contra">
+                        <label for="pass">Contraseña</label>
+                        <input type="password" class="form-control" id="pass" placeholder="Password" name="contra">
 
                     </div>
 
                     <br><br>
 
                     <div class="d-grid">
-                        <input type="submit" name="submit" value="Iniciar sesión" class="w-100 btn btn-lg btn-primary">
+                    <button type="submit" class="btn btn-primary" onclick="" name="Registrar">Iniciar Secion</button>
                     </div>
 
                     <br><br>
 
                 </form>
-
+                <script>console.log("paso por aqui");</script>
 
             </div>
         </div>
     </div>
 
-    
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="codigologin.js"></script>
+    <script src="poper\popper.min.js"></script>
+    <script type="text/javascript" src="loggin/codigologin.js"></script>
     
 
 
