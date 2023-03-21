@@ -52,6 +52,19 @@ td.iconos {
     cursor: pointer;
 }
 
+.archivo-btn {
+    background-color: #ffffff00;
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 4px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 .divider {
     margin: 2.25rem 0 1.25rem 0;
 }

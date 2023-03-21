@@ -18,7 +18,7 @@
             $extensionArchFac = strtolower(end($arregloArchFac)); //Obtiene la extencion del archivo y los convierte a minusculas
             
             if (in_array($extensionArchFac, $permitidos)) {
-                $rutaArchFac = "Facturas/" . $arregloArchFac[0] .".". $extensionArchFac;
+                $rutaArchFac = "Facturas/f" . $_POST["IdOrden"] .".". $extensionArchFac;
                 
                 if (move_uploaded_file($_FILES["archFac"]["tmp_name"], $rutaArchFac)) {
                     $mensaje['guardadoArchFac'] = "Correcto";
@@ -40,7 +40,7 @@
             $extensionArchRece = strtolower(end($arregloArchRece)); //Obtiene la extencion del archivo y los convierte a minusculas
             
             if (in_array($extensionArchRece, $permitidos)) {
-                $rutaArchRece = "Recetas/" . $arregloArchRece[0] .".". $extensionArchRece;
+                $rutaArchRece = "Recetas/r" . $_POST["IdOrden"] .".". $extensionArchRece;
 
                 if (move_uploaded_file($_FILES["archRece"]["tmp_name"], $rutaArchRece)) {
                     $mensaje['guardadoArchRece'] = "Correcto";
