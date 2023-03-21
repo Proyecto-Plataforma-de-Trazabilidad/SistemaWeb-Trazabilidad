@@ -28,13 +28,13 @@ function mostrarOrden(fechaI, fechaF) {
             {data: "NumFactura"}, 
             {data: "Factura",       //Aqui esta el archivo factura
                 render: function (data, type, row) {
-                    return "<a href='"+data+"' target='_blank' class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes.svg' alt='Abrir archivo'></a>";
+                    return "<a href='"+data+"' target='_blank' class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes32.svg' alt='Abrir archivo' ></a>";
                 }
             },  
             {data: "NumReceta"},
             {data: "Receta",         //Aqui esta el archivo recteta
                 render: function (data, type, row) {
-                    return "<a href='"+data+"' target='_blank' class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes.svg' alt='Abrir archivo'></a>";
+                    return "<a href='"+data+"' target='_blank' class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes32.svg' alt='Abrir archivo' ></a>";
                 }
             }, 
             {data: "Fecha"},
