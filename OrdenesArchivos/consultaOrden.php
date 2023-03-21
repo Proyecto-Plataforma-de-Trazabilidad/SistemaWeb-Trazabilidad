@@ -50,8 +50,9 @@ include "../Layout/navMenu2.php";
 
                 <div class="col-sm-2 button-buscar"> <!--Agrega el detalle a la tabla-->
                     <div class="">
-                        <button id="aceptar" type="button" class="btn btn-outline-dark" name="Aceptar"><i
-                                class="fa-solid fa-magnifying-glass"></i></button>
+                        <button id="aceptar" type="button" class="btn btn-outline-dark" name="Aceptar">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
                     </div>
             </form>
         </div>
@@ -66,11 +67,11 @@ include "../Layout/navMenu2.php";
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Distribuidor</th>
+                        <th scope="col">Productor</th>
                         <th scope="col">Factura</th>
                         <th scope="col">Archivo Factura</th>
                         <th scope="col">Cédula Receta</th>
                         <th scope="col">Archivo Receta</th>
-                        <th scope="col">Productor</th>
                         <th scope="col">Fecha</th>
                         <th scope="col">Mostrar detalle</th>
                         <th scope="col">Editar</th>
@@ -92,7 +93,6 @@ include "../Layout/navMenu2.php";
     <section class="detalle-tabla">
         <h3>Detalle Orden</h3>
         <div class="form-Detalle-table">
-
             <table class="table table-striped" id="detalle">
                 <thead>
                     <tr>
@@ -112,7 +112,6 @@ include "../Layout/navMenu2.php";
             </table>
         </div>
     </section>
-
 </body>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -124,24 +123,13 @@ include "../Layout/navMenu2.php";
 <script type="text/javascript" src="../datatables.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../menujs.js"></script>
-<script type="text/javascript" src="detalleFunciones.js"></script>
+<script type="text/javascript" src="consultaFunciones.js"></script>
 
-
-<!-- buscador de las tablas -->
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#orden').DataTable();
-        windows.location.reload();
-    });
-</script>
-
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $(document).ready(function () {
         $('#detalle').DataTable();
         windows.location.reload();
     });
-</script>
-
-
+</script> -->
 
 </html>

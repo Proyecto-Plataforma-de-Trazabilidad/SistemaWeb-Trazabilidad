@@ -1,96 +1,41 @@
 <?php
 
 include("../conexion.php");
+session_start();
 
-$tipo = $_POST['tipo'];
-
-switch ($tipo) {
-    case 'orden':
-        consultaOrden();
-        break;
-
-    case 'detalle':
-        consultadetalle();
-        break;
-
-    default:
-        echo "Variable enviada fallida";
-        break;
-}
-
-
-function consultaOrden()
-{
+$comando = mysqli_query($enlace, "SELECT T.Descripcion FROM usuarios as U inner join tipousuario as T on U.IdtipoUsuario = T.Idtipousuario where U.Nombre = '".$_SESSION['usuario']."'");
+$tipoUser =  mysqli_fetch_column($comando);
+mysqli_free_result($comando);
 
     if ($_POST['FI'] == null && $_POST['FF'] == null) {
-        include("../conexion.php");
-        $queryOrden = "CALL ordenFechas(null,null);";
-        echo $queryOrden;
+        
+        $queryOrden = "CALL OrdenConsulta('".$tipoUser."',null,null);";
         $comando = mysqli_query($enlace, $queryOrden);
-        while ($row = mysqli_fetch_array($comando)) {
-            echo "
-            <tr>
-                <td>" . $row[0] . "</td>
-                <td>" . $row[1] . "</td>
-                <td>" . $row[2] . "</td>
-                <td>" . $row[3] . "</td>
-                <td>" . $row[4] . "</td>
-                <td>" . $row[5] . "</td>
-                <td>" . $row[6] . "</td>
-                <td>" . $row[7] . "</td>
-                <td class='iconos' ><button class='detalle-btn' id='iconDetalle' data-idOrden='" . $row[0] . "' ><img src='../Recursos/Iconos/detalle.svg' alt='Icono de detalle'></button></td>
-                <td class='iconos' ><button class='detalle-btn' id='editar' data-idOrden='" . $row[0] . "' ><img src='../Recursos/Iconos/editar.svg' alt='Icono de detalle'></button></td>
-            </tr>
-            ";
+        if(!$comando) {
+            die("Error");
+        }else{
+            while ($datos = mysqli_fetch_assoc($comando)) {
+                $consultaOrden["data"][] = $datos;
+            }
+            echo (json_encode($consultaOrden));
         }
-        mysqli_close($enlace);
+        mysqli_free_result($comando);
     } else {
-        include("../conexion.php");
-        $queryOrden = "CALL ordenFechas('" . $_POST['FI'] . "',' " . $_POST['FF'] . "');";
-        echo $queryOrden;
+        
+        $queryOrden = "CALL OrdenConsulta('".$tipoUser."','" .$_POST['FI']. "','" . $_POST['FF'] . "');";
         $comando = mysqli_query($enlace, $queryOrden);
-        while ($row = mysqli_fetch_array($comando)) {
-            echo "
-            <tr>
-                <td>" . $row[0] . "</td>
-                <td>" . $row[1] . "</td>
-                <td>" . $row[2] . "</td>
-                <td>" . $row[3] . "</td>
-                <td>" . $row[4] . "</td>
-                <td>" . $row[5] . "</td>
-                <td>" . $row[6] . "</td>
-                <td>" . $row[7] . "</td>
-                <td class='iconos' ><button class='detalle-btn' id='iconDetalle' data-idOrden='" . $row[0] . "' ><img src='../Recursos/Iconos/detalle.svg' alt='Icono de detalle'></button></td>
-                <td class='iconos' ><button class='detalle-btn' id='editar' data-idOrden='" . $row[0] . "' ><img src='../Recursos/Iconos/editar.svg' alt='Icono de detalle'></button></td>
-            </tr>
-            ";
+        if(!$comando) {
+            die("Error");
+        }else{
+            while ($datos = mysqli_fetch_assoc($comando)) {
+                $consultaOrden["data"][] = $datos;
+            }
+        echo (json_encode($consultaOrden));
         }
-        mysqli_close($enlace);
+
+        mysqli_free_result($comando);
     }
 
-
-}
-
-function consultadetalle()
-{
-
-    include("../conexion.php");
-    $queryOrden = "SELECT * FROM detalleorden";
-    $comando = mysqli_query($enlace, $queryOrden);
-    while ($row = mysqli_fetch_array($comando)) {
-        echo "
-            <tr>
-                <td>" . $row[0] . "</td>
-                <td>" . $row[1] . "</td>
-                <td>" . $row[2] . "</td>
-                <td>" . $row[3] . "</td>
-                <td>" . $row[4] . "</td>
-                <td>" . $row[5] . "</td>        
-                <td class='iconos' ><button class='detalle-btn' id='editar' data-idOrden='" . $row[0] . "' ><img src='../Recursos/Iconos/editar.svg' alt='Icono de detalle'></button></td>
-            </tr>
-            ";
-    }
     mysqli_close($enlace);
-}
 
 ?>

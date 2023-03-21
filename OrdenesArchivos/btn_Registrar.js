@@ -2,18 +2,16 @@ $('#frmOrden').submit(function(e) {
     //detener la carga de la pagina
     e.preventDefault();
   
-    let formData = new FormData(this);
+    let formData = new FormData(this); //Optiene los archivos del formulario
+
     //tomar los valores del formulario
     let accion = 'registrarOrden';
-    let acceso = false;
 
     let nomDis = document.getElementById('nomDistri')
     let idDis = nomDis.getAttribute('data-id-distribuidor');
     let idProd = document.getElementById('nomProdu').value;
     let NumFac = document.getElementById('factOrden').value;
-    let factura = "";
     let numRec = document.getElementById('cedReceta').value;
-    let receta = "";
     let fecha = document.getElementById('fecha').value;
 
     //validar campos del formulario de orden
@@ -23,9 +21,9 @@ $('#frmOrden').submit(function(e) {
         idDis: idDis,
         idProd: idProd,
         NumFac: NumFac,
-        factura: factura,
+        factura: "",
         numRec: numRec,
-        receta: receta,
+        receta: "",
         fecha: fecha,
     };
     //console.log(datos);
@@ -37,6 +35,7 @@ $('#frmOrden').submit(function(e) {
     let orden = document.getElementById('numOrden');
     const numOrden = orden.dataset.numOrden;
 
+    formData.append("IdOrden", numOrden); //Se agrega el id de la orden para mandarlo junto con los archivos
     //ciclo
     for (var i = 1; i < filas.length; i++) {
         //ejecutara todo el numero de filas
@@ -66,10 +65,9 @@ $('#frmOrden').submit(function(e) {
         success:function(response){
             resArchivo = JSON.parse(response);
             console.log(resArchivo);
-            if (resArchivo.guardadoArchFac == "Correcto") 
-                datos.factura = resArchivo.rutaArchFac;
-            if (resArchivo.guardadoArchRece == "Correcto")
-                datos.receta = resArchivo.rutaArchRece;
+
+            datos.factura = resArchivo.rutaArchFac;
+            datos.receta = resArchivo.rutaArchRece;
             
             // if(resArchivo.rutaArchFac == "Faltante")
             //     mensajeAdvertencia('No ingreso archivo de factura', 'Pero puede continuar de igual manera');
@@ -86,17 +84,16 @@ $('#frmOrden').submit(function(e) {
             else if(resArchivo.guardadoArchRece == "Fallido")
                 mensajeError('Error al guardar', 'El archivo receta no se pudo guardar, intentelo de nuevo', '#archReceta');
             else
-            insertarOrden();
+            insertarOrden(datos);
             
         }
     });
-    //resArchivo.guardadoArchFac != "Fallido" && resArchivo.guardadoArchRece != "Fallido" && resArchivo.extCorrectaArchFac != "No permitida" && resArchivo.extCorrectaArchRece != "No permitida"
     
-    function insertarOrden() {
+    function insertarOrden(datosValidos) {
         //mandar orden y detalle con ajax
         $.ajax({
             url: 'OrdenesArchivos/insertar.php',
-            data: { orden: datos, detalle: arreglo },
+            data: { orden: datosValidos, detalle: arreglo },
             type: 'POST',
             success: function (response) {            
                 if (response == 'correcto') {
@@ -133,10 +130,7 @@ $('#frmOrden').submit(function(e) {
          
         });
         
-    }
-
-        
-    
+    } 
 });
 
 function mensajeAdvertencia(titulo, texto) {
