@@ -10,10 +10,10 @@
     
     $consulta = "SELECT * FROM usuarios WHERE Nombre = '$usuario' AND  Contrasena = '$pass'";
     $resultado = mysqli_query($enlace, $consulta);
-    $res = mysqli_fetch_array($resultado);
 
-    if($res >= 1){
-        $data = mysqli_fetch_all(mysqli_fetch_assoc($resultado));
+
+    if($filas = mysqli_num_rows($resultado) >= 1){
+        $data = mysqli_fetch_all($resultado);
         $_SESSION["usuario"] = $usuario;
     }else{
         $_SESSION["usuario"] = null;

@@ -13,16 +13,13 @@ $('#frmlogin').submit(function (e) {
         return false;
         
     }else{
-      console.log("usuario:");
-      console.log(user);
-      console.log("Contraseña");
-      console.log(pass);
       $.ajax({
         url:"loggin/validar.php",
         type:"POST",
         datatype:"json",
         data:{user:user, pass:pass},
         success:function(data){
+          console.log(data);
           if(data == "null"){
             Swal.fire({
               type:'error',
