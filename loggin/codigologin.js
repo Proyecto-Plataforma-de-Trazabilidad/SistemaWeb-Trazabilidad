@@ -31,12 +31,12 @@ $('#frmlogin').submit(function (e) {
           }else{
             Swal.fire({
               type:'success',
-              title:'!Conexión exitosa!',
+              title:'Bienvenido',
               confirmButtonColor:'#3085d6',
               confirmButtonText:'Ingresar'
             }).then((result) => {
               if(result.value){
-                window.location.href = "../inicio.php";
+                window.location.href = "inicio.php";
               }
             })
           }

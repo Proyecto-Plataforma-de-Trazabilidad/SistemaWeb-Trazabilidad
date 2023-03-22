@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include "conexion.php";
 
         $usuario=(isset($_POST['user'])) ? $_POST['user'] : '';
@@ -9,7 +10,7 @@
     
 
     if($filas=mysqli_num_rows($resultado) >= 1){
-        session_start();
+        $data = mysqli_fetch_all($resultado);
         $_SESSION["usuario"]=$usuario;
     }
     else{
