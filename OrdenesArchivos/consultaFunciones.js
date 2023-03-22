@@ -19,7 +19,14 @@ function mostrarOrden(fechaI, fechaF) {
         ajax: {
             "method":"POST",
             "url":"metodosConsulta.php",
-            "data":{'FI': fechaI, 'FF': fechaF }
+            "data":{'FI': fechaI, 'FF': fechaF },
+            "error": function (xhr, textStatus, error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'No hay datos disponibles',
+                    text: 'No se encontraron registros del distribuidor',
+                });
+            }
         },
         columns:[
             {data: "IdOrden"},
@@ -38,14 +45,17 @@ function mostrarOrden(fechaI, fechaF) {
                 }
             }, 
             {data: "Fecha"},
-            {defaultContent: "<button class='detalle-btn detalle'><img src='../Recursos/Iconos/detalle.svg' alt='Icono de detalle'></button>"},
-            {defaultContent: "<button class='detalle-btn editar'><img src='../Recursos/Iconos/editar.svg' alt='Icono de detalle'></button>"}
+            {defaultContent: "<button class='detalle-btn detalle'><img src='../Recursos/Iconos/detalle.svg' alt='Abrir detalle'></button>"},
+            {defaultContent: "<button class='detalle-btn editar'><img src='../Recursos/Iconos/editar.svg' alt='Editar'></button>"}
             
         ],
         language: {
             url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/es-MX.json'
         }
     });
+    // $.fn.dataTable.ext.errMode = function ( settings, helpPage, message ) { 
+    //     console.log(message);
+    // };
 
     $("#orden tbody").on('click', 'button.detalle', function () {
         var datosFila = tablaOrden.row($(this).parents('tr')).data();
@@ -59,7 +69,7 @@ function mostrarOrden(fechaI, fechaF) {
     $("#orden tbody").on('click', 'button.editar', function () {
         var datosFila = tablaOrden.row($(this).parents('tr')).data();
         if (datosFila != undefined) {
-            editar(datosFila);
+            // editar(datosFila);
             console.log(datosFila);
         }
         
