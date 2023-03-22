@@ -6,7 +6,7 @@
         $psw = $_POST['cont'];
         $Email = $_POST['Email'];
 
-        $r = "INSERT INTO usuarios values(null, '".$roluser."','".$nombre."', '".$psw."', '".$Email."' )";
+        $r = "INSERT INTO usuarios values(null, '".$roluser."','".$nombre."', MD5('".$psw."'), '".$Email."' )";
         mysqli_query($enlace, $r);
 
         echo "<script>window.location='../rusers.php'</script>";
