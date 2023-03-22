@@ -10,19 +10,13 @@
 
     <!-- Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    
+
     <!--SweetAlert en linea-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
     <!--SweetAlert en local por mis webos-->
     <link rel="stylesheet" href="plugins\Sweetalert2\sweetalert2.min.css">
     <script src="plugins\Sweetalert2\sweetalert2.all.min.js"></script>
-    
-    
-
-
-
-
 
 
     <style>
@@ -68,6 +62,20 @@
                 font-size: 3.5rem;
             }
         }
+
+        .forgotpsw a {
+            color: #285430;
+            font-weight: 600;
+            font-weight: bold;
+            font-style: italic;
+            text-decoration: none;
+        }
+
+        .forgotpsw a:hover {
+            color: #319944;
+            font-weight: 600;
+
+        }
     </style>
 
 
@@ -104,7 +112,7 @@
                 <h2 class="fw-bold text-center py-5">Bienvenido</h2>
 
                 <!--Login-->
-                <form id="frmlogin" method="POST" action="" >
+                <form id="frmlogin" method="POST" action="">
                     <div class="b-2">
                         <label for="user">Usuario</label>
                         <input type="text" class="form-control" id="user" placeholder="Ingrese el usuario" name="usuario">
@@ -116,20 +124,22 @@
 
                     </div>
 
-                    <br>    
+                    <br>
                     <div class="forgotpsw">
-                        <a href="loggin/forgotpsw.php">Olvidé mi contraseña</a>
+                        <center>
+                            <a  href="restorepsw.php">Olvidé mi contraseña</a>
+                        </center>
                     </div>
                     <br>
 
                     <div class="d-grid">
-                    <button type="submit" class="btn btn-primary" onclick="" name="Registrar">Iniciar Sesión</button>
+                        <button type="submit" class="btn btn-primary" onclick="" name="Registrar">Iniciar Sesión</button>
                     </div>
 
                     <br><br>
 
                 </form>
-                <script>console.log("paso por aqui");</script>
+
 
             </div>
         </div>
@@ -141,7 +151,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="poper\popper.min.js"></script>
     <script type="text/javascript" src="loggin/codigologin.js"></script>
-    
+
 
 
 
