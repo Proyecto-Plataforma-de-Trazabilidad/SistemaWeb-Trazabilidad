@@ -3,8 +3,7 @@ session_start();
 
 $varses = $_SESSION['usuario'];
 if ($varses == null || $varses == '') {
-    echo "Primero inicie sesión";
-    die();
+    header("Location: ../index.php");
 }
 
 include('../conexion.php');
@@ -114,7 +113,7 @@ $filas = mysqli_fetch_array($res);
             ?>
 
             <!--Salir-->
-            <a href="../salir.php" onclick="return res()">
+            <a href="../loggin/logout.php" >
                 <div class="option">
                     <i class="fa-sharp fa-solid fa-right-from-bracket" title="Salir"></i>
                     <h4>Salir</h4>
@@ -128,18 +127,6 @@ $filas = mysqli_fetch_array($res);
 
     </div>
 
-
-
-    <script>
-        function res() {
-            var respuesta = confirm("¿Seguro que quieres salir?");
-            if (respuesta = true) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    </script>
 
     <main>
 
