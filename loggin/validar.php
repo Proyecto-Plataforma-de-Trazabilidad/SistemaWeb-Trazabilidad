@@ -5,7 +5,7 @@
         $usuario=(isset($_POST['user'])) ? $_POST['user'] : '';
         $contra=(isset($_POST['pass'])) ? $_POST['pass'] : '';
 
-    $consulta="SELECT * FROM usuarios WHERE Nombre='".$usuario."' AND Contrasena='".$contra."'";
+    $consulta="SELECT * FROM usuarios WHERE Nombre='".$usuario."' AND Contrasena=MD5('".$contra."'";
     $resultado=mysqli_query($enlace,$consulta);
     
 
