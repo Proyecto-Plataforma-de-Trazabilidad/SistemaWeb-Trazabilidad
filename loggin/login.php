@@ -13,7 +13,7 @@
     $res = mysqli_fetch_array($resultado);
 
     if($res >= 1){
-        $data = mysqli_fetch_all(mysqli_fetch_assoc($res));
+        $data = mysqli_fetch_all(mysqli_fetch_assoc($resultado));
         $_SESSION["usuario"] = $usuario;
     }else{
         $_SESSION["usuario"] = null;
