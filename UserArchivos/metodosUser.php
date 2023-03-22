@@ -42,7 +42,7 @@
         $tuser=$_POST['tuser'];
         $correo=$_POST['correo'];
         $contra=$_POST['contra'];
-        $r="UPDATE usuarios SET Idtipousuario=".$tuser.", Nombre='".$nomb."', Contrasena='".$contra."', Correo='".$correo."' WHERE IdUsuario=".$iduser;
+        $r="UPDATE usuarios SET Idtipousuario=".$tuser.", Nombre='".$nomb."', Contrasena=MD5('".$contra."'), Correo='".$correo."' WHERE IdUsuario=".$iduser;
         $comando= mysqli_query($enlace, $r);
         if($comando){
             echo"<script>window.location='../rusers.php';</script>";
