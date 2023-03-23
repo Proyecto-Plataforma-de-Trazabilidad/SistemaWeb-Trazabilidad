@@ -24,8 +24,6 @@ $('#frmrecovery').submit(function (e) {
             title: 'Las contraseñas no coinciden.',
             text: 'Intentar de nuevo.',
           });  
-        }else{
-          window.location.href = "index.php?message=success_psw";
         }
       }
     });
