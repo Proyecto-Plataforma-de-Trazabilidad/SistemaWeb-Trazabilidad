@@ -14,8 +14,9 @@
         header('Location: ../index.php?message=success_psw');
         
     } else{
-        header("Location: changepsw.php?message=inconsistencias?id='$id'");
+        $data = null;
     }
 
+    print json_encode($data);
 
 ?>
