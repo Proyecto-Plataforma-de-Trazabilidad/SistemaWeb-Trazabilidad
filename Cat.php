@@ -1,9 +1,14 @@
 <?php
 include "Layout/navMenu.php";
+include 'conexion.php';
+$r = "SELECT * FROM usuarios where nombre = '$varses'";
+$res = mysqli_query($enlace, $r);
+$filas = mysqli_fetch_array($res);
 ?>
+<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 
   <div class="container">
-    <h2>Registrar Centro de Acopio Temporal</h2>
+    <h2>Centro de Acopio Temporal</h2>
   </div>
   <br>
   <form class="row g-4 container-fluid" id="frm" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return 0">
@@ -102,10 +107,11 @@ include "Layout/navMenu.php";
 
 
   <br><br>
-  <div class="container text-center">
-    <h5>Acopios Temporales Registrados</h5>
-  </div>
-  <div class="container col-12">
+  
+  <div class="container col-12" id="consulta">
+    <div class="container text-center">
+      <h5>Acopios Temporales Registrados</h5>
+    </div>
     <center>
       <table class="table table-striped" id="tabla">
         <thead>
@@ -165,8 +171,26 @@ include "Layout/navMenu.php";
 
       })
     }
+
+
   </script>
-  <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+
+  <?php
+  $rol = $filas['Idtipousuario'];
+  ?>
+  
+  <script type="text/javascript">
+      var rol = "<?php echo $rol; ?>";
+
+      if (rol == 3) {
+        $(function(){
+          $('#frm').hide();
+        });
+      }
+      
+      
+  </script>
+  
   <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="datatables.min.js"></script>
   <script type="text/javascript" src="Cat-Archivos/funcionesCat.js"></script>
