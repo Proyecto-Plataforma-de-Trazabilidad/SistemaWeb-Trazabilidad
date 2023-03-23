@@ -37,13 +37,11 @@
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();
-        echo 'Message has been sent';
+        header("Location: ../index.php?message=ok");
     } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        header("Location: ../index.php?message=error");
     }
 
-            
-
     }else{
-
+        header("Location: ../index.php?message=notfound");
     }

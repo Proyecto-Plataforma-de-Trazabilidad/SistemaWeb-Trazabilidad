@@ -85,8 +85,6 @@
 
 <body>
 
-    <br>
-
     <div class="container w-50 bg-white" id="contenido">
         <div class="row">
             <div class="col bg">
@@ -130,6 +128,32 @@
                             <a  href="restorepsw.php">Olvidé mi contraseña</a>
                         </center>
                     </div>
+
+                    <?php
+                        if (isset($_GET['message'])) {
+                    ?>
+                        <div class="alert alert-success" role="alert">
+                    <?php 
+                        switch ($_GET['message']) {
+                            case 'ok':
+                                echo 'Por favor, revisa tu correo electrónico';
+                                break;
+
+                            case 'success_psw':
+                                echo 'Inicia Sesión con tu nueva contraseña.';
+                                break;
+                            
+                            default:
+                                echo 'Error. Intenta de nuevo';
+                                break;
+                        }
+                    ?>
+                        </div>
+                    <?php
+                        }  
+                    ?>
+                    
+
                     <br>
 
                     <div class="d-grid">
