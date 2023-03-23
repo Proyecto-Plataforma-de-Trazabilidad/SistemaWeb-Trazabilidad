@@ -175,13 +175,16 @@ $filas = mysqli_fetch_array($res);
 
   </script>
 
+  <!--Código PHP para obtener el IDtiporol del usuario que inició sesión-->
   <?php
   $rol = $filas['Idtipousuario'];
   ?>
   
+  <!--Código de JS para mandar a una variable de js el valor de una variable php-->
   <script type="text/javascript">
       var rol = "<?php echo $rol; ?>";
 
+      //Si el id del rol obtenido, únicamente puede consultar -> ocultar el formulario
       if (rol == 3) {
         $(function(){
           $('#frm').hide();

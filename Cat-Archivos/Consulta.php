@@ -1,11 +1,16 @@
 <?php
   include "../Layout/navMenu2.php";
+  $consulta = "SELECT * FROM usuarios where nombre = '$varses'";
+  $res = mysqli_query($enlace, $consulta);      
+  $filas = mysqli_fetch_array($res);
 ?>
+<script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
 
 <br><br>
 <div class="container">
   <h1>Consulta Centro de Acopio Temporal</h1>
 </div>
+
 <br>
     <?php
     include "conexion.php";
@@ -21,6 +26,8 @@
           echo (mysqli_error($enlace));
         }
         $row=mysqli_fetch_array($comando);
+
+        
         
     ?>
       <form class="row g-4 container-fluid" id="frm" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" onsubmit="return 0">
@@ -104,12 +111,14 @@
             
         </div>
         
-        <div class="col-3">
-          <button type="button" class="btn btn-primary" onclick="habilitar()" id="editar">Editar</button>
-        </div>
-        <div class="col-3">
-          <button type="button" class="btn btn-success" disabled name="guardar" id="guardar">Guardar</button>
-        </div>
+        
+          <div class="col-3">
+            <button type="button" class="btn btn-primary" onclick="habilitar()" id="editar">Editar</button>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-success" disabled name="guardar" id="guardar">Guardar</button>
+          </div>
+        
 
         <?php 
             mysqli_close($enlace)
@@ -167,6 +176,25 @@
             document.getElementById("inlon").value=this.getPosition().lng();
           })
         }
+      </script>
+
+      <!--Código PHP para obtener el IDtiporol del usuario que inició sesión-->
+      <?php
+        $rol = $filas['Idtipousuario'];
+      ?>
+
+      <!--Código de JS para mandar a una variable de js el valor de una variable php-->
+      <script type="text/javascript">
+
+            var rol = "<?php echo $rol; ?>";
+
+            //Si el id del rol obtenido, únicamente puede consultar -> ocultar los botones de guardar y editar
+            if (rol == 3) {
+              $(function(){
+                $('#editar').hide();
+                $('#guardar').hide();
+              });
+            }   
       </script>
       
 
