@@ -26,6 +26,9 @@ include "../Layout/navMenu2.php";
         <div>
             <h1>Consulta de Ordenes</h1>
         </div>
+        <div>
+            <a href="./ReporteOrden.php">Reporte PDF</a>
+        </div>
     </section>
 
     <section class="filtro">
