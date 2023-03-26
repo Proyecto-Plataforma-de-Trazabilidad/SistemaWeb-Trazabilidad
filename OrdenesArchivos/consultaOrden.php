@@ -11,6 +11,7 @@ include "../Layout/navMenu2.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/movimientos/Orden/ConsultaOrden.css"> <!-- estilo principal -->
+    <link rel="stylesheet" href="../css/movimientos/Orden/orden.css"> 
     <link rel="stylesheet" href="../bootstrap-5.1.3-dist/css/bootstrap.min.css"> <!-- estilo boostrap -->
     <link rel="stylesheet" href="../menucss.css"> <!-- estilo menu lateral -->
     <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script> <!-- iconos -->
@@ -31,7 +32,7 @@ include "../Layout/navMenu2.php";
         </div>
     </section>
 
-    <section class="filtro">
+    <section class="filtro consultaOrden">
         <div class="filtro-form">
             <form class="row g-4 container-fluid" id="frmConsulta" method="POST"
                 action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return 0"
@@ -59,10 +60,9 @@ include "../Layout/navMenu2.php";
                     </div>
             </form>
         </div>
-
     </section>
 
-    <section class="Orden-tabla">
+    <section class="Orden-tabla consultaOrden">
         <h3>Ordenes</h3>
         <div class="form-Orden-table">
             <table class="table table-striped" id="orden">
@@ -87,13 +87,12 @@ include "../Layout/navMenu2.php";
             </table>
         </div>
     </section>
-
     <!-- Linea para separar el detalle -->
     <!-- <div>
         <hr class="divider">
     </div> -->
 
-    <section class="detalle-tabla">
+    <section class="detalle-tabla consultaOrden">
         <h3>Detalle Orden</h3>
         <div class="form-Detalle-table">
             <table class="table table-striped" id="detalle">
