@@ -39,6 +39,8 @@ $(document).ready(function(){
                         "muni":muni, "est":est, "tel":tel, "corr":corr, 
                         "puntos":puntos,"orden":orden,"entrega":entrega,
                         "giro":giro, "tipo":tipofuncion}
+
+        console.log("Registra")
     })
 
 });

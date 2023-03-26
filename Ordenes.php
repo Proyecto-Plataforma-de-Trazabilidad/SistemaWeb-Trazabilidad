@@ -68,7 +68,7 @@ include "Layout/navMenu.php";
                 <label for="OrdNombre" class="form-label">Nombre del distribuidor</label>
                 <!-- debe de cargar dependiendo el inicio de seccion  -->               
                 <input disabled type="text" id="nomDistri" name="nomDistribuidor" class="form-control" maxlength="30"
-                    required placeholder="Nombre del distribuidor" data-id-distribuidor="2">
+                    required placeholder="Nombre del distribuidor" data-id-distribuidor="2"> <!--Hay que cambiar esto -->
             </div>
 
             <div class="col-sm-4">
@@ -101,7 +101,6 @@ include "Layout/navMenu.php";
                 <label for="formFileMultiple" class="form-label">Subir Receta</label>
                 <input class="form-control" type="file" id="archReceta" name="archRece" multiple>
             </div>
-
         </form>
     </section>
 
