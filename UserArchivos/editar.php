@@ -3,14 +3,15 @@
 ?>
 <br><br>
 <div class="container">
-  <h1>Consulta Huerto</h1>
+  <h1>Consulta Usuario</h1>
 </div>
 <br>
 
     <?php
         include "../conexion.php";
         $idtipo=$_GET['id'];
-        $r="SELECT U.IdUsuario, U.Nombre, U.Correo, U.Contrasena, T.Descripcion FROM usuarios as U inner join tipousuario as T on U.IdtipoUsuario = T.Idtipousuario where U.IdUsuario=".$idtipo;
+        $nueva = base64_decode($idtipo);  
+        $r="SELECT U.IdUsuario, U.Nombre, U.Correo, U.Contrasena, T.Descripcion FROM usuarios as U inner join tipousuario as T on U.IdtipoUsuario = T.Idtipousuario where U.IdUsuario=".$nueva;
         $comando= mysqli_query($enlace, $r);
         $row=mysqli_fetch_array($comando);
         
@@ -27,21 +28,33 @@
             <input type="text" class="form-control" id="nomb" maxlength="30" name="nomb"  disabled value="<?php echo($row[1]);?>">
         </div>
 
-        <div class="col-sm-4"> 
-            <label for="tuser" class="form-label">Tipo de Usuario</label>
+        <div class="col-3"> 
+            <label for="x" class="form-label">Rol actual de usuario</label>
+            <input type="text" class="form-control" id="x" maxlength="30" name="x"  readonly value="<?php echo($row[4]);?>">
+        </div>
+
+        <div class="col-sm-3"> 
+            <label for="tuser" class="form-label">Nuevo rol</label>
             <select name="tuser" id="tuser" class="form-select" disabled placeholder="<?php echo($row[4]);?>">
                 
             </select>
         </div>
 
-        <div class="col-sm-2"> 
+        <div class="col-sm-3"> 
             <label for="correo" class="form-label">Correo</label>
             <input type="text" class="form-control" id="correo" disabled maxlength="40" name="correo" required placeholder="Ingrese el Correo" value="<?php echo($row[2]);?>">
         </div>
-        <div class="col-sm-2"> 
+        <div class="col-sm-3"> 
             <label for="contra" class="form-label">Contraseña</label>
             <input type="text" class="form-control" id="contra" maxlength="10" disabled name="contra" required placeholder="Ingrese la contraseña" value="<?php echo($row[3]);?>">
         </div>
+
+        <div class="col-sm-3"> 
+          </div>
+          
+          <div class="col-sm-3"> 
+          </div>
+
 
         <div class="col-2">
           <button type="button" class="btn btn-primary" onclick="Habilitar()" id="btnEditar" name="Registrar">Editar</button>

@@ -8,7 +8,9 @@
 <br>
          <?php 
             include '../conexion.php';
-            $r="SELECT * FROM empresadestino WHERE IdDestino=".$_GET['id'];
+            $idtipo = $_GET['id'];
+            $nueva = base64_decode($idtipo);
+            $r="SELECT * FROM empresadestino WHERE IdDestino=".$nueva;
             $comando=mysqli_query($enlace, $r);
             $row=mysqli_fetch_array($comando);
         ?>

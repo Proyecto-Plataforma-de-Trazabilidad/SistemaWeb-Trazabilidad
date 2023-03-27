@@ -14,10 +14,11 @@
 <br>
     <?php
     include "conexion.php";
-        $idcat=$_GET['id'];
+    $idtipo = $_GET['id'];
+    $nueva = base64_decode($idtipo);
         $r="SELECT c.IdCAT, c.IdResponsableCAT, r.Nombre, c.NombreCentro, c.NumRegAmbiental, c.InformacionAdicional, 
         c.Domicilio, c.CP, c.Municipio, c.Estado, c.Telefono, c.Correo, c.HorarioDiasLaborales, c.Latitud, c.Longitud,
-        c.PlanManejo FROM centroacopiotemporal AS c INNER JOIN responsablecat AS r ON c.IdResponsableCAT=r.IdCAT WHERE c.IdCAT=".$idcat;
+        c.PlanManejo FROM centroacopiotemporal AS c INNER JOIN responsablecat AS r ON c.IdResponsableCAT=r.IdCAT WHERE c.IdCAT=".$nueva;
         $comando= mysqli_query($enlace, $r);
         if($comando){
           

@@ -26,7 +26,7 @@
             <tr>
                 <td>".$row[0]."</td>
                 <td>".$row[1]."</td>
-                <td><a href='QuimicoArchivos/editar.php?id=".$row[0]."'><input type='button' value='Editar' id='btnEditar' class='btn btn-primary'></td>
+                <td><a href='QuimicoArchivos/editar.php?id=".base64_encode($row[0])."'><input type='button' value='Editar' id='btnEditar' class='btn btn-primary'></td>
             </tr>
             ";
         }

@@ -34,7 +34,7 @@
                 <td>".$row[7]."</td>
                 <td><a href='ErpArchivos/".$row[8]."'>Ver Permiso</a></td>                
                 <td><a href='ErpArchivos/".$row[9]."'>Ver documento</a></td>
-                <td><a href='ErpArchivos/consulta.php?id=".$row[0]."'><input type='button' value='Consultar' class='btn btn-primary'></td>
+                <td><a href='ErpArchivos/consulta.php?id=".base64_encode($row[0])."'><input type='button' value='Consultar' class='btn btn-primary'></td>
             </tr>";
         }
         mysqli_close($enlace);

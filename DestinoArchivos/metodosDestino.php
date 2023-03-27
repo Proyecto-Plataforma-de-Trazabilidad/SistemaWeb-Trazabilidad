@@ -20,7 +20,7 @@
                 <td>".$row[3]."</td>
                 <td>".$row[4]."</td>
                 <td><a href='DestinoArchivos/".$row[5]."'>Ver Licencia</a></td>
-                <td><a href='DestinoArchivos/Consulta.php?id=".$row[0]."'><input type='button' value='Consultar' class='btn btn-primary'></td>
+                <td><a href='DestinoArchivos/Consulta.php?id=".base64_encode($row[0])."'><input type='button' value='Consultar' class='btn btn-primary'></td>
             </tr>";
         }
         mysqli_close($enlace);

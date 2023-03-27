@@ -9,7 +9,9 @@
 <br>
         <?php 
             include '../conexion.php';
-            $r="SELECT * FROM erpvehiculos WHERE Consecutivo=".$_GET['id'];
+            $idtipo = $_GET['id'];
+            $nueva = base64_decode($idtipo);
+            $r="SELECT * FROM erpvehiculos WHERE Consecutivo=".$nueva;
             $comando= mysqli_query($enlace, $r);
             $row=mysqli_fetch_array($comando);
         ?>

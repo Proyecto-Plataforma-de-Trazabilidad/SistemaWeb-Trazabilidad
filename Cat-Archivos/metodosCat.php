@@ -64,7 +64,7 @@
                 <td>".$row[5]."</td>
                 <td>".$row[6]."</td>
                 <td>".$row[7]."</td>
-                <td><a href='Cat-Archivos/Consulta.php?id=".$row[0]."'><input type='button' value='Consultar' class='btn btn-primary'></td>
+                <td><a href='Cat-Archivos/Consulta.php?id=".base64_encode($row[0])."'><input type='button' value='Consultar' class='btn btn-primary'></td>
             </tr>";
         }
         mysqli_close($enlace);

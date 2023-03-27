@@ -21,7 +21,7 @@
                 <td>".$row[3]."</td>
                 <td>".$row[6]."</td>
                 <td><a href='MunicipioArchivos/".$row[10]."'>Ver documento</a></td>
-                <td><a href='MunicipioArchivos/Consulta.php?id=".$row[0]."'><input type='button' value='Consultar' class='btn btn-primary'></td>
+                <td><a href='MunicipioArchivos/Consulta.php?id=".base64_encode($row[0])."'><input type='button' value='Consultar' class='btn btn-primary'></td>
             </tr>
             ";
         }

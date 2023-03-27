@@ -28,7 +28,7 @@
                     <td>".$row[1]."</td>
                     <td>".$row[2]."</td>
                     <td>".$row[3]."</td>
-                    <td><a href='UserArchivos/editar.php?id=".$row[0]."'><input type='button' value='Consultar' class='btn btn-primary'></td>
+                    <td><a href='UserArchivos/editar.php?id=".base64_encode($row[0])."'><input type='button' value='Consultar' class='btn btn-primary'></td>
                 </tr>
             ";
         }

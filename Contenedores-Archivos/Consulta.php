@@ -10,8 +10,9 @@
 <br>
     <?php
     include "conexion.php";
-        $id=$_GET['id'];
-        $r="SELECT c.IdContenedor, t.Concepto, c.Origen, c.Capacidad, c.Descripcion, c.Latitud, c.Longitud, c.UltimaFechaRecoleccion, c.InstruccionesManejo, c.ReferenciaPermiso, t.idTipoCont FROM tipocontenedor as t inner join contenedores as c on c.IdTipoCont=t.idTipoCont WHERE IdContenedor=".$id;
+    $idtipo = $_GET['id'];
+    $nueva = base64_decode($idtipo);
+        $r="SELECT c.IdContenedor, t.Concepto, c.Origen, c.Capacidad, c.Descripcion, c.Latitud, c.Longitud, c.UltimaFechaRecoleccion, c.InstruccionesManejo, c.ReferenciaPermiso, t.idTipoCont FROM tipocontenedor as t inner join contenedores as c on c.IdTipoCont=t.idTipoCont WHERE IdContenedor=".$nueva;
         $comando= mysqli_query($enlace, $r);
         $row=mysqli_fetch_array($comando);
         
