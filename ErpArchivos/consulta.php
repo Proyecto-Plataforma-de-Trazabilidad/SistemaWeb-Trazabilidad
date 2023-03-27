@@ -10,8 +10,9 @@
         
         <?php
             include "../conexion.php";
-            $id=$_GET['id'];
-            $r="SELECT * FROM empresarecolectoraprivada WHERE IdERP=".$id;
+            $idtipo = $_GET['id'];
+            $nueva = base64_decode($idtipo);
+            $r="SELECT * FROM empresarecolectoraprivada WHERE IdERP=".$nueva;
             $comando= mysqli_query($enlace, $r);
             $row=mysqli_fetch_array($comando);
         ?>

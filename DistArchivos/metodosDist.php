@@ -35,7 +35,7 @@
                 <td><a href='DistArchivos/".$row[8]."'>Ver BUMA</a></td>
                 <td><a href='DistArchivos/".$row[9]."'>Ver SEMARNAT</a></td>
                 <td><a href='DistArchivos/".$row[10]."'>Ver Licencia</a></td>
-                <td><a href='DistArchivos/Consulta.php?id=".$row[0]."'><input type='button' value='Consultar' class='btn btn-primary'></td>
+                <td><a href='DistArchivos/Consulta.php?id=".base64_encode($row[0])."'><input type='button' value='Consultar' class='btn btn-primary'></td>
             </tr>";
         }
         mysqli_close($enlace);

@@ -11,7 +11,8 @@
     <?php
         include "conexion.php";
         $idtipo=$_GET['id'];
-        $r="SELECT * FROM tipocontenedor WHERE idTipoCont=".$idtipo;
+        $nueva = base64_decode($idtipo);
+        $r="SELECT * FROM tipocontenedor WHERE idTipoCont=".$nueva;
         $comando= mysqli_query($enlace, $r);
         $row=mysqli_fetch_array($comando);
         

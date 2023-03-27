@@ -10,7 +10,8 @@
     <?php
         include "../conexion.php";
         $idtipo=$_GET['id'];
-        $r="SELECT h.IdHuerto, h.IdProductor, p.Nombre, h.Latitud, h.Longitud, h.HUE FROM huertos AS h INNER JOIN productores AS p ON h.IdProductor=p.IdProductor WHERE h.IdHuerto=".$idtipo;
+        $nueva = base64_decode($idtipo);
+        $r="SELECT h.IdHuerto, h.IdProductor, p.Nombre, h.Latitud, h.Longitud, h.HUE FROM huertos AS h INNER JOIN productores AS p ON h.IdProductor=p.IdProductor WHERE h.IdHuerto=".$nueva;
         $comando= mysqli_query($enlace, $r);
         $row=mysqli_fetch_array($comando);
         

@@ -48,7 +48,7 @@
                 <td>".$row[7]."</td>
                 <td>".$row[8]."</td>
                 <td>".$row[9]."</td>
-                <td><a href='ProductoresArchivos/Consulta.php?id=".$row[0]."'><input type='button' value='Consultar' class='btn btn-primary'></td>
+                <td><a href='ProductoresArchivos/Consulta.php?id=".base64_encode($row[0])."'><input type='button' value='Consultar' class='btn btn-primary'></td>
             </tr>
             ";
         }

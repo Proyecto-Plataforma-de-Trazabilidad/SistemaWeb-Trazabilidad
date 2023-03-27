@@ -41,7 +41,7 @@
                 <td>".$row[6]."</td>
                 <td>".$row[7]."</td>
                 <td>".$row[8]."</td>
-                <td><a href='ResponsablesArchivos/Consulta.php?id=".$row[0]."'><input type='button' value='Consultar' class='btn btn-primary'></td>
+                <td><a href='ResponsablesArchivos/Consulta.php?id=".base64_encode($row[0])."'><input type='button' value='Consultar' class='btn btn-primary'></td>
             </tr>
             ";
         }
