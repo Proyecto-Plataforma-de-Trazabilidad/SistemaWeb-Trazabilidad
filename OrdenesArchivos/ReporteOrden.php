@@ -24,7 +24,7 @@ ob_start();//iniciar el buffer para poder guardar la informacion html en una var
     <title>APEJAL-Consulta Ordenes</title>
 </head>
 
-<body>
+<body style="width: 215.9mm; height: 279.4mm;">
 
     <?php
     include("../conexion.php");
