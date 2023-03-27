@@ -189,9 +189,7 @@ $filas = mysqli_fetch_array($res);
         $(function(){
           $('#frm').hide();
         });
-      }
-      
-      
+      } 
   </script>
   
   <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>

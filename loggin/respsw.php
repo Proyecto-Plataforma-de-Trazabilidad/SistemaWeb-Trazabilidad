@@ -6,6 +6,7 @@
     $nuevapsw = $_POST['nuevapsw'];
     $reppsw = $_POST['reppsw'];
 
+    
 
 
     if ($nuevapsw == $reppsw) {
