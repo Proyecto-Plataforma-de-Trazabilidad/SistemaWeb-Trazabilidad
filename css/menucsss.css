@@ -42,7 +42,6 @@ header{
     
 }
 
-
 .icon__menu i{
     font-size: 20px;
     cursor: pointer;
@@ -107,17 +106,12 @@ header{
     display: block;
     position: relative;
     transition: color 300ms;
+    text-decoration: none;
 }
 
 .options__menu a:hover{
     color: white;
-    font-weight: bold;
-    background-color: #5F8D4E;
     
-}
-
-label{
-    font-weight: bold;
 }
 
 .options__menu .option{
@@ -141,9 +135,12 @@ label{
 
 }
 
-
-
-
+.options__menu .list ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+}
 
 
 
@@ -182,3 +179,4 @@ a.selected{
 
     
 }
+

@@ -125,34 +125,38 @@
                     <br>
                     <div class="forgotpsw">
                         <center>
-                            <a  href="restorepsw.php">Olvidé mi contraseña</a>
+                            <a href="restorepsw.php">Olvidé mi contraseña</a>
                         </center>
                     </div>
 
                     <?php
-                        if (isset($_GET['message'])) {
+                    if (isset($_GET['message'])) {
                     ?>
                         <div class="alert alert-success" role="alert">
-                    <?php 
-                        switch ($_GET['message']) {
-                            case 'ok':
-                                echo 'Por favor, revisa tu correo electrónico';
-                                break;
+                            <?php
+                            switch ($_GET['message']) {
+                                case 'ok':
+                                    echo 'Por favor, revisa tu correo electrónico';
+                                    break;
 
-                            case 'success_psw':
-                                echo 'Inicia Sesión con tu nueva contraseña.';
-                                break;
-                            
-                            default:
-                                echo 'Error. Intenta de nuevo';
-                                break;
-                        }
-                    ?>
+                                case 'success_psw':
+                                    echo 'Inicia Sesión con tu nueva contraseña.';
+                                    break;
+
+                                case 'notfound':
+                                    echo 'No existe ningún usuario asociado. Pide a tu administrador que te registre';
+                                    break;
+
+                                default:
+                                    echo 'Error. Intenta de nuevo';
+                                    break;
+                            }
+                            ?>
                         </div>
                     <?php
-                        }  
+                    }
                     ?>
-                    
+
 
                     <br>
 

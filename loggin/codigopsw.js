@@ -1,8 +1,8 @@
 $('#frmrecovery').submit(function (e) {
   e.preventDefault();
 
-  var nuevapsw = $('#nuevapsw').val();
-  var reppswpsw = $('#reppsw').val();
+  var nuevapsw = $.trim($('#nuevapsw').val());
+  var reppsw = $.trim($('#reppsw').val());
 
   if (nuevapsw.length == "" || reppsw.length == "") {
     Swal.fire({
