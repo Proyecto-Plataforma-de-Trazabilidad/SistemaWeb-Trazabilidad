@@ -5,7 +5,6 @@
 
     $comando = mysqli_query($enlace, "SELECT count(*) from ordenproductos");
     $row =  mysqli_fetch_column($comando) + 1;
-    
     mysqli_free_result($comando);
 
     $comando = mysqli_query($enlace, "SELECT * from tipoquimico");
@@ -25,8 +24,12 @@
         );
     }
     
+    $comando = mysqli_query($enlace, "SELECT IdDistribuidor FROM distribuidores WHERE nombre = '".$_SESSION['usuario']."' ");
+    $idDistribu =  mysqli_fetch_column($comando);
+    mysqli_free_result($comando);
+
     //Mando datos al front
-    $datos = json_encode(array('orden' => $row, 'usuario' => $_SESSION['usuario'], 'quimicos' => $qumicos, 'produtores' => $productores));
+    $datos = json_encode(array('orden' => $row, 'usuario' => $_SESSION['usuario'], 'quimicos' => $qumicos, 'produtores' => $productores, 'IdDistri' => $idDistribu));
     echo $datos;
     
     mysqli_close($enlace);
