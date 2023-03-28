@@ -112,7 +112,9 @@ header{
 .options__menu a:hover{
     color: white;
     font-weight: bold;
-    background-color: #5F8D4E;
+    cursor: pointer;
+    font-style: italic;
+    text-decoration:underline;
     
 }
 
