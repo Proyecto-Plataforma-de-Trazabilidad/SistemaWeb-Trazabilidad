@@ -13,7 +13,7 @@
 
 <br>
     <?php
-    include "conexion.php";
+    include '../conexion.php';
         $idcat=$_GET['id'];
         $r="SELECT c.IdCAT, c.IdResponsableCAT, r.Nombre, c.NombreCentro, c.NumRegAmbiental, c.InformacionAdicional, 
         c.Domicilio, c.CP, c.Municipio, c.Estado, c.Telefono, c.Correo, c.HorarioDiasLaborales, c.Latitud, c.Longitud,

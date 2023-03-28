@@ -10,19 +10,20 @@
     
     if($tipo=="registrar")
     {
-        $nom=$_POST['nom'];
-        $reg=$_POST["reg"];
-        $dom=$_POST['dom'];
-        $cp=$_POST['cp'];
-        $ciu=$_POST["ciu"];
-        $muni=$_POST['muni'];
-        $est=$_POST['est'];
-        $tel=$_POST['tel'];
-        $corr=$_POST['corr'];
-        $puntos=$_POST["puntos"];
-        $orden=$_POST["orden"];
-        $entrega=$_POST["entrega"];
-        $giro=$_POST["giro"];
+        
+        $nom=$_POST['innom'];
+        $reg=$_POST["inreg"];
+        $dom=$_POST['indom'];
+        $cp=$_POST['incp'];
+        $ciu=$_POST["inciu"];
+        $muni=$_POST['inmuni'];
+        $est=$_POST['inest'];
+        $tel=$_POST['intel'];
+        $corr=$_POST['incorr'];
+        $puntos=$_POST["inpuntos"];
+        $orden=$_POST["inorden"];
+        $entrega=$_POST["inentrega"];
+        $giro=$_POST["ingiro"];
         
         $r="INSERT INTO productores VALUES(NULL,'".$nom."','".$reg."','".$dom."','".$cp."','".$ciu."','".$muni."','".$est."','".$tel."','".$corr."',".$puntos.",".$orden.",".$entrega.",'".$giro."')";
         mysqli_query($enlace,$r);

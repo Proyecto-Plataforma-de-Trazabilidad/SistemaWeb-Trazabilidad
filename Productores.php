@@ -8,7 +8,7 @@ include "Layout/navMenu.php";
   <h1>Registrar Productores</h1>
 </div>
 <br>
-      <form class="row g-4 container-fluid" id="frm" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" onsubmit="return 0">
+      <form class="row g-4 container-fluid" id="frm" method="POST" action="ProductoresArchivos/metodosProd.php">
 
         <div class="col-sm-4">
           <label for="innom" class="form-label">Nombre</label>
@@ -76,7 +76,7 @@ include "Layout/navMenu.php";
         </div>
 
         <div class="col-12">
-          <button type="submit" class="btn btn-success" onclick="" name="Registrar">Registrar</button>
+          <button type="submit" class="btn btn-success" name="Registrar" form="frm">Registrar</button>
         </div>
 
       </form>

@@ -1,5 +1,5 @@
 <?php
-    include 'conexion.php';
+    include '../conexion.php';
     $tipo=$_POST['tipo'];
 
 

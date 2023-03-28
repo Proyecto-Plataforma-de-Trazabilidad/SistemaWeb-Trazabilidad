@@ -12,35 +12,36 @@ $(document).ready(function(){
         }
     });
     window.addEventListener('resize', function(event){
-        $('#tabla').DataTable().fnDestroy();
         $('#tabla').DataTable({
             scrollX:true,
+            destroy:true, //Este parámetro permite volver a generar el DataTable destruyendo la que ya estaba para que no se pisen
         });
     },true);
 
 
     $('#frm').submit(function(e){
         e.preventDefault();
-        let nom=document.getElementById("innom").value;
-        let reg=document.getElementById("inreg").value;
-        let dom=document.getElementById("indom").value;
-        let cp=document.getElementById("incp").value;
-        let ciu=document.getElementById("inciu").value;
-        let muni=document.getElementById("inmuni").value;
-        let est=document.getElementById("inest").value;
-        let tel=document.getElementById("intel").value;
-        let corr=document.getElementById("incorr").value;
-        let puntos=document.getElementById("inpuntos").value;
-        let orden=document.getElementById("inorden").value;
-        let entrega=document.getElementById("inentrega").value;
-        let giro=document.getElementById("ingiro").value;
-        let tipofuncion="registrar";
-        let parametros={"nom":nom, "reg":reg, "dom":dom, "cp":cp,"ciu":ciu, 
-                        "muni":muni, "est":est, "tel":tel, "corr":corr, 
-                        "puntos":puntos,"orden":orden,"entrega":entrega,
-                        "giro":giro, "tipo":tipofuncion}
+        let formData = new FormData(this); //Este método trae todos los datos del form sin necesidad de leer el valor de cada campo
+        formData.append("tipo", "registrar");
 
-        console.log("Registra")
-    })
+        $.ajax({
+            url:'ProductoresArchivos/metodosProd.php',
+            data:formData,
+            type:'POST',
+            contentType: false,
+            cache: false,
+            processData:false,
+            success:function(response){
+                $('#bodyTabla').html(response);
+                // $('#tabla').DataTable({   //No necesita volver a convertir la tabla en DataTable 
+                //     scrollX:true,
+                //     destroy:true,
+                // });
+            }
+        });
+        
+        $('#frm').trigger('reset');
+        
+    });
 
 });

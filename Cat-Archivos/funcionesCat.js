@@ -1,11 +1,10 @@
 $(document).ready(function(){
 
     function combocat(){
-        let tipoFuncion="combo1";
-        let parametros={"tipo":tipoFuncion}
+
         $.ajax({
             url:'Cat-Archivos/metodosCat.php',
-            data:parametros,
+            data:{"tipo": "combo1"},
             type:'POST',
             success:function(response){
                 $('#inres').html(response);

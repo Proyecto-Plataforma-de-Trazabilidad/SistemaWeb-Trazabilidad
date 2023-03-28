@@ -16,27 +16,6 @@ include "Layout/navMenu.php";
     <title>APEJAL-Ordenes</title>
 </head>
 
-<!-- Estilos de validacion de los campos esto se puede agregar a una hoja de estilo principal. (para no repetir este codigo en todos) -->
-<!-- <header>
-    <style>
-        input:invalid {
-            border-color: red;
-        }
-
-        input:valid {
-            border-color: green;
-        }
-
-        select:invalid {
-            border-color: red;
-        }
-
-        select:valid {
-            border-color: green;
-        }
-    </style>
-</header> -->
-
 <body>
     <section class="titulo">
         <div>

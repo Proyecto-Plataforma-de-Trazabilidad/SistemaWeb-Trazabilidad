@@ -1,6 +1,6 @@
 <?php
 include "Layout/navMenu.php";
-include 'conexion.php';
+include './conexion.php';
 $r = "SELECT * FROM usuarios where nombre = '$varses'";
 $res = mysqli_query($enlace, $r);
 $filas = mysqli_fetch_array($res);

@@ -7,7 +7,7 @@ include "Layout/navMenu.php";
 
 <h1>Registrar Distribuidores</h1>
 
-<form class="row g-4 container-fluid" id="frm" method="POST" action="DistArchivos/Insertar.php" onsubmit="return valdez()" enctype="multipart/form-data">
+<form class="row g-4 container-fluid" id="frm" method="POST" action="DistArchivos/Insertar.php" enctype="multipart/form-data">
 
   <div class="col-sm-4">
     <label for="innom" class="form-label">Nombre</label>
@@ -89,7 +89,7 @@ include "Layout/navMenu.php";
   </div>
 
   <div class="col-3">
-    <button type="submit" class="btn btn-success" onclick="" name="Registrar">Registrar</button>
+    <button type="submit" class="btn btn-success"  name="Registrar" form="frm">Registrar</button>
   </div>
   <div class="col-3">
     <a href="DistArchivos/consultaMaps.php"><button type="button" class="btn btn-primary" onclick="" name="Registrar">Ubicaciones</button></a>
@@ -182,6 +182,44 @@ include "Layout/navMenu.php";
 <script type="text/javascript" src="DistArchivos/funcionesDist.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
 <script src="Layout/menujs.js"></script>
+<script>
+      $('#frm').submit(function(e){
+        e.preventDefault();
+        let formData = new FormData(this); //Este método trae todos los datos del form sin necesidad de leer el valor de cada campo
+        
+        $.ajax({
+            url:'DistArchivos/Insertar.php',
+            data:formData,
+            type:'POST',
+            contentType: false,
+            cache: false,
+            processData:false,
+            success:function(response){ //!!!Las respuestas que reciba de la petición se deben imprimir con sweetalerts
+              location.reload();
+              //registrarUsuario();  //Funcion para hacer el registro del usuario con los datos del form
+            }
+        });
+        
+
+        function registrarUsuario() {
+          //console.log(formData);
+          formData.append("tipousuario", "3");
+
+          $.ajax({
+              url:'UserArchivos/nuevoRegistrar.php',
+              data:formData,
+              type:'POST',
+              contentType: false,
+              cache: false,
+              processData:false,
+              success:function(response){
+    
+              }
+          });
+        }
+
+    });
+</script>
 </body>
 
 </html>
