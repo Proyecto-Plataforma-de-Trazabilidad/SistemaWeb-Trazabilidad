@@ -13,7 +13,7 @@
 
 <br>
     <?php
-    include "conexion.php";
+    include "../conexion.php";
     $idtipo = $_GET['id'];
     $nueva = base64_decode($idtipo);
         $r="SELECT c.IdCAT, c.IdResponsableCAT, r.Nombre, c.NombreCentro, c.NumRegAmbiental, c.InformacionAdicional, 

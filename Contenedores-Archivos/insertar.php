@@ -1,6 +1,6 @@
 <?php
 
-    include 'conexion.php';
+    include '../conexion.php';
     $tipoorigen=$_POST['intipoorigen'];
     $tipocont=$_POST['intipocont'];
     $cap=$_POST['incap'];

@@ -4,10 +4,9 @@ session_start();
 $varses = $_SESSION['usuario'];
 if ($varses == null || $varses == '') {
     header("Location: index.php");
-    
 }
 
-include('conexion.php');
+include('./conexion.php');
 $consulta = "SELECT * FROM usuarios where Nombre = '$varses'";
 $res = mysqli_query($enlace, $consulta);
 $filass = mysqli_fetch_array($res);
@@ -34,12 +33,16 @@ $filass = mysqli_fetch_array($res);
     <link rel="stylesheet" href="Datatables-1.11.3/css/dataTables.bootstrap5.min.css">
 
 
-    <link rel="stylesheet" href="menucss.css">
+    <link rel="stylesheet" href="./Layout/menucss.css">
     <link rel="stylesheet" href="botones.css">
 
     <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script>
 
-
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
 
 
 
@@ -60,7 +63,6 @@ $filass = mysqli_fetch_array($res);
         <div class="name__page">
             <i class="fa-sharp fa-solid fa-user" title="Sesión"></i>
             <h4><?php echo $_SESSION['usuario']; ?></h4>
-            
         </div>
 
         <div class="options__menu">
@@ -68,8 +70,10 @@ $filass = mysqli_fetch_array($res);
             <!--Inicio-->
             <a href="inicio.php" aria-current="page">
                 <div class="option">
+
                     <i class="fa-sharp fa-solid fa-house" title="Inicio"></i>
                     <h4>Inicio</h4>
+
                 </div>
             </a>
 
@@ -141,7 +145,7 @@ $filass = mysqli_fetch_array($res);
 
 
 
-    
+
 
     <main>
 
@@ -158,7 +162,9 @@ $filass = mysqli_fetch_array($res);
             </div>
 
             <div class="col-sm-12">
-                <center><p style="font-family:'Times New Roman', Times, serif; font-style:italic; font-size:20px; font-weight:bold;">"Combatiendo la piratería de agroquímicos"</p></center>
+                <center>
+                    <p style="font-family:'Times New Roman', Times, serif; font-style:italic; font-size:20px; font-weight:bold;">"Combatiendo la piratería de agroquímicos"</p>
+                </center>
             </div>
         </div>
 
