@@ -25,13 +25,23 @@ $filas = mysqli_fetch_array($res);
       <input type="text" class="form-control" id="innom" name="innom" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}"  placeholder="Ingresa un nombre">
     </div>
 
-    <div class="col-4">
+    <div class="col-sm-4">
       <label for="inNra" class="form-label">Número de registro ambiental</label>
       <input type="number" class="form-control" id="inNra" maxlength="10" name="inNra"  placeholder="Ingresa el número de registro">
     </div>
+
+    <div class="col-sm-4">
+      <label for="inest" class="form-label">Estado</label>
+      <select class="form-select" id="inest" name="inest" >
+
+      </select>
+    </div>
+
     <div class="col-4">
-      <label for="indom" class="form-label">Domicilio</label>
-      <input type="text" class="form-control" id="indom" name="indom" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}"  placeholder="Ingresa un domicilio">
+      <label for="inmuni" class="form-label">Municipio</label>
+      <select  class="form-select" id="inmuni" name="inmuni">
+
+      </select>
     </div>
 
     <div class="col-4">
@@ -40,14 +50,10 @@ $filas = mysqli_fetch_array($res);
     </div>
 
     <div class="col-4">
-      <label for="inmuni" class="form-label">Municipio</label>
-      <input type="text" class="form-control" id="inmuni" name="inmuni" maxlength="40" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.,]{1,30}"  placeholder="Ingresa un municipio">
+      <label for="indom" class="form-label">Domicilio</label>
+      <input type="text" class="form-control" id="indom" name="indom" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}"  placeholder="Ingresa un domicilio">
     </div>
 
-    <div class="col-4">
-      <label for="inest" class="form-label">Estado</label>
-      <input type="text" class="form-control" id="inest" name="inest" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.,]{1,30}" placeholder="Ingresa un estado">
-    </div>
 
     <div class="col-4">
       <label for="intel" class="form-label">Teléfono</label>
@@ -193,10 +199,11 @@ $filas = mysqli_fetch_array($res);
   </script>
   
   <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
   <script type="text/javascript" src="datatables.min.js"></script>
   <script type="text/javascript" src="Cat-Archivos/funcionesCat.js"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
-  <script src="menujs.js"></script>
+  <script src="Layout/menujs.js"></script>
 </main>
 </body>
 

@@ -34,7 +34,7 @@
                 $r="UPDATE contenedores SET ReferenciaPermiso='".$ruta."' WHERE IdContenedor=".$lastid;
                 $resultado=mysqli_query($enlace,$r);
                 if($resultado){
-                    echo "<script>alert('Archivo subido'); window.location='../Contenedores.php'</script>";
+                    echo "<script>window.location='../Contenedores.php'</script>";
                 }
                 else{
                 printf("Errormessage: %s\n" , mysqli_error($enlace));

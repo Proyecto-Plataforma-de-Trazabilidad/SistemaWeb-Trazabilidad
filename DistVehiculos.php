@@ -3,7 +3,7 @@ include "Layout/navMenu.php";
 ?>
 
 <div class="container">
-  <h1>Registrar Vehículos Distribuidores</h1>
+  <h1>Vehículos de Distribuidores</h1>
 </div>
 <br>
 <form class="row g-4 container-fluid" id="frm" method="POST" action="DistVehicArchivos/insertar.php" onsubmit="return valdez()" enctype="multipart/form-data">
