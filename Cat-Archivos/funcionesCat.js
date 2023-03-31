@@ -13,6 +13,38 @@ $(document).ready(function(){
         });
     }
     combocat();
+
+    function combomuni(){
+        let tipoFuncion = "comboMuni";
+        let parametros = {"tipo": tipoFuncion}
+        $.ajax({
+            url: 'Cat-Archivos/metodosCat.php',
+            data: parametros,
+            type: 'POST',
+            success: function(response){
+                $('#inest').html(response);
+            }
+        });
+    }
+    combomuni();
+
+    function comboestado(){
+        let tipoFuncion = "comboEst";
+        let parametros = {"tipo": tipoFuncion}
+        $.ajax({
+            url: 'Cat-Archivos/metodosCat.php',
+            data: parametros,
+            type: 'POST',
+            success: function(response){
+                $('#inmuni').html(response);
+            }
+        });
+    }
+    comboestado();
+
+    
+
+    
  
 
 

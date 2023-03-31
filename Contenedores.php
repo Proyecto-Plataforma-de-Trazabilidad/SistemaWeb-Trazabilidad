@@ -15,7 +15,7 @@ include "Layout/navMenu.php";
   <h1>Registrar Contenedores</h1>
 </div>
 <br>
-<form class="row g-4 container-fluid" id="frm" method="POST" action="Contenedores-Archivos/insertar.php" onsubmit="return valdez()" enctype="multipart/form-data">
+<form class="row g-4 container-fluid" id="frm" method="POST" action="Contenedores-Archivos/insertar.php" onsubmit="return validarArchivo()" enctype="multipart/form-data">
 
   <div class="col-md-2">
     <label for="intipocont" class="form-label">Tipo de contenedor</label>
@@ -163,8 +163,21 @@ include "Layout/navMenu.php";
     })
   }
 
-  //Boton que te muestra un mensaje de confirmación perzonalizado
-  
+  function validarArchivo(){
+    var archivo = document.getElementById("infile");
+
+    if(archivo.value == null || archivo.value == ""){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error en el archivo',
+        text: 'Asegurese de seleccionar un archivo .pdf .jpeg .jpg .png'
+
+      });
+      return false;
+    } else{
+      return true;
+    }
+  }
 </script>
 
 

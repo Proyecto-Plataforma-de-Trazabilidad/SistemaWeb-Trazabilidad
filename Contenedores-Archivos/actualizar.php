@@ -33,7 +33,7 @@
                 InstruccionesManejo='".$manejo."', CapacidadStatus=".$cap.", ReferenciaPermiso='".$ruta."' WHERE IdContenedor=".$id;
                 $resultado=mysqli_query($enlace,$r);
                 if($resultado){
-                    echo "<script>alert('Archivo subido'); window.location='../Contenedores.php'</script>";
+                    echo "<script> window.location='../Contenedores.php'</script>";
                 }
                 else{
                 printf("Errormessage: %s\n" , mysqli_error($enlace));
@@ -41,7 +41,13 @@
             }
         }
         else{
-            echo "<script>alert('Solo se permiten archivos con extensión .pdf .jpg .jpeg .png');</script>";
+            echo "<script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Solo se permiten archivos con extensión .pdf, .jpg, .jpeg, .png',
+                text: 'Intentar de nuevo.',
+              });
+            </script>";
         }
     }
     else{
