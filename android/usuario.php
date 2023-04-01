@@ -5,7 +5,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){ //comprobar si la peticion es POST si no
     include('database.php');
 
    // $conn=mysqli_connect($host_name,$host_user,$host_password,$database);
-   $conn = new PDO('mysql:host=localhost;dbname='.$database,$host_user,$host_password);
+   $conn = new PDO('mysql:host='.$host_name.';dbname='.$database,$host_user,$host_password);
 
     //$option SI es insercion,actualizacion, consulta ,login... y tenerlo en este mismo documento
     switch($_POST['opcion']){
@@ -43,5 +43,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){ //comprobar si la peticion es POST si no
    
     //codificar los datos en json que se enviaran a la app en android
     echo json_encode($response);//lo que imprima como respuesta se manda a voley para interpretarlo mediante JSon
+    $conn = null; //Limpia la conexión
 }
 ?>

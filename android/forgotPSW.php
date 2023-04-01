@@ -3,7 +3,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
     //conexion
     include('database.php');
-    $conn = new PDO('mysql:host=localhost;dbname='.$database,$host_user,$host_password);
+    $conn = new PDO('mysql:host='.$host_name.';dbname='.$database,$host_user,$host_password);
     
     switch($_POST['opcion']){
         case 'recupera':
@@ -60,5 +60,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         break;
     }
     echo $r;
+    $conn = null;
 }
 ?>

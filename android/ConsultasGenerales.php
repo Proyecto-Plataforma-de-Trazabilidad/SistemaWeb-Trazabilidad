@@ -3,7 +3,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 { 
     include('database.php');
     //$conn=mysqli_connect($hostname,$host_user,$host_password,$database);
-    $conn = new PDO('mysql:host=localhost;dbname='.$database,$host_user,$host_password);
+    $conn = new PDO('mysql:host='.$host_name.';dbname='.$database,$host_user,$host_password);
     
     
     //$option SI es insercion,actualizacion, consulta ,login... y tenerlo en este mismo documento
@@ -45,5 +45,6 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     }
 
     echo json_encode($res);
+    $conn = null; //Limpia la conexión
 }
 ?>
