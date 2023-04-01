@@ -1,6 +1,6 @@
 <?php
 $host_name="localhost";
-$host_user="id19597397_naylea";
-$host_password="Xnwtt6ti2AhQsY*k";
-$database="id19597397_practica";
+$host_user="u517350403_admindb";
+$host_password="Te-k3li-L!";
+$database="u517350403_campolimpiojal";
 ?>
