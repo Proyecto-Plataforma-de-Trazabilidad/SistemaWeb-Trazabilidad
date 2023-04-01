@@ -1,5 +1,5 @@
 <?php
-    $host="localhost";
+    $host="127.0.0.1";
     $puerto="3306";
     $usuario="u517350403_admindb";
     $contrasena="Te-k3li-L!";
