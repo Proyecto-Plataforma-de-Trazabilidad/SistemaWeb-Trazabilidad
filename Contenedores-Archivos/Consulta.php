@@ -1,9 +1,12 @@
 <?php
   include "../Layout/navMenu2.php";
+  $consulta = "Select * from usuarios where Correo = '$varses'";
+  $res = mysqli_query($enlace, $consulta);
+  $filas = mysqli_fetch_array($res);
 ?>
+<script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
 
 
-<br><br>
 <div class="container">
   <h1>Consulta Contenedor</h1>
 </div>
@@ -164,6 +167,25 @@
             document.getElementById("inlon").value=this.getPosition().lng();
           })
         }
+      </script>
+
+      <!--Código PHP para obtener el IDtiporol del usuario que inició sesión-->
+      <?php
+        $rol = $filas['Idtipousuario'];
+      ?>
+
+      <!--Código de JS para mandar a una variable de js el valor de una variable php-->
+      <script type="text/javascript">
+
+            var rol = "<?php echo $rol; ?>";
+
+            //Si el id del rol obtenido, únicamente puede consultar -> ocultar los botones de guardar y editar
+            if (rol == 3 || rol == 2 || rol == 11 || rol == 4) {
+              $(function(){
+                $('#btnEditar').hide();
+                $('#btnGuardar').hide();
+              });
+            }   
       </script>
       
 

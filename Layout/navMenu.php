@@ -7,7 +7,7 @@ if ($varses == null || $varses == '') {
 }
 
 include('./conexion.php');
-$consulta = "SELECT * FROM usuarios where Nombre = '$varses'";
+$consulta = "SELECT * FROM usuarios where Correo = '$varses'";
 $res = mysqli_query($enlace, $consulta);
 $filass = mysqli_fetch_array($res);
 
@@ -21,7 +21,7 @@ $filass = mysqli_fetch_array($res);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APEAJAL</title>
+    <title>Trazabilidad</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
@@ -36,6 +36,7 @@ $filass = mysqli_fetch_array($res);
 
     <link rel="stylesheet" href="./Layout/menucss.css">
     <link rel="stylesheet" href="botones.css">
+    
     
 
     <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script>
@@ -64,7 +65,7 @@ $filass = mysqli_fetch_array($res);
 
         <div class="name__page">
             <i class="fa-sharp fa-solid fa-user" title="Sesión"></i>
-            <h4><?php echo $_SESSION['usuario']; ?></h4>
+            <h4><?php echo $filass[2]; ?></h4>
         </div>
 
         <div class="options__menu">

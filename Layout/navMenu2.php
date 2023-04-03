@@ -7,7 +7,7 @@ if ($varses == null || $varses == '') {
 }
 
 include('../conexion.php');
-$consulta = "SELECT * FROM usuarios where Nombre = '$varses'";
+$consulta = "SELECT * FROM usuarios where Correo = '$varses'";
 $res = mysqli_query($enlace, $consulta);
 $filas = mysqli_fetch_array($res);
 

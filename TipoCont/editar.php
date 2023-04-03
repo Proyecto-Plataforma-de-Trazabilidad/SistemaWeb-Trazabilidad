@@ -1,15 +1,18 @@
 <?php
   include "../Layout/navMenu2.php";
+  $consulta = "SELECT * FROM usuarios where Correo = '$varses'";
+  $res = mysqli_query($enlace, $consulta);      
+  $filas = mysqli_fetch_array($res);
 ?>
+<script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
 
-<br><br>
 <div class="container">
-  <h1>Editar Tipo de Contenedor</h1>
+  <h1>Tipo de Contenedor</h1>
 </div>
 <br>
 
     <?php
-        include "conexion.php";
+        include "../conexion.php";
         $idtipo=$_GET['id'];
         $nueva = base64_decode($idtipo);
         $r="SELECT * FROM tipocontenedor WHERE idTipoCont=".$nueva;
@@ -37,7 +40,26 @@
       ?>
       <br><br>
       <br>
-      <script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
+
+    <!--Código PHP para obtener el IDtiporol del usuario que inició sesión-->
+    <?php
+        $rol = $filas['Idtipousuario'];
+      ?>
+
+      <!--Código de JS para mandar a una variable de js el valor de una variable php-->
+      <script type="text/javascript">
+
+            var rol = "<?php echo $rol; ?>";
+
+            //Si el id del rol obtenido, únicamente puede consultar -> ocultar los botones de guardar y editar
+            if (rol == 4) {
+              $(function(){
+                $('#btnGuardar').hide();
+              });
+            }   
+      </script>
+    
+    <script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../datatables.min.js"></script>
     <script type="text/javascript" src="editar.js"></script>

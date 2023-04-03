@@ -1,12 +1,11 @@
 <?php
   include "../Layout/navMenu2.php";
-  $consulta = "SELECT * FROM usuarios where nombre = '$varses'";
+  $consulta = "SELECT * FROM usuarios where Correo = '$varses'";
   $res = mysqli_query($enlace, $consulta);      
   $filas = mysqli_fetch_array($res);
 ?>
 <script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
 
-<br><br>
 <div class="container">
   <h1>Consulta Centro de Acopio Temporal</h1>
 </div>
@@ -190,7 +189,7 @@
             var rol = "<?php echo $rol; ?>";
 
             //Si el id del rol obtenido, únicamente puede consultar -> ocultar los botones de guardar y editar
-            if (rol == 3) {
+            if (rol == 2 || rol == 3 || rol == 4 || rol == 6 || rol == 11) {
               $(function(){
                 $('#editar').hide();
                 $('#guardar').hide();

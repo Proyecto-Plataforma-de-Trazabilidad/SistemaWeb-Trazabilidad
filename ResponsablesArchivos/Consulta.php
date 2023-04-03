@@ -1,6 +1,10 @@
 <?php
   include "../Layout/navMenu2.php";
+  $consulta = "SELECT * FROM usuarios where Correo = '$varses'";
+  $res = mysqli_query($enlace, $consulta);      
+  $filas = mysqli_fetch_array($res);
 ?>
+<script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
 
 <header>
 <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.min.css">
@@ -84,6 +88,26 @@
       </form>
     
       <br><br>
+
+
+    <!--Código PHP para obtener el IDtiporol del usuario que inició sesión-->
+    <?php
+        $rol = $filas['Idtipousuario'];
+      ?>
+
+      <!--Código de JS para mandar a una variable de js el valor de una variable php-->
+      <script type="text/javascript">
+
+            var rol = "<?php echo $rol; ?>";
+
+            //Si el id del rol obtenido, únicamente puede consultar -> ocultar los botones de guardar y editar
+            if (rol == 4 || rol == 6) {
+              $(function(){
+                $('#editar').hide();
+                $('#guardar').hide();
+              });
+            }   
+      </script>
 
     <script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>

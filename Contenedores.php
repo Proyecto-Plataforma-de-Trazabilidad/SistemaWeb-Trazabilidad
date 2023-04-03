@@ -1,6 +1,11 @@
 <?php
 include "Layout/navMenu.php";
+include 'conexion.php';
+$r = "SELECT * FROM usuarios where Correo = '$varses'";
+$res = mysqli_query($enlace, $r);
+$filas = mysqli_fetch_array($res);
 ?>
+<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 
 <head>
   <style>
@@ -12,7 +17,7 @@ include "Layout/navMenu.php";
 
 <br><br>
 <div class="container">
-  <h1>Registrar Contenedores</h1>
+  <h1>Contenedores</h1>
 </div>
 <br>
 <form class="row g-4 container-fluid" id="frm" method="POST" action="Contenedores-Archivos/insertar.php" onsubmit="return validarArchivo()" enctype="multipart/form-data">
@@ -178,6 +183,25 @@ include "Layout/navMenu.php";
       return true;
     }
   }
+</script>
+
+<!--Código PHP para obtener el IdTipoRol del usuario que inició la sesión-->
+<?php
+  $rol = $filas['Idtipousuario'];
+?>
+
+<!--Código de JS para mandar a una variable de js el valor de una variable de php-->
+<script>
+  
+    var rol = "<?php echo $rol; ?>";
+    console.log(rol);
+
+    //Si el ID del rol obtenido, únicamente puede consultar -> ocultar el formulario
+    if (rol == 3 || rol == 2 || rol == 11 || rol == 4){
+      $(function(){
+        $('#frm').hide();
+      });
+    }
 </script>
 
 
