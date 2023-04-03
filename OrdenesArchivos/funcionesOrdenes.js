@@ -1,0 +1,40 @@
+
+    const distri = document.getElementById("nomDistri");
+    const orden = document.getElementById("numOrden");
+    //const numOrden= orden.getAttribute('data-numOrden');
+    const tipoQuimi = document.getElementById("tipoQuimi");
+    const nombreProdu = document.getElementById("nomProdu");
+    
+    
+    function añadirQumicos(quimico){
+        let quimi = quimico;
+        tipoQuimi.insertAdjacentHTML('beforeend', `<option value="${quimi.IdTipo}">${quimi.Concepto}</option>`);
+        
+    }
+
+    function añadirProductor(productor){
+        let product = productor;
+        nombreProdu.insertAdjacentHTML('beforeend', `<option value="${product.IdProductor}">${product.Nombre}</option>`);
+    }
+
+    $.ajax({
+        url:'OrdenesArchivos/peticiones.php',
+        type: 'GET',
+        success: function (res) {
+          
+            let datos = JSON.parse(res);//Trae los datos en formato json y los pasa a objeto
+            distri.placeholder = datos.usuario; //Ubica al usuario en el input
+            orden.textContent = "Numero de orden: " + datos.orden; //Coloca el numero de orden
+            orden.dataset.numOrden = ""+datos.orden;
+            distri.dataset.idDistribuidor = ""+datos.IdDistri; //Asigna el id del distribuidor al dataset
+
+            datos.quimicos.map(quimico => añadirQumicos(quimico)); //Rellena la combo tipoQumicos
+            datos.produtores.map(productor => añadirProductor(productor));//Rellena la combo proveedores      
+        }
+    })
+
+
+
+
+
+

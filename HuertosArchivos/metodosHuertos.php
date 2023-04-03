@@ -22,7 +22,7 @@
         $hue=$_POST['hue'];
         $lat=$_POST['lat'];
         $lon=$_POST['lon'];
-        $r="INSERT INTO huertos VALUES('null',".$prod.",".$lat.", ".$lon.",'".$hue."')";
+        $r="INSERT INTO huertos VALUES(null,".$prod.",".$lat.", ".$lon.",'".$hue."')";
         mysqli_query($enlace,$r);
         cargarTabla();
     }
@@ -39,7 +39,7 @@
                 <td>".$row[0]."</td>
                 <td>".$row[1]."</td>
                 <td>".$row[2]."</td>
-                <td><a href='HuertosArchivos/editar.php?id=".$row[0]."'><input type='button' value='Consultar' id='btnEditar' class='btn btn-primary'></td>
+                <td><a href='HuertosArchivos/editar.php?id=".base64_encode($row[0])."'><input type='button' value='Consultar' id='btnEditar' class='btn btn-primary'></td>
             </tr>
             ";
         }

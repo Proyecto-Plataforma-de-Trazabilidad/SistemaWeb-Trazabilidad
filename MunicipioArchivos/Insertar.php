@@ -25,7 +25,7 @@
         $arregloArchivo=explode(".",$nombre_base);
         $extension=strtolower(end($arregloArchivo));
         if(in_array($extension, $permitidos)){
-            $r="INSERT INTO municipio VALUES('null','".$nom."','".$dom."','".$tel."','".$cp."','".$est."','".$corr."','".$lat."','".$lon."','".$res."','0')";
+            $r="INSERT INTO municipio VALUES(null,'".$nom."','".$dom."','".$tel."','".$cp."','".$est."','".$corr."','".$lat."','".$lon."','".$res."','0')";
             $resultado=mysqli_query($enlace,$r);
             $lastid=mysqli_insert_id($enlace);
 

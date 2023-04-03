@@ -1,13 +1,7 @@
 <?php
-    include 'conexion.php';
+    include '../conexion.php';
     $tipo=$_POST['tipo'];
 
-
-    if($tipo==null)
-    {   
-        cargarTabla();
-    }
-    
     if($tipo=='combo1'){
         
         $r="SELECT * FROM responsablecat";
@@ -15,9 +9,32 @@
         while($row=mysqli_fetch_array($comando))
         {
             echo "<option value='".$row[0]."'>".$row[1]."</option>";
-        }
-        mysqli_close($enlace);
+        }  
     }
+
+    if ($tipo == 'comboEst') {
+        $r = "SELECT * FROM estados";
+        $comando = mysqli_query($enlace, $r);
+        while($row = mysqli_fetch_array($comando)){
+            echo "option value ='".$row[2]."'>".$row[2]."</option>";
+        }
+    }
+
+    if($tipo == 'comboMuni'){
+        $est = $_POST['est'];
+        $r  = "SELECT id, nombre from municipios where estado_id = '$est'";
+        $comando = mysqli_query($enlace, $r);
+        while($row = mysqli_fetch_array($comando)){
+            echo "option value ='".$row[2]."'>".$row[2]."</option>";
+        }
+    }
+
+    if($tipo==null)
+    {   
+        cargarTabla();
+    }
+    
+    
 
 
     
@@ -37,8 +54,8 @@
         $lat=$_POST['lat'];
         $lon=$_POST['lon'];
         $plan=$_POST['plan'];
-        echo("Paso por aqui php");
-        $r="INSERT INTO centroacopiotemporal VALUES('null',".$res.",'".$nom."',".$nra.",'".$des."','".$dom."','".$cp."','".$muni."','".$est."',
+        
+        $r="INSERT INTO centroacopiotemporal VALUES(null,".$res.",'".$nom."',".$nra.",'".$des."','".$dom."','".$cp."','".$muni."','".$est."',
         '".$tel."','".$corr."','".$hor."','".$lat."','".$lon."','".$plan."')";
         mysqli_query($enlace,$r);
         
@@ -49,8 +66,9 @@
     
     function cargarTabla()
     {
-        include 'conexion.php';
-        $r="SELECT IdCat, NombreCentro, NumRegAmbiental, Domicilio, Municipio, Telefono, HorarioDiasLaborales FROM centroacopiotemporal";
+        include '../conexion.php';
+        $r="SELECT c.IdCat, r.Nombre, c.NombreCentro, c.NumRegAmbiental, c.Domicilio, c.Municipio, c.Telefono, c.HorarioDiasLaborales FROM centroacopiotemporal as c inner join responsablecat as r on c.IdResponsableCat = r.IdCAT";
+        
         $comando= mysqli_query($enlace, $r);
         while($row=mysqli_fetch_array($comando)){
             echo "
@@ -62,7 +80,8 @@
                 <td>".$row[4]."</td>
                 <td>".$row[5]."</td>
                 <td>".$row[6]."</td>
-                <td><a href='Cat-Archivos/Consulta.php?id=".$row[0]."'><input type='button' value='Consultar' class='btn btn-primary'></td>
+                <td>".$row[7]."</td>
+                <td><a href='Cat-Archivos/Consulta.php?id=".base64_encode($row[0])."'><input type='button' value='Consultar' class='btn btn-primary'></td>
             </tr>";
         }
         mysqli_close($enlace);

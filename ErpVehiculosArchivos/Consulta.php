@@ -9,7 +9,9 @@
 <br>
         <?php 
             include '../conexion.php';
-            $r="SELECT * FROM erpvehiculos WHERE IdERP=".$_GET['id'];
+            $idtipo = $_GET['id'];
+            $nueva = base64_decode($idtipo);
+            $r="SELECT * FROM erpvehiculos WHERE Consecutivo=".$nueva;
             $comando= mysqli_query($enlace, $r);
             $row=mysqli_fetch_array($comando);
         ?>
@@ -17,12 +19,12 @@
 
         <div class="col-2">
           <label for="inid" class="form-label">idERP</label>
-          <input type="text" class="form-control" id="inid"  name="inid" maxlength="60" readonly value="<?php echo($row[0]);?>">
+          <input type="text" class="form-control" id="inid"  name="inid" maxlength="60" readonly value="<?php echo($row[1]);?>">
         </div>
 
         <div class="col-sm-4">
           <label for="incon" class="form-label">Consecutivo</label>
-          <input type="text" class="form-control" id="incon"  name="incon" maxlength="60" disabled required value="<?php echo($row[1]);?>">
+          <input type="text" class="form-control" id="incon"  name="incon" maxlength="60" disabled required value="<?php echo($row[0]);?>">
         </div>
 
         <div class="col-sm-4">

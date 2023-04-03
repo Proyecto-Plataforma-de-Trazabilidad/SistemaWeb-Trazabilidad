@@ -9,8 +9,9 @@
 <br>
         <?php
             include "../conexion.php";
-            $id=$_GET['id'];
-            $r="SELECT * FROM distribuidores WHERE IdDistribuidor=".$id;
+            $idtipo = $_GET['id'];
+            $nueva = base64_decode($idtipo);
+            $r="SELECT * FROM distribuidores WHERE IdDistribuidor=".$nueva;
             $comando= mysqli_query($enlace, $r);
             $row=mysqli_fetch_array($comando);
             
@@ -21,7 +22,7 @@
       <form class="row g-4 container-fluid" id="frm" method="POST" action="actualizar.php" onsubmit="return valdez()" enctype="multipart/form-data">
 
         <div class="col-sm-1">
-          <label for="inid" class="form-label">IdDistribuidor</label>
+          <label for="inid" class="form-label">Id</label>
           <input type="text" class="form-control" id="inid"  name="inid" maxlength="60" required disabled value="<?php echo($row[0]);?>">
         </div>
 

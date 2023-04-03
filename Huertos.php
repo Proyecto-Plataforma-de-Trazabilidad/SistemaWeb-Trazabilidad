@@ -1,5 +1,5 @@
 <?php
-include "navMenu.php";
+include "Layout/navMenu.php";
 ?>
 
 
@@ -18,15 +18,15 @@ include "navMenu.php";
 
       <div class="col-sm-2">
         <label for="inhue" class="form-label">HUE</label>
-        <input type="number" class="form-control" id="inhue" maxlength="10" name="inhue" required placeholder="Ingrese el HUE">
+        <input type="number" class="form-control" id="inhue" maxlength="10" name="inhue"  placeholder="Ingrese el HUE">
       </div>
       <div class="col-sm-3">
         <label for="inlat" class="form-label">Latitud</label>
-        <input type="text" class="form-control" id="inlat" maxlength="10" name="inlat" required placeholder="Ingrese la latitud">
+        <input type="text" class="form-control" id="inlat" maxlength="10" name="inlat"  placeholder="Ingrese la latitud">
       </div>
       <div class="col-sm-3">
         <label for="inlon" class="form-label">Longitud</label>
-        <input type="text" class="form-control" id="inlon" maxlength="10" name="inlon" required placeholder="Ingrese la longitud">
+        <input type="text" class="form-control" id="inlon" maxlength="10" name="inlon"  placeholder="Ingrese la longitud">
       </div>
 
       <div class="col-3">
@@ -110,7 +110,7 @@ include "navMenu.php";
     <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
-    <script type="text/javascript" src="HuertosArchivos/funcionesHuertos.js"></script>
+    <script type="text/javascript" src="HuertosArchivos/funcionesHuer.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
     <script src="menujs.js"></script>
   </main>

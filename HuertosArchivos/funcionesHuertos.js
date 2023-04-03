@@ -11,6 +11,7 @@ $(document).ready(function(){
             });
         }
     });
+    
     $.ajax({
         url:'HuertosArchivos/metodosHuertos.php',
         type:'POST',
@@ -21,7 +22,7 @@ $(document).ready(function(){
     });
     
 
-    $('#frm').submit(function(e){
+    /*$('#frm').submit(function(e){
         e.preventDefault();
         
         let prod=document.getElementById("inprod").value;
@@ -42,6 +43,15 @@ $(document).ready(function(){
             }
         });
         $('#frm').trigger('reset');
-    });
+    });*/
+
+    window.addEventListener('resize', function(event){
+        $('#tabla').DataTable().fnDestroy();
+        $('#tabla').DataTable({
+            scrollX:true,
+        });
+    },true);
+
+    
 
 });

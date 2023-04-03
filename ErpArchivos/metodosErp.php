@@ -19,7 +19,7 @@
 
     function cargarTabla(){
         include "../conexion.php";
-        $r="SELECT IdERP, Nombre, Domicilio, Telefono, Municipio, Permiso, SEMARNAT FROM empresarecolectoraprivada";
+        $r="SELECT IdERP, Nombre, Domicilio, Telefono, CP, Municipio, Edo, Correo, Permiso, SEMARNAT FROM empresarecolectoraprivada";
         $comando= mysqli_query($enlace, $r);
         while($row=mysqli_fetch_array($comando)){
             echo "
@@ -29,9 +29,12 @@
                 <td>".$row[2]."</td>
                 <td>".$row[3]."</td>
                 <td>".$row[4]."</td>
-                <td><a href='ErpArchivos/".$row[5]."'>Ver Permiso</a></td>                
-                <td><a href='ErpArchivos/".$row[6]."'>Ver documento</a></td>
-                <td><a href='ErpArchivos/consulta.php?id=".$row[0]."'><input type='button' value='Consultar' class='btn btn-primary'></td>
+                <td>".$row[5]."</td>
+                <td>".$row[6]."</td>
+                <td>".$row[7]."</td>
+                <td><a href='ErpArchivos/".$row[8]."'>Ver Permiso</a></td>                
+                <td><a href='ErpArchivos/".$row[9]."'>Ver documento</a></td>
+                <td><a href='ErpArchivos/consulta.php?id=".base64_encode($row[0])."'><input type='button' value='Consultar' class='btn btn-primary'></td>
             </tr>";
         }
         mysqli_close($enlace);

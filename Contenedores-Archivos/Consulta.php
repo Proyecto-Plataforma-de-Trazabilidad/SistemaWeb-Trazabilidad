@@ -9,9 +9,10 @@
 </div>
 <br>
     <?php
-    include "conexion.php";
-        $id=$_GET['id'];
-        $r="SELECT c.IdContenedor, t.Concepto, c.Origen, c.Capacidad, c.Descripcion, c.Latitud, c.Longitud, c.UltimaFechaRecoleccion, c.InstruccionesManejo, c.ReferenciaPermiso, t.idTipoCont FROM tipocontenedor as t inner join contenedores as c on c.IdTipoCont=t.idTipoCont WHERE IdContenedor=".$id;
+    include "../conexion.php";
+    $idtipo = $_GET['id'];
+    $nueva = base64_decode($idtipo);
+        $r="SELECT c.IdContenedor, t.Concepto, c.Origen, c.Capacidad, c.Descripcion, c.Latitud, c.Longitud, c.UltimaFechaRecoleccion, c.InstruccionesManejo, c.ReferenciaPermiso, t.idTipoCont FROM tipocontenedor as t inner join contenedores as c on c.IdTipoCont=t.idTipoCont WHERE IdContenedor=".$nueva;
         $comando= mysqli_query($enlace, $r);
         $row=mysqli_fetch_array($comando);
         
@@ -55,7 +56,7 @@
         
         <div class="col-sm-4">
           <label for="inulti" class="form-label">Última recolección</label>
-          <input type="text" class="form-control" id="inulti"  name="inulti" maxlength="60" disabled required value="<?php echo($row[7]);?>">
+          <input type="date" class="form-control" id="inulti"  name="inulti" maxlength="60" disabled required value="<?php echo($row[7]);?>">
         </div>
 
         <div class="col-md-4">

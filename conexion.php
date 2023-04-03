@@ -1,7 +1,7 @@
 <?php
-    $host="34.168.203.215";
+    $host="aws-dbinstance.cagy0earnfql.us-east-2.rds.amazonaws.com";
     $puerto="3306";
-    $usuario="admindb";
+    $usuario="admin";
     $contrasena="Te-k3li-L!";
     $baseDeDatos="apeajaldb";
 

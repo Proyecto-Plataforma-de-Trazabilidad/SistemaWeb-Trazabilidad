@@ -3,9 +3,15 @@ session_start();
 
 $varses = $_SESSION['usuario'];
 if ($varses == null || $varses == '') {
-    echo "Primero inicie sesión";
-    die();
+    header("Location: index.php");
 }
+
+include('./conexion.php');
+$consulta = "SELECT * FROM usuarios where Nombre = '$varses'";
+$res = mysqli_query($enlace, $consulta);
+$filass = mysqli_fetch_array($res);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -17,16 +23,28 @@ if ($varses == null || $varses == '') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APEAJAL</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!--SWEET ALERT-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="Datatables-1.11.3/css/dataTables.bootstrap5.min.css">
 
 
-    <link rel="stylesheet" href="menucss.css">
+    <link rel="stylesheet" href="./Layout/menucss.css">
     <link rel="stylesheet" href="botones.css">
     
+
     <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script>
 
-    
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
 
 
 
@@ -54,41 +72,68 @@ if ($varses == null || $varses == '') {
             <!--Inicio-->
             <a href="inicio.php" aria-current="page">
                 <div class="option">
+
                     <i class="fa-sharp fa-solid fa-house" title="Inicio"></i>
                     <h4>Inicio</h4>
+
                 </div>
             </a>
 
             <!--Catálogos-->
             <a href="Catalogos.php">
                 <div class="option">
-                    <i class="fa-sharp fa-solid fa-book"></i>
+                    <i class="fa-sharp fa-solid fa-book" title="Catálogos"></i>
                     <h4>Catálogos</h4>
                 </div>
 
-                
+
             </a>
 
             <!--Movimientos-->
-            <a href="">
+            <a href="Menu-Movimientos.php">
                 <div class="option">
-                    <i class="fa-sharp fa-solid fa-paper-plane"></i>
+                    <i class="fa-sharp fa-solid fa-paper-plane" title="Movimientos"></i>
                     <h4>Movimientos</h4>
+                </div>
+            </a>
+
+            <!--Reportes-->
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-file-circle-check" title="Reportes"></i>
+                    <h4>Reportes</h4>
                 </div>
             </a>
 
             <!--Ayuda-->
             <a href="#">
                 <div class="option">
-                    <i class="fa-sharp fa-solid fa-circle-info"></i>
+                    <i class="fa-sharp fa-solid fa-circle-info" title="Ayuda"></i>
                     <h4>Ayuda</h4>
                 </div>
             </a>
 
+            <?php
+            if ($filass[1] == 1) {
+
+            ?>
+                <!--Registrar Usuarios-->
+                <a href="rusers.php">
+                    <div class="option">
+                        <i class="fa-solid fa-user-pen"></i>
+                        <h4>Usuarios</h4>
+                    </div>
+                </a>
+            <?php
+            }
+            ?>
+
+
+
             <!--Salir-->
-            <a href="salir.php" onclick="return res()">
+            <a href="loggin/logout.php">
                 <div class="option">
-                    <i class="fa-sharp fa-solid fa-right-from-bracket"></i>
+                    <i class="fa-sharp fa-solid fa-right-from-bracket" title="Salir"></i>
                     <h4>Salir</h4>
                 </div>
             </a>
@@ -102,15 +147,27 @@ if ($varses == null || $varses == '') {
 
 
 
-    <script>
-        function res() {
-            var respuesta = confirm("¿Seguro que quieres salir?");
-            if (respuesta = true) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    </script>
+
 
     <main>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <center><img class="mb-4" src="Logos/APEAJAL2.jpg" alt="" width="80"></center>
+            </div>
+
+            <div class="col-sm-4">
+                <center><img class="mb-4" src="Logos/AMOCALI.jpg" alt="" width="80"></center>
+            </div>
+            <div class="col-sm-4">
+                <center><img class="mb-4" src="Logos/ASICA.jpg" alt="" width="80"></center>
+            </div>
+
+            <div class="col-sm-12">
+                <center>
+                    <p style="font-family:'Times New Roman', Times, serif; font-style:italic; font-size:20px; font-weight:bold;">"Combatiendo la piratería de agroquímicos"</p>
+                </center>
+            </div>
+        </div>
+
+        <hr style="background-color: green; height:5px;">

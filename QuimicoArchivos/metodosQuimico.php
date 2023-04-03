@@ -10,7 +10,7 @@
     if($tipo=="registrar")
     {
         $conc=$_POST['conc'];
-        $r="INSERT INTO tipoquimico VALUES('null', '".$conc."')";
+        $r="INSERT INTO tipoquimico VALUES(null, '".$conc."')";
         mysqli_query($enlace,$r);
         cargarTabla();
     }
@@ -26,7 +26,7 @@
             <tr>
                 <td>".$row[0]."</td>
                 <td>".$row[1]."</td>
-                <td><a href='QuimicoArchivos/editar.php?id=".$row[0]."'><input type='button' value='Editar' id='btnEditar' class='btn btn-primary'></td>
+                <td><a href='QuimicoArchivos/editar.php?id=".base64_encode($row[0])."'><input type='button' value='Editar' id='btnEditar' class='btn btn-primary'></td>
             </tr>
             ";
         }
@@ -42,7 +42,7 @@
     if($tipo=='borrar')
     {
         include '../conexion.php';
-        $r="Delete from Cat where idCAT=".$_POST['idcat'];
+        $r="Delete from tipoquimico where IdTipoQuimico=".$_POST['idtipo'];
         $comando= mysqli_query($enlace, $r);
         mysqli_close($enlace);
     }

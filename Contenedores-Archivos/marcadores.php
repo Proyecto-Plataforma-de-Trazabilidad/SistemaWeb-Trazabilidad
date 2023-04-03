@@ -1,6 +1,6 @@
 <?php
     //Archivo de conexiona  la BD
-    include('conexion.php');
+    include('../conexion.php');
 
     // Listamos las direcciones con todos sus datos (lat, lng, dirección, etc.)
     $result = mysqli_query($enlace, "SELECT * FROM contenedores");

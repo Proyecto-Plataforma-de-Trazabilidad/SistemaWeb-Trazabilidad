@@ -9,7 +9,9 @@
 <br>
       <?php 
           include '../conexion.php';
-          $r="SELECT * FROM municipio WHERE IdMunicipio=".$_GET['id'];
+          $idtipo = $_GET['id'];
+          $nueva = base64_decode($idtipo);
+          $r="SELECT * FROM municipio WHERE IdMunicipio=".$nueva;
           $comando= mysqli_query($enlace, $r);
           $row=mysqli_fetch_array($comando);
       ?>

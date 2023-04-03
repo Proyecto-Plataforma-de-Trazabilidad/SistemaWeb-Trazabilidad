@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-    include 'conexion.php';
+    include '../conexion.php';
     $tipo=$_POST['tipo'];
 
     if($tipo==null)
@@ -12,7 +12,7 @@ session_start();
     if($tipo=="registrar")
     {
         $conc=$_POST['conc'];
-        $r="Insert into tipocontenedor values('', '".$conc."')";
+        $r="INSERT into tipocontenedor values(null, '".$conc."')";
         mysqli_query($enlace,$r);
         cargarTabla();
     }
@@ -28,7 +28,7 @@ session_start();
             <tr>
                 <td>".$row[0]."</td>
                 <td>".$row[1]."</td>
-                <td><a href='TipoCont/editar.php?id=".$row[0]."'><input type='button' value='Editar' id='btnEditar' class='btn btn-primary'></td>
+                <td><a href='TipoCont/editar.php?id=".base64_encode($row[0])."'><input type='button' value='Editar' id='btnEditar' class='btn btn-primary'></td>
             </tr>
             ";
         }

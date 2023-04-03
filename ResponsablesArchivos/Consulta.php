@@ -14,8 +14,10 @@
 <br>
 
         <?php 
-            include 'conexion.php';
-            $r="SELECT * FROM responsablecat WHERE IdCAT=".$_GET['id'];
+            include '../conexion.php';
+            $idtipo = $_GET['id'];
+            $nueva = base64_decode($idtipo);
+            $r="SELECT * FROM responsablecat WHERE IdCAT=".$nueva;
             $comando=mysqli_query($enlace, $r);
             $row=mysqli_fetch_array($comando);
         ?>
@@ -71,12 +73,14 @@
         <?php 
             mysqli_close($enlace);
         ?>
-        <div class="col-3">
-          <button type="button" class="btn btn-success" onclick="" id="btnGuardar" name="Registrar">Guardar</button>
-        </div>
+
         <div class="col-3">
           <button type="button" class="btn btn-primary" onclick="" id="btnEditar" name="Editar">Editar</button>
         </div>
+        <div class="col-3">
+          <button type="button" class="btn btn-success" onclick="" id="btnGuardar" name="Registrar">Guardar</button>
+        </div>
+        
       </form>
     
       <br><br>

@@ -1,32 +1,14 @@
 <?php
-include "navMenu.php";
+include "Layout/navMenu.php";
+include 'conexion.php';
+$r = "SELECT * FROM usuarios where nombre = '$varses'";
+$res = mysqli_query($enlace, $r);
+$filas = mysqli_fetch_array($res);
 ?>
-
-  <head>
-  <style>
-        input:invalid{
-            border-color: red;
-            
-        }
-
-        
-        input:valid {
-            border-color: green;
-        }  
-
-        select:invalid{
-            border-color: red;
-        }
-
-        select:valid{
-            border-color: green;
-        }
-    </style>
-  </head>
-
+<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 
   <div class="container">
-    <h2>Registrar Centro de Acopio Temporal</h2>
+    <h2>Centro de Acopio Temporal</h2>
   </div>
   <br>
   <form class="row g-4 container-fluid" id="frm" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return 0">
@@ -40,46 +22,52 @@ include "navMenu.php";
 
     <div class="col-sm-4">
       <label for="innom" class="form-label">Nombre Centro</label>
-      <input type="text" class="form-control" id="innom" name="innom" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" required placeholder="Ingresa un nombre">
+      <input type="text" class="form-control" id="innom" name="innom" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}"  placeholder="Ingresa un nombre">
     </div>
 
-    <div class="col-4">
+    <div class="col-sm-4">
       <label for="inNra" class="form-label">Número de registro ambiental</label>
-      <input type="text" class="form-control" id="inNra" maxlength="10" name="inNra" pattern="[0-9]{10}" required placeholder="Ingresa el número de registro">
-    </div>
-    <div class="col-4">
-      <label for="indom" class="form-label">Domicilio</label>
-      <input type="text" class="form-control" id="indom" name="indom" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" required placeholder="Ingresa un domicilio">
+      <input type="number" class="form-control" id="inNra" maxlength="10" name="inNra"  placeholder="Ingresa el número de registro">
     </div>
 
-    <div class="col-4">
-      <label for="incp" class="form-label">Código Postal</label>
-      <input type="number" class="form-control" id="incp" maxlength="5" name="incp" pattern="[0-9]{5}" required placeholder="49000">
+    <div class="col-sm-4">
+      <label for="inest" class="form-label">Estado</label>
+      <select class="form-select" id="inest" name="inest" >
+
+      </select>
     </div>
 
     <div class="col-4">
       <label for="inmuni" class="form-label">Municipio</label>
-      <input type="text" class="form-control" id="inmuni" name="inmuni" maxlength="40" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.,]{1,30}" required placeholder="Ingresa un municipio">
+      <select  class="form-select" id="inmuni" name="inmuni">
+
+      </select>
     </div>
 
     <div class="col-4">
-      <label for="inest" class="form-label">Estado</label>
-      <input type="text" class="form-control" id="inest" name="inest" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.,]{1,30}" required placeholder="Ingresa un estado">
+      <label for="incp" class="form-label">Código Postal</label>
+      <input type="number" class="form-control" id="incp" maxlength="5" name="incp" pattern="[0-9]{5}"  placeholder="49000">
     </div>
+
+    <div class="col-4">
+      <label for="indom" class="form-label">Domicilio</label>
+      <input type="text" class="form-control" id="indom" name="indom" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}"  placeholder="Ingresa un domicilio">
+    </div>
+
 
     <div class="col-4">
       <label for="intel" class="form-label">Teléfono</label>
-      <input type="text" class="form-control" id="intel" maxlength="10" name="intel" pattern="[0-9]{10}" required placeholder="p.ej. 5531234567">
+      <input type="text" class="form-control" id="intel" maxlength="10" name="intel" pattern="[0-9]{10}"  placeholder="p.ej. 5531234567">
     </div>
 
     <div class="col-sm-4">
       <label for="incorr" class="form-label">Correo</label>
-      <input type="text" class="form-control" id="incorr" name="incorr" maxlength="60" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#@0-_9.,-]{1,30}" required placeholder="ejemplo@gmail.com">
+      <input type="text" class="form-control" id="incorr" name="incorr" maxlength="60" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#@0-_9.,-]{1,30}"  placeholder="ejemplo@gmail.com">
     </div>
 
     <div class="col-4">
       <label for="inhor" class="form-label">Horarios días laborales</label>
-      <input type="text" class="form-control" id="inhor" name="inhor" maxlength="40" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ0-9.:,-]{1,30}" required placeholder="p.ej. Lun-Vie-08-16">
+      <input type="text" class="form-control" id="inhor" name="inhor" maxlength="40" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ0-9.:,-]{1,30}"  placeholder="p.ej. Lun-Vie-08-16">
     </div>
 
     <div class="col-4">
@@ -94,12 +82,12 @@ include "navMenu.php";
 
     <div class="col-sm-4">
       <label for="inlat" class="form-label">Latitud</label>
-      <input type="text" class="form-control" id="inlat" maxlength="20" name="inlat"  required placeholder="Ingresa la latitud">
+      <input type="text" class="form-control" id="inlat" maxlength="20" name="inlat" placeholder="Ingresa la latitud">
     </div>
 
     <div class="col-sm-4">
       <label for="inlon" class="form-label">Longitud</label>
-      <input type="text" class="form-control" id="inlon" maxlength="20" name="inlon"  required placeholder="Ingresa la longitud">
+      <input type="text" class="form-control" id="inlon" maxlength="20" name="inlon" placeholder="Ingresa la longitud">
     </div>
 
 
@@ -125,15 +113,17 @@ include "navMenu.php";
 
 
   <br><br>
-  <div class="container text-center">
-    <h5>Acopios Temporales Registrados</h5>
-  </div>
-  <div class="container col-12">
+  
+  <div class="container col-12" id="consulta">
+    <div class="container text-center">
+      <h5>Acopios Temporales Registrados</h5>
+    </div>
     <center>
       <table class="table table-striped" id="tabla">
         <thead>
           <tr>
-            <th scope="col">idCAT</th>
+            <th scope="col">Id</th>
+            <th scope="col">Responsable</th>
             <th scope="col">Nombre Centro</th>
             <th scope="col">Núm. de Reg. Ambiental</th>
             <th scope="col">Domicilio</th>
@@ -187,13 +177,33 @@ include "navMenu.php";
 
       })
     }
+
+
   </script>
-  <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+
+  <!--Código PHP para obtener el IDtiporol del usuario que inició sesión-->
+  <?php
+  $rol = $filas['Idtipousuario'];
+  ?>
+  
+  <!--Código de JS para mandar a una variable de js el valor de una variable php-->
+  <script type="text/javascript">
+      var rol = "<?php echo $rol; ?>";
+
+      //Si el id del rol obtenido, únicamente puede consultar -> ocultar el formulario
+      if (rol == 3) {
+        $(function(){
+          $('#frm').hide();
+        });
+      } 
+  </script>
+  
   <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
   <script type="text/javascript" src="datatables.min.js"></script>
   <script type="text/javascript" src="Cat-Archivos/funcionesCat.js"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
-  <script src="menujs.js"></script>
+  <script src="Layout/menujs.js"></script>
 </main>
 </body>
 

@@ -2,8 +2,8 @@ $(document).ready(function(){
 
     $.ajax({
         url:'QuimicoArchivos/metodosQuimico.php',
+        data:{"tipo":""},
         type:'POST',
-        data: {"tipo":""},
         success:function(response){
             $('#bodyTabla').html(response);
             $('#tabla').DataTable({
@@ -11,6 +11,12 @@ $(document).ready(function(){
             });
         }
     });
+    window.addEventListener('resize', function(event){
+        $('#tabla').DataTable().fnDestroy();
+        $('#tabla').DataTable({
+            scrollX:true,
+        });
+    },true);
     
 
     $('#frm').submit(function(e){
@@ -18,18 +24,7 @@ $(document).ready(function(){
         let conc=document.getElementById("inconc").value;
         let tipofuncion="registrar";
         let parametros={"conc":conc, "tipo":tipofuncion}
-        $.ajax({
-            url:'QuimicoArchivos/metodosQuimico.php',
-            data:parametros,
-            type:'POST',
-            success:function(response){
-                $('#bodyTabla').html(response);
-                $('#tabla').DataTable({
-                    scrollX:true,
-                });
-            }
-        });
-        $('#frm').trigger('reset');
+
     });
 
 });
