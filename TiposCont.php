@@ -1,10 +1,13 @@
 <?php
 include "Layout/navMenu.php";
+$consulta = "SELECT * FROM usuarios where Correo = '$varses'";
+$res = mysqli_query($enlace, $consulta);      
+$filas = mysqli_fetch_array($res);
 ?>
-
+<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 
 <div class="container">
-  <h1>Registrar Tipo de Contenedor</h1>
+  <h1>Tipo de Contenedor</h1>
 </div>
 <br>
       <form class="row g-4 container-fluid" id="frm" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" onsubmit="return 0">
@@ -39,56 +42,32 @@ include "Layout/navMenu.php";
         </center>
       </div>
       <br>
-       <script>
-        function valdez()
-        {
-            var Nombre, dom, tel;
-            Nombre=document.getElementById('inputNombre').value;
-            
-            dom=document.getElementById('inputAddress').value;
-            
-            tel=document.getElementById('inputTel').value;
+       
+    <!--Código PHP para obtener el IDtiporol del usuario que inició sesión-->
+    <?php
+        $rol = $filas['Idtipousuario'];
+      ?>
 
-            if(Nombre=='' || dom=='' || tel=='')
-            {
-                alert("Todos los campos son obligatorios");
-                return false;
-            }
-            
-            else if(Nombre.length>40)
-            {
-                alert("El campo: Nombre es demasiado largo");
-                return false;
-            }
-            else if(dom.length>150)
-            {
-                alert("El campo: Domiciio es demasiado largo");
-                return false;
-            }
-            
-            else if(tel.length>10)
-            {
-                alert("El campo: Telefono es demasiado largo");
-                return false;
-            }
-            else if(tel.length<10)
-            {
-                alert("El campo: Telefono es demasiado corto");
-                return false;
-            }
-            else if(isNaN(tel))
-            {
-                alert("El campo: Telefono debe ser solo numeros");
-                return false;
-            }
-            
-        }
-    </script>
-      <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+      <!--Código de JS para mandar a una variable de js el valor de una variable php-->
+      <script type="text/javascript">
+
+            var rol = "<?php echo $rol; ?>";
+
+            //Si el id del rol obtenido, únicamente puede consultar -> ocultar los botones de guardar y editar
+            if (rol == 4) {
+              $(function(){
+                $('#frm').hide();
+              
+              });
+            }   
+      </script>    
+    
+
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
     <script type="text/javascript" src="TipoCont/funcionesTipoCont.js"></script>
-    <script src="menujs.js"></script>
+    <script src="Layout/menujs.js"></script>
       
 </body>
 </html>

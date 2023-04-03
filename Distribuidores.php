@@ -1,11 +1,19 @@
 <?php
 include "Layout/navMenu.php";
+
+//Código para obtener los datos del usuario que inició sesión.
+//Servirá para ocultar o mostras contenido
+include 'conexion.php';
+$r = "SELECT * FROM usuarios where Correo = '$varses'";
+$res = mysqli_query($enlace, $r);
+$filas = mysqli_fetch_array($res);
 ?>
+<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 
 
 
 
-<h1>Registrar Distribuidores</h1>
+<h1>Distribuidores</h1>
 
 <form class="row g-4 container-fluid" id="frm" method="POST" action="DistArchivos/Insertar.php" onsubmit="return valdez()" enctype="multipart/form-data">
 
@@ -176,6 +184,24 @@ include "Layout/navMenu.php";
     })
   }
 </script>
+
+<!--Código PHP para obtener el IdTipoRol del usuario que inició la sesión-->
+<?php
+  $rol = $filas['Idtipousuario'];
+?>
+
+<!--Código de JS para mandar a una variable de js el valor de una variable de php-->
+<script>
+  var rol = "<?php echo $rol; ?>";
+
+  //Si el ID del rol obtenido, únicamente puede consultar -> ocultar el formulario
+  if(rol == 3 || rol == 2 || rol == 11 || rol == 4){
+    $(function(){
+      $('#frm').hide();
+    });
+  }
+</script>
+
 <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="datatables.min.js"></script>

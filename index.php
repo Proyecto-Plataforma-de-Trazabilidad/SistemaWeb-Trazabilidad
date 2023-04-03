@@ -107,7 +107,7 @@
                     </div>
                 </div>
 
-                <h2 class="fw-bold text-center py-5">Bienvenide</h2>
+                <h2 class="fw-bold text-center py-5">Bienvenido</h2>
 
                 <!--Login-->
                 <form id="frmlogin" method="POST" action="">

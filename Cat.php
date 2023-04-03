@@ -1,7 +1,7 @@
 <?php
 include "Layout/navMenu.php";
 include 'conexion.php';
-$r = "SELECT * FROM usuarios where nombre = '$varses'";
+$r = "SELECT * FROM usuarios where Correo = '$varses'";
 $res = mysqli_query($enlace, $r);
 $filas = mysqli_fetch_array($res);
 ?>
@@ -191,7 +191,7 @@ $filas = mysqli_fetch_array($res);
       var rol = "<?php echo $rol; ?>";
 
       //Si el id del rol obtenido, únicamente puede consultar -> ocultar el formulario
-      if (rol == 3) {
+      if (rol == 2 || rol == 3 || rol == 4 || rol == 6 || rol == 11) {
         $(function(){
           $('#frm').hide();
         });
