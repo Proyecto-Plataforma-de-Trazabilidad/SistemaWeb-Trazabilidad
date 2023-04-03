@@ -195,7 +195,7 @@ $rol = $filas['Idtipousuario'];
 
 <script type="text/javascript" src="ErpArchivos/funcionesErp.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
-<script src="menujs.js"></script>
+<script src="Layout/menujs.js"></script>
 </body>
 
 </html>

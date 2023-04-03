@@ -134,7 +134,7 @@ $filas = mysqli_fetch_array($res);
     <script type="text/javascript" src="datatables.min.js"></script>
     <script type="text/javascript" src="HuertosArchivos/funcionesHuer.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
-    <script src="menujs.js"></script>
+    <script src="Layout/menujs.js"></script>
   </main>
 </body>
 

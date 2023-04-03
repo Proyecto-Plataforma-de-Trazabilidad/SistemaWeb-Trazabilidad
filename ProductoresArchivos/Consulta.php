@@ -130,6 +130,6 @@
     <script type="text/javascript" src="../datatables.min.js"></script>
     <script type="text/javascript" src="../tablas.js"></script>
     <script type="text/javascript" src="funcionesConsulta.js"></script>
-    <script src="../js/menujs.js"></script>
+    <script src="../Layout/menujs.js"></script>
 </body>
 </html>

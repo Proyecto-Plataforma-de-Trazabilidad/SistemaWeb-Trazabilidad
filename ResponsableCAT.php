@@ -128,7 +128,7 @@ $filas = mysqli_fetch_array($res);
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
     <script type="text/javascript" src="ResponsablesArchivos/funcionesRes.js"></script>
-    <script src="menujs.js"></script>
+    <script src="Layout/menujs.js"></script>
       
 </body>
 </html>
