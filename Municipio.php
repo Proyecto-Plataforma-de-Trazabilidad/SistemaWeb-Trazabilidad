@@ -3,7 +3,7 @@ include "Layout/navMenu.php";
 ?>
 
 <div class="container">
-  <h1>Registrar Municipio Ayuntamiento</h1>
+  <h1>Municipio Ayuntamiento</h1>
 </div>
 <br>
       <form class="row g-4 container-fluid" id="frm" method="POST" action="MunicipioArchivos/Insertar.php" onsubmit="return 0" enctype="multipart/form-data">
@@ -147,6 +147,7 @@ include "Layout/navMenu.php";
     <script type="text/javascript" src="datatables.min.js"></script>
     <script type="text/javascript" src="MunicipioArchivos/funcionesMuni.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
-    <script src="menujs.js"></script>
+    <script src="Layout/menujs.js"></script>
+
 </body>
 </html>

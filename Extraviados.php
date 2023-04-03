@@ -12,7 +12,7 @@ include "Layout/navMenu.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/movimientos/Extraviados/Extraviados.css">
     <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script> <!-- iconos -->
-    <title>APEJAL-Extraviados</title>
+    
 </head>
 
 <!-- Estilos de validacion de los campos esto se puede agregar a una hoja de estilo principal. (para no repetir este codigo en todos) -->
@@ -109,7 +109,7 @@ include "Layout/navMenu.php";
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
     <script type="text/javascript" src=""></script> <!-- scrip para la funcion del la tabla detalle orden  -->
-    <script src="menujs.js"></script>
+    <<script src="Layout/menujs.js"></script>
     <script type="text/javascript">
         $(function () {
             $('#datepicker').datepicker();

@@ -59,7 +59,7 @@ $filas = mysqli_fetch_array($res);
 
         <div class="name__page">
             <i class="fa-sharp fa-solid fa-user" title="Sesión"></i>
-            <h4><?php echo $_SESSION['usuario']; ?></h4>
+            <h4><?php echo $filas[2]; ?></h4>
         </div>
 
         <div class="options__menu">

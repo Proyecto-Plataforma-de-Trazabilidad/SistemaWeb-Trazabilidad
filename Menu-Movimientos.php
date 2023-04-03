@@ -35,7 +35,7 @@ include('Layout/navMenu.php');
         </div>
     </main>
 
-    <script src="menujs.js"></script>
+    <script src="Layout/menujs.js"></script>
 
 
 </body>
