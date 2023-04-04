@@ -12,6 +12,26 @@ $(document).ready(function(){
         }
     });
 
+    $.ajax({
+      type: "POST",
+      url: "procesar-estados.php",
+      data: { estados : "Mexico" } 
+      }).done(function(data){
+      $("#inest").php(data);
+      });
+      // Obtener municipios
+      $("#inest").change(function(){
+      var estado = $("#inest option:selected").val();
+      $.ajax({
+      type: "POST",
+      url: "procesar-estados.php",
+      data: { municipios : estado } 
+      }).done(function(data){
+      $("#inmuni").php(data);
+      });
+      });
+
+
     $('#frm').submit(function(e){
         e.preventDefault();
         let formData = new FormData(this); //Este método trae todos los datos del form sin necesidad de leer el valor de cada campo
