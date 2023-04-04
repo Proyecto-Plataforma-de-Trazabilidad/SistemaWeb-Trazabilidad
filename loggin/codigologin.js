@@ -7,7 +7,7 @@ $('#frmlogin').submit(function (e) {
 
   if (user.length == "" || pass.length == "") {
     Swal.fire({
-      type: 'warning',
+      icon: 'warning',
       title: 'Llene todos los campos',
     });
     return false;
@@ -21,12 +21,12 @@ $('#frmlogin').submit(function (e) {
       success: function (data) {
         if (data == "null") {
           Swal.fire({
-            type: 'error',
+            icon: 'error',
             title: 'Usuario y/o contraseña incorrecta',
           });
         } else {
           Swal.fire({
-            type: 'success',
+            icon: 'success',
             title: 'Bienvenido',
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'Ingresar'

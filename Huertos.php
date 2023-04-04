@@ -1,10 +1,14 @@
 <?php
 include "Layout/navMenu.php";
+include 'conexion.php';
+$r = "SELECT * FROM usuarios where Correo = '$varses'";
+$res = mysqli_query($enlace, $r);
+$filas = mysqli_fetch_array($res);
 ?>
+<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 
 
-  <main>
-    <h1>Registrar Huertos</h1>
+    <h1>Huertos</h1>
 
     <br>
     <form class="row g-4 container-fluid" id="frm" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return valdez()">
@@ -107,12 +111,30 @@ include "Layout/navMenu.php";
       })
     }
     </script>
+
+    <!--Código PHP para obtener el IDtiporol del usuario que inició sesión-->
+    <?php
+    $rol = $filas['Idtipousuario'];
+    ?>
+
+    <!--Código de JS para mandar a una variable de js el valor de una variable php-->
+    <script type="text/javascript">
+      var rol = "<?php echo $rol; ?>";
+
+      //Si el id del rol obtenido, únicamente puede consultar -> ocultar el formulario
+      if (rol == 2 || rol == 4) {
+        $(function() {
+          $('#frm').hide();
+        });
+      }
+    </script>
+
     <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
     <script type="text/javascript" src="HuertosArchivos/funcionesHuer.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
-    <script src="menujs.js"></script>
+    <script src="Layout/menujs.js"></script>
   </main>
 </body>
 

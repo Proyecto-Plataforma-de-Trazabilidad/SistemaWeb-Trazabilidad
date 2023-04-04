@@ -1,6 +1,10 @@
 <?php
   include "../Layout/navMenu2.php";
+  $consulta = "SELECT * FROM usuarios where Correo = '$varses'";
+  $res = mysqli_query($enlace, $consulta);      
+  $filas = mysqli_fetch_array($res);
 ?>
+<script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
 
 <br><br>
 <div class="container">
@@ -180,12 +184,32 @@
           })
         }
     </script>
+
+    <!--Código PHP para obtener el IDtiporol del usuario que inició sesión-->
+    <?php
+        $rol = $filas['Idtipousuario'];
+      ?>
+
+      <!--Código de JS para mandar a una variable de js el valor de una variable php-->
+      <script type="text/javascript">
+
+            var rol = "<?php echo $rol; ?>";
+
+            //Si el id del rol obtenido, únicamente puede consultar -> ocultar los botones de guardar y editar
+            if (rol == 2 || rol == 3 || rol == 4 || rol == 11) {
+              $(function(){
+                $('#btnEditar').hide();
+                $('#btnGuardar').hide();
+              });
+            }   
+      </script>
+
       <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../datatables.min.js"></script>
     <script type="text/javascript" src="../tablas.js"></script>
     <script type="text/javascript" src="funcionesErp.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
-    <script src="../js/menujs.js"></script>
+    <script src="../Layout/menujs.js"></script>
 </body>
 </html>

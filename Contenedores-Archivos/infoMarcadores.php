@@ -1,6 +1,6 @@
  <?php
   // Agregamos el nombre y dirección a la ventana de información de cada marcador, puedes agregar la información que desees, nosotros agregaremos 'nombre' y 'direccion' 
-  include "conexion.php";
+  include "../conexion.php";
   $r="SELECT Origen, Capacidad, Descripcion FROM contenedores";
   $comando= mysqli_query($enlace, $r);
     while($row = mysqli_fetch_array($comando)){ ?>

@@ -3,7 +3,7 @@ include "Layout/navMenu.php";
 ?>
 
 <div class="container">
-  <h1>Registrar Vehículos Distribuidores</h1>
+  <h1>Vehículos de Distribuidores</h1>
 </div>
 <br>
 <form class="row g-4 container-fluid" id="frm" method="POST" action="DistVehicArchivos/insertar.php" onsubmit="return valdez()" enctype="multipart/form-data">
@@ -84,7 +84,7 @@ include "Layout/navMenu.php";
 <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="datatables.min.js"></script>
 <script type="text/javascript" src="DistVehicArchivos/funcionesVeiDis.js"></script>
-<script src="menujs.js"></script>
+<script src="Layout/menujs.js"></script>
 
 </body>
 

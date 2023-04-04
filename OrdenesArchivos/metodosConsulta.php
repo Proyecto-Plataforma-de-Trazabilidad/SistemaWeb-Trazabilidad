@@ -7,23 +7,34 @@ $comando = mysqli_query($enlace, "SELECT T.Descripcion FROM usuarios as U inner 
 $tipoUser = mysqli_fetch_column($comando);
 mysqli_free_result($comando);
 
-if ($_POST['FI'] == null && $_POST['FF'] == null) {
 
-    $queryOrden = "CALL OrdenConsulta('" . $tipoUser . "',null,null);";
+
+if ($tipoUser == 'admin') {
+    $distribuidor = 'admin';
+}else{
+    $distribuidor = $_SESSION['usuario'];
+}
+
+
+if (true) {
+    include("../conexion.php");
+
+    $queryOrden = "CALL OrdenConsulta('" .$distribuidor. "',null,null);";
     $comando = mysqli_query($enlace, $queryOrden);
-
-    if (empty(mysqli_fetch_assoc($comando))) {
+    
+    
+    if (!$comando) {
         echo ("Hubo un error");
     } else {
         while ($datos = mysqli_fetch_assoc($comando)) {
-            $consultaOrden["data"][] = $datos;
-        }
-        echo (json_encode($consultaOrden));
+            $consulta["data"][] = $datos;
+        } 
+        echo (json_encode($consulta));
     }
     mysqli_free_result($comando);
 } else {
 
-    $queryOrden = "CALL OrdenConsulta('" . $tipoUser . "','" . $_POST['FI'] . "','" . $_POST['FF'] . "');";
+    $queryOrden = "CALL OrdenConsulta('" . $distribuidor . "','" . $_POST['FI'] . "','" . $_POST['FF'] . "');";
     $comando = mysqli_query($enlace, $queryOrden);
     if (!$comando) {
         die("Error");

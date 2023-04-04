@@ -1,5 +1,5 @@
 <?php 
-    include "conexion.php";
+    include "../conexion.php";
     $tipo_funcion=$_POST["tipo"];
 
     if($tipo_funcion=="combo1"){
@@ -27,7 +27,7 @@
     }
 
     function cargarTabla(){
-        include "conexion.php";
+        include "../conexion.php";
         $r="SELECT c.IdContenedor, t.Concepto, c.Origen, c.Capacidad, c.CapacidadStatus, c.Descripcion, c.UltimaFechaRecoleccion, c.ReferenciaPermiso FROM tipocontenedor AS t INNER JOIN contenedores AS c ON c.IdTipoCont=t.IdTipoCont";
         $comando= mysqli_query($enlace, $r);
         while($row=mysqli_fetch_array($comando)){
@@ -47,7 +47,7 @@
         mysqli_close($enlace);
     }
     if($tipo=="actualizar"){
-        include 'conexion.php';
+        include '../conexion.php';
         $r="UPDATE contenedores SET Capacidad=".$_POST['cap'].", Descripcion='".$_POST['des']."', UltimaFechaRecoleccion='".$_POST['ulti']."', LatitudLongitud='".$_POST['lat']."', InstruccionesManejo='".$_POST['man']."' where idContenedor=".$_POST['idcon'];
         $comando= mysqli_query($enlace, $r);
         mysqli_close($enlace);

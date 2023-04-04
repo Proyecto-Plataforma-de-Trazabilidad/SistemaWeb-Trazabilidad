@@ -5,6 +5,22 @@ include "Layout/navMenu.php";
 
 
 
+    <!--SweetAlert en linea-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+    <!--SweetAlert en local por mis webos-->
+    <link rel="stylesheet" href="..\plugins\Sweetalert2\sweetalert2.min.css">
+    <script src="..\plugins\Sweetalert2\sweetalert2.all.min.js"></script>
+    <!--Combos responsivos-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+
+
+
+
 <h1>Registrar Distribuidores</h1>
 
 <form class="row g-4 container-fluid" id="frm" method="POST" action="DistArchivos/Insertar.php" onsubmit="return valdez()" enctype="multipart/form-data">
@@ -29,20 +45,41 @@ include "Layout/navMenu.php";
     <input type="text" class="form-control" id="incp" maxlength="5" name="incp" pattern="[0-9]{5}" placeholder="P.ejem. 49000">
   </div>
 
+
+  <div class="col-4">
+    <label for="inest" class="form-label" >Estado</label>
+    <br>
+    <select id="jmr_contacto_estado" name="jmr_contacto_estado" class="js-example-basic-multiple" id="Estado" multiple="multiple"><option>Selecciona tu estado</option></select>
+  </div>
+  
+  <script>
+                        $(document).ready(function () {
+                            $('#jmr_contacto_estado').select2();
+                        });
+                    </script>
+
+
+  <div class="col-4">
+    <label for="inmuni" class="form-label">Municipio</label>
+    <br>
+    <select id="jmr_contacto_municipio" name="jmr_contacto_municipio" class="js-example-basic-multiple" id="Estado" multiple="multiple"><option>Selecciona tu municipio</option></select>
+  </div>
+
+                    <script>
+                        $(document).ready(function () {
+                            $('#jmr_contacto_municipio').select2();
+                        });
+                    </script>
+                    
+                    
+  
+  
+
   <div class="col-4">
     <label for="inciu" class="form-label">Ciudad</label>
     <input type="text" class="form-control" id="inciu" name="inciu" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" placeholder="Ingresa la ciudad">
   </div>
 
-  <div class="col-4">
-    <label for="inmuni" class="form-label">Municipio</label>
-    <input type="text" class="form-control" id="inmuni" name="inmuni" maxlength="40" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" placeholder="Ingresa el municipio">
-  </div>
-
-  <div class="col-4">
-    <label for="inest" class="form-label">Estado</label>
-    <input type="text" class="form-control" id="inest" name="inest" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" placeholder="Ingresa el estado">
-  </div>
 
   <div class="col-4">
     <label for="intel" class="form-label">Teléfono</label>
@@ -139,6 +176,8 @@ include "Layout/navMenu.php";
 <br>
 
 <script>
+
+
   function initMap() {
     let latitud = 19.7047732
     let longitud = -103.5031816;
@@ -176,11 +215,12 @@ include "Layout/navMenu.php";
     })
   }
 </script>
-<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+
 <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="datatables.min.js"></script>
 <script type="text/javascript" src="DistArchivos/funcionesDist.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
+<script src="poper\popper.min.js"></script>
 <script src="Layout/menujs.js"></script>
 </body>
 

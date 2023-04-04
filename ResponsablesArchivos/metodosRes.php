@@ -1,6 +1,6 @@
 <?php
 
-    include 'conexion.php';
+    include '../conexion.php';
     $tipo=$_POST['tipo'];
 
     if($tipo==null)
@@ -25,7 +25,7 @@
     
     function cargarTabla()
     {
-        include 'conexion.php';
+        include '../conexion.php';
         $r="SELECT * FROM responsablecat";
         
         $comando=mysqli_query($enlace, $r);
@@ -48,7 +48,7 @@
         mysqli_close($enlace);
     }
     if($tipo=="actualizar"){
-        include 'conexion.php';
+        include '../conexion.php';
         $r="UPDATE responsablecat SET Nombre='".$_POST['nom']."', Domicilio='".$_POST['dom']."', CP='".$_POST['cp']."', Municipio='".$_POST['muni']."',
         Edo='".$_POST['est']."', Telefono='".$_POST['tel']."', Correo='".$_POST['corr']."', Estado='".$_POST['edo']."' where IdCAT=".$_POST['id'];
         $comando= mysqli_query($enlace, $r);
@@ -57,7 +57,7 @@
 
     if($tipo=='borrar')
     {
-        include 'conexion.php';
+        include '../conexion.php';
         $r="Delete from responsablecat where IdCAT=".$_POST['id'];
         $comando= mysqli_query($enlace, $r);
         mysqli_close($enlace);

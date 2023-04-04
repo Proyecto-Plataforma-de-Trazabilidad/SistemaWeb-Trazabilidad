@@ -1,6 +1,11 @@
 <?php
 include "Layout/navMenu.php";
+include 'conexion.php';
+$r = "SELECT * FROM usuarios where Correo = '$varses'";
+$res = mysqli_query($enlace, $r);
+$filas = mysqli_fetch_array($res);
 ?>
+<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 
 <head>
   <style>
@@ -12,10 +17,10 @@ include "Layout/navMenu.php";
 
 <br><br>
 <div class="container">
-  <h1>Registrar Contenedores</h1>
+  <h1>Contenedores</h1>
 </div>
 <br>
-<form class="row g-4 container-fluid" id="frm" method="POST" action="Contenedores-Archivos/insertar.php" onsubmit="return valdez()" enctype="multipart/form-data">
+<form class="row g-4 container-fluid" id="frm" method="POST" action="Contenedores-Archivos/insertar.php" onsubmit="return validarArchivo()" enctype="multipart/form-data">
 
   <div class="col-md-2">
     <label for="intipocont" class="form-label">Tipo de contenedor</label>
@@ -163,8 +168,40 @@ include "Layout/navMenu.php";
     })
   }
 
-  //Boton que te muestra un mensaje de confirmación perzonalizado
+  function validarArchivo(){
+    var archivo = document.getElementById("infile");
+
+    if(archivo.value == null || archivo.value == ""){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error en el archivo',
+        text: 'Asegurese de seleccionar un archivo .pdf .jpeg .jpg .png'
+
+      });
+      return false;
+    } else{
+      return true;
+    }
+  }
+</script>
+
+<!--Código PHP para obtener el IdTipoRol del usuario que inició la sesión-->
+<?php
+  $rol = $filas['Idtipousuario'];
+?>
+
+<!--Código de JS para mandar a una variable de js el valor de una variable de php-->
+<script>
   
+    var rol = "<?php echo $rol; ?>";
+    console.log(rol);
+
+    //Si el ID del rol obtenido, únicamente puede consultar -> ocultar el formulario
+    if (rol == 3 || rol == 2 || rol == 11 || rol == 4){
+      $(function(){
+        $('#frm').hide();
+      });
+    }
 </script>
 
 
@@ -175,7 +212,7 @@ include "Layout/navMenu.php";
 <script type="text/javascript" src="datatables.min.js"></script>
 <script type="text/javascript" src="Contenedores-Archivos/funcionesCont.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
-<script src="menujs.js"></script>
+<script src="Layout/menujs.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 

@@ -1,19 +1,18 @@
 <?php
   include "../Layout/navMenu2.php";
-  $consulta = "SELECT * FROM usuarios where nombre = '$varses'";
+  $consulta = "SELECT * FROM usuarios where Correo = '$varses'";
   $res = mysqli_query($enlace, $consulta);      
   $filas = mysqli_fetch_array($res);
 ?>
 <script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
 
-<br><br>
 <div class="container">
   <h1>Consulta Centro de Acopio Temporal</h1>
 </div>
 
 <br>
     <?php
-    include "conexion.php";
+    include "../conexion.php";
     $idtipo = $_GET['id'];
     $nueva = base64_decode($idtipo);
         $r="SELECT c.IdCAT, c.IdResponsableCAT, r.Nombre, c.NombreCentro, c.NumRegAmbiental, c.InformacionAdicional, 
@@ -190,7 +189,7 @@
             var rol = "<?php echo $rol; ?>";
 
             //Si el id del rol obtenido, únicamente puede consultar -> ocultar los botones de guardar y editar
-            if (rol == 3) {
+            if (rol == 2 || rol == 3 || rol == 4 || rol == 6 || rol == 11) {
               $(function(){
                 $('#editar').hide();
                 $('#guardar').hide();
@@ -204,6 +203,6 @@
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="funcionesConsulta.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
-    <script src="../js/menujs.js"></script>
+    <script src="../Layout/menujs.js"></script>
 </body>
 </html>

@@ -5,8 +5,8 @@
     $dom=$_POST['indom'];
     $cp=$_POST['incp'];
     $ciu=$_POST['inciu'];
-    $muni=$_POST['inmuni'];
-    $edo=$_POST['inest'];
+    $muni=$_POST['jmr_contacto_municipio'];
+    $edo=$_POST['jmr_contacto_estado'];
     $tel=$_POST['intel'];
     $corr=$_POST['incorr'];
     $lat=$_POST["inlat"];
@@ -63,21 +63,25 @@
                 $resultado=mysqli_query($enlace,$r);
                 echo("<script> alert('$ruta1, $ruta2, $ruta3') </script>");
                 if($resultado){
-                    echo "<script>alert('Archivo subido'); window.location='../Distribuidores.php'</script>";
+                    $data="archivos subidos";//all se a ejecutado correctamente
                 }
                 else{
-                    printf("Errormessage: %s\n" , mysqli_error($enlace));
+                    $data = "server fail";//error del servidor
                 }
             }
             else{
-                echo "<script>alert('Error al subir el archivo');</script>";
+                     $data = "error";//Error al subir el archivo
             }
-        }
-        echo "<script>alert('Solo se permiten archivos con extensión .pdf .jpg .jpeg .png');</script>";
+        }else{
+            $data="extension";//Solo se permiten archivos con extensión .pdf .jpg .jpeg .png
+        }   
         
     }
     else{
-        echo "<script>alert('Seleccione los 3 archivos validos'); window.location='../Distribuidores.php'</script>";
+        $data=null; //si ninguno de los 3 archivos es valido 
     }
 
+    print json_encode($data);
+
+    mysqli_close($enlace);
 ?>

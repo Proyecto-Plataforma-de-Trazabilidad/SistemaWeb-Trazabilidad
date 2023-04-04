@@ -1,13 +1,7 @@
 <?php
-    include 'conexion.php';
+    include '../conexion.php';
     $tipo=$_POST['tipo'];
 
-
-    if($tipo==null)
-    {   
-        cargarTabla();
-    }
-    
     if($tipo=='combo1'){
         
         $r="SELECT * FROM responsablecat";
@@ -15,9 +9,32 @@
         while($row=mysqli_fetch_array($comando))
         {
             echo "<option value='".$row[0]."'>".$row[1]."</option>";
-        }
-        mysqli_close($enlace);
+        }  
     }
+
+    if ($tipo == 'comboEst') {
+        $r = "SELECT * FROM estados";
+        $comando = mysqli_query($enlace, $r);
+        while($row = mysqli_fetch_array($comando)){
+            echo "option value ='".$row[2]."'>".$row[2]."</option>";
+        }
+    }
+
+    if($tipo == 'comboMuni'){
+        $est = $_POST['est'];
+        $r  = "SELECT id, nombre from municipios where estado_id = '$est'";
+        $comando = mysqli_query($enlace, $r);
+        while($row = mysqli_fetch_array($comando)){
+            echo "option value ='".$row[2]."'>".$row[2]."</option>";
+        }
+    }
+
+    if($tipo==null)
+    {   
+        cargarTabla();
+    }
+    
+    
 
 
     
@@ -37,7 +54,7 @@
         $lat=$_POST['lat'];
         $lon=$_POST['lon'];
         $plan=$_POST['plan'];
-        echo("Paso por aqui php");
+        
         $r="INSERT INTO centroacopiotemporal VALUES(null,".$res.",'".$nom."',".$nra.",'".$des."','".$dom."','".$cp."','".$muni."','".$est."',
         '".$tel."','".$corr."','".$hor."','".$lat."','".$lon."','".$plan."')";
         mysqli_query($enlace,$r);

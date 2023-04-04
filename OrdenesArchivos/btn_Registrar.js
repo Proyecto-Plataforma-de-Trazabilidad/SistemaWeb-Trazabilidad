@@ -8,7 +8,7 @@ $('#frmOrden').submit(function(e) {
     let accion = 'registrarOrden';
 
     let nomDis = document.getElementById('nomDistri')
-    let idDis = nomDis.getAttribute('data-id-distribuidor');
+    let idDis = nomDis.dataset.idDistribuidor;
     let idProd = document.getElementById('nomProdu').value;
     let NumFac = document.getElementById('factOrden').value;
     let numRec = document.getElementById('cedReceta').value;

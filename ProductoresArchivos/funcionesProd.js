@@ -41,6 +41,6 @@ $(document).ready(function(){
                         "giro":giro, "tipo":tipofuncion}
 
         console.log("Registra")
-    })
+    });
 
 });
