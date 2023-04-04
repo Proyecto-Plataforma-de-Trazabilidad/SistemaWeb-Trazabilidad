@@ -17,17 +17,17 @@ $(document).ready(function(){
       url: "procesar-estados.php",
       data: { estados : "Mexico" } 
       }).done(function(data){
-      $("#inest").php(data);
+      $("#jmr_contacto_estado").html(data);
       });
       // Obtener municipios
-      $("#inest").change(function(){
-      var estado = $("#inest option:selected").val();
+      $("#jmr_contacto_estado").change(function(){
+      var estado = $("#jmr_contacto_estado option:selected").val();
       $.ajax({
       type: "POST",
       url: "procesar-estados.php",
       data: { municipios : estado } 
       }).done(function(data){
-      $("#inmuni").php(data);
+      $("#jmr_contacto_municipio").html(data);
       });
       });
 

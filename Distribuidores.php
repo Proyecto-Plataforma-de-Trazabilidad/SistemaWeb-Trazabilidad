@@ -42,12 +42,12 @@ include "Layout/navMenu.php";
 
   <div class="col-4">
     <label for="inest" class="form-label">Estado</label>
-    <select id="inest"><option>Selecciona tu estado</option></select>
+    <select id="jmr_contacto_estado"><option>Selecciona tu estado</option></select>
   </div>
 
   <div class="col-4">
     <label for="inmuni" class="form-label">Municipio</label>
-    <select id="inmuni"><option>Selecciona tu municipio</option></select>
+    <select id="jmr_contacto_municipio"><option>Selecciona tu municipio</option></select>
   </div>
 
   <div class="col-4">
