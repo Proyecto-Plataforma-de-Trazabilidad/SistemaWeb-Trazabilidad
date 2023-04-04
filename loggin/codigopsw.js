@@ -32,7 +32,7 @@ $('#frmrecovery').submit(function (e) {
         } else {
           Swal.fire({
             icon: 'success',
-            title: 'Bienvenido',
+            title: 'Contraseña actualizada correctamente',
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'Ingresar'
           }).then((result) => {
