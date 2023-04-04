@@ -127,6 +127,4 @@ $dompdf->render();
 //poder trabajar el archivo           para poder descargarlo o solo abrirlo
 $dompdf->stream("archivo_.pdf", array("Attachment" => false));
 
-
-
 ?>
