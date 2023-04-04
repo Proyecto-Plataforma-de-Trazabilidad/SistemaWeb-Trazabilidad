@@ -13,6 +13,7 @@ require '../PHPMailer/SMTP.php';
 $email = $_POST['email'];
 
 
+
 $consulta = "SELECT * FROM usuarios where Correo = '$email'";
 $resultado = mysqli_query($enlace, $consulta);
 
@@ -23,7 +24,7 @@ $row = mysqli_fetch_assoc($resultado);
 if ($row > 0) {
 
     try {
-                             //Enable verbose debug output
+        $mail = new PHPMailer(true);
         //Server settings
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
         $mail->isSMTP();                                            //Send using SMTP
@@ -41,7 +42,7 @@ if ($row > 0) {
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Recuperar Contraseña';
-        $mail->Body    = 'Este es un correo generado automáticamente para reestablecer la constraseña de su cuenta.<br>Por favor, visite la página <a href="localhost/SistemaWeb-Trazabilidad/loggin/changepsw.php?id=' . $row['IdUsuario'] . '">Sistema de trazabilidad</a>';
+        $mail->Body    = 'Este es un correo generado automáticamente para reestablecer la constraseña de su cuenta.<br>Por favor, visite la página <a href="localhost/SistemaWeb-Trazabilidad/loggin/changepsw.php?id=' . $row['IdUsuario'] . '"> Sistema de trazabilidad </a>';
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();
