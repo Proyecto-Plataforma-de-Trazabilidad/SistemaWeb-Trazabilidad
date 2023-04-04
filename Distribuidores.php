@@ -39,9 +39,10 @@ include "Layout/navMenu.php";
     <input type="text" class="form-control" id="incp" maxlength="5" name="incp" pattern="[0-9]{5}" placeholder="P.ejem. 49000">
   </div>
 
+
   <div class="col-4">
-    <label for="inciu" class="form-label">Ciudad</label>
-    <input type="text" class="form-control" id="inciu" name="inciu" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" placeholder="Ingresa la ciudad">
+    <label for="inest" class="form-label">Estado</label>
+    <input type="text" class="form-control" id="inest" name="inest" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" placeholder="Ingresa el estado">
   </div>
 
   <div class="col-4">
@@ -50,9 +51,10 @@ include "Layout/navMenu.php";
   </div>
 
   <div class="col-4">
-    <label for="inest" class="form-label">Estado</label>
-    <input type="text" class="form-control" id="inest" name="inest" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" placeholder="Ingresa el estado">
+    <label for="inciu" class="form-label">Ciudad</label>
+    <input type="text" class="form-control" id="inciu" name="inciu" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" placeholder="Ingresa la ciudad">
   </div>
+
 
   <div class="col-4">
     <label for="intel" class="form-label">Teléfono</label>
