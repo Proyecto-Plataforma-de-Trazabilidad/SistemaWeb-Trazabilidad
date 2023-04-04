@@ -41,13 +41,13 @@ include "Layout/navMenu.php";
 
 
   <div class="col-4">
-    <label for="inest" class="form-label">Estado</label>
-    <select id="jmr_contacto_estado" name="jmr_contacto_estado"><option>Selecciona tu estado</option></select>
+    <label for="inest" class="form-label" >Estado</label>
+    <select id="jmr_contacto_estado" name="jmr_contacto_estado" class="js-example-basic-multiple" multiple="multiple"><option>Selecciona tu estado</option></select>
   </div>
 
   <div class="col-4">
     <label for="inmuni" class="form-label">Municipio</label>
-    <select id="jmr_contacto_municipio" name="jmr_contacto_municipio"><option>Selecciona tu municipio</option></select>
+    <select id="jmr_contacto_municipio" name="jmr_contacto_municipio" class="js-example-basic-multiple" multiple="multiple"><option>Selecciona tu municipio</option></select>
   </div>
 
   <div class="col-4">
@@ -151,6 +151,11 @@ include "Layout/navMenu.php";
 <br>
 
 <script>
+
+  $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
+
   function initMap() {
     let latitud = 19.7047732
     let longitud = -103.5031816;
@@ -193,6 +198,8 @@ include "Layout/navMenu.php";
 <script type="text/javascript" src="datatables.min.js"></script>
 <script type="text/javascript" src="DistArchivos/funcionesDist.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="poper\popper.min.js"></script>
 <script src="Layout/menujs.js"></script>
 </body>
