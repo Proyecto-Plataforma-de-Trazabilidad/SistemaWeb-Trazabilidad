@@ -5,8 +5,8 @@
     $dom=$_POST['indom'];
     $cp=$_POST['incp'];
     $ciu=$_POST['inciu'];
-    $muni=$_POST['inmuni'];
-    $edo=$_POST['inest'];
+    $muni=$_POST['jmr_contacto_municipio'];
+    $edo=$_POST['jmr_contacto_estado'];
     $tel=$_POST['intel'];
     $corr=$_POST['incorr'];
     $lat=$_POST["inlat"];
