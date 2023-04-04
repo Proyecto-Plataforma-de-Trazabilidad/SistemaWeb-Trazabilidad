@@ -71,7 +71,7 @@
                             <input type="password" placeholder="Nueva Contraseña" name="nuevapsw" id="nuevapsw"/>
                         </div>
 
-                        <div class="inputBox">
+                        <div class="inputBox my-3">
                             <input type="password" placeholder="Repetir Contraseña" name="reppsw" id="reppsw"/>
                         </div>
 
