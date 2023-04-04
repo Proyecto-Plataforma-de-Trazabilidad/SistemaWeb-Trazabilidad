@@ -42,12 +42,12 @@ include "Layout/navMenu.php";
 
   <div class="col-4">
     <label for="inest" class="form-label">Estado</label>
-    <input type="text" class="form-control" id="inest" name="inest" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" placeholder="Ingresa el estado">
+    <select id="inest"><option>Selecciona tu estado</option></select>
   </div>
 
   <div class="col-4">
     <label for="inmuni" class="form-label">Municipio</label>
-    <input type="text" class="form-control" id="inmuni" name="inmuni" maxlength="40" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" placeholder="Ingresa el municipio">
+    <select id="inmuni"><option>Selecciona tu municipio</option></select>
   </div>
 
   <div class="col-4">
