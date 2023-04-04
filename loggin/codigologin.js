@@ -26,7 +26,7 @@ $('#frmlogin').submit(function (e) {
           });
         } else {
           Swal.fire({
-            type: 'success',
+            icon: 'success',
             title: 'Bienvenido',
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'Ingresar'
