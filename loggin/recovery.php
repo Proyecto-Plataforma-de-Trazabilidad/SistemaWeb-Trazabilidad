@@ -28,7 +28,7 @@ if ($row > 0) {
         //Server settings
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
         $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'smtp.ionos.mx';                     //Set the SMTP server to send through
+        $mail->Host       = 'smtp-mail.outlook.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
         $mail->Username   = 'sistematrazabilidad3@outlook.com';                     //SMTP username
         $mail->Password   = 'Sistematrazabilidad_3';                       //SMTP password
