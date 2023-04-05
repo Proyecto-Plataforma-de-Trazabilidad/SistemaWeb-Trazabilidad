@@ -30,13 +30,13 @@ if ($row > 0) {
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.ionos.mx';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'support@sacnej.com';                     //SMTP username
-        $mail->Password   = 'BronceX100pre!!';                       //SMTP password
+        $mail->Username   = 'sistematrazabilidad3@outlook.com';                     //SMTP username
+        $mail->Password   = 'Sistematrazabilidad_3';                       //SMTP password
         $mail->SMTPSecure = 'tls';                                  //Enable implicit TLS encryption
         $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         
         //Recipients
-        $mail->setFrom('support@sacnej.com', 'Soporte');
+        $mail->setFrom('sistematrazabilidad3@outlook.com', 'Soporte');
         $mail->addAddress($email);   //Add a recipient
 
         //Content
@@ -45,7 +45,7 @@ if ($row > 0) {
         $mail->Body    = '<center>Este es un correo generado automáticamente para reestablecer la constraseña de su cuenta.<br><b>Por favor, visite la página <a href="http://campolimpiojal.com/loggin/changepsw.php?id=' . $row['IdUsuario'] . '"> Sistema de trazabilidad </a></b></center>';
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-        $mail->send();
+        $mail->send();  
 
         header("Location: ../index.php?message=ok");
     } catch (Exception $e) {
