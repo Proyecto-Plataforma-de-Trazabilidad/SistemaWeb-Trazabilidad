@@ -42,7 +42,7 @@ if ($row > 0) {
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Recuperar Password';
-        $mail->Body    = 'Este es un correo generado automáticamente para reestablecer la constraseña de su cuenta.<br><b>Por favor, visite la página <a href="http://campolimpiojal.com/loggin/changepsw.php?id=' . $row['IdUsuario'] . '"> Sistema de trazabilidad </a></b>';
+        $mail->Body    = '<center>Este es un correo generado automáticamente para reestablecer la constraseña de su cuenta.<br><b>Por favor, visite la página <a href="http://campolimpiojal.com/loggin/changepsw.php?id=' . $row['IdUsuario'] . '"> Sistema de trazabilidad </a></b></center>';
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();
