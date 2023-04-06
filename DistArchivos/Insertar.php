@@ -72,9 +72,8 @@
             else{
                      $data = "error";//Error al subir el archivo
             }
-        }else{
-            $data="extension";//Solo se permiten archivos con extensión .pdf .jpg .jpeg .png
-        }   
+        }
+          $data="extension";//Solo se permiten archivos con extensión .pdf .jpg .jpeg .png
         
     }
     else{
