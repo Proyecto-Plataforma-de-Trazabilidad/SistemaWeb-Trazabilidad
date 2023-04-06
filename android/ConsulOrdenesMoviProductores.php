@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $nombre=$_POST['nombre'];
             
             //se rescatan y se buscan en la BD
-            $query="select O.IdOrden,P.Nombre,D.Nombre, O.NumFactura,O.NumReceta from ordenproductos as O inner join distribuidores as D on  O.IdDistribuidor=D.IdDistribuidor INNER join productores as P on O.IdProductor=P.IdProductor where P.Nombre='$nombre'";
+            $query="select O.IdOrden,P.Nombre as Productor,D.Nombre as Distribuidor, O.NumFactura,O.NumReceta from ordenproductos as O inner join distribuidores as D on  O.IdDistribuidor=D.IdDistribuidor INNER join productores as P on O.IdProductor=P.IdProductor where P.Nombre='$nombre'";
             $resultado=$conn->prepare($query);
             $resultado->execute();
           
