@@ -32,7 +32,7 @@ $(document).ready(function(){
       });
 
 
-    $('#frm').submit(function(e){
+      $('#frm').submit(function(e){
         e.preventDefault();
         let formData = new FormData(this); //Este método trae todos los datos del form sin necesidad de leer el valor de cada campo
         
