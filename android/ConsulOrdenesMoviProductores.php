@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $resultado=$conn->prepare($query);
             $resultado->execute();
           
-            $res = $resultado->fetchAll(PDO::FETCH_BOTH);
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
              
         break;
         //case '':
