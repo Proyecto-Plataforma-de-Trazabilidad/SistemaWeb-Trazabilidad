@@ -9,10 +9,9 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $nombre=$_POST['nombre'];
             
             //se rescatan y se buscan en la BD
-            $query="select O.IdOrden,P.Nombre as Productor,D.Nombre as Distribuidor, O.NumFactura,O.NumReceta from ordenproductos as O inner join distribuidores as D on  O.IdDistribuidor=D.IdDistribuidor INNER join productores as P on O.IdProductor=P.IdProductor where P.Nombre='$nombre'";
+            $query="SELECT O.IdOrden,P.Nombre AS Productor,D.Nombre AS Distribuidor, O.NumFactura,O.NumReceta FROM ordenproductos AS O INNER JOIN productores AS P ON O.IdProductor=P.IdProductor INNER JOIN distribuidores AS D ON O.IdDistribuidor=D.IdDistribuidor WHERE P.Nombre='$nombre'";
             $resultado=$conn->prepare($query);
             $resultado->execute();
-          
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
              
         break;
