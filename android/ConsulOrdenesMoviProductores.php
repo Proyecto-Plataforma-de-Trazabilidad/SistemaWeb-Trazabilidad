@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         break;
         case 'DetOrdProductor':
             $id=$_POST['IdOrden'];
-            $query="SELECT IdOrden,Consecutivo,TipoEnvase,Color,CantidadPiezas FROM detalleorden;";
+            $query="SELECT * FROM `detalleorden` WHERE IdOrden='$id'";
             $resultado=$conn->prepare($query);
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
