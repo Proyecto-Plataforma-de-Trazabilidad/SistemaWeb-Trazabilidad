@@ -37,11 +37,9 @@ $(document).ready(function(){
         e.preventDefault();
         console.log("paso por aqui");
         let formData = new FormData(this); //Este método trae todos los datos del form sin necesidad de leer el valor de cada campo
-        let tipofuncion="registrar";
-        let parametros={formData, "tipo":tipofuncion}
         $.ajax({
-            url:'ResponsablesArchivos/metodosRes.php',
-            data:parametros,
+            url:'ResponsablesArchivos/Insertar.php',
+            data:formData,
             type:'POST',
             contentType: false,
             cache: false,
