@@ -5,7 +5,7 @@ $r = "SELECT * FROM usuarios where Correo = '$varses'";
 $res = mysqli_query($enlace, $r);
 $filas = mysqli_fetch_array($res);
 ?>
-<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+
 
     <!--SweetAlert en linea-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
@@ -134,7 +134,7 @@ $filas = mysqli_fetch_array($res);
       } 
   </script>
 
-      <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
     <script type="text/javascript" src="ResponsablesArchivos/funcionesRes.js"></script>
