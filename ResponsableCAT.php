@@ -22,7 +22,7 @@ $filas = mysqli_fetch_array($res);
   <h1>Responsable del CAT</h1>
 </div>
 <br>
-      <form class="row g-4 container-fluid" id="frm" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" onsubmit="return 0">
+      <form class="row g-4 container-fluid" id="frm" method="POST" action="ResponsablesArchivos/Insertar.php" onsubmit="return 0">
 
         <div class="col-sm-4">
             <label for="innom" class="form-label">Nombre</label>
@@ -116,22 +116,6 @@ $filas = mysqli_fetch_array($res);
         </center>
       </div>
       <br>
-       <script>
-        function valdez()
-        {
-            let cp=document.getElementById("incp").value;
-            let tel=document.getElementById("intel").value;
-            if(cp.length<5 || cp.length>5){
-                alert("El campo: Código postal, debe ser de 5 digitos");
-                return false;
-            }
-            if(tel.length<10 || cp.length>10){
-                alert("El campo: Código postal, debe ser de 10 digitos");
-                return false;
-            }
-            return 0;
-        }
-    </script>
 
     <!--Código PHP para obtener el IDtiporol del usuario que inició sesión-->
   <?php
