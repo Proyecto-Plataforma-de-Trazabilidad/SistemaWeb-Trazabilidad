@@ -36,10 +36,19 @@ $(document).ready(function(){
     $('#frm').submit(function(e){
         e.preventDefault();
         console.log("paso por aqui");
-        let formData = new FormData(this); //Este método trae todos los datos del form sin necesidad de leer el valor de cada campo
+        let nom=document.getElementById("innombre").value;
+        let dom=document.getElementById("indom").value;
+        let cp=document.getElementById("incp").value;
+        let muni=document.getElementById("muni").value;
+        let est=document.getElementById("est").value;
+        let tel=document.getElementById("intel").value;
+        let corr=document.getElementById("incorr").value;
+        let edo=document.getElementById("inestado").value;
+        let tipofuncion="registrar";
+        let parametros={"nom":nom, "dom":dom, "cp":cp, "muni":muni, "est":est, "tel":tel, "corr":corr, "edo":edo, "tipo":tipofuncion}
         $.ajax({
-            url:'ResponsablesArchivos/Insertar.php',
-            data:formData,
+            url:'ResponsablesArchivos/metodosRes.php',
+            data:parametros,
             type:'POST',
             contentType: false,
             cache: false,
