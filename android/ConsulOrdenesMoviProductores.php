@@ -21,7 +21,17 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $resultado=$conn->prepare($query);
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
-        break;  
+        break;
+        case 'cboTipoQ':
+             $query="SELECT * FROM `tipoquimico` GROUP BY Concepto;";
+             $resultado=$conn->prepare($query);
+             $resultado->execute();
+             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
+        case 'consulTQorden':
+        break;
+        case 'consulDetTQorden':
+            break;
     }
     echo json_encode($res);
     $conn = null; //Limpia la conexión
