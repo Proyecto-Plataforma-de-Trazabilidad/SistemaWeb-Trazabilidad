@@ -1,5 +1,4 @@
 <?php
-error_reporting (E_ALL ^ ​​E_NOTICE); 
 error_reporting(0);
 include '../conexion.php';
 $nom=$_POST['innom'];
