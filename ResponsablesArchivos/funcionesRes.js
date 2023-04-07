@@ -45,6 +45,7 @@ $(document).ready(function(){
         let corr=document.getElementById("incorr").value;
         let edo=document.getElementById("inestado").value;
         let tipofuncion="registrar";
+        console.log("Me vale madres");
         let parametros={"nom":nom, "dom":dom, "cp":cp, "muni":muni, "est":est, "tel":tel, "corr":corr, "edo":edo, "tipo":tipofuncion}
         $.ajax({
             url:'ResponsablesArchivos/metodosRes.php',
