@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
         case 'cboTipoQ':
-             $query="SELECT * FROM `tipoquimico` GROUP BY Concepto;";
+             $query="SELECT Concepto FROM `tipoquimico` GROUP BY Concepto;";
              $resultado=$conn->prepare($query);
              $resultado->execute();
              $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
