@@ -13,8 +13,8 @@
         $nom=$_POST['nom'];
         $dom=$_POST['dom'];
         $cp=$_POST['cp'];
-        $muni=$_POST['muni'];
-        $est=$_POST['est'];
+        $muni=$_POST['jmr_contacto_municipio'];
+        $est=$_POST['jmr_contacto_estado'];
         $tel=$_POST['tel'];
         $corr=$_POST['corr'];
         $edo=$_POST['edo'];
@@ -29,9 +29,8 @@
     print json_encode($data);
     
     mysqli_close($enlace);
-        
-    }
-    
+}
+
     function cargarTabla()
     {
         include '../conexion.php';
