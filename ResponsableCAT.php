@@ -5,17 +5,28 @@ $r = "SELECT * FROM usuarios where Correo = '$varses'";
 $res = mysqli_query($enlace, $r);
 $filas = mysqli_fetch_array($res);
 ?>
-<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+
+
+    <!--SweetAlert en linea-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+    <!--SweetAlert en local por mis webos-->
+    <link rel="stylesheet" href="..\plugins\Sweetalert2\sweetalert2.min.css">
+    <script src="..\plugins\Sweetalert2\sweetalert2.all.min.js"></script>
+    <!--Combos responsivos-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <div class="container">
   <h1>Responsable del CAT</h1>
 </div>
 <br>
-      <form class="row g-4 container-fluid" id="frm" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" onsubmit="return 0">
+      <form class="row g-4 container-fluid" id="frm" method="POST" action="ResponsablesArchivos/Insertar.php" onsubmit="return 0">
 
         <div class="col-sm-4">
-            <label for="innombre" class="form-label">Nombre</label>
-            <input type="text" id="innombre" name="innombre" class="form-control" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" placeholder="Ingresa el nombre">
+            <label for="innom" class="form-label">Nombre</label>
+            <input type="text" id="innom" name="innom" class="form-control" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" placeholder="Ingresa el nombre">
         </div>
 
         <div class="col-sm-4">
@@ -29,14 +40,29 @@ $filas = mysqli_fetch_array($res);
         </div>
 
         <div class="col-4">
-            <label for="inmuni" class="form-label">Municipio</label>
-            <input type="text" id="inmuni" name="inmuni" class="form-control" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}"  placeholder="Ingresa el municipio">
+            <label for="inest" class="form-label" >Estado</label>
+            <br>
+            <select id="jmr_contacto_estado" name="jmr_contacto_estado" class="js-example-basic-multiple" id="Estado" multiple="multiple"><option>Selecciona tu estado</option></select>
         </div>
+  
+        <script>
+                $(document).ready(function () {
+                $('#jmr_contacto_estado').select2();
+                });
+        </script>
+
 
         <div class="col-4">
-            <label for="inedo" class="form-label">Estado</label>
-            <input type="text" id="inedo" name="inedo" class="form-control" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" placeholder="Ingresa el estado">
+               <label for="muni" class="form-label">Municipio</label>
+               <br>
+               <select id="jmr_contacto_municipio" name="muni" class="js-example-basic-multiple"  multiple="multiple"><option>Selecciona tu municipio</option></select>
         </div>
+
+        <script>
+                $(document).ready(function () {
+                $('#jmr_contacto_municipio').select2();
+                });
+        </script>
 
         <div class="col-sm-4">
             <label for="intel" class="form-label">Teléfono</label>
@@ -90,22 +116,6 @@ $filas = mysqli_fetch_array($res);
         </center>
       </div>
       <br>
-       <script>
-        function valdez()
-        {
-            let cp=document.getElementById("incp").value;
-            let tel=document.getElementById("intel").value;
-            if(cp.length<5 || cp.length>5){
-                alert("El campo: Código postal, debe ser de 5 digitos");
-                return false;
-            }
-            if(tel.length<10 || cp.length>10){
-                alert("El campo: Código postal, debe ser de 10 digitos");
-                return false;
-            }
-            return 0;
-        }
-    </script>
 
     <!--Código PHP para obtener el IDtiporol del usuario que inició sesión-->
   <?php
@@ -124,11 +134,12 @@ $filas = mysqli_fetch_array($res);
       } 
   </script>
 
-      <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
     <script type="text/javascript" src="ResponsablesArchivos/funcionesRes.js"></script>
     <script src="Layout/menujs.js"></script>
+    <script src="poper\popper.min.js"></script>
       
 </body>
 </html>
