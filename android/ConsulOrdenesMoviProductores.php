@@ -22,12 +22,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
-        case 'cboTipoQ':
-             $query="SELECT Concepto FROM `tipoquimico` GROUP BY Concepto;";
-             $resultado=$conn->prepare($query);
-             $resultado->execute();
-             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
-            break;
         case 'consulTQorden':
         break;
         case 'consulDetTQorden':
