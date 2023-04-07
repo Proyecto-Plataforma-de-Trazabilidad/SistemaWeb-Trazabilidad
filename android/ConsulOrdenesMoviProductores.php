@@ -23,6 +23,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
         case 'consulTQorden':
+            $tq=$_POST['tq'];
+            $query="SELECT O.IdOrden,D.Nombre AS Distribuidor, O.NumFactura,O.NumReceta FROM ordenproductos AS O INNER JOIN distribuidores AS D ON O.IdDistribuidor=D.IdDistribuidor INNER JOIN detalleorden AS DO ON O.IdOrden=DO.IdOrden INNER JOIN tipoquimico AS TQ ON DO.IdTipoQuimico=TQ.IdTipoQuimico WHERE TQ.Concepto='$tq'";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
         case 'consulDetTQorden':
             break;
