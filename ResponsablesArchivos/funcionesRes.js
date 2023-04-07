@@ -39,8 +39,8 @@ $(document).ready(function(){
         let nom=document.getElementById("innombre").value;
         let dom=document.getElementById("indom").value;
         let cp=document.getElementById("incp").value;
-        let muni=document.getElementById("muni").value;
-        let est=document.getElementById("est").value;
+        let muni=document.getElementById("jmr_contacto_municipio").value;
+        let est=document.getElementById("jmr_contacto_estado").value;
         let tel=document.getElementById("intel").value;
         let corr=document.getElementById("incorr").value;
         let edo=document.getElementById("inestado").value;
