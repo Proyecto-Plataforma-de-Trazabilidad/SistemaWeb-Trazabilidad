@@ -1,5 +1,6 @@
 <?php
     include '../conexion.php';
+    error_reporting(0);
     $nom=$_POST['innom'];
     $rep=$_POST['inrep'];
     $dom=$_POST['indom'];
