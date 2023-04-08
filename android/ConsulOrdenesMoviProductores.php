@@ -39,7 +39,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             break;
         case 'consulEorden':
              $e=$_POST['envase'];
-            $query="SELECT O.IdOrden,D.Nombre AS Distribuidor, O.NumFactura,O.NumReceta FROM ordenproductos AS O INNER JOIN distribuidores AS D ON O.IdDistribuidor=D.IdDistribuidor INNER JOIN detalleorden AS DOR ON O.IdOrden=DOR.IdOrden  WHERE DOR.TipoEnvase='$e'";
+            $query="SELECT O.IdOrden,D.Nombre AS Distribuidor, O.NumFactura,O.NumReceta FROM ordenproductos AS O INNER JOIN distribuidores AS D ON O.IdDistribuidor=D.IdDistribuidor INNER JOIN detalleorden AS DOR ON O.IdOrden=DOR.IdOrden WHERE DOR.TipoEnvase='$e' GROUP BY O.IdOrden";
             $resultado=$conn->prepare($query);
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
