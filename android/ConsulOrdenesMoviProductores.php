@@ -45,7 +45,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;  
         case 'consulEdetord':
-            $id=$_POST['id']
+            $id=$_POST['id'];
             $e=$_POST['envase'];
             $query="SELECT DO.Consecutivo,T.Concepto,DO.TipoEnvase,DO.Color,DO.CantidadPiezas FROM `detalleorden`  WHERE DO.IdOrden='$id' AND DO.TipoEnvase='$e'";
             $resultado=$conn->prepare($query);
