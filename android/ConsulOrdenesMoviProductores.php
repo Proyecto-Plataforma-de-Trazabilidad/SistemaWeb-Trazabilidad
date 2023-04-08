@@ -47,7 +47,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         case 'consulEdetord':
             $id=$_POST['id'];
             $e=$_POST['envase'];
-            $query="SELECT DO.Consecutivo,T.Concepto,DO.TipoEnvase,DO.Color,DO.CantidadPiezas FROM `detalleorden`  WHERE DO.IdOrden='$id' AND DO.TipoEnvase='$e'";
+            $query="SELECT DO.Consecutivo,T.Concepto,DO.TipoEnvase,DO.Color,DO.CantidadPiezas FROM `detalleorden`  AS DO INNER JOIN tipoquimico AS T ON DO.IdTipoQuimico=T.IdTipoQuimico WHERE DO.IdOrden='$id' AND DO.TipoEnvase='$e'";
             $resultado=$conn->prepare($query);
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
