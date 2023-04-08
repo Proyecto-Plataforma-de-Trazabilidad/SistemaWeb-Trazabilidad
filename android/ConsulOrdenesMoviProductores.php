@@ -37,6 +37,21 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;
+        case 'consulEorden':
+             $e=$_POST['envase'];
+            $query="SELECT O.IdOrden,D.Nombre AS Distribuidor, O.NumFactura,O.NumReceta FROM ordenproductos AS O INNER JOIN distribuidores AS D ON O.IdDistribuidor=D.IdDistribuidor INNER JOIN detalleorden AS DOR ON O.IdOrden=DOR.IdOrden  WHERE DOR.TipoEnvase='$e'";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;  
+        case 'consulEdetord':
+            $id=$_POST['id']
+            $e=$_POST['envase'];
+            $query="SELECT DO.Consecutivo,T.Concepto,DO.TipoEnvase,DO.Color,DO.CantidadPiezas FROM `detalleorden`  WHERE DO.IdOrden='$id' AND DO.TipoEnvase='$e'";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
     }
     echo json_encode($res);
     $conn = null; //Limpia la conexión
