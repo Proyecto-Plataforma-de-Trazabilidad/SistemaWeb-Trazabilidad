@@ -93,7 +93,7 @@ $(document).ready(function(){
                               confirmButtonText: 'Okiiiii'
                             }).then((result) => {
                               if (result.value) {
-                                window.location.href = "ResponsableCAT.php";
+                                window.location.href = "Productores.php";
                               }
                             });
                           }
