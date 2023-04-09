@@ -8,26 +8,7 @@
         cargarTabla();
     }
     
-    if($tipo=="registrar")
-    {
-        $nom=$_POST['nom'];
-        $reg=$_POST["reg"];
-        $dom=$_POST['dom'];
-        $cp=$_POST['cp'];
-        $ciu=$_POST["ciu"];
-        $muni=$_POST['muni'];
-        $est=$_POST['est'];
-        $tel=$_POST['tel'];
-        $corr=$_POST['corr'];
-        $puntos=$_POST["puntos"];
-        $orden=$_POST["orden"];
-        $entrega=$_POST["entrega"];
-        $giro=$_POST["giro"];
-        
-        $r="INSERT INTO productores VALUES(NULL,'".$nom."','".$reg."','".$dom."','".$cp."','".$ciu."','".$muni."','".$est."','".$tel."','".$corr."',".$puntos.",".$orden.",".$entrega.",'".$giro."')";
-        mysqli_query($enlace,$r);
-        cargarTabla();
-    }
+
     
     function cargarTabla()
     {

@@ -4,6 +4,7 @@ $(document).ready(function(){
         url:'ProductoresArchivos/metodosProd.php',
         data:{"tipo":""},
         type:'POST',
+        data: {"tipo":""},
         success:function(response){
             $('#bodyTabla').html(response);
             $('#tabla').DataTable({
@@ -11,36 +12,94 @@ $(document).ready(function(){
             });
         }
     });
-    window.addEventListener('resize', function(event){
-        $('#tabla').DataTable().fnDestroy();
-        $('#tabla').DataTable({
-            scrollX:true,
+
+    $.ajax({
+        type: "POST",
+        url: "procesar-estados.php",
+        data: { estados : "Mexico" } 
+        }).done(function(data){
+        $("#jmr_contacto_estado").html(data);
         });
-    },true);
+        // Obtener municipios
+        $("#jmr_contacto_estado").change(function(){
+        var estado = $("#jmr_contacto_estado option:selected").val();
+        $.ajax({
+        type: "POST",
+        url: "procesar-estados.php",
+        data: { municipios : estado } 
+        }).done(function(data){
+        $("#jmr_contacto_municipio").html(data);
+        });
+        });
+
 
 
     $('#frm').submit(function(e){
         e.preventDefault();
-        let nom=document.getElementById("innom").value;
-        let reg=document.getElementById("inreg").value;
-        let dom=document.getElementById("indom").value;
-        let cp=document.getElementById("incp").value;
-        let ciu=document.getElementById("inciu").value;
-        let muni=document.getElementById("inmuni").value;
-        let est=document.getElementById("inest").value;
-        let tel=document.getElementById("intel").value;
-        let corr=document.getElementById("incorr").value;
-        let puntos=document.getElementById("inpuntos").value;
-        let orden=document.getElementById("inorden").value;
-        let entrega=document.getElementById("inentrega").value;
-        let giro=document.getElementById("ingiro").value;
-        let tipofuncion="registrar";
-        let parametros={"nom":nom, "reg":reg, "dom":dom, "cp":cp,"ciu":ciu, 
-                        "muni":muni, "est":est, "tel":tel, "corr":corr, 
-                        "puntos":puntos,"orden":orden,"entrega":entrega,
-                        "giro":giro, "tipo":tipofuncion}
+        console.log("paso por aqui 2.0");
+        let formData = new FormData(this); //Este método trae todos los datos del form sin necesidad de leer el valor de cada campo
+        $.ajax({
+            url:'ProductoresArchivos/Insertar.php',
+            data:formData,
+            type:'POST',
+            contentType: false,
+            cache: false,
+            processData:false,
+            datatype: "json",
+            success:function(data){ //!!!Las respuestas que reciba de la petición se deben imprimir con sweetalerts
+                if(data == "null"){
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'No se pudo realizar el insert',
+                    });
+                }else {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Se a hecho el registro correctamente',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'yeiiiii'
+                    }).then((result) => {
+                        if(result.value){
+                        registrarUsuario();  //Funcion para hacer el registro del usuario con los datos del form
+                        }
+                    });
+                  }
+                }
+            });
 
-        console.log("Registra")
+            function registrarUsuario() {
+                //console.log(formData);
+                formData.append("tipousuario", "2");
+      
+                $.ajax({
+                    url:'UserArchivos/nuevoRegistrar.php',
+                    data:formData,
+                    type:'POST',
+                    contentType: false,
+                    cache: false,
+                    processData:false,
+                    datatype: "json",
+                    success:function(data){
+                        if(data == "null"){
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error al registrar al nuevo usuario',
+                            })
+                        }else {
+                            Swal.fire({
+                              icon: 'success',
+                              title: 'El usuario se a creado correctamente',
+                              confirmButtonColor: '#3085d6',
+                              confirmButtonText: 'Okiiiii'
+                            }).then((result) => {
+                              if (result.value) {
+                                window.location.href = "ResponsableCAT.php";
+                              }
+                            });
+                          }
+                    }
+                });
+              }
+    
+        });
     });
-
-});
