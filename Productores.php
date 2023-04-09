@@ -60,7 +60,7 @@ $filas = mysqli_fetch_array($res);
         <div class="col-4">
                <label for="muni" class="form-label">Municipio</label>
                <br>
-               <select id="jmr_contacto_municipio" name="muni" class="js-example-basic-multiple"  multiple="multiple"><option>Selecciona tu municipio</option></select>
+               <select id="jmr_contacto_municipio" name="jmr_contacto_municipio" class="js-example-basic-multiple"  multiple="multiple"><option>Selecciona tu municipio</option></select>
         </div>
 
         <script>
