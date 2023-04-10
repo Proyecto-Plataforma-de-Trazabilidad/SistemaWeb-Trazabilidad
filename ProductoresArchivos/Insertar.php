@@ -18,6 +18,7 @@ $giro=$_POST["ingiro"];
 if($nom != null && $corr != null){
     $r="INSERT INTO productores VALUES(NULL,'".$nom."','".$reg."','".$dom."','".$cp."','".$ciu."','".$muni."','".$est."','".$tel."','".$corr."',".$puntos.",".$orden.",".$entrega.",'".$giro."')";
     mysqli_query($enlace,$r);
+    $data = "bien";
 }
 else{
     $data= null;

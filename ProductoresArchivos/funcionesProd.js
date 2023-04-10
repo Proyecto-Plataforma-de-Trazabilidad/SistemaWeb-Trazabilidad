@@ -33,7 +33,7 @@ $(document).ready(function(){
 
 
 
-    $('#frm').submit(function(e){
+     $('#frm').submit(function(e){
         e.preventDefault();
         console.log("paso por aqui 2.0");
         let formData = new FormData(this); //Este método trae todos los datos del form sin necesidad de leer el valor de cada campo
