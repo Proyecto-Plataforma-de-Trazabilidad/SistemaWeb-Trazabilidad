@@ -15,7 +15,7 @@ $r="INSERT INTO responsablecat VALUES(NULL,'".$nom."','".$dom."','".$cp."','".$m
 mysqli_query($enlace,$r);
 }
 else{
-    $data= null";
+    $data= null;
 }
 
 print json_encode($data);
