@@ -52,6 +52,15 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
+        case 'consulOfecha':
+            $fi
+            $ff
+            $query="SELECT O.IdOrden,P.Nombre AS Productor,D.Nombre AS Distribuidor, O.NumFactura,O.NumReceta FROM ordenproductos AS O INNER JOIN productores AS P ON O.IdProductor=P.IdProductor INNER JOIN distribuidores AS D ON O.IdDistribuidor=D.IdDistribuidor where O.Fecha BETWEEN '$fi' and '$ff'";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
+
     }
     echo json_encode($res);
     $conn = null; //Limpia la conexión
