@@ -53,8 +53,9 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
         case 'consulOfecha':
-            $fi
-            $ff
+            $fi=$_POST['fi'];//fecha inicial
+            $ff=$_POST['ff'];//fecha final
+
             $query="SELECT O.IdOrden,P.Nombre AS Productor,D.Nombre AS Distribuidor, O.NumFactura,O.NumReceta FROM ordenproductos AS O INNER JOIN productores AS P ON O.IdProductor=P.IdProductor INNER JOIN distribuidores AS D ON O.IdDistribuidor=D.IdDistribuidor where O.Fecha BETWEEN '$fi' and '$ff'";
             $resultado=$conn->prepare($query);
             $resultado->execute();
