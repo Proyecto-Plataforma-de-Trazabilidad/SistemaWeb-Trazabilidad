@@ -23,7 +23,7 @@ include "Layout/navMenu.php";
 
 <h1>Registrar Distribuidores</h1>
 
-<form class="row g-4 container-fluid" id="frm" method="POST" action="DistArchivos/Insertar.php" onsubmit="return valdez()" enctype="multipart/form-data">
+<form class="row g-4 container-fluid" id="frm" method="POST" action="DistArchivos/Insertar.php" enctype="multipart/form-data">
 
   <div class="col-sm-4">
     <label for="innom" class="form-label">Nombre</label>

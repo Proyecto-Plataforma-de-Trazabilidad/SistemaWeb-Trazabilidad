@@ -3,7 +3,7 @@
 include("../conexion.php");
 session_start();
 
-$comando = mysqli_query($enlace, "SELECT T.Descripcion FROM usuarios as U inner join tipousuario as T on U.IdtipoUsuario = T.Idtipousuario where U.Nombre = '" . $_SESSION['usuario'] . "'");
+$comando = mysqli_query($enlace, "SELECT T.Descripcion FROM usuarios as U inner join tipousuario as T on U.IdtipoUsuario = T.Idtipousuario where U.Correo = '" . $_SESSION['usuario'] . "'");
 $tipoUser = mysqli_fetch_column($comando);
 mysqli_free_result($comando);
 
@@ -11,8 +11,13 @@ mysqli_free_result($comando);
 
 if ($tipoUser == 'admin') {
     $distribuidor = 'admin';
-}else{
-    $distribuidor = $_SESSION['usuario'];
+    
+}elseif($tipoUser == 'Distribuidores'){
+
+    $comando = mysqli_query($enlace, "SELECT Nombre FROM distribuidores WHERE  Correo = '".$_SESSION['usuario']."' ") or die(mysqli_error());
+    if (mysqli_num_rows($comando) != 0)   //Valida si hay distribuidores registrados en la db
+        $distribuidor = mysqli_fetch_column($comando);
+
 }
 
 
@@ -23,8 +28,8 @@ if (true) {
     $comando = mysqli_query($enlace, $queryOrden);
     
     
-    if (!$comando) {
-        echo ("Hubo un error");
+    if (mysqli_num_rows($comando) == 0) {
+        echo ("Error");
     } else {
         while ($datos = mysqli_fetch_assoc($comando)) {
             $consulta["data"][] = $datos;
@@ -36,7 +41,7 @@ if (true) {
 
     $queryOrden = "CALL OrdenConsulta('" . $distribuidor . "','" . $_POST['FI'] . "','" . $_POST['FF'] . "');";
     $comando = mysqli_query($enlace, $queryOrden);
-    if (!$comando) {
+    if (mysqli_num_rows($comando) == 0) {
         die("Error");
     } else {
         while ($datos = mysqli_fetch_assoc($comando)) {

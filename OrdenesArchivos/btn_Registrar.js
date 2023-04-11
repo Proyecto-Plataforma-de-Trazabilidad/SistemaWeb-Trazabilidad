@@ -1,8 +1,8 @@
 $('#frmOrden').submit(function(e) {
-    //detener la carga de la pagina
-    e.preventDefault();
+    
+    e.preventDefault();  //detener la recarga de la pagina
   
-    let formData = new FormData(this); //Optiene los archivos del formulario
+    let formData = new FormData(this); //Obtiene los archivos del formulario
 
     //tomar los valores del formulario
     let accion = 'registrarOrden';
@@ -28,7 +28,7 @@ $('#frmOrden').submit(function(e) {
     //console.log(datos);
 
     let orden = document.getElementById('numOrden'); 
-    const numOrden = orden.dataset.numOrden; //Se optiene el id de la orden almacenad en el dataSet
+    const numOrden = orden.dataset.numOrden; //Se obtiene el id de la orden almacenada en el dataSet
     formData.append("IdOrden", numOrden); //Se agrega el id de la orden para mandarlo junto con los archivos
     
     if (!(document.querySelector('#detalle'))) {

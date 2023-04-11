@@ -5,13 +5,24 @@ $r = "SELECT * FROM usuarios where Correo = '$varses'";
 $res = mysqli_query($enlace, $r);
 $filas = mysqli_fetch_array($res);
 ?>
-<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+
+    <!--SweetAlert en linea-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+    <!--SweetAlert en local por mis webos-->
+    <link rel="stylesheet" href="..\plugins\Sweetalert2\sweetalert2.min.css">
+    <script src="..\plugins\Sweetalert2\sweetalert2.all.min.js"></script>
+    <!--Combos responsivos-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 
 <div class="container">
   <h1>Productores</h1>
 </div>
 <br>
-<form class="row g-4 container-fluid" id="frm" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return 0">
+<form class="row g-4 container-fluid" id="frm" method="POST" action="ProductoresArchivos/Insertar.php" onsubmit="return 0">
 
   <div class="col-sm-4">
     <label for="innom" class="form-label">Nombre</label>
@@ -34,19 +45,35 @@ $filas = mysqli_fetch_array($res);
   </div>
 
   <div class="col-4">
+            <label for="inest" class="form-label" >Estado</label>
+            <br>
+            <select id="jmr_contacto_estado" name="jmr_contacto_estado" class="js-example-basic-multiple" id="Estado" multiple="multiple"><option>Selecciona tu estado</option></select>
+        </div>
+  
+        <script>
+                $(document).ready(function () {
+                $('#jmr_contacto_estado').select2();
+                });
+        </script>
+
+
+        <div class="col-4">
+               <label for="muni" class="form-label">Municipio</label>
+               <br>
+               <select id="jmr_contacto_municipio" name="jmr_contacto_municipio" class="js-example-basic-multiple"  multiple="multiple"><option>Selecciona tu municipio</option></select>
+        </div>
+
+        <script>
+                $(document).ready(function () {
+                $('#jmr_contacto_municipio').select2();
+                });
+        </script>
+
+  <div class="col-4">
     <label for="inciu" class="form-label">Ciudad</label>
     <input type="text" class="form-control" id="inciu" name="inciu" maxlength="30" placeholder="Ingresa la ciudad">
   </div>
 
-  <div class="col-4">
-    <label for="inmuni" class="form-label">Municipio</label>
-    <input type="text" class="form-control" id="inmuni" name="inmuni" maxlength="40" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,40}" placeholder="Ingresa el municipio">
-  </div>
-
-  <div class="col-4">
-    <label for="inest" class="form-label">Estado</label>
-    <input type="text" class="form-control" id="inest" name="inest" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" placeholder="Ingresa el estado">
-  </div>
 
   <div class="col-4">
     <label for="intel" class="form-label">Teléfono</label>
@@ -134,11 +161,11 @@ $rol = $filas['Idtipousuario'];
   }
 </script>
 
-<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="datatables.min.js"></script>
 <script type="text/javascript" src="ProductoresArchivos/funcionesProd.js"></script>
 <script src="Layout/menujs.js"></script>
+<script src="poper\popper.min.js"></script>
 
 </body>
 
