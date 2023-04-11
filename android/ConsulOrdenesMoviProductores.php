@@ -61,6 +61,13 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
+        case 'consuldetfecha':
+            $id=$_POST['id'];
+            $query="SELECT DO.Consecutivo,T.Concepto,DO.TipoEnvase,DO.Color,DO.CantidadPiezas FROM `detalleorden`  AS DO INNER JOIN tipoquimico AS T ON DO.IdTipoQuimico=T.IdTipoQuimico WHERE DO.IdOrden='$id'";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
 
     }
     echo json_encode($res);
