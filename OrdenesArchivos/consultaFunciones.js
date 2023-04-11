@@ -16,16 +16,21 @@ function mostrarOrden(fechaI, fechaF) {
         destroy:true,
         scrollX:true,
         scrollCollapse: true,
+        processing: true,
         ajax: {
             "method":"POST",
             "url":"metodosConsulta.php",
             "data":{'FI': fechaI, 'FF': fechaF },
-            "error": function (xhr, textStatus, error) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'No hay datos disponibles',
-                    text: 'No se encontraron registros del distribuidor',
-                });
+            "complete": function (res) {
+                if (res.responseText == "Error") {
+                    console.log(res.responseText);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'No hay datos disponibles',
+                        text: 'No se encontraron registros del distribuidor',
+                    });
+                }else
+                    return res.responseText;
             }
         },
         columns:[
