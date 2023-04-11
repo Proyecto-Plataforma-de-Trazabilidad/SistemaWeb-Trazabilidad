@@ -68,7 +68,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
-
     }
     echo json_encode($res);
     $conn = null; //Limpia la conexión
