@@ -46,40 +46,14 @@
         </div>
 
         <div class="col-3">
-          <label for="inest" class="form-label">Estado Actual</label>
-          <input type="text" class="form-control" id="inest"  name="inest" maxlength="60" disabled required value="<?php echo($row[7]);?>">
-        </div>
-
-        <div class="col-4">
-            <label for="inest" class="form-label" >Estado</label>
-            <br>
-            <select id="jmr_contacto_estado" name="jmr_contacto_estado" class="js-example-basic-multiple" id="Estado" multiple="multiple"><option>Selecciona tu estado</option></select>
-        </div>
-  
-        <script>
-                $(document).ready(function () {
-                $('#jmr_contacto_estado').select2();
-                });
-        </script>
-
-        <div class="col-3">
-          <label for="inmuni" class="form-label">Municipio Actual</label>
+          <label for="inmuni" class="form-label">Municipio</label>
           <input type="text" class="form-control" id="inmuni"  name="inmuni" maxlength="60" disabled required value="<?php echo($row[6]);?>">
         </div>
 
-        <div class="col-4">
-               <label for="muni" class="form-label">Municipio</label>
-               <br>
-               <select id="jmr_contacto_municipio" name="jmr_contacto_municipio" class="js-example-basic-multiple"  multiple="multiple"><option>Selecciona tu municipio</option></select>
+        <div class="col-3">
+          <label for="inest" class="form-label">Estado</label>
+          <input type="text" class="form-control" id="inest"  name="inest" maxlength="60" disabled required value="<?php echo($row[7]);?>">
         </div>
-
-        <script>
-                $(document).ready(function () {
-                $('#jmr_contacto_municipio').select2();
-                });
-        </script>
-
-        
 
         <div class="col-sm-3">
           <label for="inciu" class="form-label">Ciudad</label>

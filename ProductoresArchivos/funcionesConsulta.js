@@ -1,32 +1,13 @@
 $(document).ready(function(){
 
-    $.ajax({
-        type: "POST",
-        url: "procesar-estados.php",
-        data: { estados : "Mexico" } 
-        }).done(function(data){
-        $("#jmr_contacto_estado").html(data);
-        });
-        // Obtener municipios
-        $("#jmr_contacto_estado").change(function(){
-        var estado = $("#jmr_contacto_estado option:selected").val();
-        $.ajax({
-        type: "POST",
-        url: "procesar-estados.php",
-        data: { municipios : estado } 
-        }).done(function(data){
-        $("#jmr_contacto_municipio").html(data);
-        });
-        });
-
     $('#btnEditar').click(function(e){
         document.getElementById("innom").disabled=false;
         document.getElementById("inreg").disabled=false;
         document.getElementById("indom").disabled=false;
         document.getElementById("incp").disabled=false;
         document.getElementById("inciu").disabled=false;
-        document.getElementById("jmr_contacto_municipio").disabled=false;
-        document.getElementById("jmr_contacto_estado").disabled=false;
+        document.getElementById("inmuni").disabled=false;
+        document.getElementById("inest").disabled=false;
         document.getElementById("intel").disabled=false;
         document.getElementById("incorr").disabled=false;
         document.getElementById("inorden").disabled=false;
@@ -43,8 +24,8 @@ $(document).ready(function(){
         let dom=document.getElementById("indom").value;
         let cp=document.getElementById("incp").value;
         let ciu=document.getElementById("inciu").value;
-        let muni=document.getElementById("jmr_contacto_municipio").value;
-        let est=document.getElementById("jmr_contacto_estado").value;
+        let muni=document.getElementById("inmuni").value;
+        let est=document.getElementById("inest").value;
         let tel=document.getElementById("intel").value;
         let corr=document.getElementById("incorr").value;
         let orden=document.getElementById("inorden").value;
@@ -57,8 +38,8 @@ $(document).ready(function(){
         document.getElementById("indom").disabled=true;
         document.getElementById("incp").disabled=true;
         document.getElementById("inciu").disabled=true;
-        document.getElementById("jmr_contacto_municipio").disabled=true;
-        document.getElementById("jmr_contacto_estado").disabled=true;
+        document.getElementById("inmuni").disabled=true;
+        document.getElementById("inest").disabled=true;
         document.getElementById("intel").disabled=true;
         document.getElementById("incorr").disabled=true;
         document.getElementById("inorden").disabled=true;
