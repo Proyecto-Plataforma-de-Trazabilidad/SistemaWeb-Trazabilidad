@@ -12,7 +12,7 @@ $(document).ready(function(){
             }
         });
     }
-    combocat();
+
 
     function combomuni(){
         let tipoFuncion = "comboMuni";
@@ -26,7 +26,7 @@ $(document).ready(function(){
             }
         });
     }
-    combomuni();
+
 
     function comboestado(){
         let tipoFuncion = "comboEst";
@@ -40,7 +40,7 @@ $(document).ready(function(){
             }
         });
     }
-    comboestado();
+
 
     
 
