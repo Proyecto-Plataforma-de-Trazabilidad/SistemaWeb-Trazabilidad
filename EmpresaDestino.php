@@ -70,7 +70,7 @@ $filas = mysqli_fetch_array($res);
           <button type="submit" class="btn btn-success" onclick="" name="Registrar">Registrar</button>
         </div>
         <div class="col-3">
-          <a href="DestinoArchivos/ConsultaMaps.php"><button type="button" class="btn btn-primary" onclick="" name="Registrar">Ubicaciones</button></a>
+          <a href="DestinoArchivos/consultaMaps.php"><button type="button" class="btn btn-primary" onclick="" name="Registrar">Ubicaciones</button></a>
         </div>
 
         <div class="row g-4 container-fluid">
