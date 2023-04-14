@@ -6,7 +6,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
     
     switch($_POST['opcion']){
-        case 'OrdenProductor':
+        case 'EProductor':
             //$nombre=$_POST['nombre']; 
             $query="SELECT * FROM extraviados";
             $resultado=$conn->prepare($query);
