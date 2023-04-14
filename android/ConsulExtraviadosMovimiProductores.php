@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     switch($_POST['opcion']){
         case 'EProductor':
             //$nombre=$_POST['nombre']; 
-            $query="SELECT * FROM extraviados";
+            $query="SELECT E.TipoEnvaseVacio,E.CantidadPiezas,E.Aclaracion,E.fecha FROM extraviados as E INNER JOIN productores  as P on E.IdProductor=P.IdProductor where P.Nombre='Naylea'";
             $resultado=$conn->prepare($query);
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
