@@ -5,16 +5,16 @@ include "Layout/navMenu.php";
 
 
 
-    <!--SweetAlert en linea-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
-    <!--SweetAlert en local por mis webos-->
-    <link rel="stylesheet" href="..\plugins\Sweetalert2\sweetalert2.min.css">
-    <script src="..\plugins\Sweetalert2\sweetalert2.all.min.js"></script>
-    <!--Combos responsivos-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<!--SweetAlert en linea-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+<!--SweetAlert en local por mis webos-->
+<link rel="stylesheet" href="..\plugins\Sweetalert2\sweetalert2.min.css">
+<script src="..\plugins\Sweetalert2\sweetalert2.all.min.js"></script>
+<!--Combos responsivos-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
 
@@ -47,33 +47,37 @@ include "Layout/navMenu.php";
 
 
   <div class="col-4">
-    <label for="inest" class="form-label" >Estado</label>
+    <label for="inest" class="form-label">Estado</label>
     <br>
-    <select id="jmr_contacto_estado" name="jmr_contacto_estado" class="js-example-basic-multiple" id="Estado" multiple="multiple"><option>Selecciona tu estado</option></select>
+    <select id="jmr_contacto_estado" name="jmr_contacto_estado" class="js-example-basic-multiple form-control" id="Estado" multiple="multiple">
+      <option>Selecciona tu estado</option>
+    </select>
   </div>
-  
+
   <script>
-                        $(document).ready(function () {
-                            $('#jmr_contacto_estado').select2();
-                        });
-                    </script>
+    $(document).ready(function() {
+      $('#jmr_contacto_estado').select2();
+    });
+  </script>
 
 
   <div class="col-4">
     <label for="inmuni" class="form-label">Municipio</label>
     <br>
-    <select id="jmr_contacto_municipio" name="jmr_contacto_municipio" class="js-example-basic-multiple" id="Estado" multiple="multiple"><option>Selecciona tu municipio</option></select>
+    <select id="jmr_contacto_municipio" name="jmr_contacto_municipio" class="js-example-basic-multiple form-control" id="Estado" multiple="multiple">
+      <option>Selecciona tu municipio</option>
+    </select>
   </div>
 
-                    <script>
-                        $(document).ready(function () {
-                            $('#jmr_contacto_municipio').select2();
-                        });
-                    </script>
-                    
-                    
-  
-  
+  <script>
+    $(document).ready(function() {
+      $('#jmr_contacto_municipio').select2();
+    });
+  </script>
+
+
+
+
 
   <div class="col-4">
     <label for="inciu" class="form-label">Ciudad</label>
@@ -176,8 +180,6 @@ include "Layout/navMenu.php";
 <br>
 
 <script>
-
-
   function initMap() {
     let latitud = 19.7047732
     let longitud = -103.5031816;
