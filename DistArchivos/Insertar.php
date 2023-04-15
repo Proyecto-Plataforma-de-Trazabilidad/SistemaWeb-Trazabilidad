@@ -60,11 +60,11 @@
             if($subir_archivo && $subir_archivo2 && $subir_archivo3){
                 //$r="UPDATE distribuidores SET CapacitacionBUMA='".$ruta3."', SEMARNAT='".$ruta1."', LicenciaMunicipio='".$ruta2."' WHERE IdDistribuidor=".$lastid;
                 $r = "UPDATE distribuidores SET SEMARNAT = '$ruta1', LicenciaMunicipio = '$ruta2', CapacitacionBUMA = '$ruta3' WHERE IdDistribuidor = '$num' ";
-                echo("<script> alert('$r') </script>");
+                
                 $resultado=mysqli_query($enlace,$r);
-                echo("<script> alert('$ruta1, $ruta2, $ruta3') </script>");
+                
                 if($resultado){
-                    $data="archivos subidos";//all se a ejecutado correctamente
+                    $data="archivos subidos";//all se ha ejecutado correctamente
                 }
                 else{
                     $data = "server fail";//error del servidor
