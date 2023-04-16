@@ -19,7 +19,7 @@ $(document).ready(function () {
   }).done(function (data) {
     $("#jmr_contacto_estado").html(data);
   });
-  
+
   // Obtener municipios
   $("#jmr_contacto_estado").change(function () {
     var estado = $("#jmr_contacto_estado option:selected").val();
@@ -102,7 +102,8 @@ $(document).ready(function () {
           } else {
             Swal.fire({
               icon: 'success',
-              title: 'El usuario se a creado correctamente',
+              title: 'El usuario se ha creado correctamente',
+              text: 'Recuerda comentarle a los usuarios',
               confirmButtonColor: '#3085d6',
               confirmButtonText: 'Ok'
             }).then((result) => {
