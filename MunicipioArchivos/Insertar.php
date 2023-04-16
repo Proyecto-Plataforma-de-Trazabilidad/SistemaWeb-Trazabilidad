@@ -6,7 +6,7 @@
     $nom=$_POST['innom'];
     $dom=$_POST['indom'];
     $cp=$_POST['incp'];
-    $est=$_POST['inest'];
+    $est=$_POST['jmr_contacto_estado'];
     $tel=$_POST['intel'];
     $corr=$_POST['incorr'];
     $lat=$_POST['inlat'];

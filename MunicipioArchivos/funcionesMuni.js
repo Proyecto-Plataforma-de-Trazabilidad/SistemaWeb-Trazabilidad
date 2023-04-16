@@ -16,9 +16,9 @@ $(document).ready(function () {
         type: "POST",
         url: "procesar-estados.php",
         data: { estados: "Mexico" }
-    }).done(function (data) {
+      }).done(function (data) {
         $("#jmr_contacto_estado").html(data);
-    });
+      });
 
 
 

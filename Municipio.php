@@ -16,10 +16,9 @@ include "Layout/navMenu.php";
 
 
 
-<div class="container">
-  <h1>Municipio Ayuntamiento</h1>
-</div>
-<br>
+
+<h1>Municipio Ayuntamiento</h1>
+
 <form class="row g-4 container-fluid" id="frm" method="POST" action="MunicipioArchivos/Insertar.php" onsubmit="return 0" enctype="multipart/form-data">
 
   <div class="col-sm-4">
