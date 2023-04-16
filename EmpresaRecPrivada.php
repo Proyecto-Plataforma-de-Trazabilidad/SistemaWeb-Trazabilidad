@@ -47,10 +47,10 @@ $filas = mysqli_fetch_array($res);
 
 
 
-  <div class="col-sm-4">
+  <div class="col-4">
     <label for="inest" class="form-label">Estado</label>
     <br>
-    <select id="jmr_contacto_estado" name="jmr_contacto_estado" class="js-example-basic-multiple form-control">
+    <select id="jmr_contacto_estado" name="jmr_contacto_estado" class="js-example-basic-multiple form-control" id="Estado">
       <option>Selecciona el estado</option>
     </select>
   </div>
@@ -61,7 +61,7 @@ $filas = mysqli_fetch_array($res);
     });
   </script>
 
-  <div class="col-sm-4">
+<div class="col-4">
     <label for="inmuni" class="form-label">Municipio</label>
     <br>
     <select id="jmr_contacto_municipio" name="jmr_contacto_municipio" class="js-example-basic-multiple form-control" id="Estado">
