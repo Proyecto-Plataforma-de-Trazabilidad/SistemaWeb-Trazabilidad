@@ -32,7 +32,7 @@ if ($row > 0) {
         $mail->Host = 'smtp.hostinger.com';   
         $mail->Username = 'soporte@campolimpiojal.com';
         $mail->Password = 'Y0ohg-sOth0Th_';
-        $mail->SMTPSecure = 'tls'; 
+        $mail->SMTPSecure = 'ssl'; 
         $mail->Port = 465;                                 //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
