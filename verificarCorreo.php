@@ -7,14 +7,14 @@ $correo    = $_REQUEST['incorr'];
 //Preparamos un arreglo que es el que contendrá toda la información
 $jsonData = array();
 $selectQuery   = ("SELECT Correo FROM usuarios WHERE Correo='".$correo."' ");
-$query         = mysqli_query($con, $selectQuery);
-$totalCliente  = mysqli_num_rows($query);
+$query         = mysqli_query($enlace, $selectQuery);
+$totalUsuarios  = mysqli_num_rows($query);
 
   //Validamos que la consulta haya retornado información
-  if( $totalCliente <= 0 ){
+  if( $totalUsuarios <= 0 ){
     $jsonData['success'] = 0;
-   // $jsonData['message'] = 'No existe Correo ' .$correo;
-    $jsonData['message'] = '';
+    $jsonData['message'] = 'No existe Correo ' .$correo;
+    //$jsonData['message'] = '';
 } else{
     //Si hay datos entonces retornas algo
     $jsonData['success'] = 1;
