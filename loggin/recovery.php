@@ -29,11 +29,12 @@ if ($row > 0) {
         $mail->CharSet = "UTF-8";
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
         $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host = 'smtp.hostinger.com';   
+        $mail->Host = 'smtp.hostinger.com';  
+        $mail->SMTPAuth = true; 
         $mail->Username = 'soporte@campolimpiojal.com';
         $mail->Password = 'Y0ohg-sOth0Th_';
-        $mail->SMTPSecure = 'ssl'; 
-        $mail->Port = 465;                                 //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        $mail->SMTPSecure = 'tls'; 
+        $mail->Port = 587;                                 //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
         $mail->setFrom('soporte@campolimpiojal.com', 'Soporte');
