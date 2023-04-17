@@ -13,8 +13,8 @@ $totalUsuarios  = mysqli_num_rows($query);
   //Validamos que la consulta haya retornado información
   if( $totalUsuarios <= 0 ){
     $jsonData['success'] = 0;
-    $jsonData['message'] = 'No existe Correo ' .$correo;
-    //$jsonData['message'] = '';
+    //$jsonData['message'] = 'No existe Correo ' .$correo;
+    $jsonData['message'] = '';
 } else{
     //Si hay datos entonces retornas algo
     $jsonData['success'] = 1;
