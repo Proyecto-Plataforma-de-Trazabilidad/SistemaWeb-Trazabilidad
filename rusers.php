@@ -25,8 +25,9 @@
         </div>
 
         <div class="col-sm-4">
-            <label for="Email" class="form-label">Email</label>
-            <input type="text" class="form-control" id="Email"  name="Email" maxlength="50" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#@0-_9.,-]{1,30}" placeholder="Ingresa el email">
+            <label for="incorr" class="form-label">Email</label>
+            <input type="text" class="form-control" id="incorr"  name="incorr" maxlength="50" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#@0-_9.,-]{1,30}" placeholder="Ingresa el email">
+            <div id="respuesta"> </div>
         </div>
 
         <div class="col-12">
@@ -63,6 +64,33 @@
         </center>
     </div>
 
+    <script>
+          //Validando si existe el Correo en BD antes de enviar el Form
+$("#incorr").on("keyup", function() {
+  var incorr = $("#incorr").val(); //CAPTURANDO EL VALOR DE INPUT CON ID Correo
+  var longitudCorreo = $("#incorr").val().length; //CUENTO LONGITUD
+//Valido la longitud 
+  if(longitudCorreo >= 3){
+    var dataString = 'incorr=' + incorr;
+      $.ajax({
+          url: 'verificarCorreo.php',
+          type: "GET",
+          data: dataString,
+          dataType: "JSON",
+          success: function(datos){
+                if( datos.success == 1){
+                $("#respuesta").html(datos.message);
+                $("input#incorr").attr('disabled',false); //Habilitando el input correo
+                $("#Registrar").attr('disabled',true); //Desabilito el Botton
+                }else{
+                $("#respuesta").html(datos.message);
+                $("#Registrar").attr('disabled',false); //Habilito el Botton
+                    }
+                  }
+                });
+              }
+          });
+    </script>
 
 <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
