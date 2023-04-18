@@ -4,7 +4,8 @@ include("../conexion.php");
 session_start();
 
 $comando = mysqli_query($enlace, "SELECT T.Descripcion FROM usuarios as U inner join tipousuario as T on U.IdtipoUsuario = T.Idtipousuario where U.Correo = '" . $_SESSION['usuario'] . "'");
-$tipoUser = mysqli_fetch_column($comando);
+$fila = mysqli_fetch_array($comando);
+$tipoUser = $fila[0];
 mysqli_free_result($comando);
 
 

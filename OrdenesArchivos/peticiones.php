@@ -4,7 +4,8 @@
     session_start();
 
     $comando = mysqli_query($enlace, "SELECT count(*) from ordenproductos");
-    $row =  mysqli_fetch_column($comando) + 1;
+    $fila = mysqli_fetch_array($comando);
+    $row =  $fila[0] + 1;
     mysqli_free_result($comando);
 
     $comando = mysqli_query($enlace, "SELECT * from tipoquimico");
