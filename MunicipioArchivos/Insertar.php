@@ -1,11 +1,12 @@
 <?php
 
     include '../conexion.php';
+    error_reporting(0);
     $res=$_POST['inres'];
     $nom=$_POST['innom'];
     $dom=$_POST['indom'];
     $cp=$_POST['incp'];
-    $est=$_POST['inest'];
+    $est=$_POST['jmr_contacto_estado'];
     $tel=$_POST['intel'];
     $corr=$_POST['incorr'];
     $lat=$_POST['inlat'];
@@ -30,27 +31,30 @@
             $lastid=mysqli_insert_id($enlace);
 
             $ruta="SEMARNATMunicipio/".$lastid.".".$extension;
+
             $subir_archivo=move_uploaded_file($_FILES["infile"]["tmp_name"], $ruta);
+            
             if($subir_archivo){
                 $r="UPDATE municipio SET SEMARNAT='".$ruta."' WHERE IdMunicipio=".$lastid;
                 $resultado=mysqli_query($enlace,$r);
-                if($resultado){
-                    echo "<script>alert('Archivo subido'); window.location='../Municipio.php'</script>";
+                if($resultado){ 
+                    $data = "archivos subidos";  //-Todo se ha ejectutado correctamente
                 }
-                else{
-                    printf("Errormessage: %s\n" , mysqli_error($enlace));
+                else{ 
+                    $data = "server fail"; //Error en el servidor
                 }
             }
             else{
-                echo "<script>alert('Error al subir archivo');</script>";;
+                $data = "error"; //error al subir los archivos
             }
         }
-        else{
-            echo "<script>alert('Solo se permiten archivos con extensión .pdf .jpg .jpeg .png');</script>";
-        }
+        $data = "extension"; //Arhivos no permitidos
     }
     else{
-        echo "<script>alert('Seleccione un archivo!!!');</script>";
+        $data = null; //Si el archivo no es válido
     }
+
+    print json_encode($data);
+    mysqli_close($enlace);
 
 ?>

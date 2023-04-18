@@ -13,6 +13,7 @@ $edo=$_POST['inestado'];
 if($nom != null && $corr != null){
 $r="INSERT INTO responsablecat VALUES(NULL,'".$nom."','".$dom."','".$cp."','".$muni."','".$est."','".$tel."','".$corr."','".$edo."')";
 mysqli_query($enlace,$r);
+$data = "bien";
 }
 else{
     $data= null;

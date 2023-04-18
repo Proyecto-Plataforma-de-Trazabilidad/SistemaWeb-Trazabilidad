@@ -87,9 +87,9 @@ $('#frmOrden').submit(function(e) {
 
                 //!Errores de extencion
                 if(resArchivo.extCorrectaArchFac == "No permitida")
-                    mensajeError('Extencion incorrecta', 'De archivo factura', '#archFac');
+                    mensajeError('Extensión incorrecta', 'De archivo factura', '#archFac');
                 else if(resArchivo.extCorrectaArchRece == "No permitida")
-                    mensajeError('Extencion incorrecta', 'De archivo receta', '#archReceta');
+                    mensajeError('Extensión incorrecta', 'De archivo receta', '#archReceta');
                 else if(resArchivo.guardadoArchFac == "Fallido") //!Errores de guardado
                     mensajeError('Error al guardar', 'El archivo factura no se pudo guardar, intentelo de nuevo', '#archFac');
                 else if(resArchivo.guardadoArchRece == "Fallido")

@@ -19,7 +19,7 @@
     {
         include '../conexion.php';
         
-        $r="SELECT d.IdDistribuidor, d.Nombre, v.Descripcion, v.TipoVehiculo, v.Capacidad, v.Marca, v.Placa, v.SCT FROM distribuidorvehiculos AS v inner join distribuidores as d on v.IdDistribuidor = d.IdDistribuidor";
+        $r="SELECT v.Consecutivo, d.Nombre, v.Descripcion, v.TipoVehiculo, v.Capacidad, v.Marca, v.Placa, v.SCT FROM distribuidorvehiculos AS v inner join distribuidores as d on v.IdDistribuidor = d.IdDistribuidor";
         $comando= mysqli_query($enlace, $r);
         while($row=mysqli_fetch_array($comando)){
             echo "
@@ -37,6 +37,7 @@
         }
         mysqli_close($enlace);
     }
+    
     if($tipo=="actualizar"){
         include '../conexion.php';
         $r="UPDATE distribuidorvehiculos SET idDistribuidor='".$_POST['indist']."', Descripcion='".$_POST['indes']."', TipoVehiculo='".$_POST['intipo']."', Capacidad='"

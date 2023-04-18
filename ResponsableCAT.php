@@ -42,7 +42,7 @@ $filas = mysqli_fetch_array($res);
         <div class="col-4">
             <label for="inest" class="form-label" >Estado</label>
             <br>
-            <select id="jmr_contacto_estado" name="jmr_contacto_estado" class="js-example-basic-multiple" id="Estado" multiple="multiple"><option>Selecciona tu estado</option></select>
+            <select id="jmr_contacto_estado" name="jmr_contacto_estado" class="js-example-basic-multiple form-control" ><option>Selecciona tu estado</option></select>
         </div>
   
         <script>
@@ -55,7 +55,7 @@ $filas = mysqli_fetch_array($res);
         <div class="col-4">
                <label for="muni" class="form-label">Municipio</label>
                <br>
-               <select id="jmr_contacto_municipio" name="muni" class="js-example-basic-multiple"  multiple="multiple"><option>Selecciona tu municipio</option></select>
+               <select id="jmr_contacto_municipio" name="jmr_contacto_municipio" class="js-example-basic-multiple form-control" ><option>Selecciona tu municipio</option></select>
         </div>
 
         <script>
@@ -72,6 +72,7 @@ $filas = mysqli_fetch_array($res);
         <div class="col-sm-4">
             <label for="incorr" class="form-label">Correo</label>
             <input type="text" id="incorr" name="incorr" class="form-control" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#@0-_9.,-]{1,30}" placeholder="ejemplo@gmail.com">
+            <div id="respuesta"> </div>
         </div>
 
         <div class="col-4">
@@ -132,6 +133,32 @@ $filas = mysqli_fetch_array($res);
           $('#frm').hide();
         });
       } 
+
+        //Validando si existe el Correo en BD antes de enviar el Form
+$("#incorr").on("keyup", function() {
+  var incorr = $("#incorr").val(); //CAPTURANDO EL VALOR DE INPUT CON ID Correo
+  var longitudCorreo = $("#incorr").val().length; //CUENTO LONGITUD
+//Valido la longitud 
+  if(longitudCorreo >= 3){
+    var dataString = 'incorr=' + incorr;
+      $.ajax({
+          url: 'verificarCorreo.php',
+          type: "GET",
+          data: dataString,
+          dataType: "JSON",
+          success: function(datos){
+                if( datos.success == 1){
+                $("#respuesta").html(datos.message);
+                $("input#incorr").attr('disabled',false); //Habilitando el input correo
+                $("#Registrar").attr('disabled',true); //Desabilito el Botton
+                }else{
+                $("#respuesta").html(datos.message);
+                $("#Registrar").attr('disabled',false); //Habilito el Botton
+                    }
+                  }
+                });
+              }
+          });
   </script>
 
 
