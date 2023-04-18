@@ -150,4 +150,5 @@ $filas = mysqli_fetch_array($res);
             <div class="col-sm-4">
                 <center><img class="mb-4" src="../Logos/ASICA.jpg" alt="" width="80"></center>
             </div>
+            <hr style="background-color: green; height:5px;">
         </div>
