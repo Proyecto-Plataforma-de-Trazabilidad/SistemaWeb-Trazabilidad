@@ -13,7 +13,7 @@ include "Layout/navMenu.php";
     <link rel="stylesheet" href="css/movimientos/Orden/orden.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css">
     <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script> <!-- iconos -->
-    
+
 </head>
 
 <!-- Estilos de validacion de los campos esto se puede agregar a una hoja de estilo principal. (para no repetir este codigo en todos) -->
@@ -42,31 +42,32 @@ include "Layout/navMenu.php";
         <div>
             <h1>Orden de productos</h1>
         </div>
-        <div>            
-            <button onclick="window.location.href='OrdenesArchivos/consultaOrden.php'"  type="button" class="btn btn-outline-secondary" ><i class="fa-solid fa-magnifying-glass"></i> &nbsp;Consultar</button>
+        <div>
+            <button onclick="window.location.href='OrdenesArchivos/consultaOrden.php'" type="button"
+                class="btn btn-outline-secondary"><i class="fa-solid fa-magnifying-glass"></i> &nbsp;Consultar</button>
         </div>
     </section>
 
     <section class="form-Principal">
-        <form class="row g-4 container-fluid" id="frmOrden" method="POST"
-             enctype="multipart/form-data" action="OrdenesArchivos/insertarArchivo.php">
+        <form class="row g-4 container-fluid" id="frmOrden" method="POST" enctype="multipart/form-data"
+            action="OrdenesArchivos/insertarArchivo.php">
 
             <div class="form-Principal-encabezado">
                 <div class="form-Principal-encabezado-numero">
-                    <label for="" id="numOrden" data-numOrden="">Numero de orden: </label> 
+                    <label for="" id="numOrden" data-numOrden="">Numero de orden: </label>
                 </div>
                 <div>
                     <label for="startDate">Seleccionar Fecha: &nbsp;</label>
                 </div>
 
                 <div class="col-sm-2">
-                    <input id="fecha" class="form-control" type="date" required/>
+                    <input id="fecha" class="form-control" type="date" required />
                 </div>
             </div>
 
             <div class="col-sm-4" id="nom">
                 <label for="OrdNombre" class="form-label">Nombre del distribuidor</label>
-                <!-- debe de cargar dependiendo el inicio de seccion  -->               
+                <!-- debe de cargar dependiendo el inicio de seccion  -->
                 <input disabled type="text" id="nomDistri" name="nomDistribuidor" class="form-control" maxlength="30"
                     required placeholder="Nombre del distribuidor" data-idDistribuidor=""> <!--Hay que cambiar esto -->
             </div>
@@ -153,17 +154,18 @@ include "Layout/navMenu.php";
                     <label for="incap" class="form-label">Cantidad de piezas</label>
                     <input type="number" class="form-control" id="cantiPza" maxlength="10" name="incap" required
                         placeholder="Ingrese la cantidad">
-                </div>            
+                </div>
             </div>
 
-            <div class="col-sm-4">  <!--Agrega el detalle a la tabla-->
-                <button id="aceptar" type="button" class="btn btn-primary button-aceptar"  name="Aceptar">Aceptar</button>
+            <div class="col-sm-4"> <!--Agrega el detalle a la tabla-->
+                <button id="aceptar" type="button" class="btn btn-primary button-aceptar"
+                    name="Aceptar">Aceptar</button>
             </div>
         </form>
- 
+
 
         <div class="form-Detalle-table">
-            
+
             <table class="table table-striped" id="detalle">
                 <thead>
                     <tr>
@@ -181,23 +183,26 @@ include "Layout/navMenu.php";
                 </tbody>
             </table>
             <label for="" class="form-Detalle-mensaje">Detalles de orden</label>
-            <button type="submit" class="btn btn-success button-registrar" id="registrar" name="Registrar" form="frmOrden">Registrar</button>
+            <button type="submit" class="btn btn-success button-registrar" id="registrar" name="Registrar"
+                form="frmOrden">Registrar</button>
         </div>
     </section>
 
     <script>
         //fecha del sistema 
-        const inputFecha= document.getElementById('fecha');
-        const hoy = new Date().toISOString().slice(0,10);
-        inputFecha.value=hoy;
+        const inputFecha = document.getElementById('fecha');
+        const hoy = new Date().toISOString().slice(0, 10);
+        inputFecha.value = hoy;
     </script>
 
     <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript" src="./OrdenesArchivos/funcionesOrdenes.js"></script> <!-- scrip para la funcion del la tabla detalle orden  -->
-    <script type="text/javascript" src="./OrdenesArchivos/btn_Registrar.js"></script> <!-- scrip para la funcion del boton registrar  -->
+    <script type="text/javascript" src="./OrdenesArchivos/funcionesOrdenes.js"></script>
+    <!-- scrip para la funcion del la tabla detalle orden  -->
+    <script type="text/javascript" src="./OrdenesArchivos/btn_Registrar.js"></script>
+    <!-- scrip para la funcion del boton registrar  -->
     <script src="Layout/menujs.js"></script>
     <script type="text/javascript" src="./OrdenesArchivos/llenarTabla.js"></script>
 </body>

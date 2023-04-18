@@ -1,0 +1,136 @@
+body{
+    background: #ffffff;
+    width: 195mm;   
+    height: 279.4mm;
+    border: solid ;
+}
+
+.container-encabezado-imagen{
+    text-align: center;
+    width: 270px;
+    height: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.logo{
+    display: inline-block;
+    width: 140px;
+    height: 140px;
+    margin-right: 45px;
+}
+
+.container-encabezado-recolector{
+    text-align: center;
+    width: 270px;
+    height: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.recolector-nombre{
+    text-align: center;
+    font-size: .85rem;
+    font-weight:bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.recolector-domicilio{
+    text-align: center;
+    font-size: .60rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container-identificacion{
+    clear: both;
+    margin-top: 10px;
+}
+
+.container-identificacion-fecha{
+    float: left;
+    margin-left: 15px;
+}
+
+.container-identificacion-numero{
+    float: right;
+    margin-right: 15px;
+}
+
+.identificacion-texto{
+    text-align: center;
+    font-size: .90rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.numRecibo{
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #a91818;
+}
+
+/* datos productor */
+.container-productor{
+    border: solid;
+    border-color: darkgreen;
+    border-width: 3px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    margin-right: 25px;
+    padding-bottom: 5px;
+    border-end-end-radius: 10px;
+    border-start-end-radius: 10px;
+    padding-left: 10px;
+}
+
+.container-productor p{
+    font-size: .90rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.titulo{
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container-productor-nombre, .container-productor-lugar{
+    margin-right: 10px;
+}
+
+/* tabla */
+.container-entrega{
+    border: solid;
+    border-color: darkgreen;
+    border-width: 3px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    margin-right: 25px;
+    padding-bottom: 5px;
+    border-end-end-radius: 10px;
+    border-start-end-radius: 10px;
+    padding-left: 10px;
+}
+
+.entrega-tabla{
+    width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 10px;
+}
+
+.tabla{
+    width: 650px;
+    text-align: center;
+    border: solid 1px #000000;
+    border-collapse: collapse;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.tabla thead{
+    background-color: darkgreen;
+    text-align: center;
+    color: #ffffff;
+    font-size: .85rem
+}
