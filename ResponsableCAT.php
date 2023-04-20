@@ -26,23 +26,23 @@ $filas = mysqli_fetch_array($res);
 
         <div class="col-sm-4">
             <label for="innom" class="form-label">Nombre</label>
-            <input type="text" id="innom" name="innom" class="form-control" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" placeholder="Ingresa el nombre">
+            <input type="text" id="innom" name="innom" class="form-control" maxlength="30" pattern="[A-Za-z nÑáéíóúÁÉÍÓÚ.'´_-,]{1,30}" placeholder="Ingresa el nombre" required>
         </div>
 
         <div class="col-sm-4">
             <label for="indom" class="form-label">Domicilio</label>
-            <input type="text" id="indom" name="indom" class="form-control" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" placeholder="Ingresa el dimicilio">
+            <input type="text" id="indom" name="indom" class="form-control" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" placeholder="Ingresa el dimicilio" required>
         </div>
 
         <div class="col-4">
             <label for="incp" class="form-label">Código Postal</label>
-            <input type="text" id="incp" name="incp" class="form-control" maxlength="5" pattern="[0-9]{5}"  placeholder="49000">
+            <input type="text" id="incp" name="incp" class="form-control" maxlength="5" pattern="[0-9]{5}"  placeholder="49000" required>
         </div>
 
         <div class="col-4">
             <label for="inest" class="form-label" >Estado</label>
             <br>
-            <select id="jmr_contacto_estado" name="jmr_contacto_estado" class="js-example-basic-multiple form-control" ><option>Selecciona tu estado</option></select>
+            <select id="jmr_contacto_estado" name="jmr_contacto_estado" class="js-example-basic-multiple form-control" required><option>Selecciona tu estado</option></select>
         </div>
   
         <script>
@@ -55,7 +55,7 @@ $filas = mysqli_fetch_array($res);
         <div class="col-4">
                <label for="muni" class="form-label">Municipio</label>
                <br>
-               <select id="jmr_contacto_municipio" name="jmr_contacto_municipio" class="js-example-basic-multiple form-control" ><option>Selecciona tu municipio</option></select>
+               <select id="jmr_contacto_municipio" name="jmr_contacto_municipio" class="js-example-basic-multiple form-control" required><option>Selecciona tu municipio</option></select>
         </div>
 
         <script>
@@ -66,18 +66,18 @@ $filas = mysqli_fetch_array($res);
 
         <div class="col-sm-4">
             <label for="intel" class="form-label">Teléfono</label>
-            <input type="text" id="intel" name="intel" class="form-control" maxlength="14" pattern="[0-9]{10}"  placeholder="5521234567">
+            <input type="text" id="intel" name="intel" class="form-control" maxlength="14" pattern="[0-9]{10}"  placeholder="5521234567" required>
         </div>
 
         <div class="col-sm-4">
             <label for="incorr" class="form-label">Correo</label>
-            <input type="text" id="incorr" name="incorr" class="form-control" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#@0-_9.,-]{1,30}" placeholder="ejemplo@gmail.com">
+            <input type="text" id="incorr" name="incorr" class="form-control" maxlength="30" pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#@0-_9.,-]{1,30}" placeholder="ejemplo@gmail.com" required>
             <div id="respuesta"> </div>
         </div>
 
         <div class="col-4">
             <label for="inestado" class="form-label">Estado</label>
-            <select name="inestado" id="inestado" class="form-select">
+            <select name="inestado" id="inestado" class="form-select" required>
                 <option value="Activo">Activo</option>
                 <option value="Inactivo">Inactivo</option>
             </select>
