@@ -55,7 +55,7 @@ $(document).ready(function(){
                 }else {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Se a hecho el registro correctamente',
+                        title: 'Se ha hecho el registro correctamente',
                         confirmButtonColor: '#3085d6',
                         confirmButtonText: 'yeiiiii'
                     }).then((result) => {
