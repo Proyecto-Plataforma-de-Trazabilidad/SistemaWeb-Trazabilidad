@@ -88,7 +88,7 @@ $(document).ready(function(){
                         }else {
                             Swal.fire({
                               icon: 'success',
-                              title: 'El usuario se a creado correctamente',
+                              title: 'El usuario se ha creado correctamente',
                               confirmButtonColor: '#3085d6',
                               confirmButtonText: 'Okiiiii'
                             }).then((result) => {
