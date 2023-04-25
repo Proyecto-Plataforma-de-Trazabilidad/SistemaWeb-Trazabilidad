@@ -32,6 +32,9 @@ $('#frmOrden').submit(function(e) {
     formData.append("IdOrden", numOrden); //Se agrega el id de la orden para mandarlo junto con los archivos
     
     if (!(document.querySelector('#detalle'))) {
+        // if (!$('#archFac').val() && !$('#archRece').val()) {
+        //     console.log("No seleciono ningun archivo");
+        // }
         insertarArchivo("Nada", "actualiza", 'insertarArchivo.php');
     }else{
         //tomar los valores de la tabla detalle
@@ -85,7 +88,7 @@ $('#frmOrden').submit(function(e) {
                 // if(resArchivo.rutaArchRece == "Faltante")
                 //     mensajeAdvertencia('No ingreso archivo de receta', 'Pero puede continuar de igual manera');
 
-                //!Errores de extencion
+                //!Errores de extension
                 if(resArchivo.extCorrectaArchFac == "No permitida")
                     mensajeError('Extensión incorrecta', 'De archivo factura', '#archFac');
                 else if(resArchivo.extCorrectaArchRece == "No permitida")
@@ -107,8 +110,48 @@ $('#frmOrden').submit(function(e) {
     }
     
     function actualizarOrden(datosValidos) {
-        // console.log(datosValidos);
-        console.log(numOrden);
+        datosValidos.NumOrden = numOrden;
+        console.log(datosValidos);
+        $.ajax({
+            url: 'actualizarOrden.php',
+            data: { orden: datosValidos},
+            type: 'POST',
+            success: function (response) {    
+
+                if (response == 'Correcto') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Orden Actualizada',
+                        text: 'Se actualizo correctamente la orden',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Ok',
+                        confirmButtonColor: '#285430',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            limpiar();
+                        }
+                    });
+                } else if(response == 'Error') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error al actualizar',
+                        text: 'Inténtelo de nuevo',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            limpiar();
+                        }
+                    });
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'No se pudo registrar por error',
+                    text: thrownError,
+                });
+            }, 
+        });
+
     }
 
     function insertarOrden(datosValidos, arregloValido) {
@@ -148,8 +191,7 @@ $('#frmOrden').submit(function(e) {
                     title: 'No se pudo registrar por error',
                     text: thrownError,
                 });
-            },
-         
+            }, 
         });
         
     } 

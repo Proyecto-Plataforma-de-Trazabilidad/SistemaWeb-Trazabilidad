@@ -11,21 +11,9 @@ mysqli_free_result($comando);
 
 
 if ($tipoUser == 'admin') {
-    $distribuidor = 'admin';
-    
-}elseif($tipoUser == 'Distribuidores'){
 
-    $comando = mysqli_query($enlace, "SELECT Nombre FROM distribuidores WHERE  Correo = '".$_SESSION['usuario']."' ") or die(mysqli_error());
-    if (mysqli_num_rows($comando) != 0)   //Valida si hay distribuidores registrados en la db
-        $distribuidor = mysqli_fetch_column($comando);
-
-}
-
-
-if (true) {
-    include("../conexion.php");
-
-    $queryOrden = "CALL OrdenConsulta('" .$distribuidor. "',null,null);";
+    $queryOrden = "CALL OrdenConsulta('admin','" . $_POST['FI'] . "','" . $_POST['FF'] . "', '" . $_POST['IdProdu'] . "');";
+    //echo $queryOrden;
     $comando = mysqli_query($enlace, $queryOrden);
     
     
@@ -38,20 +26,27 @@ if (true) {
         echo (json_encode($consulta));
     }
     mysqli_free_result($comando);
-} else {
+}elseif($tipoUser == 'Distribuidores'){
 
-    $queryOrden = "CALL OrdenConsulta('" . $distribuidor . "','" . $_POST['FI'] . "','" . $_POST['FF'] . "');";
+    $comando = mysqli_query($enlace, "SELECT Nombre FROM distribuidores WHERE  Correo = '".$_SESSION['usuario']."' ") or die(mysqli_error());
+    $fila = mysqli_fetch_array($comando);
+    $distribuidor = $fila[0];
+    mysqli_free_result($comando);
+
+    $queryOrden = "CALL OrdenConsulta('" . $distribuidor . "','" . $_POST['FI'] . "','" . $_POST['FF'] . "', " . $_POST['IdProdu'] . ");";
     $comando = mysqli_query($enlace, $queryOrden);
+    
+    
     if (mysqli_num_rows($comando) == 0) {
-        die("Error");
+        echo ("Error");
     } else {
         while ($datos = mysqli_fetch_assoc($comando)) {
-            $consultaOrden["data"][] = $datos;
-        }
-        echo (json_encode($consultaOrden));
+            $consulta["data"][] = $datos;
+        } 
+        echo (json_encode($consulta));
     }
-
     mysqli_free_result($comando);
+
 }
 
 mysqli_close($enlace);

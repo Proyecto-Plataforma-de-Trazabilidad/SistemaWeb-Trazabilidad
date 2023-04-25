@@ -1,17 +1,22 @@
 $(document).ready(function () {
-    mostrarOrden(null,null);
-    
+    const nombreProdu = document.getElementById("nomProdu");
+    añadirProductores(nombreProdu); //Funcion que carga la combo de productores
+
+    mostrarOrden("","","");  //Función que se encarga de llenar el datatable
 });
 
+//Funcion jQuery  que se ejecuta cuando das clic al boton
 $('#aceptar').click(function () {
     let fechaIni = document.getElementById('fechaInicio').value;
     let fechaFin = document.getElementById('fechafin').value;
-    
-    mostrarOrden(fechaIni, fechaFin);
+    let idProd = document.getElementById('nomProdu').value;
+    if (idProd == "Selecciona un productor") {
+        mostrarOrden(fechaIni, fechaFin, "");
+    }else
+        mostrarOrden(fechaIni, fechaFin, idProd);
 });
 
-function mostrarOrden(fechaI, fechaF) {
-    
+function generarTabla(fechaI, fechaF, idProdud) {
     let tablaOrden = $('#orden').DataTable({
         destroy:true,
         scrollX:true,
@@ -20,7 +25,7 @@ function mostrarOrden(fechaI, fechaF) {
         ajax: {
             "method":"POST",
             "url":"metodosConsulta.php",
-            "data":{'FI': fechaI, 'FF': fechaF },
+            "data":{'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud },
             "complete": function (res) {
                 if (res.responseText == "Error") {
                     console.log(res.responseText);
@@ -64,7 +69,8 @@ function mostrarOrden(fechaI, fechaF) {
             url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/es-MX.json'
         }
     });
-    // $.fn.dataTable.ext.errMode = function ( settings, helpPage, message ) { 
+
+        // $.fn.dataTable.ext.errMode = function ( settings, helpPage, message ) { 
     //     console.log(message);
     // };
 
@@ -84,8 +90,78 @@ function mostrarOrden(fechaI, fechaF) {
         }
         
     });
-
 }
+
+function mensajeError(titulo, texto) {
+    Swal.fire({
+        icon: 'error',
+        title: titulo,
+        text: texto,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            console.log("Fallo");
+        }
+    });
+}
+
+function mostrarOrden(fechaI, fechaF, idProdud) {
+    $.ajax({
+        type: 'POST',
+        url:'validacionesConsulta.php',
+        data:{'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud, 'movi': 'ordenes'},
+        success: function (res) {
+            
+            switch (res) {
+                case "FechaNoValida":
+                    mensajeError('Fecha no valida', "fallo");
+                    break;
+                case "FechaMayor":
+                    mensajeError('Fecha inicio mayor', "fallo");
+                    break;
+                case "FechasIguales":
+                    mensajeError('Fechas iguales', "fallo");
+                    break;
+                case "NoHayDatosFechas":
+                    mensajeError('No hay datos', "De la fecha que selecciono");
+                    break;
+                case "NoHayDatosProductor":
+                    mensajeError('No hay datos', "Del productor uqe selecciono");
+                    break;
+                case "NoHayDatosProductorYFecha":
+                    mensajeError('No hay datos', "De la fecha y el el productor que selecciono");
+                    break;
+                case "NoHayDatosGeneral":
+                    mensajeError('No hay datos', "Actualmente no hay registros de ordenes");
+                    break;
+                case "ConsultaGeneral":
+                    console.log("ConsultaGeneral");
+                    generarTabla('','','');
+                    break;
+                case "ConsultaXFechaYProduct":
+                    console.log("ConsultaXFechaYProduct");
+                    generarTabla(fechaI,fechaF,idProdud)
+                    break;
+                case "ConsultaXProductor":
+                    console.log("ConsultaXProductor");
+                    generarTabla('','',idProdud)
+                    break;
+                case "ConsultaXFecha":
+                    console.log("ConsultaXFecha");
+                    generarTabla(fechaI,fechaF,'')
+                    break;
+                default:
+                    // var data = [
+                    //     { 'IdOrden': "1", 'Distribuidor': "Infected", 'Productor': "Pancho",  'NumFactura': "8d8nnw", 'Factura': "Facturas/f1.png", 'NumReceta': "888sd88dd", 'Receta': "Recetas/r1.png", 'Fecha': "2023-04-06"}
+                    // ];
+                    
+                    break;
+            }
+        }
+    });
+    
+}
+
+
 
 function mostrarDetalle(datosFila) {
 
@@ -135,13 +211,13 @@ function editar(datosFila) {
             <label for="OrdNombre" class="form-label">Nombre del distribuidor</label>
             <!-- debe de cargar dependiendo el inicio de seccion  -->               
             <input disabled type="text" id="nomDistri" name="nomDistribuidor" class="form-control" maxlength="30"
-                required placeholder="${datosFila.Distribuidor}" data-id-distribuidor="">
+                required placeholder="${datosFila.Distribuidor}" data-idDistribuidor="">
         </div>
 
         <div class="col-sm-4">
             <label for="OrdFact" class="form-label">Factura</label>
             <input type="text" id="factOrden" name="facturaOrden" class="form-control" maxlength="30"
-                pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" required placeholder="${datosFila.NumFactura}">
+                pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" placeholder="${datosFila.NumFactura}">
         </div>
 
         <div class="col-sm-4">
@@ -153,7 +229,7 @@ function editar(datosFila) {
             <div>
                 <label for="inestado" class="form-label">Nombre de Productor</label>
                 <select name="nomProdu" id="nomProdu" class="form-select" required>
-                    <option hidden>${datosFila.Productor}</option>
+                    <option hidden>Selecciona un productor registrado</option>
                 </select>
             </div>
         </div>
@@ -177,20 +253,26 @@ function editar(datosFila) {
 
 const nombreProdu = document.getElementById("nomProdu");
 const orden = document.getElementById("numOrden");
-orden.dataset.numOrden=""+datosFila.IdOrden;
+const distri = document.getElementById("nomDistri");
 
-//rellena la combo de producotores
-function añadirProductor(productor){
-    nombreProdu.insertAdjacentHTML('beforeend', `<option value="${productor.IdProductor}">${productor.Nombre}</option>`);
+orden.dataset.numOrden=""+datosFila.IdOrden;
+distri.dataset.idDistribuidor = ""+datosFila.Distribuidor; //Asigna el id del distribuidor al dataset
+añadirProductores(nombreProdu);
+
 }
 
-$.ajax({
-    url:'peticiones.php',
-    type: 'GET',
-    success: function (res) {
-        let datos = JSON.parse(res);//Trae los datos en formato json y los pasa a objeto
-        datos.produtores.map(productor => añadirProductor(productor));//Rellena la combo proveedores      
-    }
-})
-    
+function añadirProductores(comboProduc){
+    $.ajax({
+        url:'peticiones.php',
+        type: 'GET',
+        success: function (res) {
+            let datos = JSON.parse(res);//Trae los datos en formato json y los pasa a objeto
+            if (datos.produtores == "No hay productores") {
+                mensajeError('No hay ningún productor registrado', "Por favor vaya a registrar uno");
+            }else
+            datos.produtores.map(productor => {
+                comboProduc.insertAdjacentHTML('beforeend', `<option value="${productor.IdProductor}">${productor.Nombre}</option>`);//Rellena la combo proveedores    
+            });  
+        }
+    })
 }
