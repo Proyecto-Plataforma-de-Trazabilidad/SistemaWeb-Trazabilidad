@@ -39,8 +39,8 @@ $('#frmExtraviados').submit(function (e) {
                 if (response == 'correcto') {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Registro Exitoso',
-                        text: 'Registro se ha guardado correcctamente',
+                        title: 'Registro exitoso',
+                        text: 'El registro se ha guardado correctamente',
                         showConfirmButton: true,
                         confirmButtonText: 'Ok',
                         confirmButtonColor: '#285430',
@@ -52,7 +52,7 @@ $('#frmExtraviados').submit(function (e) {
                 } else {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Registro Incorrecto',
+                        title: 'Registro incorrecto',
                     }).then((result) => {
                         if (result.isConfirmed) {
                             limpiar();
@@ -63,7 +63,7 @@ $('#frmExtraviados').submit(function (e) {
             error: function (xhr, ajaxOptions, thrownError) {
                 Swal.fire({
                     icon: 'error',
-                    title: 'No se pudo registrar por algun error',
+                    title: 'No se pudo registrar por algún error',
                     text: thrownError,
                 });
             },
