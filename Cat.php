@@ -6,6 +6,7 @@ $res = mysqli_query($enlace, $r);
 $filas = mysqli_fetch_array($res);
 ?>
 <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+
 <!--SweetAlert en linea-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
