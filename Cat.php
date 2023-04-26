@@ -5,7 +5,7 @@ $r = "SELECT * FROM usuarios where Correo = '$varses'";
 $res = mysqli_query($enlace, $r);
 $filas = mysqli_fetch_array($res);
 ?>
-
+<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 <!--SweetAlert en linea-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
@@ -17,8 +17,6 @@ $filas = mysqli_fetch_array($res);
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 
 <div class="container">
   <h2>Centro de Acopio Temporal</h2>
