@@ -152,7 +152,7 @@ include "Layout/navMenu.php";
             <div class="col-sm-4">
                 <div class="col-6">
                     <label for="incap" class="form-label">Cantidad de piezas</label>
-                    <input type="number" class="form-control" id="cantiPza" maxlength="10" name="incap" required
+                    <input type="number" class="form-control" id="cantiPza" min="1" maxlength="10" name="incap" required pattern="[1-9]\d*(\.\d+)?"
                         placeholder="Ingrese la cantidad">
                 </div>
             </div>
