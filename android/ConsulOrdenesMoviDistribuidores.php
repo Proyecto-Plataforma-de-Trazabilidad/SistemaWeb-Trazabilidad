@@ -26,7 +26,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         case 'consulTQorden':
             $tq=$_POST['tq'];
             $nombre=$_POST['nombre'];
-            $query="SELECT O.IdOrden,D.Nombre AS Distribuidor, O.NumFactura,O.NumReceta FROM ordenproductos AS O INNER JOIN distribuidores AS D ON O.IdDistribuidor=D.IdDistribuidor INNER JOIN detalleorden AS DOR ON O.IdOrden=DOR.IdOrden INNER JOIN tipoquimico AS TQ ON DOR.IdTipoQuimico=TQ.IdTipoQuimico  INNER JOIN productores AS P ON O.IdProductor=P.IdProductor WHERE DOR.IdTipoQuimico=TQ.IdTipoQuimico AND TQ.Concepto='$tq' and D.Nombre='$nombre'";
+            $query="SELECT O.IdOrden,D.Nombre AS Distribuidor, P.Nombre as Productor, O.NumFactura,O.NumReceta FROM ordenproductos AS O INNER JOIN distribuidores AS D ON O.IdDistribuidor=D.IdDistribuidor INNER JOIN detalleorden AS DOR ON O.IdOrden=DOR.IdOrden INNER JOIN tipoquimico AS TQ ON DOR.IdTipoQuimico=TQ.IdTipoQuimico  INNER JOIN productores AS P ON O.IdProductor=P.IdProductor WHERE DOR.IdTipoQuimico=TQ.IdTipoQuimico AND TQ.Concepto='$tq' and D.Nombre='$nombre'";
             $resultado=$conn->prepare($query);
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -46,7 +46,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
              $e=$_POST['envase'];
              $nombre=$_POST['nombre'];
 
-            $query="SELECT O.IdOrden,D.Nombre AS Distribuidor, O.NumFactura,O.NumReceta FROM ordenproductos AS O INNER JOIN distribuidores AS D ON O.IdDistribuidor=D.IdDistribuidor INNER JOIN detalleorden AS DOR ON O.IdOrden=DOR.IdOrden  INNER JOIN productores AS P ON O.IdProductor=P.IdProductor WHERE DOR.TipoEnvase='$e' and D.Nombre='$nombre' GROUP BY O.IdOrden";
+            $query="SELECT O.IdOrden,D.Nombre AS Distribuidor,P.Nombre as Productor, O.NumFactura,O.NumReceta FROM ordenproductos AS O INNER JOIN distribuidores AS D ON O.IdDistribuidor=D.IdDistribuidor INNER JOIN detalleorden AS DOR ON O.IdOrden=DOR.IdOrden  INNER JOIN productores AS P ON O.IdProductor=P.IdProductor WHERE DOR.TipoEnvase='$e' and D.Nombre='$nombre' GROUP BY O.IdOrden";
             $resultado=$conn->prepare($query);
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
