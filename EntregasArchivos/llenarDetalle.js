@@ -8,11 +8,11 @@ $(document).ready(function(){
         let valPeso = document.getElementById("peso").value;
         let valObser = document.getElementById("observa").value;
 
-        let fila = '<tr  id="row' + i + '"> <td>' + i + '</td> <td>'+valEnvase+'</td> <td>'+valPiezas+'</td> <td>'+valPeso+'</td> <td>'+valObser+'</td> <td><button style="background-color: #dc3545 !important" type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Eliminar</button></td></tr>';
+        let fila = '<tr id="row' + i + '"> <td>' + i + '</td> <td>'+valEnvase+'</td> <td>'+valPiezas+'</td> <td>'+valPeso+'</td> <td>'+valObser+'</td> <td><button style="background-color: #dc3545 !important" type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Eliminar</button></td></tr>';
 
         i++;
         
-        numDetalle.textContent = "Detalle de orden: 00" + i;
+        numDetalle.textContent = "Detalle de entrega: 00" + i;
 
         $('#detalle tbody:first').before(fila);
         document.getElementById("tipoEnva").value = "";
@@ -37,7 +37,7 @@ $(document).ready(function(){
             $('#row' + button_id + '').remove();
             //Recalcular indices
             i--;
-            numDetalle.textContent = "Detalle de orden: 00" + i;
+            numDetalle.textContent = "Detalle de entrega: 00" + i;
             let container = document.querySelector('#detalle');
             let celdasId = container.querySelectorAll('tr');
 
