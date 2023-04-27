@@ -121,7 +121,7 @@ include "Layout/navMenu.php";
             <div class="col-sm-4">
                 <div>
                     <label for="incap" class="form-label">Cantidad de piezas</label>
-                    <input type="number" class="form-control" id="cantiPza" maxlength="10" name="cantiPza" required
+                    <input type="number" class="form-control" id="cantiPza" min="1" maxlength="10" name="cantiPza" required pattern="[1-9]\d*(\.\d+)?"
                         placeholder="Ingrese una cantidad">
                 </div>
             </div>
@@ -129,7 +129,7 @@ include "Layout/navMenu.php";
             <div class="col-sm-4">
                 <div>
                     <label for="incap" class="form-label">Peso <small>(Opcional)</small> </label>
-                    <input type="number" class="form-control" id="peso" maxlength="10" name="peso" 
+                    <input type="number" class="form-control" id="peso" min="1" maxlength="10" name="peso" required pattern="[1-9]\d*(\.\d+)?"
                         placeholder="Ingrese una cantidad">
                 </div>
             </div>

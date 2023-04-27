@@ -42,8 +42,19 @@
 
 }
 
-.button-registrar{
-    margin-top: 2rem;
+.table-renglon{
+    width: 50px ;
+}
+
+#detalle{
+    table-layout: fixed;
+    width: 95%;
+    text-align: center;
+}
+
+#detalle th, td{
+    width: 100px;
+    word-wrap: break-word;
 }
 
 input:invalid {
