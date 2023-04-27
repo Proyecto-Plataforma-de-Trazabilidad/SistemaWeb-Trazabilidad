@@ -16,27 +16,6 @@ include "Layout/navMenu.php";
 
 </head>
 
-<!-- Estilos de validacion de los campos esto se puede agregar a una hoja de estilo principal. (para no repetir este codigo en todos) -->
-<!-- <header>
-    <style>
-        input:invalid {
-            border-color: red;
-        }
-
-        input:valid {
-            border-color: green;
-        }
-
-        select:invalid {
-            border-color: red;
-        }
-
-        select:valid {
-            border-color: green;
-        }
-    </style>
-</header> -->
-
 <body>
     <section class="titulo">
         <div>
@@ -54,7 +33,7 @@ include "Layout/navMenu.php";
 
             <div class="form-Principal-encabezado">
                 <div class="form-Principal-encabezado-numero">
-                    <label for="" id="numOrden" data-numOrden="">Numero de orden: </label>
+                    <label  id="numOrden" data-numOrden="">Numero de orden: </label>
                 </div>
                 <div>
                     <label for="startDate">Seleccionar Fecha: &nbsp;</label>
@@ -117,7 +96,7 @@ include "Layout/navMenu.php";
 
             <div class="col-sm-4">
                 <div>
-                    <label for="inestado" class="form-label">Tipo de Químico</label>
+                    <label class="form-label">Tipo de Químico</label>
                     <select name="inestado" id="tipoQuimi" class="form-select" required>
                         <option hidden>Selecciona un tipo</option>
                     </select>
@@ -126,8 +105,8 @@ include "Layout/navMenu.php";
 
             <div class="col-sm-4">
                 <div>
-                    <label for="inestado" class="form-label">Tipo de Envase</label>
-                    <select name="inestado" id="tipoEnva" class="form-select" required>
+                    <label class="form-label">Tipo de Envase</label>
+                    <select name="tipoEnva" id="tipoEnva" class="form-select" required>
                         <option hidden>Selecciona un tipo</option>
                         <option value="Rígidos lavable">Rígidos lavable</option>
                         <option value="Rígidos no lavable">Rígidos no lavable</option>
