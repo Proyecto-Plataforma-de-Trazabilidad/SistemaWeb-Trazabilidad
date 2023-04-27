@@ -84,7 +84,7 @@ include "Layout/navMenu.php";
 
             <div class="col-sm-4">
                 <button type="submit" class="btn btn-success button-registrar" onclick=""
-                    name="Registrar">Registrar</button>
+                    name="Registrar" id="registrar">Registrar</button>
             </div>
 
         </form>
