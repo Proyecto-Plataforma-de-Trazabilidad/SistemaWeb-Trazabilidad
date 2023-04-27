@@ -32,7 +32,6 @@
             );
         }
     }
-
     mysqli_free_result($comando);
 
     $comando = mysqli_query($enlace, "SELECT IdDistribuidor, Nombre FROM distribuidores WHERE  Correo = '".$_SESSION['usuario']."' ") or die(mysqli_error());

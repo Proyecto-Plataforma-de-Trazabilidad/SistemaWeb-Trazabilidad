@@ -67,9 +67,9 @@ $(document).ready(function(){
             let celdasId = container.querySelectorAll('tr');
             if(celdasId.length > 1){
               for (let i = 1; i < celdasId.length; i++) {
-                celdasId[i].id = "row"+i;
-                celdasId[i].firstChild.textContent = i; 
-                celdasId[i].lastChild.childNodes[0].id = i;
+                celdasId[i].id = "row"+i; //Cambia el id de la fila
+                celdasId[i].firstChild.textContent = i; //Coloca la numeración en la primera columna
+                celdasId[i].lastChild.childNodes[0].id = i; //Reasigna la id del botón que elimina
               }
             }
             Swal.fire(
