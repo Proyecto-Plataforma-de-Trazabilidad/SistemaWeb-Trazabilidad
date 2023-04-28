@@ -22,15 +22,33 @@ ob_start();//iniciar el buffer para poder guardar la informacion html en una var
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <title>APEJAL-Consulta Ordenes</title>
+
+    <style type="text/css">
+        body {
+            background: #ffffff;
+            width: 195mm;
+            height: 279.4mm;
+            border: solid;
+        }
+    </style>
+
 </head>
 
-<body style="width: 215.9mm; height: 279.4mm;">
+<body>
 
     <?php
     include("../conexion.php");
     $queryOrden = "select * from ordenproductos;";
     $comando = mysqli_query($enlace, $queryOrden);
+
+    //rutas de imagenes
+    $amocali= ""
     ?>
+
+    <header>
+        <img src="/sistemaWeb-Trazabilidad/Logos/ASICA.jpg" alt="logo">
+    </header>
+
 
     <section class="Orden-tabla">
         <h3>Ordenes</h3>

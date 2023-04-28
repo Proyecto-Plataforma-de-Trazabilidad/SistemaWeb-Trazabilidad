@@ -5,19 +5,45 @@ $(document).ready(function () {
 function generarTabla() {
 
     $('#extraviados').DataTable({
-        destroy:true,
+        destroy: true,
         ajax: {
-            "method":"POST",
-            "url":"consultas.php",
-            
+            "method": "POST",
+            "url": "consultas.php",
+            "complete": function (res) {
+                console.log(res);
+                if (res.responseText == "TipoUsuario") {
+                    console.log(res.responseText);
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Lo lamento!',
+                        text: 'No tiene los permisos necesarios para acceder',
+                    });
+                } else if (res.responseText == "SinProductor") {
+                    console.log(res.responseText);
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Lo lamento!',
+                        text: 'No existen registros de este productor',
+                    });
+                } else if (res.responseText == "Error") {
+                    console.log(res.responseText);
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Lo lamento!',
+                        text: 'Succedio un error al buscar los datos',
+                    });
+                }
+                else
+                    return res.responseText;
+            }
         },
-        columns:[
-            {data: "IdExtraviados"},
-            {data: "Nombre"},
-            {data: "TipoEnvaseVacio"},
-            {data: "CantidadPiezas"},
-            {data: "Aclaracion"},
-            {data: "fecha"},        
+        columns: [
+            { data: "IdExtraviados" },
+            { data: "Nombre" },
+            { data: "TipoEnvaseVacio" },
+            { data: "CantidadPiezas" },
+            { data: "Aclaracion" },
+            { data: "fecha" },
         ]
     });
 
