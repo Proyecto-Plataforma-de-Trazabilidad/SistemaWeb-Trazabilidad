@@ -26,7 +26,7 @@ function generarTabla(fechaI, fechaF, idProdud) {
             "method":"POST",
             "url":"metodosConsulta.php",
             "data":{'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud },
-            "complete": function (res) {
+            "error": function (res) {
                 console.log(res);
                 if (res.responseText == "Error") {
                     console.log(res.responseText);
@@ -35,8 +35,8 @@ function generarTabla(fechaI, fechaF, idProdud) {
                         title: 'No hay datos disponibles',
                         text: 'No se encontraron registros del distribuidor',
                     });
-                }else
-                    return res.responseText;
+                }else  
+                    return res.responseText;                   
             }
         },
         columns:[
@@ -113,7 +113,7 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
         success: function (res) {
             let datos = JSON.parse(res);//Trae los datos en formato json y los pasa a objeto
             let opc = datos.mensaje;
-            console.log(opc);
+            
             switch (opc) {
                 case "FechaNoValida":
                     mensajeError('Fecha no valida', "fallo");
@@ -138,42 +138,53 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
                     break;
                 case "ConsultaGeneral":
                     console.log("ConsultaGeneral");
+                    
                     generarTabla('','','');
                     break;
                 case "ConsultaXFechaYProduct":
                     console.log("ConsultaXFechaYProduct");
+                    $('#detalle tbody').children().remove();
                     generarTabla(fechaI,fechaF,idProdud)
                     break;
                 case "ConsultaXProductor":
                     console.log("ConsultaXProductor");
+                    $('#detalle tbody').children().remove();
                     generarTabla('','',idProdud)
                     break;
                 case "ConsultaXFecha":
                     console.log("ConsultaXFecha");
+                    $('#detalle tbody').children().remove();
                     generarTabla(fechaI,fechaF,'')
                     break;
                 case "ProductorConsultaGeneral":
                     console.log("ProductorConsultaGeneral");
+                    $('#tituloProdu').remove();
+                    $('#nomProdu').remove();
                     generarTabla("","",datos.data)
                     break;
                 case "ProductorConsultaXFecha":
                     console.log("ProductorConsultaXFecha");
+                    $('#detalle tbody').children().remove();
                     generarTabla(fechaF,fechaF,datos.data)
                     break;
                 case "DistribuidorConsultaGeneral":
                     console.log("DistribuidorConsultaGeneral");
+                    $('#detalle tbody').children().remove();
                     generarTabla("","","")
                     break;
                 case "DistribuidorConsultaXFecha":
                     console.log("DistribuidorConsultaXFecha");
+                    $('#detalle tbody').children().remove();
                     generarTabla(fechaF,fechaF,"")
                     break;
                 case "DistribuidorConsultaXProductor":
                     console.log("DistribuidorConsultaXProductor");
+                    $('#detalle tbody').children().remove();
                     generarTabla("","",idProdud)
                     break;
                 case "DistribuidorConsultaXFechaYProduct":
                     console.log("DistribuidorConsultaXFechaYProduct");
+                    $('#detalle tbody').children().remove();
                     generarTabla(fechaF,fechaF,idProdud)
                     break;
                 default:
