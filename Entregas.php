@@ -182,6 +182,7 @@ include "Layout/navMenu.php";
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="./EntregasArchivos/llenarCampos.js"></script> <!-- scrip para llenar los campos del form  -->
     <script type="text/javascript" src="./EntregasArchivos/llenarDetalle.js"></script> <!-- scrip para llenar los campos del form  -->
+    <script type="text/javascript" src="./EntregasArchivos/btnRegistrar.js"></script>
 
     <script src="Layout/menujs.js"></script>
     

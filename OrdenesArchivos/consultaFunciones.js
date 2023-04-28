@@ -27,6 +27,7 @@ function generarTabla(fechaI, fechaF, idProdud) {
             "url":"metodosConsulta.php",
             "data":{'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud },
             "complete": function (res) {
+                console.log(res);
                 if (res.responseText == "Error") {
                     console.log(res.responseText);
                     Swal.fire({
@@ -110,8 +111,10 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
         url:'validacionesConsulta.php',
         data:{'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud, 'movi': 'ordenes'},
         success: function (res) {
-            
-            switch (res) {
+            let datos = JSON.parse(res);//Trae los datos en formato json y los pasa a objeto
+            let opc = datos.mensaje;
+            console.log(opc);
+            switch (opc) {
                 case "FechaNoValida":
                     mensajeError('Fecha no valida', "fallo");
                     break;
@@ -148,6 +151,30 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
                 case "ConsultaXFecha":
                     console.log("ConsultaXFecha");
                     generarTabla(fechaI,fechaF,'')
+                    break;
+                case "ProductorConsultaGeneral":
+                    console.log("ProductorConsultaGeneral");
+                    generarTabla("","",datos.data)
+                    break;
+                case "ProductorConsultaXFecha":
+                    console.log("ProductorConsultaXFecha");
+                    generarTabla(fechaF,fechaF,datos.data)
+                    break;
+                case "DistribuidorConsultaGeneral":
+                    console.log("DistribuidorConsultaGeneral");
+                    generarTabla("","","")
+                    break;
+                case "DistribuidorConsultaXFecha":
+                    console.log("DistribuidorConsultaXFecha");
+                    generarTabla(fechaF,fechaF,"")
+                    break;
+                case "DistribuidorConsultaXProductor":
+                    console.log("DistribuidorConsultaXProductor");
+                    generarTabla("","",idProdud)
+                    break;
+                case "DistribuidorConsultaXFechaYProduct":
+                    console.log("DistribuidorConsultaXFechaYProduct");
+                    generarTabla(fechaF,fechaF,idProdud)
                     break;
                 default:
                     // var data = [

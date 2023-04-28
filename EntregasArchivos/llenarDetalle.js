@@ -39,7 +39,7 @@ $(document).ready(function(){
             i--;
             numDetalle.textContent = "Detalle de orden: 00" + i;
             let container = document.querySelector('#detalle');
-            let celdasId = container.querySelectorAll('tr');
+            let celdasId = container.querySelectorAll('tr'); //Selecciona todos los contenedores tr de la tabla
 
             if(celdasId.length > 1){
                 
