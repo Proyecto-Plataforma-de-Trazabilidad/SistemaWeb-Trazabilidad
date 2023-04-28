@@ -66,7 +66,7 @@ include "../Layout/navMenu2.php";
     <section class="Orden-tabla consultaOrden">
         <h3>Extraviados</h3>
         <div class="form-Orden-table">
-            <table class="table table-striped" id="orden">
+            <table class="table table-striped" id="extraviados">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -74,8 +74,7 @@ include "../Layout/navMenu2.php";
                         <th scope="col">Tipo de Envase Vacio</th>
                         <th scope="col">Cantidad Piezas</th>
                         <th scope="col">Aclaracion</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Fecha</th>                      
+                        <th scope="col">Fecha</th>                                      
                         <!-- aqui agregamos el icono y funcion de eliminar por si se equivoca en algo -->
                     </tr>
                 </thead>
@@ -93,9 +92,8 @@ include "../Layout/navMenu2.php";
     <script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../datatables.min.js"></script>
-    <script type="text/javascript" src="../tablas.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript" src="consultaFunciones.js"></script>
+    <script type="text/javascript" src="consultas.js"></script>
     <script src="../Layout/menujs.js"></script>
 
 </body>

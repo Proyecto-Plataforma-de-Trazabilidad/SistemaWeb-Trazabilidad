@@ -4,7 +4,7 @@ const productor = document.getElementById("productor");
 
 $.ajax({
     url:'ExtraviadosArchivos/peticiones/peticiones.php',
-    type: 'GET',
+    type: 'POST',
     success: function (res) {
 
         let datos = JSON.parse(res);//Trae los datos en formato json y los pasa a objeto

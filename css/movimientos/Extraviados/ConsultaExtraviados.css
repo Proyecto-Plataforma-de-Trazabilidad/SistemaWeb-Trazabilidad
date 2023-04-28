@@ -19,8 +19,19 @@
 }
 
 
-table td{
+#extraviados{
+    table-layout: fixed;
+    width: 95%;
     text-align: center;
+}
+
+#extraviados th{
+    text-align: center;
+}
+
+#extraviados th, td{
+    width: 100px;
+    word-wrap: break-word;
 }
 
 .Orden-tabla {

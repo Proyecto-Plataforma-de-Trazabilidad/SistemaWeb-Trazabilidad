@@ -128,13 +128,13 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
                     mensajeError('No hay datos', "De la fecha que selecciono");
                     break;
                 case "NoHayDatosProductor":
-                    mensajeError('No hay datos', "Del productor uqe selecciono");
+                    mensajeError('No hay datos', "Del productor que selecciono");
                     break;
                 case "NoHayDatosProductorYFecha":
                     mensajeError('No hay datos', "De la fecha y el el productor que selecciono");
                     break;
                 case "NoHayDatosGeneral":
-                    mensajeError('No hay datos', "Actualmente no hay registros de ordenes");
+                    mensajeError('No hay datos', "Actualmente no hay registros");
                     break;
                 case "ConsultaGeneral":
                     console.log("ConsultaGeneral");
