@@ -59,11 +59,11 @@ include "Layout/navMenu.php";
                         <option value="Rígidos lavable">Rígidos lavable</option>
                         <option value="Rígidos no lavable">Rígidos no lavable</option>
                         <option value="Flexible">Flexible</option>
-                        <option value="Flexible">Tapas</option>
-                        <option value="Flexible">Cubetas</option>
-                        <option value="Flexible">Cartón</option>
-                        <option value="Flexible">Tambos</option>
-                        <option value="Flexible">Metal</option>
+                        <option value="Tapas">Tapas</option>
+                        <option value="Cubetas">Cubetas</option>
+                        <option value="Cartón">Cartón</option>
+                        <option value="Tambos">Tambos</option>
+                        <option value="Metal">Metal</option>
                     </select>
                 </div>
             </div>
