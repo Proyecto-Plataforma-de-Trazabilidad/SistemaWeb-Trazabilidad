@@ -10,6 +10,7 @@ if (isset($_SESSION['usuario'])) {
     $comando = mysqli_query($enlace, "SELECT T.Descripcion FROM usuarios as U inner join tipousuario as T on U.IdtipoUsuario = T.Idtipousuario where U.Correo = '" . $correo . "'");
     $fila = mysqli_fetch_array($comando);
     $tipoUser = $fila[0];
+    //echo($tipoUser);
     mysqli_free_result($comando);
 
     if ($tipoUser == 'Productores') {
@@ -26,27 +27,38 @@ if (isset($_SESSION['usuario'])) {
         $query = "SELECT E.IdExtraviados, P.Nombre, E.TipoEnvaseVacio, E.CantidadPiezas, E.Aclaracion, E.fecha FROM extraviados as E inner join productores as P on E.IdProductor = P.IdProductor where P.IdProductor = " . $idProductor;
         $comando = mysqli_query($enlace, $query);
         //echo ($resultado);
+        if (mysqli_num_rows($comando) == 0) {
+            echo ("Error");
+        } else {
+            while ($datos = mysqli_fetch_assoc($comando)) {
+                $consulta["data"][] = $datos;
+            }
+            echo (json_encode($consulta));
+        }
+        mysqli_free_result($comando);
+
     } else if ($tipoUser == 'admin') {
         $query = "SELECT E.IdExtraviados, P.Nombre, E.TipoEnvaseVacio, E.CantidadPiezas, E.Aclaracion, E.fecha FROM extraviados as E inner join productores as P on E.IdProductor = P.IdProductor";
         $comando = mysqli_query($enlace, $query);
-    } else {
-        echo ('TipoUsuario');
-    }
-
-
-    if (mysqli_num_rows($comando) == 0) {
-        echo ("Error");
-    } else {
-        while ($datos = mysqli_fetch_assoc($comando)) {
-            $consulta["data"][] = $datos;
+        if (mysqli_num_rows($comando) == 0) {
+            echo ("Error");
+        } else {
+            while ($datos = mysqli_fetch_assoc($comando)) {
+                $consulta["data"][] = $datos;
+            }
+            echo (json_encode($consulta));
         }
-        echo (json_encode($consulta));
+        mysqli_free_result($comando);
+
+    } else {
+        echo ("TipoUsuario");
+        
     }
-    mysqli_free_result($comando);
+
 
     mysqli_close($enlace);
 } else {
-    echo('la variable de usuario no entro correctamente');
+    echo ('la variable de usuario no entro correctamente');
 }
 
 
