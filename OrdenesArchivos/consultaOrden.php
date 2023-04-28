@@ -40,7 +40,7 @@ include "../Layout/navMenu2.php";
                 style="justify-content:center;">
 
                 <div class="col-sm-3">
-                    <label for="inestado" class="form-label">Nombre de Productor</label>
+                    <label for="inestado" class="form-label" id="tituloProdu">Nombre de Productor</label>
                     <select name="nomProdu" id="nomProdu" class="form-select" >
                         <option hidden>Selecciona un productor </option>
                     </select>
