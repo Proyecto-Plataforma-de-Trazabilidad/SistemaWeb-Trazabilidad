@@ -5,9 +5,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
     $conn = new PDO('mysql:host='.$host_name.';dbname='.$database,$host_user,$host_password);
 
-    $rol=$_POST['rol'];
 
-    $query="SELECT  Nombre FROM usuarios WHERE 	Idtipousuario='$rol' ";
+    $query="SELECT  Nombre FROM usuarios WHERE 	Idtipousuario='5' ";
     $resultado=$conn->prepare($query);
     $resultado->execute();
     $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -16,4 +15,3 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $conn = null; //Limpia la conexión
 }
 ?>
-
