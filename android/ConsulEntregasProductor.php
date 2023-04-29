@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $correo=$_POST['correo'];//correo usuario
             $usu=$_POST['usu'];
 
-            $query="SELECT E.IdEntrega,E.ResponsableEntrega,E.fecha FROM entregas AS E INNER JOIN productores AS P ON E.IdProductor=P.IdProductor INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario  WHERE P.Correo='$correo' AND U.Nombre='$usu' and U.ORDER BY E.IdEntrega";
+            $query="SELECT E.IdEntrega,E.ResponsableEntrega,E.fecha FROM entregas AS E INNER JOIN productores AS P ON E.IdProductor=P.IdProductor INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario  WHERE P.Correo='$correo' AND U.Nombre='$usu' ORDER BY E.IdEntrega";
 
             $resultado=$conn->prepare($query);
             $resultado->execute();
