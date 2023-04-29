@@ -9,6 +9,7 @@ $('#frmEntrega').submit(function(e) {
     let idProd = document.getElementById('nomProdu').value;
     let nomResEntrega = document.getElementById('nomResEntrega').value;
     let nomResRecibe = document.getElementById('nomResRecep').value;
+    let fecha = document.getElementById('fecha').value;
 
     let datos = {
         idEntrega: IdEntrega,
@@ -17,6 +18,8 @@ $('#frmEntrega').submit(function(e) {
         idProduc: idProd,
         nomResEntrega: nomResEntrega,
         nomResRecibe: nomResRecibe,
+        recibo: "",
+        fecha: fecha,
     };
     //console.log(datos);
 
@@ -52,29 +55,29 @@ $('#frmEntrega').submit(function(e) {
             data: { entrega: datosValidos, detalle: arregloValido },
             type: 'POST',
             success: function (response) {            
-                // if (response == 'correcto') {
-                //     Swal.fire({
-                //         icon: 'success',
-                //         title: 'Orden Correcta',
-                //         text: 'Orden Registrada',
-                //         showConfirmButton: true,
-                //         confirmButtonText: 'Ok',
-                //         confirmButtonColor: '#285430',
-                //     }).then((result) => {
-                //         if (result.isConfirmed) {
-                //             limpiar();
-                //         }
-                //     });
-                // } else {
-                //     Swal.fire({
-                //         icon: 'error',
-                //         title: 'Orden Incorrecta',
-                //     }).then((result) => {
-                //         if (result.isConfirmed) {
-                //             limpiar();
-                //         }
-                //     });
-                // }
+                if (response == 'correcto') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Orden Correcta',
+                        text: 'Orden Registrada',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Ok',
+                        confirmButtonColor: '#285430',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            limpiar();
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Orden Incorrecta',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            limpiar();
+                        }
+                    });
+                }
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 Swal.fire({
