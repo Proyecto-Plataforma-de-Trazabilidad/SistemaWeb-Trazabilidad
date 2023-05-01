@@ -23,6 +23,7 @@
         $nombre_base=basename(($_FILES["infile"]["name"]));
         $arregloArchivo=explode(".",$nombre_base);
         $extension=strtolower(end($arregloArchivo));
+
         if(in_array($extension, $permitidos)){
             $r="INSERT INTO empresadestino VALUES(NULL,'".$raz."','0','".$dom."','".$cp."','".$muni."','".$edo."','".$tel."','".$corr."',".$lat.",".$lon.")";
             $resultado=mysqli_query($enlace,$r);
@@ -42,15 +43,13 @@
                 }
             }
             else{
-                $data = "server fail"; //Error al subir el archivo
+                $data = "error";//Error al subir el archivo
             }
         }
-        else{
-            $data = "extension"; //Solo se permiten archivos con extensión específicadas
-        }
+        $data="extension";//Solo se permiten archivos con extensión .pdf .jpg .jpeg .png  
     }
     else{
-        $data = null; //Si el archivo no es válido
+        $data=null; //si el archivos no es valido 
     }
 
     print json_encode($data);
