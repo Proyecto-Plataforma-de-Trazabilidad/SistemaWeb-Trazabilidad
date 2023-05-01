@@ -47,7 +47,11 @@
         }
         $data="extension";//Solo se permiten archivos con extensión .pdf .jpg .jpeg .png  
     }
+    else{
+        $data=null; //si ninguno de los 3 archivos es valido 
+    }
 
     print json_encode($data);
     mysqli_close($enlace);
+
 ?>
