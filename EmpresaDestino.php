@@ -26,8 +26,8 @@ $filas = mysqli_fetch_array($res);
 <form class="row g-4 container-fluid" id="frm" method="POST" action="DestinoArchivos/Insertar.php" onsubmit="return valdez()" enctype="multipart/form-data">
 
   <div class="col-sm-4">
-    <label for="inraz" class="form-label">Razón Social</label>
-    <input type="text" id="inraz" name="inraz" class="form-control" maxlength="40" placeholder="Ingrese la Razón social">
+    <label for="innom" class="form-label">Razón Social</label>
+    <input type="text" id="innom" name="innom" class="form-control" maxlength="40" placeholder="Ingrese la Razón social">
   </div>
 
 

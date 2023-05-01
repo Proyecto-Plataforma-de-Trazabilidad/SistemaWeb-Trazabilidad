@@ -1,7 +1,7 @@
 <?php
     include '../conexion.php';
     error_reporting(0);
-    $raz=$_POST['inraz'];
+    $raz=$_POST['innom'];
     $dom=$_POST['indom'];
     $cp=$_POST['incp'];
     $muni=$_POST['jmr_contacto_municipio'];
