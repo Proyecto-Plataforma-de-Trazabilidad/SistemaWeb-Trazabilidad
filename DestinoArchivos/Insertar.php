@@ -19,7 +19,7 @@
 
     $permitidos=array('jpg','png','jpeg','pdf');
 
-    if($_FILES["infile"]){
+    if($_FILES["infile"]["tmp_name"]){
         $nombre_base=basename(($_FILES["infile"]["name"]));
         $arregloArchivo=explode(".",$nombre_base);
         $extension=strtolower(end($arregloArchivo));

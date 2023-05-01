@@ -107,7 +107,7 @@ $(document).ready(function () {
                             confirmButtonText: 'Ok'
                         }).then((result) => {
                             if (result.value) {
-                                window.location.href = "Distribuidores.php";
+                                window.location.href = "EmpresaRecPrivada.php";
                             }
                         });
                     }
