@@ -37,7 +37,7 @@ $(document).ready(function () {
         e.preventDefault();
         let formData = new FormData(this); //Trae todos los datos del formulario
         $.ajax({
-            url: 'DistArchivos/Insertar.php',
+            url: 'DestinoArchivos/Insertar.php',
             data: formData,
             type: 'POST',
             contentType: false,
