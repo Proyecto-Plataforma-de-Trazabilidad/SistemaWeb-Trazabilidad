@@ -34,6 +34,7 @@
             if($subir_archivo){
                 $r="UPDATE empresadestino SET SEMARNAT='".$ruta."' WHERE IdDestino=".$lastid;
                 $resultado=mysqli_query($enlace,$r);
+                
                 if($resultado){
                     $data="archivos subidos";//all se ha ejecutado correctamente
                 }
@@ -45,13 +46,16 @@
                 $data = "error";//Error al subir el archivo
             }
         }
-        $data="extension";//Solo se permiten archivos con extensión .pdf .jpg .jpeg .png  
+        else{
+            $data="extension";//Solo se permiten archivos con extensión .pdf .jpg .jpeg .png
+        }
+        
     }
     else{
         $data=null; //si ninguno de los 3 archivos es valido 
     }
 
     print json_encode($data);
-    mysqli_close($enlace);
 
+    mysqli_close($enlace);
 ?>
