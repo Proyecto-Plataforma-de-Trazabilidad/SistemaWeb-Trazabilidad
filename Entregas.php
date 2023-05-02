@@ -44,14 +44,14 @@ include "Layout/navMenu.php";
             </div>
 
             <div class="col-sm-4">
-                <label for="OrdNombre" class="form-label">Tipo de recolector</label>
+                <label for="tipoRecol" class="form-label">Tipo de recolector</label>
                 <!-- debe de cargar dependiendo el inicio de seccion  -->
                 <input disabled type="text" id="tipoRecol" name="tipoDistribuidor" class="form-control" maxlength="30"
                     required placeholder="Empresa, Distribuidor, CAT, Municipio" data-tipoRecolector="">
             </div>
 
             <div class="col-sm-4">
-                <label for="OrdNombre" class="form-label">Nombre de recolector</label>
+                <label for="nomRecol" class="form-label">Nombre de recolector</label>
                 <!-- debe de cargar dependiendo el inicio de seccion  -->
                 <input disabled type="text" id="nomRecol" name="nomRecol" class="form-control" maxlength="30"
                     required placeholder="Nombre de Empresa, Distribuidor, CAT, Municipio" data-nomRecolector="">
@@ -71,7 +71,7 @@ include "Layout/navMenu.php";
 
             <div class="col-sm-4">
                 <div>
-                    <label for="inestado" class="form-label">Nombre de Productor</label>
+                    <label for="nomProdu" class="form-label">Nombre de Productor</label>
                     <select name="nomProdu" id="nomProdu" class="form-select" required>
                         <option hidden>Selecciona un productor registrado</option>
                     </select>
@@ -79,13 +79,13 @@ include "Layout/navMenu.php";
             </div>
 
             <div class="col-sm-4">
-                <label for="OrdFact" class="form-label">Nombre del responsable de entrega</label>
+                <label for="nomResEntrega" class="form-label">Nombre del responsable de entrega</label>
                 <input type="text" id="nomResEntrega" name="nomResEntrega" class="form-control" maxlength="30"
                     pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" placeholder="Escribe el nombre" required>
             </div>
 
             <div class="col-sm-4">
-                <label for="OrdFact" class="form-label">Nombre del responsable de recepción</label>
+                <label for="nomResRecep" class="form-label">Nombre del responsable de recepción</label>
                 <input type="text" id="nomResRecep" name="nomResRecep" class="form-control" maxlength="30"
                     pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" placeholder="Escribe el nombre" required>
             </div>
@@ -104,7 +104,7 @@ include "Layout/navMenu.php";
 
             <div class="col-sm-4">
                 <div>
-                    <label for="inestado" class="form-label">Tipo de Envase</label>
+                    <label for="tipoEnva" class="form-label">Tipo de Envase</label>
                     <select name="tipoEnva" id="tipoEnva" class="form-select" required>
                         <option hidden>Selecciona una opción</option>
                         <option value="Rígidos lavable">Rígidos lavable</option>
@@ -120,7 +120,7 @@ include "Layout/navMenu.php";
 
             <div class="col-sm-4">
                 <div>
-                    <label for="incap" class="form-label">Cantidad de piezas</label>
+                    <label for="cantiPza" class="form-label">Cantidad de piezas</label>
                     <input type="number" class="form-control" id="cantiPza" min="1" maxlength="10" name="cantiPza" required pattern="[1-9]\d*(\.\d+)?"
                         placeholder="Ingrese una cantidad">
                 </div>
@@ -128,14 +128,14 @@ include "Layout/navMenu.php";
 
             <div class="col-sm-4">
                 <div>
-                    <label for="incap" class="form-label">Peso <small>(Opcional)</small> </label>
+                    <label for="peso" class="form-label">Peso <small>(Opcional)</small> </label>
                     <input type="number" class="form-control" id="peso" min="1" maxlength="10" name="peso" required pattern="[1-9]\d*(\.\d+)?"
                         placeholder="Ingrese una cantidad">
                 </div>
             </div>
 
             <div class="col-sm-4">
-                <label for="exampleFormControlTextarea1" class="form-label">Observaciones</label>
+                <label for="observa" class="form-label">Observaciones</label>
                 <textarea class="form-control" id="observa" rows="3" required
                     placeholder="Escribe una descripción"></textarea>
             </div>

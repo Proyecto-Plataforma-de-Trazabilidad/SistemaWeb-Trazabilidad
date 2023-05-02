@@ -5,13 +5,13 @@ include "../Layout/navMenu2.php";
 
 <!DOCTYPE html>
 <html lang="es">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/movimientos/Orden/ConsultaOrden.css"> <!-- estilo principal -->
-    <link rel="stylesheet" href="../css/movimientos/Orden/orden.css">
+    <link rel="stylesheet" href="../css/movimientos/Extraviados/ConsultaExtraviados.css"> <!-- estilo principal -->
+    <link rel="stylesheet" href="../css/movimientos/Extraviados/Extraviados.css">
     <link rel="stylesheet" href="../menucss.css"> <!-- estilo menu lateral -->
     <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script> <!-- iconos -->
     <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
@@ -20,13 +20,13 @@ include "../Layout/navMenu2.php";
     <!-- js de tabla  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    <title>APEJAL-Consulta Ordenes</title>
+    <title>APEJAL-Consulta Salidas</title>
 </head>
 
 <body>
-<section class="titulo">
+    <section class="titulo">
         <div>
-            <h1>Consulta de Ordenes</h1>
+            <h1>Consulta de Salidas</h1>
         </div>
         <div>
             <a href="./ReporteOrden.php">Reporte PDF</a>
@@ -37,12 +37,12 @@ include "../Layout/navMenu2.php";
         <div class="filtro-form">
             <form class="row g-6 container-fluid" id="frmConsulta" method="POST"
                 action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return 0"
-                style="justify-content:center;">
-
+                style="justify-content:center;">   
+                
                 <div class="col-sm-3">
-                    <label for="nomProdu" class="form-label" id="tituloProdu">Nombre de Productor</label>
-                    <select name="nomProdu" id="nomProdu" class="form-select" >
-                        <option hidden>Selecciona un productor </option>
+                    <label for="recolector" class="form-label" id="tituloProdu">Nombre de Recolector</label>
+                    <select disabled name="nomRecolector" id="recolector" class="form-select" >
+                        <option hidden>Selecciona un recolector </option>
                     </select>
                 </div>
 
@@ -71,21 +71,17 @@ include "../Layout/navMenu2.php";
     </section>
 
     <section class="Orden-tabla consultaOrden">
-        <h3>Ordenes</h3>
+        <h3>Salidas</h3>
         <div class="form-Orden-table">
-            <table class="table table-striped" id="orden">
+            <table class="table table-striped" id="tableSalidas">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Distribuidor</th>
-                        <th scope="col">Productor</th>
-                        <th scope="col">Factura</th>
-                        <th scope="col">Archivo Factura</th>
-                        <th scope="col">Cédula Receta</th>
-                        <th scope="col">Archivo Receta</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Mostrar detalle</th>
-                        <th scope="col">Editar</th>
+                        <th scope="col">Numero Contenedor</th>
+                        <th scope="col">Recolector</th>
+                        <th scope="col">Responsable</th>
+                        <th scope="col">Peso</th>
+                        <th scope="col">Fecha</th>                                      
                         <!-- aqui agregamos el icono y funcion de eliminar por si se equivoca en algo -->
                     </tr>
                 </thead>
@@ -100,36 +96,11 @@ include "../Layout/navMenu2.php";
         <hr class="divider">
     </div> -->
 
-    <section class="detalle-tabla consultaOrden">
-        <h3>Detalle Orden</h3>
-        <div class="form-Detalle-table">
-            <table class="table table-striped" id="detalle">
-                <thead>
-                    <tr>
-                        <th scope="col">Número de Orden</th>
-                        <th scope="col">Número Consecutivo</th>
-                        <th scope="col">Tipo Químico</th>
-                        <th scope="col">Tipo Envase</th>
-                        <th scope="col">Color</th>
-                        <th scope="col">Piezas</th>
-                        <th scope="col">Editar</th>
-                        <!-- aqui agregamos el icono y funcion de eliminar por si se equivoca en algo -->
-                    </tr>
-                </thead>
-                <tbody id="bodyTabla2">
-
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-
     <script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../datatables.min.js"></script>
-    <script type="text/javascript" src="../tablas.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript" src="consultaFunciones.js"></script>
+    <script type="text/javascript" src="consultas.js"></script>
     <script src="../Layout/menujs.js"></script>
 
 </body>
