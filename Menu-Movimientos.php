@@ -32,6 +32,11 @@ include('Layout/navMenu.php');
                 <img src="Recursos/Iconos/Extraviados.svg" alt="Icono de Extraviados" class="menu-item-imagen">
                 <p class="menu-item-titulo">Extraviados</p>
             </div>
+
+            <div class="menu-item" id="Salidas" onclick="location.href='Salidas.php'">
+                <img src="Recursos/Iconos/Salidas2.svg" alt="Icono de Salidas" class="menu-item-imagen">
+                <p class="menu-item-titulo">Salidas</p>
+            </div>
         </div>
     </main>
 

@@ -45,7 +45,7 @@ include "Layout/navMenu.php";
             </div>
 
             <div class="col-sm-4">
-                <label for="OrdNombre" class="form-label">Nombre de productor</label>
+                <label for="productor" class="form-label">Nombre de productor</label>
                 <!-- debe de cargar dependiendo el inicio de seccion  -->
                 <input disabled type="text" id="productor" name="nomDistribuidor" class="form-control" maxlength="30"
                     required placeholder="Nombre productor" data-idProduc="">
@@ -53,8 +53,8 @@ include "Layout/navMenu.php";
 
             <div class="col-sm-4">
                 <div>
-                    <label for="inestado" class="form-label">Tipo de Envase</label>
-                    <select name="inestado" id="tipoEnva" class="form-select" required>
+                    <label for="tipoEnva" class="form-label">Tipo de Envase</label>
+                    <select name="tipoEnva" id="tipoEnva" class="form-select" required>
                         <option hidden>Selecciona un tipo</option>
                         <option value="Rígidos lavable">Rígidos lavable</option>
                         <option value="Rígidos no lavable">Rígidos no lavable</option>
@@ -70,14 +70,14 @@ include "Layout/navMenu.php";
 
             <div class="col-sm-4">
                 <div>
-                    <label for="incap" class="form-label">Número de piezas</label>
+                    <label for="numPiezas" class="form-label">Número de piezas</label>
                     <input type="number" class="form-control" id="numPiezas" min="1" maxlength="10" name="incap" required pattern="[1-9]\d*(\.\d+)?"
                         placeholder="Ingrese una cantidad">
                 </div>
             </div>
 
             <div class="col-sm-4">
-                <label for="exampleFormControlTextarea1" class="form-label">Aclaración</label>
+                <label for="aclaracion" class="form-label">Aclaración</label>
                 <textarea class="form-control" id="aclaracion" rows="5" required
                     placeholder="Escribe una descripción"></textarea>
             </div>

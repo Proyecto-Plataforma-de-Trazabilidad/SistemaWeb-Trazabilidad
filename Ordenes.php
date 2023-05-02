@@ -36,7 +36,7 @@ include "Layout/navMenu.php";
                     <label  id="numOrden" data-numOrden="">Numero de orden: </label>
                 </div>
                 <div>
-                    <label for="startDate">Seleccionar Fecha: &nbsp;</label>
+                    <label for="fecha">Seleccionar Fecha: &nbsp;</label>
                 </div>
 
                 <div class="col-sm-2">
@@ -45,26 +45,26 @@ include "Layout/navMenu.php";
             </div>
 
             <div class="col-sm-4" id="nom">
-                <label for="OrdNombre" class="form-label">Nombre del distribuidor</label>
+                <label for="nomDistri" class="form-label">Nombre del distribuidor</label>
                 <!-- debe de cargar dependiendo el inicio de seccion  -->
                 <input disabled type="text" id="nomDistri" name="nomDistribuidor" class="form-control" maxlength="30"
                     required placeholder="Nombre del distribuidor" data-idDistribuidor=""> <!--Hay que cambiar esto -->
             </div>
 
             <div class="col-sm-4">
-                <label for="OrdFact" class="form-label">Factura</label>
+                <label for="factOrden" class="form-label">Factura</label>
                 <input type="text" id="factOrden" name="facturaOrden" class="form-control" maxlength="30"
                     pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" required placeholder="Número de cédula">
             </div>
 
             <div class="col-sm-4">
-                <label for="formFileMultiple" class="form-label">Subir Factura</label>
+                <label for="archFac" class="form-label">Subir Factura</label>
                 <input class="form-control" type="file" id="archFac" name="archFac" multiple>
             </div>
 
             <div class="col-sm-4">
                 <div>
-                    <label for="inestado" class="form-label">Nombre de Productor</label>
+                    <label for="nomProdu" class="form-label">Nombre de Productor</label>
                     <select name="nomProdu" id="nomProdu" class="form-select" required>
                         <option hidden>Selecciona un productor registrado</option>
                     </select>
@@ -72,13 +72,13 @@ include "Layout/navMenu.php";
             </div>
 
             <div class="col-sm-4">
-                <label for="OrdFact" class="form-label">Cédula de receta</label>
+                <label for="cedReceta" class="form-label">Cédula de receta</label>
                 <input type="text" id="cedReceta" name="facturaOrden" class="form-control" maxlength="30"
                     pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" placeholder="Número de cédula">
             </div>
 
             <div class="col-sm-4">
-                <label for="formFileMultiple" class="form-label">Subir Receta</label>
+                <label for="archReceta" class="form-label">Subir Receta</label>
                 <input class="form-control" type="file" id="archReceta" name="archRece" multiple>
             </div>
         </form>
@@ -96,7 +96,7 @@ include "Layout/navMenu.php";
 
             <div class="col-sm-4">
                 <div>
-                    <label class="form-label">Tipo de Químico</label>
+                    <label for="tipoQuimi" class="form-label">Tipo de Químico</label>
                     <select name="inestado" id="tipoQuimi" class="form-select" required>
                         <option hidden>Selecciona un tipo</option>
                     </select>
@@ -105,7 +105,7 @@ include "Layout/navMenu.php";
 
             <div class="col-sm-4">
                 <div>
-                    <label class="form-label">Tipo de Envase</label>
+                    <label for="tipoEnva" class="form-label">Tipo de Envase</label>
                     <select name="tipoEnva" id="tipoEnva" class="form-select" required>
                         <option hidden>Selecciona un tipo</option>
                         <option value="Rígidos lavable">Rígidos lavable</option>
@@ -117,7 +117,7 @@ include "Layout/navMenu.php";
 
             <div class="col-sm-4">
                 <div>
-                    <label for="inestado" class="form-label">Color</label>
+                    <label for="color" class="form-label">Color</label>
                     <select name="inestado" id="color" class="form-select" required>
                         <option hidden>Selecciona un color</option>
                         <option value="Verde">Verde</option>
@@ -130,7 +130,7 @@ include "Layout/navMenu.php";
 
             <div class="col-sm-4">
                 <div class="col-6">
-                    <label for="incap" class="form-label">Cantidad de piezas</label>
+                    <label for="cantiPza" class="form-label">Cantidad de piezas</label>
                     <input type="number" class="form-control" id="cantiPza" min="1" maxlength="10" name="incap" required pattern="[1-9]\d*(\.\d+)?"
                         placeholder="Ingrese la cantidad">
                 </div>

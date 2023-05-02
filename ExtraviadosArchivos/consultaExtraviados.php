@@ -41,14 +41,14 @@ include "../Layout/navMenu2.php";
 
                 <div class="col-sm-2">
                     <div>
-                        <label for="incap" class="form-label">Fecha Inicio</label>
+                        <label for="fechaInicio" class="form-label">Fecha Inicio</label>
                         <input id="fechaInicio" class="form-control" type="date" required />
                     </div>
                 </div>
 
                 <div class="col-sm-2">
                     <div>
-                        <label for="incap" class="form-label">Fecha Fin</label>
+                        <label for="fechafin" class="form-label">Fecha Fin</label>
                         <input id="fechafin" class="form-control" type="date" required />
                     </div>
                 </div>
