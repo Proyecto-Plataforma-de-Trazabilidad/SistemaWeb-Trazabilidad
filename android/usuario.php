@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){ //comprobar si la peticion es POST si no
             break;
             case 'datos':
                 $email=$_POST['email'];
-                $d="SELECT Nombre,IdtipoUsuario FROM usuarios where Correo='$email'";
+                $d="SELECT Nombre,IdtipoUsuario,IdUsuario FROM usuarios where Correo='$email'";
                  $resul2=$conn->prepare($d);
                  $resul2->execute();
                  $response = $resul2->fetchAll(PDO::FETCH_ASSOC);
