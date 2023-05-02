@@ -84,7 +84,7 @@ $(document).ready(function () {
         function registrarUsuario() {
             formData.append("tipousuario", "6");
 
-            $.aja({
+            $.ajax({
                 url: 'UserArchivos/nuevoRegistrar.php',
                 data: formData,
                 type: 'POST',
