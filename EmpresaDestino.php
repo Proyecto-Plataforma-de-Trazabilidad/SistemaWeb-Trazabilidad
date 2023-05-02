@@ -85,7 +85,7 @@ $filas = mysqli_fetch_array($res);
   </div>
 
   <div class="col-sm-8">
-    <label for="inputDom" class="form-label">SEMARNAT</label>
+    <label for="infile" class="form-label">SEMARNAT</label>
     <br>
     <input type="file" name="infile" id="infile" class="form-file">
   </div>

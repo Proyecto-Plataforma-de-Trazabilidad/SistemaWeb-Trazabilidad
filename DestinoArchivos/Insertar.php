@@ -52,7 +52,7 @@
         
     }
     else{
-        $data=null; //si ninguno de los 3 archivos es valido 
+        $data=null; //si ninguno de los archivos es valido 
     }
 
     print json_encode($data);
