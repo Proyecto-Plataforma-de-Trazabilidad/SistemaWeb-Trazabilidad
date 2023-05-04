@@ -11,6 +11,9 @@ $consulta = "SELECT * FROM usuarios where Correo = '$varses'";
 $res = mysqli_query($enlace, $consulta);
 $filass = mysqli_fetch_array($res);
 
+$nombrec = $filass[2];
+$nombre = strtok($nombrec, " ");
+
 
 ?>
 
@@ -65,7 +68,7 @@ $filass = mysqli_fetch_array($res);
 
         <div class="name__page">
             <i class="fa-sharp fa-solid fa-user" title="Sesión"></i>
-            <h4><?php echo $filass[2]; ?></h4>
+            <h4><?php echo $nombre ?></h4>
         </div>
 
         <div class="options__menu">
