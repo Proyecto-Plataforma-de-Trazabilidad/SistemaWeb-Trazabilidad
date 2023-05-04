@@ -1115,7 +1115,7 @@ class Options
 
         $dirs = $this->chroot;
         $dirs[] = $this->rootDir;
-        $chrootValid = false;
+        $chrootValid = true;
         foreach ($dirs as $chrootPath) {
             $chrootPath = realpath($chrootPath);
             if ($chrootPath !== false && strpos($realfile, $chrootPath) === 0) {

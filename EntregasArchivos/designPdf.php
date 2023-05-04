@@ -1,7 +1,8 @@
 <?php
+include("../conexion.php"); //$enlace es la conexion a db
+session_start();
 
 ob_start(); //iniciar el buffer para poder guardar la informacion html en una variable 
-
 $currentsite = getcwd();
 ?>
 
@@ -167,9 +168,9 @@ $currentsite = getcwd();
 <body>
     <!-- encabezado -->
     <section class="container-encabezado">
-        <!-- <div class="container-encabezado-imagen">
-            <img src="{$currentsite}/sistemaWeb-Trazabilidad/Logos/AMOCALI.jpg" alt="Logo" class="logo" />
-        </div> -->
+        <div class="container-encabezado-imagen">
+            <img src="http://localhost/SistemaWeb-Trazabilidad/Logos/AMOCALI.jpg" alt="Logo" class="logo" />
+        </div>
 
         <div class="container-encabezado-recolector">
             <p class="recolector-nombre">
@@ -190,15 +191,20 @@ $currentsite = getcwd();
     <!-- fecha y numero de recibo -->
     <section class="container-identificacion">
         <div class="container-identificacion-fecha">
-            <p class="identificacion-texto">Fecha: 25/03/23</p>
+            <p class="identificacion-texto">Fecha: <?php echo $_POST['entrega']['fecha'] ?></p>
         </div>
         <div class="container-identificacion-numero">
             <p class="identificacion-texto">
-                Recibo de Entrega-Recepción: <em class="numRecibo">032723ABC</em>
+                Recibo de Entrega-Recepción: <em class="numRecibo"><?php echo $_POST['entrega']['idEntrega'] ?></em>
             </p>
         </div>
     </section>
-
+        <?php
+            $comando = mysqli_query($enlace, "SELECT * FROM productores WHERE IdProductor = '" . $_POST['entrega']['idProduc'] . "'");
+            $fila = mysqli_fetch_array($comando);
+            mysqli_free_result($comando);
+     
+        ?>
     <!-- datos del productor que entrega -->
     <section class="container-productor">
         <div class="container-productor-titulo">
@@ -206,21 +212,19 @@ $currentsite = getcwd();
         </div>
 
         <div class="container-productor-nombre">
-            <p><strong>nombre:</strong> Julio Cesar Arriaga Mendoza</p>
-            <p><strong>Tel:</strong> 3411486241</p>
+            <p><strong>nombre:</strong> <?php echo $fila[1] ?></p>
+            <p><strong>Tel:</strong> <?php echo $fila[8] ?></p>
         </div>
 
         <div class="container-productor-domicilio">
             <p>
-                <strong>Domicilio:</strong> av. Cuauhtemoc #86 interior
-                #32B,
-                col.Centro
+                <strong>Domicilio:</strong> <?php echo $fila[3] ?>
             </p>
         </div>
 
         <div class="container-productor-lugar">
-            <p><strong>Municipio:</strong> Tamazula de Gordiano</p>
-            <p><strong>Estado:</strong> Jalisco</p>
+            <p><strong>Municipio:</strong> <?php echo $fila[6] ?></p>
+            <p><strong>Estado:</strong> <?php echo $fila[7] ?></p>
         </div>
     </section>
 
@@ -240,42 +244,19 @@ $currentsite = getcwd();
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Lavable</td>
-                        <td>200</td>
-                        <td>27kg</td>
-                        <td>Lavados y aportillados</td>
-                    </tr>
-                    <tr>
-                        <td>No Lavable</td>
-                        <td>200</td>
-                        <td>27kg</td>
-                        <td>Lavados y aportillados</td>
-                    </tr>
-                    <tr>
-                        <td>Tapas</td>
-                        <td>400</td>
-                        <td>27kg</td>
-                        <td>Lavados y aportillados</td>
-                    </tr>
-                    <tr>
-                        <td>Lavable</td>
-                        <td>200</td>
-                        <td>27kg</td>
-                        <td>Lavados y aportillados</td>
-                    </tr>
-                    <tr>
-                        <td>No Lavable</td>
-                        <td>200</td>
-                        <td>27kg</td>
-                        <td>Lavados y aportillados</td>
-                    </tr>
-                    <tr>
-                        <td>Tapas</td>
-                        <td>400</td>
-                        <td>27kg</td>
-                        <td>Lavados y aportillados</td>
-                    </tr>
+                    <?php 
+                        $detalle = $_POST['detalle'];
+                        foreach($detalle as $t){
+                            ?>
+                            <tr>
+                                <td><?php echo $t['tipoEnvase'] ?></td>
+                                <td><?php echo $t['cantidad'] ?></td>
+                                <td><?php echo $t['peso'] ?>kg</td>
+                                <td><?php echo $t['observa'] ?></td>
+                                </tr>
+                            <?php
+                        }
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -307,13 +288,13 @@ $currentsite = getcwd();
         </div>
         <div class="responsables-entrega">
             <p>_________________________________</p>
-            <p>Julio cesar Arriaga Mendoza</p>
+            <p><?php echo $_POST['entrega']['nomResEntrega'] ?></p>
             <p>Responsable de entrega</p>
         </div>
 
         <div class="responsables-recepcion">
             <p>_________________________________</p>
-            <p>Juan Carlos Medina Robusto</p>
+            <p><?php echo $_POST['entrega']['nomResRecibe'] ?></p>
             <p>Responsable de recepción</p>
         </div>
     </section>
@@ -324,34 +305,34 @@ $currentsite = getcwd();
 
 <?php
 
-// $html = ob_get_clean();
-// //echo$html;
+$html = ob_get_clean();
+//echo$html;
 
 
-// require_once '../Librerias/dompdf/autoload.inc.php';
-// use Dompdf\Dompdf;
+require_once '../Librerias/dompdf/autoload.inc.php';
+use Dompdf\Dompdf;
 
-// $dompdf = new Dompdf(); //crear objeto 
+ $dompdf = new Dompdf(); //crear objeto 
 
 // //opciones para mostrar imagenes 
-// $options = $dompdf->getOptions();
-// $options->set(array('isRemoteEnable' => true));
-// $dompdf->setOptions($options);
+$options = $dompdf->getOptions();
+$options->set(array('isRemoteEnable' => true));
+$dompdf->setOptions($options);
 
-// //el contenido del pdf 
-// $dompdf->loadHtml($html);
+//el contenido del pdf 
+$dompdf->loadHtml($html);
 
 // //crear el archivo 
-// $dompdf->setPaper(('letter'));
+$dompdf->setPaper('letter');
 
 // //para cambiar propiedades de la hoja de pdf
 // //$dompdf->setPaper('A4','landscape');
 
-// //render 
-// $dompdf->render();
+//render 
+$dompdf->render();
 
 // //poder trabajar el archivo           para poder descargarlo o solo abrirlo
-// $dompdf->stream("archivo_.pdf", array("Attachment" => false));
+echo base64_encode($dompdf->stream("archivo_.pdf", array("Attachment" => false))); 
 
 
 

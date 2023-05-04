@@ -2,6 +2,8 @@ $('#frmEntrega').submit(function(e) {
 
     e.preventDefault();  //detener la recarga de la pagina
 
+    let formData = new FormData(this); //Obtiene los archivos del formulario
+
     let entrega = document.getElementById('numEntrega');
     let IdEntrega = entrega.dataset.numEntrega;
     let tipoRecolect = document.getElementById("tipoRecol").value;
@@ -22,7 +24,9 @@ $('#frmEntrega').submit(function(e) {
         fecha: fecha,
     };
     //console.log(datos);
+    formData.append("IdEntrega", IdEntrega); //Se agrega el id de la entrega para mandarlo junto con los archivos
 
+    //Detalle
     let arreglo = new Array();
     let tabla = document.querySelector('#detalle'); //buscamos la tabla
     let filas = tabla.querySelectorAll('tr'); // seleccionamos todas los renglones
@@ -45,8 +49,41 @@ $('#frmEntrega').submit(function(e) {
             arreglo.push(fila);
         }
     }
-    console.log(arreglo);
-    insertarEntrega(datos, arreglo)
+    //console.log(arreglo);
+    insertarArchivo();
+
+    function insertarArchivo(){
+        $.ajax({
+            url:'EntregasArchivos/insertarArchivo.php',
+            type:'POST',
+            data:formData,
+            contentType: false,
+            cache: false,
+            processData:false,
+            success:function(response){
+                resArchivo = JSON.parse(response);
+                console.log(resArchivo);
+
+                datos.recibo = resArchivo.rutaRecibo;
+                console.log(datos);
+                // //!Errores de extension
+                if(resArchivo.extCorrectaRecibo == "No permitida")
+                    mensajeError('Extensión incorrecta', 'Del recibo', '#archRecibo');
+                else if(resArchivo.guardadoRecibo == "Fallido") //!Errores de guardado
+                    mensajeError('Error al guardar', 'El recibo no se pudo guardar, intentelo de nuevo', '#archRecibo');
+                else{
+                    insertarEntrega(datos, arreglo);
+                //     if (opcion == "registra") 
+
+                //     else
+                //         actualizarOrden(datos);
+                }
+
+            }
+        });
+    }
+
+    //insertarEntrega(datos, arreglo)
 
     function insertarEntrega(datosValidos, arregloValido) {
         //mandar entrega y detalle con ajax
