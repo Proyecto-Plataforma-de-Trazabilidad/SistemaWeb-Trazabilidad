@@ -27,8 +27,8 @@ include "Layout/navMenu.php";
     </section>
 
     <section class="form-Principal">
-        <form class="row g-4 container-fluid" id="frmEntrega" method="POST"
-            action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return 0">
+        <form class="row g-4 container-fluid" id="frmEntrega" method="POST" 
+            action="EntregasArchivos/insertarArchivo.php" enctype="multipart/form-data">
 
             <div class="form-Principal-encabezado">
                 <div class="form-Principal-encabezado-numero">
@@ -61,13 +61,13 @@ include "Layout/navMenu.php";
                 <label for="OrdNombre" class="form-label">Número de recolector</label>
                 <input disabled type="text" id="innombre" name="nomDistribuidor" class="form-control" maxlength="30"
                     required placeholder="Número de recolector">
-            </div>
+            </div>-->
 
-            <div class="col-sm-3">
-                <label for="formFileMultiple" class="form-label">Subir documento de entrega <small>(con
+            <div class="col-sm-4">
+                <label for="formFileMultiple" class="form-label">Subir recibo de entrega <small>(con
                         firmas)</small></label>
-                <input class="form-control" type="file" id="formFileMultiple" multiple>
-            </div> -->
+                <input class="form-control" type="file" id="recibo" name="archRecibo" multiple>
+            </div> 
 
             <div class="col-sm-4">
                 <div>
@@ -165,8 +165,12 @@ include "Layout/navMenu.php";
                 </tbody>
             </table>
             <label for="" class="form-Detalle-mensaje">Detalles de entregas</label>
-            <button type="submit" id="registrar" class="btn btn-success button-registrar" name="Registrar" form="frmEntrega">Registrar</button>
+            <div class="col align-self-center">
+                <button type="button" id="generarPDF" class="btn btn-success button-registrar " name="Generar">Generar PDF</button>
+                <button type="submit" id="registrar" class="btn btn-success button-registrar " name="Registrar" form="frmEntrega">Registrar</button>
+            </div>
         </div>
+
     </section>
     
     <script>
@@ -181,8 +185,9 @@ include "Layout/navMenu.php";
     <script type="text/javascript" src="datatables.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="./EntregasArchivos/llenarCampos.js"></script> <!-- scrip para llenar los campos del form  -->
-    <script type="text/javascript" src="./EntregasArchivos/llenarDetalle.js"></script> <!-- scrip para llenar los campos del form  -->
-    <script type="text/javascript" src="./EntregasArchivos/btnRegistrar.js"></script>
+    <script type="text/javascript" src="./EntregasArchivos/llenarDetalle.js"></script> <!-- scrip para llenar el detalle -->
+    <script type="text/javascript" src="./EntregasArchivos/btnGenerarPDF.js"></script> <!-- scrip para lanzar el generador de PDF-->
+    <script type="text/javascript" src="./EntregasArchivos/btnRegistrar.js"></script>   <!-- scrip para realizar el registro -->
 
     <script src="Layout/menujs.js"></script>
     
