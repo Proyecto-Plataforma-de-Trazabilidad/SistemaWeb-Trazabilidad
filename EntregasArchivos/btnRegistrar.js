@@ -36,6 +36,7 @@ $('#frmEntrega').submit(function(e) {
     }else{
         //ciclo que recorre las filas del detalle
         for (var i = 1; i < filas.length; i++) {
+            
             //ejecutara todo el numero de filas
             var celdas = filas[i].getElementsByTagName('td'); //solo tomara las que son de td       
             var fila = {
@@ -102,7 +103,7 @@ $('#frmEntrega').submit(function(e) {
                         confirmButtonColor: '#285430',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            limpiar();
+                            //limpiar();
                         }
                     });
                 } else {
@@ -111,7 +112,7 @@ $('#frmEntrega').submit(function(e) {
                         title: 'Orden Incorrecta',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            limpiar();
+                            //limpiar();
                         }
                     });
                 }

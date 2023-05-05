@@ -22,7 +22,7 @@ include "Layout/navMenu.php";
             <h1>Entregas</h1>
         </div>
         <div>            
-            <button type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-magnifying-glass"></i> &nbsp;Consultar</button>
+            <button onclick="window.location.href='EntregasArchivos/consultaEntrega.php'" type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-magnifying-glass"></i> &nbsp;Consultar</button>
         </div>
     </section>
 

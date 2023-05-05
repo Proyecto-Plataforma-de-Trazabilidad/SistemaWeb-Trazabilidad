@@ -32,13 +32,17 @@ if ($enlace->connect_error) {
         //ciclo con el tamaño del arreglo de detalle entrega
         $detalle = $_POST['detalle'];
         foreach($detalle as $t){
+            $peso = 0;
+            if ($t['peso'] != "") 
+                $peso = $t['peso'];
+            
             //query detalle orden                      IdEntrega, Consecutivo, IdQuimico, tipoEnvase, Color, Cantidad Piezas
-            $detalle = "INSERT INTO detalleentrega VALUES (" . $t['idEntrega'] . "," . $t['consecutivo'] . ",'" . $t['tipoEnvase'] . "'," . $t['cantidad'] . "," . $t['peso'] . ",'" . $t['observa'] . "')";
+            $detalle = "INSERT INTO detalleentrega VALUES (" . $t['idEntrega'] . "," . $t['consecutivo'] . ",'" . $t['tipoEnvase'] . "'," . $t['cantidad'] . "," . $peso . ",'" . $t['observa'] . "')";
             //echo($detalle);
             mysqli_query($enlace, $detalle);                        
             //query de actualizar numero de piezas entregadas al productor
             $productor = "UPDATE productores SET TotalPiezasEntregadas = TotalPiezasEntregadas + " . $t['cantidad'] . " WHERE IdProductor = " . $IdProductor;
-            //echo($productor);
+            //echo($productor); 
             mysqli_query($enlace, $productor);
         }
 
