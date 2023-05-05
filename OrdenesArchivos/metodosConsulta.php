@@ -16,7 +16,6 @@ if ($tipoUser == 'admin') {
     //echo $queryOrden;
     $comando = mysqli_query($enlace, $queryOrden);
     
-    
     if (mysqli_num_rows($comando) == 0) {
         echo ("Error");
     } else {

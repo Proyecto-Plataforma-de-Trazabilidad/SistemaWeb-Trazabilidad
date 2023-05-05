@@ -5,7 +5,7 @@ $(document).ready(function () {
     mostrarOrden("","","");  //Función que se encarga de llenar el datatable
 });
 
-//Funcion jQuery  que se ejecuta cuando das clic al boton
+//Función jQuery  que se ejecuta cuando das clic al botón
 $('#aceptar').click(function () {
     let fechaIni = document.getElementById('fechaInicio').value;
     let fechaFin = document.getElementById('fechafin').value;
@@ -136,6 +136,7 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
                 case "NoHayDatosGeneral":
                     mensajeError('No hay datos', "Actualmente no hay registros");
                     break;
+                //Admin
                 case "ConsultaGeneral":
                     console.log("ConsultaGeneral");
                     
@@ -156,6 +157,7 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
                     $('#detalle tbody').children().remove();
                     generarTabla(fechaI,fechaF,'')
                     break;
+                //Productor
                 case "ProductorConsultaGeneral":
                     console.log("ProductorConsultaGeneral");
                     $('#tituloProdu').remove();
@@ -167,6 +169,7 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
                     $('#detalle tbody').children().remove();
                     generarTabla(fechaF,fechaF,datos.data)
                     break;
+                //Distribuidor  
                 case "DistribuidorConsultaGeneral":
                     console.log("DistribuidorConsultaGeneral");
                     $('#detalle tbody').children().remove();

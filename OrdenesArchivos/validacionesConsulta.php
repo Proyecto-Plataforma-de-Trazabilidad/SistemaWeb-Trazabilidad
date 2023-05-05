@@ -3,9 +3,10 @@
 include("../conexion.php");
 session_start();
 
-$comando = mysqli_query($enlace, "SELECT T.Descripcion FROM usuarios as U inner join tipousuario as T on U.IdtipoUsuario = T.Idtipousuario where U.Correo = '" . $_SESSION['usuario'] . "'");
+$comando = mysqli_query($enlace, "SELECT T.Descripcion, U.IdUsuario FROM usuarios as U inner join tipousuario as T on U.IdtipoUsuario = T.Idtipousuario where U.Correo = '" . $_SESSION['usuario'] . "'");
 $fila = mysqli_fetch_array($comando);
 $tipoUser = $fila[0];
+$IdUsuario = $fila[1];
 mysqli_free_result($comando);
 
 $mensaje = ""; 
@@ -169,8 +170,85 @@ if ($tipoUser == 'admin' && $_POST['IdProdu'] != "" && $fechaCorrecta ) {
         $mensaje = "ConsultaXFechaYProduct";
     mysqli_free_result($comando);
 }
+   //Nuevas validaciones de tipo de recolector
+if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $_POST['IdProdu'] == "" && $_POST['FF'] == "" && $_POST['FI'] == "") {
+    switch ($_POST['movi']) {
+        case 'entregas':
+                $queryOrden = "SELECT * FROM entregas AS E INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario WHERE T.Idtipousuario = " . $_POST['IdTipo'] . " LIMIT 1;";
+            break;
+        default:
+            break;
+    }
 
+    $comando = mysqli_query($enlace, $queryOrden);
 
+    if (mysqli_num_rows($comando) == 0) 
+        $mensaje ="NoHayDatosGeneralTipos";
+    else 
+        $mensaje ="ConsultaGeneralTipos";
+
+    mysqli_free_result($comando);
+}
+
+//Validación de consulta por fecha y tipos
+if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $fechaCorrecta && $_POST['IdProdu'] == "") {
+   
+    switch ($_POST['movi']) {
+        case 'entregas':
+                $queryOrden = "SELECT * FROM entregas AS E INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario WHERE T.Idtipousuario = " . $_POST['IdTipo'] . " AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
+            break;
+
+        default:
+            break;
+    }
+
+    $comando = mysqli_query($enlace, $queryOrden);
+
+    if (mysqli_num_rows($comando) == 0) 
+        $mensaje ="NoHayDatosTiposFechas";
+    else 
+        $mensaje ="ConsultaXTiposYFecha";
+
+    mysqli_free_result($comando);
+}
+
+//Validación de consulta a productor y tipos
+if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $_POST['IdProdu'] != "" && ($_POST['FI'] == "" && $_POST['FF'] == "")) {
+    switch ($_POST['movi']) {
+        case 'entregas':
+                $queryOrden = "SELECT * FROM entregas AS E INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario WHERE T.Idtipousuario = " . $_POST['IdTipo'] . " AND IdProductor = '" . $_POST['IdProdu'] . "' LIMIT 1;";
+            break;
+
+        default:
+            break;
+    }
+
+    $comando = mysqli_query($enlace, $queryOrden);
+
+    if (mysqli_num_rows($comando) == 0) 
+        $mensaje ="NoHayDatosTiposProductor";
+    else 
+        $mensaje ="ConsultaXTiposProductor";
+    mysqli_free_result($comando);
+}
+//Validación de consulta por fecha y productor y tipos
+if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $_POST['IdProdu'] != "" && $fechaCorrecta ) {
+    switch ($_POST['movi']) {
+        case 'entregas':
+                $queryOrden = "SELECT * FROM entregas AS E INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario WHERE T.Idtipousuario = " . $_POST['IdTipo'] . " AND IdProductor = '" . $_POST['IdProdu'] . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
+            break;
+        default:
+            break;
+    }
+
+    $comando = mysqli_query($enlace, $queryOrden);
+
+    if (mysqli_num_rows($comando) == 0) 
+        $mensaje ="NoHayDatosTiposYProductorYFecha";
+    else 
+        $mensaje = "ConsultaXTiposYFechaYProduct";
+    mysqli_free_result($comando);
+}
 
 ///Usuario productor----------------
 if ($tipoUser == 'Productores' && $_POST['IdProdu'] == "" && $_POST['FF'] == "" && $_POST['FI'] == "") {
@@ -235,10 +313,7 @@ if ($tipoUser == 'Distribuidores' && $_POST['IdProdu'] == "" && $_POST['FF'] == 
                 $queryOrden = "SELECT * FROM ordenproductos WHERE IdDistribuidor = '" . $IdDistribuidor . "' LIMIT 1;";
             break;
         case 'entregas':
-                $queryOrden = "SELECT * FROM entregas WHERE IdDistribuidor = '" . $IdDistribuidor . "' LIMIT 1;";
-            break;
-        case 'extraviados':
-                $queryOrden = "SELECT * FROM extraviados WHERE IdDistribuidor = '" . $IdDistribuidor . "' LIMIT 1;";
+                $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' LIMIT 1;";
             break;
         default:
             break;
@@ -258,10 +333,7 @@ if ($tipoUser == 'Distribuidores' && $_POST['IdProdu'] == "" && $_POST['FF'] == 
                 $queryOrden = "SELECT * FROM ordenproductos WHERE IdDistribuidor = '" . $IdDistribuidor . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
             break;
         case 'entregas':
-                $queryOrden = "SELECT * FROM entregas WHERE IdDistribuidor = '" . $IdDistribuidor . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
-            break;
-        case 'extraviados':
-                $queryOrden = "SELECT * FROM extraviados WHERE IdDistribuidor = '" . $IdDistribuidor . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
+                $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
             break;
         default:
             break;
@@ -281,7 +353,7 @@ if ($tipoUser == 'Distribuidores' && $_POST['IdProdu'] == "" && $_POST['FF'] == 
                 $queryOrden = "SELECT * FROM ordenproductos WHERE IdDistribuidor = '" . $IdDistribuidor . "' AND IdProductor = '" . $_POST['IdProdu'] . "' LIMIT 1;";
             break;
         case 'entregas':
-                $queryOrden = "SELECT * FROM entregas WHERE IdDistribuidor = '" . $IdDistribuidor . "' AND IdProductor = '" . $_POST['IdProdu'] . "' LIMIT 1;";
+                $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' AND IdProductor = '" . $_POST['IdProdu'] . "' LIMIT 1;";
             break;
         default:
             break;
@@ -300,7 +372,7 @@ if ($tipoUser == 'Distribuidores' && $_POST['IdProdu'] == "" && $_POST['FF'] == 
                 $queryOrden = "SELECT * FROM ordenproductos WHERE IdDistribuidor = '" . $IdDistribuidor . "' AND IdProductor = '" . $_POST['IdProdu'] . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
             break;
         case 'entregas':
-                $queryOrden = "SELECT * FROM entregas WHERE IdDistribuidor = '" . $IdDistribuidor . "' AND IdProductor = '" . $_POST['IdProdu'] . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
+                $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' AND IdProductor = '" . $_POST['IdProdu'] . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
             break;
         default:
             break;
