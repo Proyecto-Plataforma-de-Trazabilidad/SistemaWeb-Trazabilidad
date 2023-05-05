@@ -15,28 +15,30 @@ if ($enlace->connect_error) {
 
 
     //RECOLECTOR 
-    $comando = mysqli_query($enlace, "SELECT T.Descripcion, U.Nombre FROM usuarios as U inner join tipousuario as T on U.IdtipoUsuario = T.Idtipousuario where U.Correo = '" . $_SESSION['usuario'] . "'");
+    $comando = mysqli_query($enlace, "SELECT T.Descripcion, U.Nombre, U.IdUsuario FROM usuarios as U inner join tipousuario as T on U.IdtipoUsuario = T.Idtipousuario where U.Correo = '" . $_SESSION['usuario'] . "'");
     $fila = mysqli_fetch_array($comando);
     $tipoRecolec = $fila[0];
     $nombreRecolec = $fila[1];
+    $idRecolector = $fila[2];
     mysqli_free_result($comando);
     $mensaje = "TodoCorrecto";
+
     //Validaciones de recolector
     switch ($tipoRecolec) {
         case 'Distribuidores':
-            $comando = mysqli_query($enlace, "SELECT Nombre FROM distribuidores WHERE Correo = '" . $_SESSION['usuario'] . "' ") or die(mysqli_error());
+            $comando = mysqli_query($enlace, "SELECT IdDistribuidor ,Nombre FROM distribuidores WHERE Correo = '" . $_SESSION['usuario'] . "' ") or die(mysqli_error());
             if (mysqli_num_rows($comando) == 0)
                 $mensaje = "NoHayDistribuidores";
             else {
                 $fila = mysqli_fetch_array($comando);
-                $ValidarNomRecole = $fila[0];
+                $ValidarNomRecole = $fila[1];
                 if ($ValidarNomRecole != $nombreRecolec)
                     $mensaje = "RecoleUsuarioNoValido";
             }
             mysqli_free_result($comando);
             break;
         case 'Empresa Recolectora':
-            $comando = mysqli_query($enlace, "SELECT Nombre FROM empresarecolectoraprivada WHERE Correo = '" . $_SESSION['usuario'] . "' ") or die(mysqli_error());
+            $comando = mysqli_query($enlace, "SELECT IdERP,Nombre FROM empresarecolectoraprivada WHERE Correo = '" . $_SESSION['usuario'] . "' ") or die(mysqli_error());
             if (mysqli_num_rows($comando) == 0) //Valida si hay distribuidores registrados en la db
                 $mensaje = "NoHayERP";
             else {
@@ -48,14 +50,14 @@ if ($enlace->connect_error) {
             mysqli_free_result($comando);
             break;
         case 'Municipios':
-            $comando = mysqli_query($enlace, "SELECT NombreLugar FROM municipio WHERE Correo = '" . $_SESSION['usuario'] . "' ") or die(mysqli_error());
+            $comando = mysqli_query($enlace, "SELECT IdMunicipio,NombreLugar FROM municipio WHERE Correo = '" . $_SESSION['usuario'] . "' ") or die(mysqli_error());
             if (mysqli_num_rows($comando) == 0) //Valida si hay distribuidores registrados en la db
                 $mensaje = "NoHayMunicipio";
             else {
                 $fila = mysqli_fetch_array($comando);
                 $ValidarNomRecole = $fila[0];
                 if ($ValidarNomRecole != $nombreRecolec)
-                    $mensaje = "RecoleUsuarioNoValido";
+                    $mensaje = "RecoleUsuarioNoValido";        
             }
             mysqli_free_result($comando);
             break;
@@ -65,11 +67,11 @@ if ($enlace->connect_error) {
     }
 
     //CONTENEDOR
-    $comando = mysqli_query($enlace, "SELECT * FROM contenedores") or die(mysqli_error());
-    if (mysqli_num_rows($comando) == 0) {          //Valida si hay productores registrados en la db
+    $comando = mysqli_query($enlace, "SELECT IdContenedor, Origen FROM contenedores") or die(mysqli_error());
+    if (mysqli_num_rows($comando) == 0) { //Valida si hay productores registrados en la db
         $contenedor = "No hay contenedores";
-    }else {
-        while($fila1 = mysqli_fetch_array($comando)){
+    } else {
+        while ($fila1 = mysqli_fetch_array($comando)) {
             $contenedores[] = array(
                 'IdContenedor' => $fila1[0],
                 'Origen' => $fila1[1]
@@ -79,7 +81,7 @@ if ($enlace->connect_error) {
     mysqli_free_result($comando);
 
     //Mando datos al front
-    $datos = json_encode(array('numSalidas' => $row, 'tipoRec' => $tipoRecolec, 'nomRec' => $nombreRecolec, 'contenedores' => $contenedores, 'mensaje' => $mensaje));
+    $datos = json_encode(array('numSalidas' => $row, 'idRec' => $idRecolector, 'nomRec' => $nombreRecolec, 'contenedores' => $contenedores, 'mensaje' => $mensaje));
 
     echo $datos;
 

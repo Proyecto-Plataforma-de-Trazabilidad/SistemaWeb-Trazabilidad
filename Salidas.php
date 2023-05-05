@@ -33,7 +33,7 @@ include "Layout/navMenu.php";
 
             <div class="form-Principal-encabezado">
                 <div class="form-Principal-encabezado-numero">
-                    <label id="numSalida" data-numExtraviados="">Número de Salida:</label>
+                    <label id="numSalida" data-numSalida="">Número de Salida:</label>
                 </div>
                 <div>
                     <label for="fecha">Seleccionar Fecha: &nbsp;</label>
@@ -57,7 +57,7 @@ include "Layout/navMenu.php";
                 <label for="recolector" class="form-label">Nombre de Recolector</label>
                 <!-- debe de cargar dependiendo el inicio de seccion  -->
                 <input disabled type="text" id="recolector" name="nomRecolector" class="form-control" maxlength="30"
-                    required placeholder="Nombre de recolector" data-idProduc="">
+                    required placeholder="Nombre de recolector" data-idRec="">
             </div>
 
             <div class="col-sm-4">
@@ -97,7 +97,7 @@ include "Layout/navMenu.php";
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
     <script type="text/javascript" src="SalidasArchivos/Funciones/funcion.js"></script>
-    <!-- <script type="text/javascript" src="./ExtraviadosArchivos/funciones/insertar.js"></script> -->
+    <script type="text/javascript" src="SalidasArchivos/Funciones/insertar.js"></script>
     <script src="Layout/menujs.js"></script>
 </body>
 
