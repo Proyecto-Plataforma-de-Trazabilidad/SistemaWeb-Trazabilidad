@@ -4,30 +4,36 @@ const recolector = document.getElementById("recolector");
 const Contenedor = document.getElementById("Contenedor");
 
 $.ajax({
-    url:'SalidasArchivos/Peticiones/peticiones.php',
+    url: 'SalidasArchivos/Peticiones/peticiones.php',
     type: 'POST',
     success: function (res) {
 
         let datos = JSON.parse(res);//Trae los datos en formato json y los pasa a objeto
 
         //Productor
-        if (datos.nomProduc == "No hay Productor") { 
+        if (datos.mensaje != "TodoCorrecto") {
             $('#registrar').prop('disabled', true);
             Swal.fire({
                 icon: 'warning',
-                title: 'No se encontró al Productor',
-                text: 'Por favor ingrese con una cuenta de Productor',
+                title: 'Sucedio algun error',
+                text: 'Por favor ingrese con una cuenta de recolector',
                 showConfirmButton: false,
                 timer: 2000
             });
-            
-        }else{
-            productor.placeholder = datos.nomProduc; //Ubica al usuario en el input
-            productor.dataset.idProduc = ""+datos.idProduc; //Asigna el id del distribuidor al dataset
+
+        } else {
+            //recolector
+            recolector.placeholder = datos.nomRec; //Ubica al usuario en el input
+            recolector.dataset.idRec = "" + datos.idRec; //Asigna el id del distribuidor al dataset
+            //numSalida
+            numSalida.textContent = "Número de salida: " + datos.numSalidas; //Coloca el numero de salida en el encabezado
+            numSalida.dataset.numSalida = "" + datos.numSalidas;               //Guarda el num salida en el dataset
+            //contenedores combo
+            datos.contenedores.map(contenedor => {
+                Contenedor.insertAdjacentHTML('beforeend', `<option value="${contenedor.IdContenedor}">${contenedor.IdContenedor} , ${contenedor.Origen}</option>`);
+            });
         }
 
-        //numExt
-        numExt.textContent = "Número de extraviados: " + datos.extraviados; //Coloca el numero de orden en el encabezado
-        numExt.dataset.numExtraviados = ""+datos.extraviados;               //Guarda el num orden en el dataset
+
     }
 })
