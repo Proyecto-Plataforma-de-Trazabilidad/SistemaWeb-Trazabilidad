@@ -1,6 +1,7 @@
 //
 const numSalida = document.getElementById("numSalida");
 const recolector = document.getElementById("recolector");
+const Contenedor = document.getElementById("Contenedor");
 
 $.ajax({
     url:'SalidasArchivos/Peticiones/peticiones.php',
