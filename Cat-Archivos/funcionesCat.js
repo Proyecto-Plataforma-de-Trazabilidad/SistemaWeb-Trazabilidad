@@ -48,48 +48,73 @@ $(document).ready(function(){
  
 
 
-    $('#frm').submit(function(e){
+      $('#frm').submit(function(e){
         e.preventDefault();
-        let res=document.getElementById("inres").value;
-        let nom=document.getElementById("innom").value;
-        let nra=document.getElementById("inNra").value;
-        let des=document.getElementById("info").value;
-        let dom=document.getElementById("indom").value;
-        let cp=document.getElementById("incp").value;
-        let muni=document.getElementById("inmuni").value;
-        let est=document.getElementById("inest").value;
-        let tel=document.getElementById("intel").value;
-        let corr=document.getElementById("incorr").value;
-        let hor=document.getElementById("inhor").value;
-        let lat=document.getElementById("inlat").value;
-        let lon=document.getElementById("inlon").value;
-        let plan=document.getElementById("inplan").value;
-        let tipofuncion="registrar";
-        let parametros={"res":res,"nom":nom, "nra":nra, "des":des, "dom":dom, "cp":cp, "muni":muni, "est":est, "tel":tel, "corr":corr, "hor":hor, "lat":lat,"lon":lon, "plan":plan, "tipo":tipofuncion}
-        if(nra.length>10){
-        alert("El campo: Numero de registro ambiental, es invalido");
-        return false;
-        }   
-        if(cp.length>5 || cp.length<5){
-        alert("El campo: Código postal, es invalido");
-        return false;
-        }
-        if(tel.length>10 || tel.length<10){
-        alert("El campo: Telefono, es invalido");
-        return false;
-        }
+        console.log("paso por aqui 2.0");
+        let formData = new FormData(this); //Este método trae todos los datos del form sin necesidad de leer el valor de cada campo
+        console.log("Alv");
         $.ajax({
-            url:'Cat-Archivos/metodosCat.php',
-            data:parametros,
+            url:'Cat-Archivos/Insertar.php',
+            data:formData,
             type:'POST',
-            success:function(response){
-                $('#bodyTabla').html(response);
-                tabla.ajax.reload();
-            }
-        });
-        $('#frm').trigger('reset');
-        
+            contentType: false,
+            cache: false,
+            processData:false,
+            datatype: "json",
+            success:function(data){ //!!!Las respuestas que reciba de la petición se deben imprimir con sweetalerts
+                if(data == "null"){
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'No se pudo realizar el insert',
+                    });
+                }else {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Se a hecho el registro correctamente',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'yeiiiii'
+                    }).then((result) => {
+                        if(result.value){
+                        registrarUsuario();  //Funcion para hacer el registro del usuario con los datos del form
+                        }
+                    });
+                  }
+                }
+            });
+
+        function registrarUsuario() {
+            formData.append("tipousuario", "11");
+
+            $.ajax({
+                url: 'UserArchivos/nuevoRegistrar.php',
+                data: formData,
+                type: 'POST',
+                contentType: false,
+                cache: false,
+                processData: false,
+                datatype: "json",
+                success: function (data) {
+                    if (data == "null") {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error al registrar al usuarion nuevo',
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'El usuario se ha creado correctamente',
+                            text: 'Recuerda comentarle a los usuarios',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'Ok'
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.href = "Cat.php";
+                            }
+                        });
+                    }
+                }
+            });
+        }
     });
 
-    
 });
