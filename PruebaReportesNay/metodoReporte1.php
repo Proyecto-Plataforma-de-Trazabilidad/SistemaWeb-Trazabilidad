@@ -15,8 +15,8 @@
     {
         $prod=$_POST['prod'];
        
-        $r="";
-        mysqli_query($enlace,$r);
+       // $r="";
+       // mysqli_query($enlace,$r);
        // cargarTabla();
     }
     
