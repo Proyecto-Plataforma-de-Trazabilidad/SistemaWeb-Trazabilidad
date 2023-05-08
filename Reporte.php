@@ -9,7 +9,7 @@ $filas = mysqli_fetch_array($res);
 
 <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 
-    <h1>Reporte De Total Piezas Productor Por Período</h1>
+    <h1>Reporte De Total Piezas Productor </h1>
     <br>
     
     <form class="row g-4 container-fluid" id="frm" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return valdez()">
@@ -28,7 +28,9 @@ $filas = mysqli_fetch_array($res);
 
     </form>
 
-
+    <br>
+    <br>
+    <canvas id="myChart" width="400" height="400"></canvas>
     <br><br>
     
 
