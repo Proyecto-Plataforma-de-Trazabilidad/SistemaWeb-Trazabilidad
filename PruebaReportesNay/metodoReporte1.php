@@ -14,7 +14,7 @@
     if($tipo=="registrar")
     {
         $prod=$_POST['inprod'];
-        $r="SELECT *FROM detalleorden";
+        $r="SELECT SUM(D.CantidadPiezas) As TotalPiezas FROM detalleorden as D INNER JOIN ordenproductos AS O on O.IdOrden=D.IdOrden where O.IdProductor='$pro'";
         $res=mysqli_fetch_array(mysqli_query($enlace, $r));
         echo json_encode($res);
     }
