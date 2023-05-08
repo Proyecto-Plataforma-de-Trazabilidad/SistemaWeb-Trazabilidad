@@ -20,9 +20,10 @@ $filas = mysqli_fetch_array($res);
         </select>
       </div>
 
-
+      <div class="col-sm-3">
       <div class="col-3">
         <button type="submit" class="btn btn-success" onclick="" name="Registrar">Registrar</button>
+      </div>
       </div>
       
 
