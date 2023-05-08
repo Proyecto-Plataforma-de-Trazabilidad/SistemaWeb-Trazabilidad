@@ -29,14 +29,9 @@ $(document).ready(function(){
             type:'POST',
             success:function(response){
                console.log(response);
-
-        
-               var valor = [];
-
-                valor.push(response[0].TotalPiezas); 
                 
-                console.log(response[0].TotalPiezas);
-                console.log(valor);
+                console.log(response.TotalPiezas);
+              
 
                     var chartdata = {
                         labels: "Total Piezas",
