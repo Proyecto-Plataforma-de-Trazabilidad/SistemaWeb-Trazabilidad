@@ -33,7 +33,7 @@ $(document).ready(function(){
         
                var valor = [];
 
-                for (var i in data) { valor.push(data[i].TotalPiezas); }
+                for (var i in response) { valor.push(response[i].TotalPiezas); }
 
                     var chartdata = {
                         labels: "Total Piezas",
