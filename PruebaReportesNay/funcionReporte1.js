@@ -31,8 +31,11 @@ $(document).ready(function(){
                console.log(response);
 
         
-              let valor=response[0];
+               var valor = [];
 
+                valor.push(response[0].TotalPiezas); 
+                
+                console.log(response[0].TotalPiezas);
                 console.log(valor);
 
                     var chartdata = {
