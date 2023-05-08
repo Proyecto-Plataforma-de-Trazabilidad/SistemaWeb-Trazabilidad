@@ -34,6 +34,8 @@ $(document).ready(function(){
                var valor = [];
 
                 for (var i in response) { valor.push(response[i].TotalPiezas); }
+                
+                console.log(valor);
 
                     var chartdata = {
                         labels: "Total Piezas",
@@ -44,7 +46,7 @@ $(document).ready(function(){
                                 borderColor: '#46d5f1',
                                 hoverBackgroundColor: '#CCCCCC',
                                 hoverBorderColor: '#666666',
-                                data: valor
+                                data: valor,
                             }
                         ]
                     };
