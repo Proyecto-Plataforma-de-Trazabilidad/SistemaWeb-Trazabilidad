@@ -16,9 +16,8 @@
         $prod=$_POST['inprod'];
        
         $r="SELECT *FROM detalleorden";
-        $resultado=$enlace->prepare($r);
-        $resultado->execute();
-        $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        $comando= mysqli_query($enlace, $r);
+        $res=mysqli_fetch_array($comando)
 
         echo json_encode($res);
         
