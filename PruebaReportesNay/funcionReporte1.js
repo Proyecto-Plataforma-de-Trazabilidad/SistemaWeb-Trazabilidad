@@ -17,7 +17,7 @@ $(document).ready(function(){
         let prod=document.getElementById("inprod").value;
         let tipofuncion="registrar";
 
-        console.log("inprod")
+        console.log(prod);
 
         let parametros={"prod":prod,"tipo":tipofuncion}
         $.ajax({
