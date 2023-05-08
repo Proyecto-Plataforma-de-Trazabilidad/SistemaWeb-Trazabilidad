@@ -12,7 +12,8 @@ $filas = mysqli_fetch_array($res);
     <h1>Reporte De Total Piezas Productor </h1>
     <br>
     
-    <form class="row g-4 container-fluid" id="frm" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return valdez()">
+    <form class="row g-4 container-fluid" id="frm" method="POST" 
+    action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return 0">
 
     <!--Combo, funciona con ajax, enlazado a js y el js a un php, esta en los scripts-->
       <div class="col-sm-3">  
