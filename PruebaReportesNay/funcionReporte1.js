@@ -17,6 +17,8 @@ $(document).ready(function(){
         let prod=document.getElementById("inprod").value;
         let tipofuncion="registrar";
 
+        console.log("inprod")
+
         let parametros={"prod":prod,"tipo":tipofuncion}
         $.ajax({
             url:'PruebaReportesNay/metodoReporte1.php',
@@ -24,7 +26,7 @@ $(document).ready(function(){
             type:'POST',
             success:function(response){
                 const respuesta = response.json();
-                const $grafica = document.querySelector("#grafica");
+                const $grafica = document.querySelector("#myChart");
                 const etiquetas = respuesta.etiquetas; 
 
                 const datos = {
