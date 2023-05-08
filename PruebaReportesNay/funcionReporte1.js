@@ -25,9 +25,9 @@ $(document).ready(function(){
             data:parametros,
             type:'POST',
             success:function(response){
-               var valores=eval(response);
+               
             
-               console.log(valores);
+               console.log(response);
             
             }
         });
