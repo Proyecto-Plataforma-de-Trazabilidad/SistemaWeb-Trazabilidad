@@ -29,7 +29,8 @@ $(document).ready(function(){
             type:'POST',
             success:function(response){
                console.log(response);
-                
+                let valor=response.TotalPiezas;
+
                 console.log(response.TotalPiezas);
               
 
