@@ -26,8 +26,8 @@ $(document).ready(function(){
             type:'POST',
             success:function(response){
                var valores=eval(response);
-               var e=valores[0];
-               console.log(e);
+            
+               console.log(valores);
             
             }
         });
