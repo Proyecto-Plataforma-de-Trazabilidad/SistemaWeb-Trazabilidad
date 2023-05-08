@@ -20,7 +20,7 @@ $(document).ready(function(){
         console.log(prod);
         console.log(tipofuncion);
 
-        let parametros={"prod":prod,"tipo":tipofuncion}
+        let parametros={"inprod":prod,"tipo":tipofuncion}
 
         console.log(parametros);
         $.ajax({
