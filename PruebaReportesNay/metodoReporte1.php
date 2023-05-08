@@ -14,15 +14,8 @@
     if($tipo=="registrar")
     {
         $prod=$_POST['inprod'];
-       
         $r="SELECT *FROM detalleorden";
-        $comando= mysqli_query($enlace, $r);
-        $res=mysqli_fetch_array($comando)
-
+        $res=mysqli_fetch_array(mysqli_query($enlace, $r));
         echo json_encode($res);
-        
     }
-    
-       
-    
 ?>
