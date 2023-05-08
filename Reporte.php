@@ -34,16 +34,6 @@ $filas = mysqli_fetch_array($res);
     <br><br>
     
 
-    <script>
-       
-    //esto nose para que funciona 
-    function obtenerTamaño() {
-      let ancho = document.documentElement.clientWidth;
-      ancho.addListener("change", function(event) {
-
-      })
-    }
-    </script>
 
     <!--Código PHP para obtener el IDtiporol del usuario que inició sesión-->
     <?php
