@@ -15,7 +15,7 @@
     {
         $prod=$_POST['prod'];
        
-        $r="SELECT SUM(CantidadPiezas) As TotalPiezas FROM detalleorden as DOr INNER JOIN ordenproductos AS Ord on Ord.IdOrden=DOr.IdOrden  where Ord.IdProductor='$prod'";
+        $r="SELECT SUM(CantidadPiezas) As TotalPiezas FROM detalleorden as D INNER JOIN ordenproductos AS O on O.IdOrden=D.IdOrden where O.IdProductor='$prod'";
         $comando=mysqli_query($enlace,$r);
 
         echo json_encode($comando);

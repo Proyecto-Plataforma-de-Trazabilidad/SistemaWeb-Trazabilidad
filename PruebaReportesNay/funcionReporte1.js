@@ -18,8 +18,11 @@ $(document).ready(function(){
         let tipofuncion="registrar";
 
         console.log(prod);
+        console.log(tipofuncion);
 
         let parametros={"prod":prod,"tipo":tipofuncion}
+
+        console.log(parametros);
         $.ajax({
             url:'PruebaReportesNay/metodoReporte1.php',
             data:parametros,
