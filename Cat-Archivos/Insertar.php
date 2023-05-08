@@ -16,8 +16,8 @@
     $lat=$_POST["inlat"];
     $lon=$_POST["inlon"];
     
-    if($nom != null && $corr != null){
-        $r="INSERT INTO centroacopiotemporal VALUES(NULL,'".$res."','".$nom."','".$reg."','".$info."','".$dom."','".$cp."','".$muni."','".$est."','".$tel."','".$corr."',".$hor.",".$lat.",".$lon.",'".$plan."')";
+    if($nom != null && $correo != null){
+        $r="INSERT INTO centroacopiotemporal VALUES(NULL,'".$res."','".$nom."','".$reg."','".$info."','".$dom."','".$cp."','".$muni."','".$est."','".$tel."','".$correo."',".$hor.",".$lat.",".$lon.",'".$plan."')";
         mysqli_query($enlace,$r);
         $data = "bien";
     }
