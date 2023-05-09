@@ -5,12 +5,12 @@ include "../Layout/navMenu2.php";
 
 <!DOCTYPE html>
 <html lang="es">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/movimientos/Orden/consultaEntrega.css"> <!-- estilo principal -->
+    <link rel="stylesheet" href="../css/movimientos/Entregas/consultaEntrega.css"> <!-- estilo principal -->
     <link rel="stylesheet" href="../css/movimientos/Orden/orden.css">
     <link rel="stylesheet" href="../menucss.css"> <!-- estilo menu lateral -->
     <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script> <!-- iconos -->
@@ -24,7 +24,7 @@ include "../Layout/navMenu2.php";
 </head>
 
 <body>
-<section class="titulo">
+    <section class="titulo">
         <div>
             <h1>Consulta de Entrega</h1>
         </div>
@@ -41,18 +41,17 @@ include "../Layout/navMenu2.php";
 
                 <div class="col-sm-3">
                     <label for="tipoEnva" class="form-label">Tipo de Recolector</label>
-                        <select name="tipoRecol" id="tipoRecol" class="form-select">
-                            <option hidden>Selecciona una opción</option>
-                            <option value="Distribuidor">Distribuidor</option>
-                            <option value="ERP">ERP</option>
-                            <option value="Municipio">Municipio</option>
+                    <select name="tipoRecol" id="tipoRecol" class="form-select">
+                        <option hidden>Selecciona una opción</option>
+                        <option value="Distribuidor">Distribuidor</option>
+                        <option value="ERP">ERP</option>
+                        <option value="Municipio">Municipio</option>
 
-                        </select>
-                    </div>
+                    </select>
+                </div>
                 <div class="col-sm-3">
-
                     <label for="nomProdu" class="form-label" id="tituloProdu">Nombre de Productor</label>
-                    <select name="nomProdu" id="nomProdu" class="form-select" >
+                    <select name="nomProdu" id="nomProdu" class="form-select">
                         <option hidden>Selecciona un productor </option>
                     </select>
                 </div>
@@ -68,11 +67,11 @@ include "../Layout/navMenu2.php";
                     <div>
                         <label for="fechafin" class="form-label">Fecha Fin</label>
                         <input id="fechafin" class="form-control" type="date" required />
-                    </div>
+                    </div>                    
                 </div>
 
-                <div class="col-sm-3 button-buscar"> <!--Agrega el detalle a la tabla-->
-                    <div class="">
+                <div class="col-sm-1 button-buscar"> <!--Agrega el detalle a la tabla-->
+                    <div class="button-buscar">
                         <button id="aceptar" type="button" class="btn btn-outline-dark" name="Aceptar">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
