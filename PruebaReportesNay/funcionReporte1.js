@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 
     $.ajax({
@@ -17,25 +18,40 @@ $(document).ready(function(){
         let prod=document.getElementById("inprod").value;
         let tipofuncion="registrar";
 
-        console.log(prod);
-        console.log(tipofuncion);
+        var combo = document.getElementById("inprod");
+        var selected = combo.options[combo.selectedIndex].text;//nombre productor
+    
+        console.log(prod);//id
+        console.log(tipofuncion);//opcion
 
         let parametros={"inprod":prod,"tipo":tipofuncion}
 
-        console.log(parametros);
+        console.log(parametros);//parametros
         $.ajax({
             url:'PruebaReportesNay/metodoReporte1.php',
             data:parametros,
             type:'POST',
             success:function(response){
-               console.log(response);
-                let valor=response.TotalPiezas;
+                console.log("response : "+response);//ver respuesta servidor
+                let array=JSON.parse(response);//convertir a json
+                let dat;
+                let enteros=[];
 
-                console.log(response.TotalPiezas);
-              
+                for (var i in array) {
+                   dat=(array[i].TotalPiezas);//extraer valores del json
+                   let n = parseInt(dat);
+                   console.log("valor parseado "+n);//convertirlo  a entero, para mandarlo a arreglo por que la grafica eso recibe valores en arreglos
+                   enteros.push(n);
+                }
 
+                let etiquetapie=[];//la grafica solo recibe arreglos de etiquetas o de datos 
+                etiquetapie.push("Productor "+selected);//indicando que la etiqueta sera el productor y su nombre
+                console.log(etiquetapie);
+               
+
+                //aqui todo lo dela grafica 
                     var chartdata = {
-                        labels: "Total Piezas",
+                        labels: etiquetapie,
                         datasets: [
                             {
                                 label: 'Piezas',
@@ -43,7 +59,7 @@ $(document).ready(function(){
                                 borderColor: '#46d5f1',
                                 hoverBackgroundColor: '#CCCCCC',
                                 hoverBorderColor: '#666666',
-                                data: valor,
+                                data: enteros,
                             }
                         ]
                     };

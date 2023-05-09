@@ -10,40 +10,73 @@ $IdUsuario = $fila[1];
 mysqli_free_result($comando);
 
 $queryEntrega = "SELECT E.IdEntrega, T.Descripcion AS 'TipoRecolector', U.Nombre AS 'NomRecolector', P.Nombre AS 'Productor', E.Recibo, E.ResponsableEntrega, E.ResponsableRecepcion, E.fecha FROM entregas AS E INNER JOIN productores AS P ON E.IdProductor=P.IdProductor INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario";
-switch ($_POST['Opcion']) {
-    //Admin
-    case 'ConsultaGeneral':
-        realizarConsulta($queryEntrega);
-        break;
-    case "ConsultaXFecha":
-        $queryEntrega = $queryEntrega + " WHERE Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' ";
-        break;
-    case "ConsultaXProductor":
-        $queryEntrega = $queryEntrega + "WHERE IdProductor = '" . $_POST['IdProdu'] . "'";
-        break;
-    case "ConsultaXFechaYProduct":
-        $queryEntrega = $queryEntrega + "WHERE IdProductor = '" . $_POST['IdProdu'] . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "'";
-        break; 
+if (isset($_POST['Opcion'])) {
+    switch ($_POST['Opcion']) { 
+        //Admin
+        case 'ConsultaGeneral':
+            realizarConsulta($queryEntrega);
+            break;
+        case "ConsultaXFecha":
+            $queryEntrega = $queryEntrega . " WHERE E.Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' ";
+            realizarConsulta($queryEntrega);
+            break;
+        case "ConsultaXProductor":
+            $queryEntrega = $queryEntrega . " WHERE E.IdProductor = '" . $_POST['IdProdu'] . "'";
+            realizarConsulta($queryEntrega);
+            break;
+        case "ConsultaXFechaYProduct":
+            $queryEntrega = $queryEntrega . " WHERE E.IdProductor = '" . $_POST['IdProdu'] . "' AND E.Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "'";
+            realizarConsulta($queryEntrega);
+            break; 
+        case "ConsultaXTipos":
+            $queryEntrega = $queryEntrega . " WHERE T.Descripcion = '" . $_POST['TipoRecol'] . "' ";
+            realizarConsulta($queryEntrega);
+            break; 
+        case "ConsultaXTiposYFecha":
+            $queryEntrega = $queryEntrega . " WHERE T.Descripcion = '" . $_POST['TipoRecol'] . "' AND E.Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "'";
+            realizarConsulta($queryEntrega);
+            break; 
+        case "ConsultaXTiposProductor":
+            $queryEntrega = $queryEntrega . " WHERE T.Descripcion = '" . $_POST['TipoRecol'] . "' AND E.IdProductor = '" . $_POST['IdProdu'] . "' ";
+            realizarConsulta($queryEntrega);
+            break; 
+        case "ConsultaXTiposYFechaYProduct":
+            $queryEntrega = $queryEntrega . " WHERE T.Descripcion = '" . $_POST['TipoRecol'] . "' AND E.IdProductor = '" . $_POST['IdProdu'] . "' AND E.Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "'";
+            realizarConsulta($queryEntrega);
+            break; 
+    }
+}
 
-    //Distribuidor    
-    case "DistribuidorConsultaGeneral":
-        $queryEntrega = $queryEntrega + "WHERE ";
-        break;
-    case "DistribuidorConsultaXFecha":
 
-        break;
-    case "DistribuidorConsultaXProductor":
-
-        break;
-    case "DistribuidorConsultaXFechaYProduct":
-
-        break;   
-    default:
-        # code...
-        break;
+$queryEntrega2 = "SELECT E.IdEntrega, P.Nombre AS 'Productor', E.Recibo, E.ResponsableEntrega, E.ResponsableRecepcion, E.fecha FROM entregas AS E INNER JOIN productores AS P ON E.IdProductor=P.IdProductor INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario";
+if (isset($_POST['Opcion2'])) {
+    switch ($_POST['Opcion2']) {
+        //Distribuidor    
+        case "DistribuidorConsultaGeneral":
+            $queryEntrega2 = $queryEntrega2 . " WHERE U.IdUsuario = " . $IdUsuario;
+            realizarConsulta($queryEntrega2);
+            break;
+        case "DistribuidorConsultaXFecha":
+            $queryEntrega2 = $queryEntrega2 . " WHERE U.IdUsuario = " . $IdUsuario . " AND E.Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "'";
+            realizarConsulta($queryEntrega2);
+            break;
+        case "DistribuidorConsultaXProductor":
+            $queryEntrega2 = $queryEntrega2 . " WHERE U.IdUsuario = " . $IdUsuario . " AND E.IdProductor = '" . $_POST['IdProdu'] . "'";
+            realizarConsulta($queryEntrega2);
+            break;
+        case "DistribuidorConsultaXFechaYProduct":
+            $queryEntrega2 = $queryEntrega2 . " WHERE U.IdUsuario = " . $IdUsuario . " AND E.IdProductor = '" . $_POST['IdProdu'] . "' AND E.Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "'";
+            realizarConsulta($queryEntrega2);
+            break;   
+        default:
+            # code...
+            break;
+    }
 }
 
 function realizarConsulta($queryCorrecto){
+    include("../conexion.php");
+    //echo $queryCorrecto;
     $comando = mysqli_query($enlace, $queryCorrecto);
     
     if (mysqli_num_rows($comando) == 0) {

@@ -2,7 +2,7 @@ $(document).ready(function () {
     const nombreProdu = document.getElementById("nomProdu");
     añadirProductores(nombreProdu); //Funcion que carga la combo de productores
 
-    mostrarEntrega("","","");  //Función que se encarga de llenar el datatable
+    mostrarEntrega("","","", "");  //Función que se encarga de llenar el datatable
 });
 
 //Función jQuery  que se ejecuta cuando das clic al botón
@@ -10,18 +10,24 @@ $('#aceptar').click(function () {
     let fechaIni = document.getElementById('fechaInicio').value;
     let fechaFin = document.getElementById('fechafin').value;
     let idProd = document.getElementById('nomProdu').value;
-    if (idProd == "Selecciona un productor") {
-        mostrarEntrega(fechaIni, fechaFin, "");
-    }else
-        mostrarEntrega(fechaIni, fechaFin, idProd);
+    let tipoRecol = document.getElementById('tipoRecol').value;
+
+    if (idProd == "Selecciona un productor" && tipoRecol == "Selecciona un recolector") //Verifica si nos se selecciona ninguna combo
+        mostrarEntrega(fechaIni, fechaFin, "", "");
+    else if (idProd == "Selecciona un productor" && tipoRecol != "Selecciona un recolector") //Limpia si se selecciono solo tipo
+        mostrarEntrega(fechaIni, fechaFin, "", tipoRecol)
+    else if (tipoRecol == "Selecciona un recolector" && idProd != "Selecciona un productor") //Limpia si se selecciono solo productor
+        mostrarEntrega(fechaIni, fechaFin, idProd, "");
+    else
+        mostrarEntrega(fechaIni, fechaFin, idProd, tipoRecol);
 });
 
 
-function mostrarEntrega(fechaI, fechaF, idProdud) {
+function mostrarEntrega(fechaI, fechaF, idProdud, tipoRecol) {
     $.ajax({
         type: 'POST',
         url:'../OrdenesArchivos/validacionesConsulta.php',
-        data:{'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud, 'movi': 'entregas'},
+        data:{'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud, 'IdTipo': tipoRecol, 'movi': 'entregas'},
         success: function (res) {
             let datos = JSON.parse(res);//Trae los datos en formato json y los pasa a objeto
             let opc = datos.mensaje;
@@ -50,14 +56,54 @@ function mostrarEntrega(fechaI, fechaF, idProdud) {
                     break;
                 case "ConsultaGeneral":
                     console.log("ConsultaGeneral");
-                    
-                    generarTabla('','','');
+                    generarTabla("ConsultaGeneral", fechaI, fechaF, idProdud, tipoRecol);
                     break;
-                default:
-                    // var data = [
-                    //     { 'IdOrden': "1", 'Distribuidor': "Infected", 'Productor': "Pancho",  'NumFactura': "8d8nnw", 'Factura': "Facturas/f1.png", 'NumReceta': "888sd88dd", 'Receta': "Recetas/r1.png", 'Fecha': "2023-04-06"}
-                    // ];
-                    
+                case "ConsultaXFecha":
+                    console.log("ConsultaXFecha");
+                    generarTabla("ConsultaXFecha", fechaI, fechaF, idProdud, tipoRecol);
+                    break;
+                case "ConsultaXProductor":
+                    console.log("ConsultaXProductor");
+                    generarTabla("ConsultaXProductor", fechaI, fechaF, idProdud, tipoRecol);
+                    break;
+                case "ConsultaXFechaYProduct":
+                    console.log("ConsultaXFechaYProduct");
+                    generarTabla("ConsultaXFechaYProduct", fechaI, fechaF, idProdud, tipoRecol);
+                    break;
+                case "ConsultaXTipos":
+                    console.log("ConsultaXTipos");
+                    generarTabla("ConsultaXTipos", fechaI, fechaF, idProdud, tipoRecol);
+                    break;
+                case "ConsultaXTiposYFecha":
+                    console.log("ConsultaXTiposYFecha");
+                    generarTabla("ConsultaXTiposYFecha", fechaI, fechaF, idProdud, tipoRecol);
+                    break;
+                case "ConsultaXTiposProductor":
+                    console.log("ConsultaXTiposProductor");
+                    generarTabla("ConsultaXTiposProductor", fechaI, fechaF, idProdud, tipoRecol);
+                    break;
+                case "ConsultaXTiposYFechaYProduct":
+                    console.log("ConsultaXTiposYFechaYProduct");
+                    generarTabla("ConsultaXTiposYFechaYProduct", fechaI, fechaF, idProdud, tipoRecol);
+                    break;
+                    //Usuario distribuidor
+                case "DistribuidorConsultaGeneral":
+                    console.log("DistribuidorConsultaGeneral");
+                    generarTablaV2("DistribuidorConsultaGeneral", fechaI, fechaF, idProdud, tipoRecol);
+                    break;
+                case "DistribuidorConsultaXFecha":
+                    console.log("DistribuidorConsultaXFecha");
+                    generarTablaV2("DistribuidorConsultaXFecha", fechaI, fechaF, idProdud, tipoRecol);
+                    break;
+                case "DistribuidorConsultaXProductor":
+                    console.log("DistribuidorConsultaXProductor");
+                    generarTablaV2("DistribuidorConsultaXProductor", fechaI, fechaF, idProdud, tipoRecol);
+                    break;
+                case "DistribuidorConsultaXFechaYProduct":
+                    console.log("DistribuidorConsultaXFechaYProduct");
+                    generarTablaV2("DistribuidorConsultaXFechaYProduct", fechaI, fechaF, idProdud, tipoRecol);
+                    break;
+                default:                    
                     break;
             }
         }
@@ -65,8 +111,8 @@ function mostrarEntrega(fechaI, fechaF, idProdud) {
     
 }
 
-function generarTabla(opc, fechaI, fechaF, idProdud) {
-    let tablaOrden = $('#entrega').DataTable({
+function generarTabla(opc, fechaI, fechaF, idProdud, tipoRecolec) {
+    let tablaEntrega = $('#entrega').DataTable({
         destroy:true,
         scrollX:true,
         scrollCollapse: true,
@@ -74,9 +120,8 @@ function generarTabla(opc, fechaI, fechaF, idProdud) {
         ajax: {
             "method":"POST",
             "url":"metodosConsulta.php",
-            "data":{'Opcion': opc, 'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud },
+            "data":{'Opcion': opc, 'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud, 'TipoRecol': tipoRecolec},
             "error": function (res) {
-                console.log(res);
                 if (res.responseText == "Error") {
                     console.log(res.responseText);
                     Swal.fire({
@@ -84,7 +129,7 @@ function generarTabla(opc, fechaI, fechaF, idProdud) {
                         title: 'No hay datos disponibles',
                         text: 'No se encontraron registros del distribuidor',
                     });
-                }else  
+                }else 
                     return res.responseText;                   
             }
         },
@@ -103,7 +148,7 @@ function generarTabla(opc, fechaI, fechaF, idProdud) {
             },  
             {data: "ResponsableEntrega"},
             {data: "ResponsableRecepcion"},
-            {data: "Fecha"},
+            {data: "fecha"},
             {defaultContent: "<button class='detalle-btn detalle'><img src='../Recursos/Iconos/detalle.svg' alt='Abrir detalle'></button>"},
             {defaultContent: "<button class='detalle-btn editar'><img src='../Recursos/Iconos/editar.svg' alt='Editar'></button>"}
             
@@ -112,6 +157,95 @@ function generarTabla(opc, fechaI, fechaF, idProdud) {
             url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/es-MX.json'
         }
     });
+
+    //Evento que muestra el detalle cuando se da clic al botón de mostrar
+    $("#entrega tbody").on('click', 'button.detalle', function () {
+        var datosFila = tablaEntrega.row($(this).parents('tr')).data();
+        if (datosFila != undefined) {
+            mostrarDetalle(datosFila);
+            console.log(datosFila);
+        }
+        
+    });
+}
+
+function generarTablaV2(opc, fechaI, fechaF, idProdud, tipoRecolec) {
+    let tablaEntrega = $('#entrega').DataTable({
+        destroy:true,
+        scrollX:true,
+        scrollCollapse: true,
+        processing: true,
+        ajax: {
+            "method":"POST",
+            "url":"metodosConsulta.php",
+            "data":{'Opcion2': opc, 'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud, 'TipoRecol': tipoRecolec},
+            "error": function (res) {
+                if (res.responseText == "Error") {
+                    console.log(res.responseText);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'No hay datos disponibles',
+                        text: 'No se encontraron registros del distribuidor',
+                    });
+                }else 
+                    return res.responseText;                   
+            }
+        },
+        columns:[
+            {data: "IdEntrega"},
+            {data: "Productor"},
+            {data: "Recibo",       //Aquí esta el recibo
+                render: function (data, type, row) {  
+                    if (data == "Faltante" || data == "" ) {
+                        return "<button class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes32NoEncontrado.svg' alt='No hay archivo' ></button>";
+                    }else
+                        return "<a href='"+data+"' target='_blank' class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes32.svg' alt='Abrir archivo' ></a>";
+                }
+            },  
+            {data: "ResponsableEntrega"},
+            {data: "ResponsableRecepcion"},
+            {data: "fecha"},
+            {defaultContent: "<button class='detalle-btn detalle'><img src='../Recursos/Iconos/detalle.svg' alt='Abrir detalle'></button>"},
+            {defaultContent: "<button class='detalle-btn editar'><img src='../Recursos/Iconos/editar.svg' alt='Editar'></button>"}
+            
+        ],
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/es-MX.json'
+        }
+    });
+
+    //Evento que muestra el detalle cuando se da clic al botón de mostrar
+    $("#entrega tbody").on('click', 'button.detalle', function () {
+        var datosFila = tablaEntrega.row($(this).parents('tr')).data();
+        if (datosFila != undefined) {
+            mostrarDetalle(datosFila);
+            console.log(datosFila);
+        }
+        
+    });
+}
+
+function mostrarDetalle(datosFila) {
+
+    //Llenar tabla detalle 
+    $('#detalle').DataTable({
+        destroy:true,
+        ajax: {
+            "method":"POST",
+            "url":"obtenerDetalle.php",
+            "data":{'IdEntrega': datosFila.IdEntrega} //Se le manda el IdEntrega dependiendo de la fila presionada
+        },
+        columns:[
+            {data: "IdEntrega"},
+            {data: "Consecutivo"},
+            {data: "TipoEnvaseVacio"},
+            {data: "CantidadPiezas"},
+            {data: "Peso"},
+            {data: "Observaciones"},
+            {defaultContent: "<button class='detalle-btn editar'><img src='../Recursos/Iconos/editar.svg' alt='Icono de detalle'></button>"}
+        ]
+    });
+
 }
 
 function añadirProductores(comboProduc){
@@ -128,4 +262,16 @@ function añadirProductores(comboProduc){
             });  
         }
     })
+}
+
+function mensajeError(titulo, texto) {
+    Swal.fire({
+        icon: 'error',
+        title: titulo,
+        text: texto,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            console.log("Fallo");
+        }
+    });
 }
