@@ -68,7 +68,7 @@ if (($_POST['FI'] == "" && $_POST['FF'] != "") || ($_POST['FI'] != "" && $_POST[
     }
 }
 
-//Usuario admin-----------------------------------------------
+//!Usuario admin-----------------------------------------------
 //Validación de consulta general
 if ($tipoUser == 'admin' && $_POST['IdProdu'] == "" && $_POST['FF'] == "" && $_POST['FI'] == "") {
    
@@ -170,22 +170,21 @@ if ($tipoUser == 'admin' && $_POST['IdProdu'] != "" && $fechaCorrecta ) {
         $mensaje = "ConsultaXFechaYProduct";
     mysqli_free_result($comando);
 }
-   //Nuevas validaciones de tipo de recolector
+   //*Nuevas validaciones de tipo de recolector
 if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $_POST['IdProdu'] == "" && $_POST['FF'] == "" && $_POST['FI'] == "") {
     switch ($_POST['movi']) {
         case 'entregas':
-                $queryOrden = "SELECT * FROM entregas AS E INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario WHERE T.Idtipousuario = " . $_POST['IdTipo'] . " LIMIT 1;";
+                $queryOrden = "SELECT E.IdEntrega FROM entregas AS E INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario WHERE T.Descripcion = '" . $_POST['IdTipo'] . "' LIMIT 1;";
             break;
         default:
             break;
     }
-
     $comando = mysqli_query($enlace, $queryOrden);
 
     if (mysqli_num_rows($comando) == 0) 
-        $mensaje ="NoHayDatosGeneralTipos";
+        $mensaje ="NoHayDatosTipos";
     else 
-        $mensaje ="ConsultaGeneralTipos";
+        $mensaje ="ConsultaXTipos";
 
     mysqli_free_result($comando);
 }
@@ -195,7 +194,7 @@ if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $fechaCorrecta && $_POST['
    
     switch ($_POST['movi']) {
         case 'entregas':
-                $queryOrden = "SELECT * FROM entregas AS E INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario WHERE T.Idtipousuario = " . $_POST['IdTipo'] . " AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
+                $queryOrden = "SELECT E.IdEntrega FROM entregas AS E INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario WHERE T.Descripcion = '" . $_POST['IdTipo'] . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
             break;
 
         default:
@@ -216,7 +215,7 @@ if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $fechaCorrecta && $_POST['
 if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $_POST['IdProdu'] != "" && ($_POST['FI'] == "" && $_POST['FF'] == "")) {
     switch ($_POST['movi']) {
         case 'entregas':
-                $queryOrden = "SELECT * FROM entregas AS E INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario WHERE T.Idtipousuario = " . $_POST['IdTipo'] . " AND IdProductor = '" . $_POST['IdProdu'] . "' LIMIT 1;";
+                $queryOrden = "SELECT E.IdEntrega FROM entregas AS E INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario WHERE T.Descripcion = '" . $_POST['IdTipo'] . "' AND IdProductor = '" . $_POST['IdProdu'] . "' LIMIT 1;";
             break;
 
         default:
@@ -235,7 +234,7 @@ if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $_POST['IdProdu'] != "" &&
 if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $_POST['IdProdu'] != "" && $fechaCorrecta ) {
     switch ($_POST['movi']) {
         case 'entregas':
-                $queryOrden = "SELECT * FROM entregas AS E INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario WHERE T.Idtipousuario = " . $_POST['IdTipo'] . " AND IdProductor = '" . $_POST['IdProdu'] . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
+                $queryOrden = "SELECT E.IdEntrega FROM entregas AS E INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario WHERE T.Descripcion = '" . $_POST['IdTipo'] . "' AND IdProductor = '" . $_POST['IdProdu'] . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
             break;
         default:
             break;
@@ -249,6 +248,7 @@ if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $_POST['IdProdu'] != "" &&
         $mensaje = "ConsultaXTiposYFechaYProduct";
     mysqli_free_result($comando);
 }
+
 
 ///Usuario productor----------------
 if ($tipoUser == 'Productores' && $_POST['IdProdu'] == "" && $_POST['FF'] == "" && $_POST['FI'] == "") {

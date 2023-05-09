@@ -1,6 +1,12 @@
 <!-- Incluir menu lateral -->
 <?php
 include "../Layout/navMenu2.php";
+
+include '../conexion.php';
+$r = "SELECT * FROM usuarios where Correo = '$varses'";
+$res = mysqli_query($enlace, $r);
+$filas = mysqli_fetch_array($res);
+$rol = $filas['Idtipousuario'];
 ?>
 
 <!DOCTYPE html>
@@ -39,17 +45,17 @@ include "../Layout/navMenu2.php";
                 action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" onsubmit="return 0"
                 style="justify-content:center;">
 
-                <div class="col-sm-3">
-                    <label for="tipoEnva" class="form-label">Tipo de Recolector</label>
-                        <select name="tipoRecol" id="tipoRecol" class="form-select">
-                            <option hidden>Selecciona una opción</option>
-                            <option value="Distribuidor">Distribuidor</option>
-                            <option value="ERP">ERP</option>
-                            <option value="Municipio">Municipio</option>
+                <div class="col-sm-2">
+                    <label for="" class="form-label tipoRecole">Tipo de Recolector</label>
+                        <select name="tipoRecol" id="tipoRecol" class="form-select tipoRecole">
+                            <option hidden>Selecciona un recolector</option>
+                            <option value="Distribuidores">Distribuidores</option>
+                            <option value="Empresa Recolectora">Empresa Recolectora</option>
+                            <option value="Municipios">Municipios</option>
 
                         </select>
                     </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
 
                     <label for="nomProdu" class="form-label" id="tituloProdu">Nombre de Productor</label>
                     <select name="nomProdu" id="nomProdu" class="form-select" >
@@ -88,8 +94,8 @@ include "../Layout/navMenu2.php";
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Tipo de recolector</th>
-                        <th scope="col">Nombre de recolector</th>
+                        <th class="tablaTipoRecole" scope="col">Tipo de recolector</th>
+                        <th class="tablaTipoRecole" scope="col">Nombre de recolector</th>
                         <th scope="col">Productor</th>
                         <th scope="col">Recibo</th>
                         <th scope="col">Responsable de Entrega</th>
@@ -134,6 +140,16 @@ include "../Layout/navMenu2.php";
         </div>
     </section>
 
+    <script type="text/javascript">
+    var rol = "<?php echo $rol; ?>";
+
+    if (rol == 3 || rol == 4 || rol == 5){
+        $('.tipoRecole').hide();
+        $('.tablaTipoRecole').remove();
+    }
+        
+    
+    </script>
 
     <script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>

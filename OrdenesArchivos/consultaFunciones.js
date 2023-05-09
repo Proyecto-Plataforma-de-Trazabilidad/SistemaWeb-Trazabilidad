@@ -75,6 +75,7 @@ function generarTabla(fechaI, fechaF, idProdud) {
     //     console.log(message);
     // };
 
+    //Evento que muestra el detalle cuando se da clic al botón de mostrar
     $("#orden tbody").on('click', 'button.detalle', function () {
         var datosFila = tablaOrden.row($(this).parents('tr')).data();
         if (datosFila != undefined) {
@@ -84,6 +85,7 @@ function generarTabla(fechaI, fechaF, idProdud) {
         
     });
 
+    //Evento que permite editar cuando se da clic al botón de editar 
     $("#orden tbody").on('click', 'button.editar', function () {
         var datosFila = tablaOrden.row($(this).parents('tr')).data();
         if (datosFila != undefined) {
