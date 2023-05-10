@@ -24,7 +24,7 @@ $filas = mysqli_fetch_array($res);
 
       <!--El boton que consultara, tambien llama al jsfuncion  y el js al php metodo-->
       <div class="col-sm-3">
-        <button type="submit" class="btn btn-success" onclick="" name="Registrar">Generar Gráfico</button>
+        <button type="submit" id="consu" class="btn btn-success" onclick="" name="Registrar">Generar Gráfico</button>
       </div>
 
     </form>

@@ -12,8 +12,8 @@ $(document).ready(function(){
     
    
 
-    $('#frm').submit(function(e){
-        e.preventDefault();
+    $('#consu').click(function(e) {
+       e.preventDefault();
         
         let prod=document.getElementById("inprod").value;
         let tipofuncion="registrar";
@@ -39,17 +39,31 @@ $(document).ready(function(){
 
                 for (var i in array) {
                    dat=(array[i].TotalPiezas);//extraer valores del json
-                   let n = parseInt(dat);
+                   if(dat==null)
+                   {
+                    let n =0;
+                    console.log("valor parseado "+n);//convertirlo  a entero, para mandarlo a arreglo por que la grafica eso recibe valores en arreglos
+                    enteros.push(n);
+                   }
+                   else{
+                    let n = parseInt(dat);
                    console.log("valor parseado "+n);//convertirlo  a entero, para mandarlo a arreglo por que la grafica eso recibe valores en arreglos
                    enteros.push(n);
+                   }
                 }
 
                 let etiquetapie=[];//la grafica solo recibe arreglos de etiquetas o de datos 
                 etiquetapie.push("Productor "+selected);//indicando que la etiqueta sera el productor y su nombre
                 console.log(etiquetapie);
                
+                let chartStatus = Chart.getChart("myChart"); // <canvas> id
+                if (chartStatus != undefined) {
+                    chartStatus.destroy();
+                }
 
-                //aqui todo lo dela grafica 
+                var graphTarget = $("#myChart");//asigno ala grafica 
+
+                    //aqui todo lo dela grafica config
                     var chartdata = {
                         labels: etiquetapie,
                         datasets: [
@@ -63,20 +77,25 @@ $(document).ready(function(){
                             }
                         ]
                     };
-
-                    var graphTarget = $("#myChart");
-
-                    var barGraph = new Chart(graphTarget, {
-                        type: 'bar',
-                        data: chartdata
-                    });
+                    
+                       var  barGraph = new Chart(graphTarget, {//asigancion de datos y tipo grafica
+                            type: 'bar',
+                            data: chartdata
+                        });
+                    
             
             }
         });
         $('#frm').trigger('reset');
-
     });
 
+  /*  window.addEventListener('resize', function(event){
+        $('#tabla').DataTable().fnDestroy();
+        $('#tabla').DataTable({
+            scrollX:true,
+        });
+    },true);
+*/
 
 
 });
