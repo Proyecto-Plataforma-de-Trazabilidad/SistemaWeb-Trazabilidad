@@ -34,7 +34,7 @@ if ($row > 0) {
         $mail->Username = 'soporte@campolimpiojal.com';
         $mail->Password = 'Y0ohg-sOth0Th_';
         $mail->SMTPSecure = 'tls'; 
-        $mail->Port = 587;                                 //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        $mail->Port = 465;                                 //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
         $mail->setFrom('soporte@campolimpiojal.com', 'Soporte');
