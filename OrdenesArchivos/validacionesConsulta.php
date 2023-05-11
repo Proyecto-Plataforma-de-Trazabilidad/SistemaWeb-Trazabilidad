@@ -89,7 +89,7 @@ if ($tipoUser == 'admin' && $_POST['IdProdu'] == "" && $_POST['FF'] == "" && $_P
     $comando = mysqli_query($enlace, $queryOrden);
 
     if (mysqli_num_rows($comando) == 0) 
-        $mensaje ="NoHayDatosGeneral";
+        $mensaje ="NoHayDatos";
     else 
         $mensaje ="ConsultaGeneral";
 
@@ -114,7 +114,7 @@ if ($tipoUser == 'admin' && $fechaCorrecta && $_POST['IdProdu'] == "") {
     $comando = mysqli_query($enlace, $queryOrden);
 
     if (mysqli_num_rows($comando) == 0) 
-        $mensaje ="NoHayDatosFechas";
+        $mensaje ="NoHayDatos";
     else 
         $mensaje ="ConsultaXFecha";
 
@@ -140,7 +140,7 @@ if ($tipoUser == 'admin' && $_POST['IdProdu'] != "" && ($_POST['FI'] == "" && $_
     $comando = mysqli_query($enlace, $queryOrden);
 
     if (mysqli_num_rows($comando) == 0) 
-        $mensaje ="NoHayDatosProductor";
+        $mensaje ="NoHayDatos";
     else 
         $mensaje ="ConsultaXProductor";
     mysqli_free_result($comando);
@@ -165,7 +165,7 @@ if ($tipoUser == 'admin' && $_POST['IdProdu'] != "" && $fechaCorrecta ) {
     $comando = mysqli_query($enlace, $queryOrden);
 
     if (mysqli_num_rows($comando) == 0) 
-        $mensaje ="NoHayDatosProductorYFecha";
+        $mensaje ="NoHayDatos";
     else 
         $mensaje = "ConsultaXFechaYProduct";
     mysqli_free_result($comando);
@@ -182,7 +182,7 @@ if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $_POST['IdProdu'] == "" &&
     $comando = mysqli_query($enlace, $queryOrden);
 
     if (mysqli_num_rows($comando) == 0) 
-        $mensaje ="NoHayDatosTipos";
+        $mensaje ="NoHayDatos";
     else 
         $mensaje ="ConsultaXTipos";
 
@@ -204,7 +204,7 @@ if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $fechaCorrecta && $_POST['
     $comando = mysqli_query($enlace, $queryOrden);
 
     if (mysqli_num_rows($comando) == 0) 
-        $mensaje ="NoHayDatosTiposFechas";
+        $mensaje ="NoHayDatos";
     else 
         $mensaje ="ConsultaXTiposYFecha";
 
@@ -225,7 +225,7 @@ if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $_POST['IdProdu'] != "" &&
     $comando = mysqli_query($enlace, $queryOrden);
 
     if (mysqli_num_rows($comando) == 0) 
-        $mensaje ="NoHayDatosTiposProductor";
+        $mensaje ="NoHayDatos";
     else 
         $mensaje ="ConsultaXTiposProductor";
     mysqli_free_result($comando);
@@ -243,15 +243,15 @@ if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $_POST['IdProdu'] != "" &&
     $comando = mysqli_query($enlace, $queryOrden);
 
     if (mysqli_num_rows($comando) == 0) 
-        $mensaje ="NoHayDatosTiposYProductorYFecha";
+        $mensaje ="NoHayDatos";
     else 
         $mensaje = "ConsultaXTiposYFechaYProduct";
     mysqli_free_result($comando);
 }
 
 
-///Usuario productor----------------
-if ($tipoUser == 'Productores' && $_POST['IdProdu'] == "" && $_POST['FF'] == "" && $_POST['FI'] == "") {
+///!Usuario productor----------------
+if ($tipoUser == 'Productores' && $_POST['FF'] == "" && $_POST['FI'] == "") {
 
     switch ($_POST['movi']) {
         case 'ordenes':
@@ -270,7 +270,7 @@ if ($tipoUser == 'Productores' && $_POST['IdProdu'] == "" && $_POST['FF'] == "" 
     $comando = mysqli_query($enlace, $queryOrden);
 
     if (mysqli_num_rows($comando) == 0) 
-        $mensaje ="ProductorNoHayDatosGeneral";
+        $mensaje ="ProductorNoHayDatos";
     else{
         $mensaje ="ProductorConsultaGeneral";
         $data = $IdProductor;
@@ -296,7 +296,7 @@ if ($tipoUser == 'Productores' && $_POST['IdProdu'] == "" && $_POST['FF'] == "" 
     $comando = mysqli_query($enlace, $queryOrden);
 
     if (mysqli_num_rows($comando) == 0) 
-        $mensaje = "ProductorNoHayDatosFechas";
+        $mensaje = "ProductorNoHayDatos";
     else {
         $mensaje = "ProductorConsultaXFecha";
         $data = $IdProductor;
@@ -304,7 +304,7 @@ if ($tipoUser == 'Productores' && $_POST['IdProdu'] == "" && $_POST['FF'] == "" 
     mysqli_free_result($comando);
 }
 
-///Usuario Distribuidor----------------
+//!Usuario Distribuidor----------------
 //Consulta general 
 if ($tipoUser == 'Distribuidores' && $_POST['IdProdu'] == "" && $_POST['FF'] == "" && $_POST['FI'] == "") {
 
@@ -322,7 +322,7 @@ if ($tipoUser == 'Distribuidores' && $_POST['IdProdu'] == "" && $_POST['FF'] == 
     $comando = mysqli_query($enlace, $queryOrden);
 
     if (mysqli_num_rows($comando) == 0) 
-        $mensaje ="DistribuidorNoHayDatosGeneral";
+        $mensaje ="DistribuidorNoHayDatos";
     else
         $mensaje ="DistribuidorConsultaGeneral";
 
@@ -342,7 +342,7 @@ if ($tipoUser == 'Distribuidores' && $_POST['IdProdu'] == "" && $_POST['FF'] == 
     $comando = mysqli_query($enlace, $queryOrden);
 
     if (mysqli_num_rows($comando) == 0) 
-        $mensaje = "DistribuidorNoHayDatosFechas";
+        $mensaje = "DistribuidorNoHayDatos";
     else 
         $mensaje = "DistribuidorConsultaXFecha";
 
@@ -362,7 +362,7 @@ if ($tipoUser == 'Distribuidores' && $_POST['IdProdu'] == "" && $_POST['FF'] == 
     $comando = mysqli_query($enlace, $queryOrden);
 
     if (mysqli_num_rows($comando) == 0) 
-        $mensaje ="DistribuidorNoHayDatosProductor";
+        $mensaje ="DistribuidorNoHayDatos";
     else 
         $mensaje ="DistribuidorConsultaXProductor";
     mysqli_free_result($comando);
@@ -381,16 +381,155 @@ if ($tipoUser == 'Distribuidores' && $_POST['IdProdu'] == "" && $_POST['FF'] == 
     $comando = mysqli_query($enlace, $queryOrden);
 
     if (mysqli_num_rows($comando) == 0) 
-        $mensaje ="DistribuidorNoHayDatosProductorYFecha";
+        $mensaje ="DistribuidorNoHayDatos";
     else 
         $mensaje = "DistribuidorConsultaXFechaYProduct";
     mysqli_free_result($comando);
 }
 
+//!Usuario Municipio---------------- 
+//Consulta general 
+if ($tipoUser == 'Municipios'  && $_POST['IdProdu'] == "" && $_POST['FF'] == "" && $_POST['FI'] == "") {
 
-    //Mando datos al front
-    $datos = json_encode(array('mensaje' => $mensaje, 'data' => $data));
-    echo $datos;
+    switch ($_POST['movi']) {
+        case 'entregas':
+                $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' LIMIT 1;";
+            break;
+        default:
+            break;
+    }
+
+    $comando = mysqli_query($enlace, $queryOrden);
+
+    if (mysqli_num_rows($comando) == 0) 
+        $mensaje ="MunicipioNoHayDatos";
+    else
+        $mensaje ="MunicipioConsultaGeneral";
+
+    mysqli_free_result($comando);
+}elseif ($tipoUser == 'Municipios' && $fechaCorrecta && $_POST['IdProdu'] == "") { //Validación de consulta por fecha 
+    switch ($_POST['movi']) {
+        case 'entregas':
+                $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
+            break;
+        default:
+            break;
+    }
+    $comando = mysqli_query($enlace, $queryOrden);
+
+    if (mysqli_num_rows($comando) == 0) 
+        $mensaje = "MunicipioNoHayDatos";
+    else 
+        $mensaje = "MunicipioConsultaXFecha";
+
+    mysqli_free_result($comando);
+}elseif ($tipoUser == 'Municipios' && $_POST['IdProdu'] != "" && ($_POST['FI'] == "" && $_POST['FF'] == "")) { //Validación de consulta a productor
+    switch ($_POST['movi']) {
+        case 'entregas':
+                $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' AND IdProductor = '" . $_POST['IdProdu'] . "' LIMIT 1;";
+            break;
+        default:
+            break;
+    }
+
+    $comando = mysqli_query($enlace, $queryOrden);
+
+    if (mysqli_num_rows($comando) == 0) 
+        $mensaje ="MunicipioNoHayDatos";
+    else 
+        $mensaje ="MunicipioConsultaXProductor";
+    mysqli_free_result($comando);
+}elseif ($tipoUser == 'Municipios' && $_POST['IdProdu'] != "" && $fechaCorrecta) { //Validación de consulta por fecha y productor
+    switch ($_POST['movi']) {
+        case 'entregas':
+                $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' AND IdProductor = '" . $_POST['IdProdu'] . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
+            break;
+        default:
+            break;
+    }
+
+    $comando = mysqli_query($enlace, $queryOrden);
+
+    if (mysqli_num_rows($comando) == 0) 
+        $mensaje ="MunicipioNoHayDatos";
+    else 
+        $mensaje = "MunicipioConsultaXFechaYProduct";
+    mysqli_free_result($comando);
+}
+//!Usuario Empresa Recolectora---------------- 
+//Consulta general 
+if ($tipoUser == 'Empresa Recolectora'  && $_POST['IdProdu'] == "" && $_POST['FF'] == "" && $_POST['FI'] == "") {
+
+    switch ($_POST['movi']) {
+        case 'entregas':
+                $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' LIMIT 1;";
+            break;
+        default:
+            break;
+    }
+
+    $comando = mysqli_query($enlace, $queryOrden);
+
+    if (mysqli_num_rows($comando) == 0) 
+        $mensaje ="ERPNoHayDatos";
+    else
+        $mensaje ="ERPConsultaGeneral";
+
+    mysqli_free_result($comando);
+}elseif ($tipoUser == 'Empresa Recolectora' && $fechaCorrecta && $_POST['IdProdu'] == "") { //Validación de consulta por fecha 
+    switch ($_POST['movi']) {
+        case 'entregas':
+                $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
+            break;
+        default:
+            break;
+    }
+    $comando = mysqli_query($enlace, $queryOrden);
+
+    if (mysqli_num_rows($comando) == 0) 
+        $mensaje = "ERPNoHayDatos";
+    else 
+        $mensaje = "ERPConsultaXFecha";
+
+    mysqli_free_result($comando);
+}elseif ($tipoUser == 'Empresa Recolectora' && $_POST['IdProdu'] != "" && ($_POST['FI'] == "" && $_POST['FF'] == "")) { //Validación de consulta a productor
+    switch ($_POST['movi']) {
+        case 'entregas':
+                $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' AND IdProductor = '" . $_POST['IdProdu'] . "' LIMIT 1;";
+            break;
+        default:
+            break;
+    }
+
+    $comando = mysqli_query($enlace, $queryOrden);
+
+    if (mysqli_num_rows($comando) == 0) 
+        $mensaje ="ERPNoHayDatos";
+    else 
+        $mensaje ="ERPConsultaXProductor";
+    mysqli_free_result($comando);
+}elseif ($tipoUser == 'Empresa Recolectora' && $_POST['IdProdu'] != "" && $fechaCorrecta) { //Validación de consulta por fecha y productor
+    switch ($_POST['movi']) {
+        case 'entregas':
+                $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' AND IdProductor = '" . $_POST['IdProdu'] . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
+            break;
+        default:
+            break;
+    }
+
+    $comando = mysqli_query($enlace, $queryOrden);
+
+    if (mysqli_num_rows($comando) == 0) 
+        $mensaje ="ERPNoHayDatos";
+    else 
+        $mensaje = "ERPConsultaXFechaYProduct";
+    mysqli_free_result($comando);
+}
+
+//?Mando datos al front
+$datos = json_encode(array('mensaje' => $mensaje, 'data' => $data));
+echo $datos;
+
 
 
 mysqli_close($enlace);

@@ -31,7 +31,7 @@ function mostrarEntrega(fechaI, fechaF, idProdud, tipoRecol) {
         success: function (res) {
             let datos = JSON.parse(res);//Trae los datos en formato json y los pasa a objeto
             let opc = datos.mensaje;
-            console.log(opc);
+            //console.log(opc);
             switch (opc) {
                 case "FechaNoValida":
                     mensajeError('Fecha no valida', "fallo");
@@ -42,68 +42,67 @@ function mostrarEntrega(fechaI, fechaF, idProdud, tipoRecol) {
                 case "FechasIguales":
                     mensajeError('Fechas iguales', "fallo");
                     break;
-                case "NoHayDatosFechas":
-                    mensajeError('No hay datos', "De la fecha que selecciono");
-                    break;
-                case "NoHayDatosProductor":
-                    mensajeError('No hay datos', "Del productor que selecciono");
-                    break;
-                case "NoHayDatosProductorYFecha":
-                    mensajeError('No hay datos', "De la fecha y el el productor que selecciono");
-                    break;
-                case "NoHayDatosGeneral":
+                //Mensaje de Consulta sin datos
+                case "NoHayDatos":
                     mensajeError('No hay datos', "Actualmente no hay registros");
                     break;
+                case "ProductorNoHayDatos":
+                    mensajeError('No hay datos', "De ese productor");
+                    break;
+                case "DistribuidorNoHayDatos":
+                    mensajeError('No hay datos', "De ese distribuidor");
+                    break;
+                case "MunicipioNoHayDatos":
+                    mensajeError('No hay datos', "De ese municipio");
+                    break;
+                case "ERPNoHayDatos":
+                    mensajeError('No hay datos', "De esa empresa recolectora");
+                    break;
+                //Consultas admin
                 case "ConsultaGeneral":
                     console.log("ConsultaGeneral");
                     generarTabla("ConsultaGeneral", fechaI, fechaF, idProdud, tipoRecol);
+                    $('#detalle tbody').children().remove();
                     break;
                 case "ConsultaXFecha":
                     console.log("ConsultaXFecha");
                     generarTabla("ConsultaXFecha", fechaI, fechaF, idProdud, tipoRecol);
+                    $('#detalle tbody').children().remove();
                     break;
                 case "ConsultaXProductor":
                     console.log("ConsultaXProductor");
                     generarTabla("ConsultaXProductor", fechaI, fechaF, idProdud, tipoRecol);
+                    $('#detalle tbody').children().remove();
                     break;
                 case "ConsultaXFechaYProduct":
                     console.log("ConsultaXFechaYProduct");
                     generarTabla("ConsultaXFechaYProduct", fechaI, fechaF, idProdud, tipoRecol);
+                    $('#detalle tbody').children().remove();
                     break;
                 case "ConsultaXTipos":
                     console.log("ConsultaXTipos");
                     generarTabla("ConsultaXTipos", fechaI, fechaF, idProdud, tipoRecol);
+                    $('#detalle tbody').children().remove();
                     break;
                 case "ConsultaXTiposYFecha":
                     console.log("ConsultaXTiposYFecha");
                     generarTabla("ConsultaXTiposYFecha", fechaI, fechaF, idProdud, tipoRecol);
+                    $('#detalle tbody').children().remove();
                     break;
                 case "ConsultaXTiposProductor":
                     console.log("ConsultaXTiposProductor");
                     generarTabla("ConsultaXTiposProductor", fechaI, fechaF, idProdud, tipoRecol);
+                    $('#detalle tbody').children().remove();
                     break;
                 case "ConsultaXTiposYFechaYProduct":
                     console.log("ConsultaXTiposYFechaYProduct");
                     generarTabla("ConsultaXTiposYFechaYProduct", fechaI, fechaF, idProdud, tipoRecol);
+                    $('#detalle tbody').children().remove();
                     break;
-                    //Usuario distribuidor
-                case "DistribuidorConsultaGeneral":
-                    console.log("DistribuidorConsultaGeneral");
-                    generarTablaV2("DistribuidorConsultaGeneral", fechaI, fechaF, idProdud, tipoRecol);
-                    break;
-                case "DistribuidorConsultaXFecha":
-                    console.log("DistribuidorConsultaXFecha");
-                    generarTablaV2("DistribuidorConsultaXFecha", fechaI, fechaF, idProdud, tipoRecol);
-                    break;
-                case "DistribuidorConsultaXProductor":
-                    console.log("DistribuidorConsultaXProductor");
-                    generarTablaV2("DistribuidorConsultaXProductor", fechaI, fechaF, idProdud, tipoRecol);
-                    break;
-                case "DistribuidorConsultaXFechaYProduct":
-                    console.log("DistribuidorConsultaXFechaYProduct");
-                    generarTablaV2("DistribuidorConsultaXFechaYProduct", fechaI, fechaF, idProdud, tipoRecol);
-                    break;
-                default:                    
+                default:
+                    console.log(opc);
+                    generarTablaV2(opc, fechaI, fechaF, idProdud, tipoRecol);
+                    $('#detalle tbody').children().remove();
                     break;
             }
         }
@@ -150,7 +149,7 @@ function generarTabla(opc, fechaI, fechaF, idProdud, tipoRecolec) {
             {data: "ResponsableRecepcion"},
             {data: "fecha"},
             {defaultContent: "<button class='detalle-btn detalle'><img src='../Recursos/Iconos/detalle.svg' alt='Abrir detalle'></button>"},
-            {defaultContent: "<button class='detalle-btn editar'><img src='../Recursos/Iconos/editar.svg' alt='Editar'></button>"}
+            //{defaultContent: "<button class='detalle-btn editar'><img src='../Recursos/Iconos/editar.svg' alt='Editar'></button>"}
             
         ],
         language: {
@@ -164,6 +163,14 @@ function generarTabla(opc, fechaI, fechaF, idProdud, tipoRecolec) {
         if (datosFila != undefined) {
             mostrarDetalle(datosFila);
             console.log(datosFila);
+        }
+    });
+
+    //Evento que permite editar cuando se da clic al botón de editar 
+    $("#entrega tbody").on('click', 'button.editar', function () {
+        var datosFila = tablaEntrega.row($(this).parents('tr')).data();
+        if (datosFila != undefined) {
+            editar(datosFila);
         }
         
     });
@@ -206,7 +213,7 @@ function generarTablaV2(opc, fechaI, fechaF, idProdud, tipoRecolec) {
             {data: "ResponsableRecepcion"},
             {data: "fecha"},
             {defaultContent: "<button class='detalle-btn detalle'><img src='../Recursos/Iconos/detalle.svg' alt='Abrir detalle'></button>"},
-            {defaultContent: "<button class='detalle-btn editar'><img src='../Recursos/Iconos/editar.svg' alt='Editar'></button>"}
+            //{defaultContent: "<button class='detalle-btn editar'><img src='../Recursos/Iconos/editar.svg' alt='Editar'></button>"}
             
         ],
         language: {
@@ -220,6 +227,15 @@ function generarTablaV2(opc, fechaI, fechaF, idProdud, tipoRecolec) {
         if (datosFila != undefined) {
             mostrarDetalle(datosFila);
             console.log(datosFila);
+        }
+        
+    });
+
+    //Evento que permite editar cuando se da clic al botón de editar 
+    $("#entrega tbody").on('click', 'button.editar', function () {
+        var datosFila = tablaEntrega.row($(this).parents('tr')).data();
+        if (datosFila != undefined) {
+            editar(datosFila);
         }
         
     });
@@ -246,6 +262,77 @@ function mostrarDetalle(datosFila) {
         ]
     });
 
+}
+
+function editar(datosFila) {
+    console.log(datosFila);
+    $('.titulo h1').text("Editar registro");
+    $('.consultaEntrega').remove();
+    $('.titulo').after(`<section class="form-Principal">
+    <form class="row g-4 container-fluid" id="frmEntrega" method="POST" 
+        action="EntregasArchivos/insertarArchivo.php" enctype="multipart/form-data">
+
+        <div class="form-Principal-encabezado">
+            <div class="form-Principal-encabezado-numero">
+                <label id="numEntrega" data-numEntrega="">Número de entrega: ${datosFila.IdEntrega} </label>
+            </div>
+            <div>
+                <label for="fecha">Seleccionar Fecha: &nbsp;</label>
+            </div>
+
+            <div class="col-sm-2">
+                <input id="fecha" class="form-control" type="date" value="${datosFila.fecha}" required/>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <label for="tipoRecol" class="form-label">Tipo de recolector</label>
+            <!-- debe de cargar dependiendo el inicio de seccion  -->
+            <input disabled type="text" id="tipoRecol" name="tipoDistribuidor" class="form-control" maxlength="30"
+                required placeholder="${datosFila.TipoRecolector}" data-tipoRecolector="">
+        </div>
+
+        <div class="col-sm-4">
+            <label for="nomRecol" class="form-label">Nombre de recolector</label>
+            <!-- debe de cargar dependiendo el inicio de seccion  -->
+            <input disabled type="text" id="nomRecol" name="nomRecol" class="form-control" maxlength="30"
+                required placeholder="${datosFila.NomRecolector}" data-nomRecolector="">
+        </div>
+
+        <div class="col-sm-4">
+            <label for="formFileMultiple" class="form-label">Subir recibo de entrega <small>(con
+                    firmas)</small></label>
+            <input class="form-control" type="file" id="recibo" name="archRecibo" multiple>
+        </div> 
+
+        <div class="col-sm-4">
+            <div>
+                <label for="nomProdu" class="form-label">Nombre de Productor</label>
+                <select name="nomProdu" id="nomProdu" class="form-select" required>
+                    <option hidden>Selecciona un productor registrado</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <label for="nomResEntrega" class="form-label">Nombre del responsable de entrega</label>
+            <input type="text" id="nomResEntrega" name="nomResEntrega" class="form-control" maxlength="30"
+                pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" placeholder="${datosFila.ResponsableEntrega}" required>
+        </div>
+
+        <div class="col-sm-4">
+            <label for="nomResRecep" class="form-label">Nombre del responsable de recepción</label>
+            <input type="text" id="nomResRecep" name="nomResRecep" class="form-control" maxlength="30"
+                pattern="[A-Za-z ñÑáéíóúÁÉÍÓÚ#0-9.,-]{1,30}" placeholder="${datosFila.ResponsableRecepcion}" required>
+        </div>
+        <div class="col-sm-4">
+            <button type="submit" class="btn btn-success button-actualizar" id="actualizar" name="actualizar" form="frmEntrega">Guardar</button>
+        </div>
+    </form>
+    </section>`);
+
+    const nombreProdu = document.getElementById("nomProdu");
+    añadirProductores(nombreProdu);            
 }
 
 function añadirProductores(comboProduc){
