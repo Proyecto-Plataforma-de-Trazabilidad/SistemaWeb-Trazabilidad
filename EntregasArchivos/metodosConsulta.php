@@ -50,24 +50,33 @@ if (isset($_POST['Opcion'])) {
 
 $queryEntrega2 = "SELECT E.IdEntrega, P.Nombre AS 'Productor', E.Recibo, E.ResponsableEntrega, E.ResponsableRecepcion, E.fecha FROM entregas AS E INNER JOIN productores AS P ON E.IdProductor=P.IdProductor INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario";
 if (isset($_POST['Opcion2'])) {
-    switch ($_POST['Opcion2']) {
-        //Distribuidor    
-        case "DistribuidorConsultaGeneral":
+    $opc = "";
+    if (strpos($_POST['Opcion2'], 'ConsultaGeneral') !== false) 
+        $opc = "ConsultaGeneral";
+    else if (strpos($_POST['Opcion2'], 'ConsultaXFechaYProduct') !== false) 
+        $opc = "ConsultaXFechaYProduct";
+    else if (strpos($_POST['Opcion2'], 'ConsultaXProductor') !== false) 
+        $opc = "ConsultaXProductor";
+    else if (strpos($_POST['Opcion2'], 'ConsultaXFecha') !== false) 
+        $opc = "ConsultaXFecha";    
+
+    switch ($opc) {
+        case "ConsultaGeneral":
             $queryEntrega2 = $queryEntrega2 . " WHERE U.IdUsuario = " . $IdUsuario;
             realizarConsulta($queryEntrega2);
             break;
-        case "DistribuidorConsultaXFecha":
+        case "ConsultaXFecha":
             $queryEntrega2 = $queryEntrega2 . " WHERE U.IdUsuario = " . $IdUsuario . " AND E.Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "'";
             realizarConsulta($queryEntrega2);
             break;
-        case "DistribuidorConsultaXProductor":
+        case "ConsultaXProductor":
             $queryEntrega2 = $queryEntrega2 . " WHERE U.IdUsuario = " . $IdUsuario . " AND E.IdProductor = '" . $_POST['IdProdu'] . "'";
             realizarConsulta($queryEntrega2);
             break;
-        case "DistribuidorConsultaXFechaYProduct":
+        case "ConsultaXFechaYProduct":
             $queryEntrega2 = $queryEntrega2 . " WHERE U.IdUsuario = " . $IdUsuario . " AND E.IdProductor = '" . $_POST['IdProdu'] . "' AND E.Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "'";
             realizarConsulta($queryEntrega2);
-            break;   
+            break; 
         default:
             # code...
             break;

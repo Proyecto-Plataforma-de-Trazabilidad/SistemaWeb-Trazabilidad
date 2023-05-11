@@ -111,7 +111,7 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
     $.ajax({
         type: 'POST',
         url:'validacionesConsulta.php',
-        data:{'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud, 'movi': 'ordenes'},
+        data:{'FI': fechaI, 'FF': fechaF, 'IdTipo': "", 'IdProdu': idProdud, 'movi': 'ordenes'},
         success: function (res) {
             let datos = JSON.parse(res);//Trae los datos en formato json y los pasa a objeto
             let opc = datos.mensaje;
@@ -169,7 +169,7 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
                 case "ProductorConsultaXFecha":
                     console.log("ProductorConsultaXFecha");
                     $('#detalle tbody').children().remove();
-                    generarTabla(fechaF,fechaF,datos.data)
+                    generarTabla(fechaI,fechaF,datos.data)
                     break;
                 //Distribuidor  
                 case "DistribuidorConsultaGeneral":
@@ -180,7 +180,7 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
                 case "DistribuidorConsultaXFecha":
                     console.log("DistribuidorConsultaXFecha");
                     $('#detalle tbody').children().remove();
-                    generarTabla(fechaF,fechaF,"")
+                    generarTabla(fechaI,fechaF,"")
                     break;
                 case "DistribuidorConsultaXProductor":
                     console.log("DistribuidorConsultaXProductor");
@@ -190,7 +190,7 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
                 case "DistribuidorConsultaXFechaYProduct":
                     console.log("DistribuidorConsultaXFechaYProduct");
                     $('#detalle tbody').children().remove();
-                    generarTabla(fechaF,fechaF,idProdud)
+                    generarTabla(fechaI,fechaF,idProdud)
                     break;
                 default:
                     // var data = [

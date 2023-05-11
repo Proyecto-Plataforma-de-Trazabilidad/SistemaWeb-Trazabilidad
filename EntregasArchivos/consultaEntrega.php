@@ -102,7 +102,7 @@ $rol = $filas['Idtipousuario'];
                         <th scope="col">Responsable de Recepción</th>
                         <th scope="col">Fecha</th>
                         <th scope="col">Mostrar detalle</th>
-                        <th scope="col">Editar</th>
+                        <!-- <th scope="col">Editar</th> -->
                         <!-- aqui agregamos el icono y funcion de eliminar por si se equivoca en algo -->
                     </tr>
                 </thead>
