@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         case 'ConsulSalidasGen':
             $correo=$_POST['correo'];//correo usuario 
             
-            $query="SELECT S.IdSalida,TC.Concepto,S.Responsable,S.Cantidad,S.fecha FROM salidas AS S INNER JOIN contenedores AS C ON S.IdContenedor=C.IdContenedor INNER JOIN tipoContenedor as TC on C.IdContenedor = TC.IdTipoContenedor INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario  WHERE U.Correo='$correo'  ORDER BY S.IdSalida";
+            $query="SELECT S.IdSalida,TC.Concepto,S.Responsable,S.Cantidad,S.fecha FROM salidas AS S INNER JOIN contenedores AS C ON S.IdContenedor=C.IdContenedor INNER JOIN tipocontenedor as TC on C.IdContenedor = TC.idTipoCont INNER JOIN usuarios AS U ON S.IdUsuario=U.IdUsuario WHERE U.Correo='$correo' ORDER BY S.IdSalida;";
 
             $resultado=$conn->prepare($query);
             $resultado->execute();
