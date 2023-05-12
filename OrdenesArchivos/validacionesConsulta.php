@@ -82,6 +82,9 @@ if ($tipoUser == 'admin' && $_POST['IdProdu'] == "" && $_POST['FF'] == "" && $_P
         case 'extraviados':
                 $queryOrden = "SELECT * FROM extraviados LIMIT 1;";
             break;
+        case 'salidas':
+            $queryOrden = "SELECT * FROM salidas LIMIT 1;";
+        break;
         default:
             break;
     }
@@ -107,6 +110,9 @@ if ($tipoUser == 'admin' && $fechaCorrecta && $_POST['IdProdu'] == "") {
         case 'extraviados':
                 $queryOrden = "SELECT * FROM extraviados WHERE Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
             break;
+        case 'salidas':
+                $queryOrden = "SELECT * FROM salidas WHERE fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
+        break;
         default:
             break;
     }
@@ -176,6 +182,9 @@ if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $_POST['IdProdu'] == "" &&
         case 'entregas':
                 $queryOrden = "SELECT E.IdEntrega FROM entregas AS E INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario WHERE T.Descripcion = '" . $_POST['IdTipo'] . "' LIMIT 1;";
             break;
+        case 'salidas':
+            $queryOrden = "SELECT S.IdSalida FROM salidas AS S INNER JOIN usuarios AS U ON S.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario WHERE T.Descripcion = '" . $_POST['IdTipo'] . "' LIMIT 1;";
+        break;
         default:
             break;
     }
@@ -196,7 +205,9 @@ if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $fechaCorrecta && $_POST['
         case 'entregas':
                 $queryOrden = "SELECT E.IdEntrega FROM entregas AS E INNER JOIN usuarios AS U ON E.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario WHERE T.Descripcion = '" . $_POST['IdTipo'] . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
             break;
-
+        case 'salidas':
+                $queryOrden = "SELECT S.IdSalida FROM salidas AS S INNER JOIN usuarios AS U ON S.IdUsuario=U.IdUsuario INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario WHERE T.Descripcion = '" . $_POST['IdTipo'] . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
+        break;    
         default:
             break;
     }
@@ -529,8 +540,6 @@ if ($tipoUser == 'Empresa Recolectora'  && $_POST['IdProdu'] == "" && $_POST['FF
 //?Mando datos al front
 $datos = json_encode(array('mensaje' => $mensaje, 'data' => $data));
 echo $datos;
-
-
 
 mysqli_close($enlace);
 
