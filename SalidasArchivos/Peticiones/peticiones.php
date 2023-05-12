@@ -26,19 +26,19 @@ if ($enlace->connect_error) {
     //Validaciones de recolector
     switch ($tipoRecolec) {
         case 'Distribuidores':
-            $comando = mysqli_query($enlace, "SELECT IdDistribuidor ,Nombre FROM distribuidores WHERE Correo = '" . $_SESSION['usuario'] . "' ") or die(mysqli_error());
+            $comando = mysqli_query($enlace, "SELECT Nombre FROM distribuidores WHERE Correo = '" . $_SESSION['usuario'] . "' ") or die(mysqli_error());
             if (mysqli_num_rows($comando) == 0)
                 $mensaje = "NoHayDistribuidores";
             else {
                 $fila = mysqli_fetch_array($comando);
-                $ValidarNomRecole = $fila[1];
+                $ValidarNomRecole = $fila[0];
                 if ($ValidarNomRecole != $nombreRecolec)
                     $mensaje = "RecoleUsuarioNoValido";
             }
             mysqli_free_result($comando);
             break;
         case 'Empresa Recolectora':
-            $comando = mysqli_query($enlace, "SELECT IdERP,Nombre FROM empresarecolectoraprivada WHERE Correo = '" . $_SESSION['usuario'] . "' ") or die(mysqli_error());
+            $comando = mysqli_query($enlace, "SELECT Nombre FROM empresarecolectoraprivada WHERE Correo = '" . $_SESSION['usuario'] . "' ") or die(mysqli_error());
             if (mysqli_num_rows($comando) == 0) //Valida si hay distribuidores registrados en la db
                 $mensaje = "NoHayERP";
             else {
@@ -50,7 +50,7 @@ if ($enlace->connect_error) {
             mysqli_free_result($comando);
             break;
         case 'Municipios':
-            $comando = mysqli_query($enlace, "SELECT IdMunicipio,NombreLugar FROM municipio WHERE Correo = '" . $_SESSION['usuario'] . "' ") or die(mysqli_error());
+            $comando = mysqli_query($enlace, "SELECT NombreLugar FROM municipio WHERE Correo = '" . $_SESSION['usuario'] . "' ") or die(mysqli_error());
             if (mysqli_num_rows($comando) == 0) //Valida si hay distribuidores registrados en la db
                 $mensaje = "NoHayMunicipio";
             else {

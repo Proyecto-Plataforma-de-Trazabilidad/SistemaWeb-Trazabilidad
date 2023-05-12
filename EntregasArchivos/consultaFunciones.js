@@ -33,6 +33,10 @@ function mostrarEntrega(fechaI, fechaF, idProdud, tipoRecol) {
             let opc = datos.mensaje;
             //console.log(opc);
             switch (opc) {
+                //Mensajes de error
+                case "UsuarioNoPermitido":
+                    mensajeError('Usuario no permitido', "Ingrese con una cuenta con permiso");
+                    break;
                 case "FechaNoValida":
                     mensajeError('Fecha no valida', "fallo");
                     break;
@@ -97,6 +101,17 @@ function mostrarEntrega(fechaI, fechaF, idProdud, tipoRecol) {
                 case "ConsultaXTiposYFechaYProduct":
                     console.log("ConsultaXTiposYFechaYProduct");
                     generarTabla("ConsultaXTiposYFechaYProduct", fechaI, fechaF, idProdud, tipoRecol);
+                    $('#detalle tbody').children().remove();
+                    break;
+                //Consultas del productor
+                case "ProductorConsultaGeneral":
+                    console.log("ProductorConsultaGeneral");
+                    generarTabla("ProductorConsultaGeneral", fechaI, fechaF, datos.data, tipoRecol);
+                    $('#detalle tbody').children().remove();
+                    break;
+                case "ProductorConsultaXFecha":
+                    console.log("ProductorConsultaXFecha");
+                    generarTabla("ProductorConsultaXFecha", fechaI, fechaF, datos.data, tipoRecol);
                     $('#detalle tbody').children().remove();
                     break;
                 default:
