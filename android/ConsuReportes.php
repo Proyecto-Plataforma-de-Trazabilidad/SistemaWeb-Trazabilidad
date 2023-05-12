@@ -12,6 +12,13 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;
+        case 'RepECat':
+            $query="select Estado,count(Estado)as TotalE from centroacopiotemporal GROUP BY Estado;";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
+
     }
         echo json_encode($res);
         $conn = null; //Limpia la conexión
