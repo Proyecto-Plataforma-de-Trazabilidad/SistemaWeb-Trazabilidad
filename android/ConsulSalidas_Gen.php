@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         case 'ConsulSalidasGen':
             $correo=$_POST['correo'];//correo usuario 
             
-            $query="SELECT S.IdSalida,S.IdContenedor,S.Responsable,S.Cantidad,S.fecha FROM salidas AS S INNER JOIN contenedores AS C ON S.IdContenedor=C.IdContenedor  INNER JOIN usuarios AS U ON S.IdUsuario=U.IdUsuario WHERE U.Correo='$correo' ORDER BY S.IdSalida;";
+            $query="SELECT S.IdSalida,S.IdContenedor,S.Responsable,S.Cantidad,S.fecha FROM salidas AS S  INNER JOIN usuarios AS U ON S.IdUsuario=U.IdUsuario WHERE U.Correo='$correo' ORDER BY S.IdSalida;";
 
             $resultado=$conn->prepare($query);
             $resultado->execute();
@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $fi=$_POST['fi'];//fecha inicial
             $ff=$_POST['ff'];//fecha final
 
-            $query="SELECT S.IdSalida,S.IdContenedor,S.Responsable,S.Cantidad,S.fecha FROM salidas AS S INNER JOIN contenedores AS C ON S.IdContenedor=C.IdContenedor  INNER JOIN usuarios AS U ON S.IdUsuario=U.IdUsuario where S.Fecha BETWEEN '$fi' and '$ff' and U.Correo='$correo'";
+            $query="SELECT S.IdSalida,S.IdContenedor,S.Responsable,S.Cantidad,S.fecha FROM salidas AS S INNER JOIN usuarios AS U ON S.IdUsuario=U.IdUsuario where S.Fecha BETWEEN '$fi' and '$ff' and U.Correo='$correo'";
             $resultado=$conn->prepare($query);
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
