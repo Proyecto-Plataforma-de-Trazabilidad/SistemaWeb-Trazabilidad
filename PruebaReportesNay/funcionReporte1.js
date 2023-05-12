@@ -39,7 +39,7 @@ $(document).ready(function(){
 
                 for (var i in array) {
                    dat=(array[i].TotalPiezas);//extraer valores del json
-                   if(dat==null)
+                   if(dat==null)//si la suma es 0 para que no marque error
                    {
                     let n =0;
                     console.log("valor parseado "+n);//convertirlo  a entero, para mandarlo a arreglo por que la grafica eso recibe valores en arreglos
@@ -57,7 +57,7 @@ $(document).ready(function(){
                 console.log(etiquetapie);
                
                 let chartStatus = Chart.getChart("myChart"); // <canvas> id
-                if (chartStatus != undefined) {
+                if (chartStatus != undefined) {//si ya existe destruyelo, si no no entra
                     chartStatus.destroy();
                 }
 
@@ -74,13 +74,18 @@ $(document).ready(function(){
                                 hoverBackgroundColor: '#CCCCCC',
                                 hoverBorderColor: '#666666',
                                 data: enteros,
+                                fillText:enteros,
                             }
                         ]
                     };
                     
                        var  barGraph = new Chart(graphTarget, {//asigancion de datos y tipo grafica
                             type: 'bar',
-                            data: chartdata
+                            data: chartdata,
+                            onAnimationComplete: function()
+                            {
+                                this.fillText(this.datasets[0].bars, true);
+                            }
                         });
                     
             
