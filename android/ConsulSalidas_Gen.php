@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         
         case 'DetCont':
             $id=$_POST['id'];
-            $query="SELECT TC.Concepto,C.Origen,C.Capacidad,C.Descripcion,C.CapacidadStatus FROM contenedores as C INNER JOIN tipocontenedor as TC on TC.IdTipoContenedor = C.IdTipoCont WHERE C.IdContenedor='$id'";
+            $query="SELECT TC.Concepto,C.Origen,C.Capacidad,C.Descripcion,C.CapacidadStatus FROM contenedores as C INNER JOIN tipocontenedor as TC on TC.Idtipocontenedor = C.IdTipoCont WHERE C.IdContenedor='$id'";
             $resultado=$conn->prepare($query);
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
