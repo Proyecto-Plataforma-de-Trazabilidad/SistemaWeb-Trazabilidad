@@ -44,6 +44,15 @@ if (isset($_POST['Opcion'])) {
             $queryEntrega = $queryEntrega . " WHERE T.Descripcion = '" . $_POST['TipoRecol'] . "' AND E.IdProductor = '" . $_POST['IdProdu'] . "' AND E.Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "'";
             realizarConsulta($queryEntrega);
             break; 
+        //Productor
+        case "ProductorConsultaGeneral":
+            $queryEntrega = $queryEntrega . " WHERE E.IdProductor = '" . $_POST['IdProdu'] . "'";
+            realizarConsulta($queryEntrega);
+            break;
+        case "ProductorConsultaXFecha":
+            $queryEntrega = $queryEntrega . " WHERE E.IdProductor = '" . $_POST['IdProdu'] . "' AND E.Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "'";
+            realizarConsulta($queryEntrega);
+            break;
     }
 }
 

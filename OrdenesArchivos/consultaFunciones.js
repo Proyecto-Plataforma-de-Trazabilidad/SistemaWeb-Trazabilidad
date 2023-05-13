@@ -117,6 +117,10 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
             let opc = datos.mensaje;
             
             switch (opc) {
+                //Mensajes de error
+                case "UsuarioNoPermitido":
+                    mensajeError('Usuario no permitido', "Ingrese con una cuenta con permiso");
+                    break;
                 case "FechaNoValida":
                     mensajeError('Fecha no valida', "fallo");
                     break;
@@ -126,22 +130,19 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
                 case "FechasIguales":
                     mensajeError('Fechas iguales', "fallo");
                     break;
-                case "NoHayDatosFechas":
-                    mensajeError('No hay datos', "De la fecha que selecciono");
-                    break;
-                case "NoHayDatosProductor":
-                    mensajeError('No hay datos', "Del productor que selecciono");
-                    break;
-                case "NoHayDatosProductorYFecha":
-                    mensajeError('No hay datos', "De la fecha y el el productor que selecciono");
-                    break;
-                case "NoHayDatosGeneral":
+                //Mensaje de Consulta sin datos
+                case "NoHayDatos":
                     mensajeError('No hay datos', "Actualmente no hay registros");
                     break;
-                //Admin
+                case "ProductorNoHayDatos":
+                    mensajeError('No hay datos', "Inténtelo de nuevo");
+                    break;
+                case "DistribuidorNoHayDatos":
+                    mensajeError('No hay datos', "De ese distribuidor");
+                    break;
+                //Consultas admin
                 case "ConsultaGeneral":
                     console.log("ConsultaGeneral");
-                    
                     generarTabla('','','');
                     break;
                 case "ConsultaXFechaYProduct":
@@ -162,8 +163,8 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
                 //Productor
                 case "ProductorConsultaGeneral":
                     console.log("ProductorConsultaGeneral");
-                    $('#tituloProdu').remove();
-                    $('#nomProdu').remove();
+                    $('#tituloProdu').hide();
+                    $('#nomProdu').hide();
                     generarTabla("","",datos.data)
                     break;
                 case "ProductorConsultaXFecha":
@@ -193,10 +194,7 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
                     generarTabla(fechaI,fechaF,idProdud)
                     break;
                 default:
-                    // var data = [
-                    //     { 'IdOrden': "1", 'Distribuidor': "Infected", 'Productor': "Pancho",  'NumFactura': "8d8nnw", 'Factura': "Facturas/f1.png", 'NumReceta': "888sd88dd", 'Receta': "Recetas/r1.png", 'Fecha': "2023-04-06"}
-                    // ];
-                    
+
                     break;
             }
         }

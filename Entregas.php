@@ -47,14 +47,14 @@ include "Layout/navMenu.php";
                 <label for="tipoRecol" class="form-label">Tipo de recolector</label>
                 <!-- debe de cargar dependiendo el inicio de seccion  -->
                 <input disabled type="text" id="tipoRecol" name="tipoDistribuidor" class="form-control" maxlength="30"
-                    required placeholder="Empresa, Distribuidor, CAT, Municipio" data-tipoRecolector="">
+                    required placeholder="Empresa, Distribuidor, Municipio" data-tipoRecolector="">
             </div>
 
             <div class="col-sm-4">
                 <label for="nomRecol" class="form-label">Nombre de recolector</label>
                 <!-- debe de cargar dependiendo el inicio de seccion  -->
                 <input disabled type="text" id="nomRecol" name="nomRecol" class="form-control" maxlength="30"
-                    required placeholder="Nombre de Empresa, Distribuidor, CAT, Municipio" data-nomRecolector="">
+                    required placeholder="Nombre de Empresa, Distribuidor, Municipio" data-nomRecolector="">
             </div>
 
             <!-- <div class="col-sm-3">
