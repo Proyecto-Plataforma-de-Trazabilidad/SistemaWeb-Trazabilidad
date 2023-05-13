@@ -19,6 +19,7 @@ if ($enlace->connect_error) {
     $nombreRecolec = $fila[1];
     mysqli_free_result($comando);
     $mensaje = "TodoCorrecto";
+
     //Validaciones de recolector
     switch ($tipoRecolec) {
         case 'Distribuidores':
@@ -49,18 +50,6 @@ if ($enlace->connect_error) {
             $comando = mysqli_query($enlace, "SELECT NombreLugar FROM municipio WHERE Correo = '".$_SESSION['usuario']."' ") or die(mysqli_error());
             if (mysqli_num_rows($comando) == 0)   //Valida si hay distribuidores registrados en la db
                 $mensaje = "NoHayMunicipio";
-            else{
-                $fila = mysqli_fetch_array($comando);
-                $ValidarNomRecole = $fila[0];
-                if ($ValidarNomRecole != $nombreRecolec) 
-                    $mensaje = "RecoleUsuarioNoValido";
-            }
-            mysqli_free_result($comando);
-            break;
-        case 'CAT':
-            $comando = mysqli_query($enlace, "SELECT NombreCentro FROM centroacopiotemporal WHERE Correo = '".$_SESSION['usuario']."' ") or die(mysqli_error());
-            if (mysqli_num_rows($comando) == 0)   //Valida si hay distribuidores registrados en la db
-                $mensaje ="NoHayCAT";
             else{
                 $fila = mysqli_fetch_array($comando);
                 $ValidarNomRecole = $fila[0];

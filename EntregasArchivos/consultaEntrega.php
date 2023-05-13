@@ -57,8 +57,8 @@ $rol = $filas['Idtipousuario'];
                         </select>
                 </div>
                 <div class="col-sm-2">
-                    <label for="nomProdu" class="form-label" id="tituloProdu">Nombre de Productor</label>
-                    <select name="nomProdu" id="nomProdu" class="form-select">
+                    <label for="nomProdu" class="form-label productor" id="tituloProdu">Nombre de Productor</label>
+                    <select name="nomProdu" id="nomProdu" class="form-select productor">
                         <option hidden>Selecciona un productor </option>
                     </select>
                 </div>
@@ -143,11 +143,15 @@ $rol = $filas['Idtipousuario'];
     <script type="text/javascript">
     var rol = "<?php echo $rol; ?>";
 
-    if (rol == 3 || rol == 4 || rol == 5){
+    if (rol == 3 || rol == 4 || rol == 5){ //Rol distribuidor o Municipios o ERP
         $('.tipoRecole').hide();
         $('.tablaTipoRecole').remove();
     }
-        
+
+    if (rol == 2){ //Rol productor
+        $('.tipoRecole').hide();
+        $('.productor').hide();
+    }   
     
     </script>
 
