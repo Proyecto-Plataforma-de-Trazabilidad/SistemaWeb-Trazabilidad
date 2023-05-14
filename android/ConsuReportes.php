@@ -13,7 +13,14 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;
         case 'RepECat':
-            $query="select Estado,count(Estado)as TotalE from centroacopiotemporal GROUP BY Estado;";
+            $query="select Estado,count(Estado)as TotalE from centroacopiotemporal GROUP BY Estado";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
+        case 'RepMCat':
+            $muni=$_POST['muni'];
+            $query="select Municipio,count(Municipio)as TotalM from centroacopiotemporal where Estado='$muni' GROUP BY Municipio;";
             $resultado=$conn->prepare($query);
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
