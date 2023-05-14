@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             break;
         case 'RepMCat':
             $muni=$_POST['muni'];
-            $query="select Municipio,count(Municipio)as TotalM from centroacopiotemporal where Estado='$muni' GROUP BY Municipio;";
+            $query="select Municipio,count(Municipio)as TotalM from centroacopiotemporal where Estado='$muni' GROUP BY Estado;";
             $resultado=$conn->prepare($query);
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
