@@ -82,7 +82,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;  
         case 'Rep1EERP':
-            $query="SELECT Edo,count(Edo) FROM `empresarecolectoraprivada` GROUP by Edo;";
+            $query="SELECT Edo,count(Edo) as TotalE FROM `empresarecolectoraprivada` GROUP by Edo;";
             $resultado=$conn->prepare($query);
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
