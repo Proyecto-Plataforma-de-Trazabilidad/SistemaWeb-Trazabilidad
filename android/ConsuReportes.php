@@ -94,6 +94,12 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;  
+        case 'Rep1VERP':
+            $query="SELECT ERP.Nombre,count(*) as TotalVE FROM `erpvehiculos` as VE INNER JOIN empresarecolectoraprivada as ERP on VE.IdERP=ERP.IdERP GROUP by ERP.IdERP";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break; 
     }
         echo json_encode($res);
         $conn = null; //Limpia la conexión
