@@ -1,9 +1,9 @@
 <?php
 
-    $host="aws-dbinstance.cagy0earnfql.us-east-2.rds.amazonaws.com";
-    $usuario="admin";
+    $host="156.67.73.0";
+    $usuario="u517350403_admindb";
     $contrasena="Te-k3li-L!";
-    $baseDeDatos="apeajaldb";
+    $baseDeDatos="u517350403_campolimpiojal";
 
     //Establecer conexion con la base de datos
     $conn = mysqli_connect($host, $usuario, $contrasena, $baseDeDatos);
