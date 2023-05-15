@@ -50,6 +50,25 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;
+        case 'RepGP':
+            $query="select count(*) as TotalP from  `productores`";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
+        case 'RepEP':
+            $query="select Edo,count(Edo)as TotalE from productores GROUP BY Edo";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
+        case 'RepMP':
+            $muni=$_POST['muni'];
+            $query="select Municipio,count(Municipio)as TotalM from productores where Edo='$muni' GROUP BY Municipio";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
     }
         echo json_encode($res);
         $conn = null; //Limpia la conexión
