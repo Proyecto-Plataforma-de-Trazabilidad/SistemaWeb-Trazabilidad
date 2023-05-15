@@ -74,7 +74,13 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $resultado=$conn->prepare($query);
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
-            break;   
+            break;  
+        case 'Rep1H':
+            $query="select p.Nombre,count(*) as TotalH FROM `huertos` as h INNER join productores as p on h.IdProductor=p.IdProductor group by p.IdProductor";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;  
     }
         echo json_encode($res);
         $conn = null; //Limpia la conexión
