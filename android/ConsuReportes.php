@@ -44,6 +44,12 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;
+        case 'RepVD':
+            $query="select D.Nombre,count(*)as TotalVD from distribuidorvehiculos as VD inner join distribuidores as D on D.IdDistribuidor=VD.IdDistribuidor GROUP BY VD.IdDistribuidor";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
     }
         echo json_encode($res);
         $conn = null; //Limpia la conexión
