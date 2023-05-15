@@ -37,7 +37,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;
-        case 'RepED':
+        case 'RepMD':
             $muni=$_POST['muni'];
             $query="select Municipio,count(Municipio)as TotalM from distribuidores where Edo='$muni' GROUP BY Municipio;";
             $resultado=$conn->prepare($query);
