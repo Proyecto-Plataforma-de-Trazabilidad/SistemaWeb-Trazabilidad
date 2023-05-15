@@ -20,7 +20,7 @@ $filas = mysqli_fetch_array($res);
   <h1>Contenedores</h1>
 </div>
 <br>
-<form class="row g-4 container-fluid" id="frm" method="POST" action="Contenedores-Archivos/insertar.php" onsubmit="return validarArchivo()" enctype="multipart/form-data">
+<form class="row g-4 container-fluid" id="frm" method="POST" action="Contenedores-Archivos/insertar.php" enctype="multipart/form-data">
 
   <div class="col-md-2">
     <label for="intipocont" class="form-label">Tipo de contenedor</label>
@@ -32,12 +32,19 @@ $filas = mysqli_fetch_array($res);
   <div class="col-md-2">
     <label for="intipoorigen" class="form-label">Tipo de origen</label>
     <select name="intipoorigen" id="intipoorigen" class="form-select">
-      <option value="Amocalli">Amocalli</option>
-      <option value="Distribuidor">Dist.</option>
+      <option hidden>Selecciona un origen</option>
+      <option value="AMOCALI">Amocalli</option>
+      <option value="Distribuidores">Dist.</option> //Este si registra entregas
       <option value="CAT">CAT</option>
-      <option value="Recicladora">Recicladora</option>
-      <option value="Municipio">Municipio</option>
-      <option value="Empresa">Empresa</option>
+      <option value="Empresa Recicladora">Recicladora</option> 
+      <option value="Municipios">Municipio</option> //Este si registra entregas
+      <option value="Empresa Recolectora">Empresa</option> //Este si registra entregas
+    </select>
+  </div>
+
+  <div class="col-4">
+    <label for="inrespon" class="form-label">Responsable</label>
+    <select name="inrespon" id="inrespon" class="form-select">
     </select>
   </div>
 
@@ -115,6 +122,7 @@ $filas = mysqli_fetch_array($res);
           <th scope="col">Id Contenedor</th>
           <th scope="col">Tipo Contenedor</th>
           <th scope="col">Origen</th>
+          <th scope="col">Responsable</th>
           <th scope="col">Max. Capacidad</th>
           <th scope="col">Capacidad Actual</th>
           <th scope="col">Descripción</th>
@@ -211,6 +219,7 @@ $filas = mysqli_fetch_array($res);
 <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="datatables.min.js"></script>
 <script type="text/javascript" src="Contenedores-Archivos/funcionesCont.js"></script>
+<script type="text/javascript" src="Contenedores-Archivos/funcionInsertar.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
 <script src="Layout/menujs.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

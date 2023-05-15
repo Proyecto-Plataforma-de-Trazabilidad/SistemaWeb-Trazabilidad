@@ -30,7 +30,7 @@ $.ajax({
             numSalida.dataset.numSalida = "" + datos.numSalidas;               //Guarda el num salida en el dataset
             //contenedores combo
             datos.contenedores.map(contenedor => {
-                Contenedor.insertAdjacentHTML('beforeend', `<option value="${contenedor.IdContenedor}">${contenedor.IdContenedor} , ${contenedor.Origen}</option>`);
+                Contenedor.insertAdjacentHTML('beforeend', `<option value="${contenedor.IdContenedor}">${contenedor.Descripcion}</option>`);
             });
         }
 

@@ -2,6 +2,7 @@
 
     include '../conexion.php';
     $tipoorigen=$_POST['intipoorigen'];
+    $responsable= $_POST['inrespon'];
     $tipocont=$_POST['intipocont'];
     $cap=$_POST['incap'];
     $des=$_POST['indes'];
@@ -20,12 +21,12 @@
     }
     $permitidos=array('jpg','png','jpeg','pdf');
 
-    if($_FILES["infile"]){
+    if($_FILES["infile"]["tmp_name"]){
         $nombre_base=basename(($_FILES["infile"]["name"]));
         $arregloArchivo=explode(".",$nombre_base);
         $extension=strtolower(end($arregloArchivo));
         if(in_array($extension, $permitidos)){
-            $r="INSERT INTO contenedores VALUES(NULL,".$tipocont.",'".$tipoorigen."',".$cap.",'".$des."',".$lat.",".$lon.",'".$ulti."','0','".$manejo."',".$status.")";
+            $r="INSERT INTO contenedores VALUES(NULL,".$tipocont.",".$responsable.", '".$tipoorigen."', ".$cap.",'".$des."',".$lat.",".$lon.",'".$ulti."','0','".$manejo."',".$status.")";
             $resultado=mysqli_query($enlace,$r);
             $lastid=mysqli_insert_id($enlace);
             $ruta="PermisosContenedor/" .$lastid.".".$extension;
@@ -34,7 +35,7 @@
                 $r="UPDATE contenedores SET ReferenciaPermiso='".$ruta."' WHERE IdContenedor=".$lastid;
                 $resultado=mysqli_query($enlace,$r);
                 if($resultado){
-                    echo "<script>window.location='../Contenedores.php'</script>";
+                    echo "Todo Correcto";
                 }
                 else{
                 printf("Errormessage: %s\n" , mysqli_error($enlace));
@@ -42,11 +43,11 @@
             }
         }
         else{
-            echo "<script>alert('Solo se permiten archivos con extensión .pdf .jpg .jpeg .png'); window.location='../Contenedores.php'</script>";
+            echo "Extension no valida";
         }
     }
     else{
-        echo "<script>alert('Seleccione un archivo!!!');</script>";
+        echo "No hay archivo";
     }
 
 ?>

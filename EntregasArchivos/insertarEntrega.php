@@ -15,6 +15,7 @@ if ($enlace->connect_error) {
 
     $IdProductor = $_POST['entrega']['idProduc'];
     $IdUsuario = $User;
+    $IdContenedor = $_POST['entrega']['idContenedor'];
     $ResponsaEntrega = $_POST['entrega']['nomResEntrega'];
     $ResponsaRecepcion = $_POST['entrega']['nomResRecibe'];
     $Recibo = $_POST['entrega']['recibo'];
@@ -25,7 +26,7 @@ if ($enlace->connect_error) {
     //iniciar con la transaccion
     $enlace->begin_transaction();
     try {
-        $entrega = "INSERT INTO entregas VALUES (null, $IdProductor, $IdUsuario, '$ResponsaEntrega','$ResponsaRecepcion','$Recibo','$Fecha')";
+        $entrega = "INSERT INTO entregas VALUES (null, $IdProductor, $IdUsuario, $IdContenedor, '$ResponsaEntrega','$ResponsaRecepcion','$Recibo','$Fecha')";
         //echo $entrega;
         mysqli_query($enlace, $entrega);
 
@@ -44,6 +45,9 @@ if ($enlace->connect_error) {
             $productor = "UPDATE productores SET TotalPiezasEntregadas = TotalPiezasEntregadas + " . $t['cantidad'] . " WHERE IdProductor = " . $IdProductor;
             //echo($productor); 
             mysqli_query($enlace, $productor);
+            //query de actualizar el estatus del contenedor
+            $queryContenedor = "UPDATE contenedores SET CapacidadStatus = CapacidadStatus + " . $t['cantidad'] . " WHERE IdUsuario = ". $IdUsuario;
+            mysqli_query($enlace, $queryContenedor);
         }
 
         //ejecutar transacción

@@ -66,19 +66,21 @@ if ($enlace->connect_error) {
             break;
     }
 
-    //CONTENEDOR
-    $comando = mysqli_query($enlace, "SELECT IdContenedor, Origen FROM contenedores") or die(mysqli_error());
-    if (mysqli_num_rows($comando) == 0) { //Valida si hay productores registrados en la db
-        $contenedor = "No hay contenedores";
-    } else {
-        while ($fila1 = mysqli_fetch_array($comando)) {
-            $contenedores[] = array(
-                'IdContenedor' => $fila1[0],
-                'Origen' => $fila1[1]
-            );
+    //Búsqueda de contenedores
+    if ($mensaje != "RecoleUsuarioNoValido" && $mensaje != "UsuarioNoPermitido") {
+        $comando = mysqli_query($enlace, "SELECT * FROM contenedores WHERE IdUsuario = ".$idRecolector.";") or die(mysqli_error());
+        if (mysqli_num_rows($comando) == 0) {          //Valida si hay contenedores registrados en la db
+            $contenedores = "No hay contenedores";
+        }else {
+            while($fila1 = mysqli_fetch_array($comando)){
+                $contenedores[] = array(
+                    'IdContenedor' => $fila1[0],
+                    'Descripcion' => $fila1[5],
+                );
+            }
         }
+        mysqli_free_result($comando);
     }
-    mysqli_free_result($comando);
 
     //Mando datos al front
     $datos = json_encode(array('numSalidas' => $row, 'idRec' => $idRecolector, 'nomRec' => $nombreRecolec, 'contenedores' => $contenedores, 'mensaje' => $mensaje));

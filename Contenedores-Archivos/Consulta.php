@@ -15,51 +15,58 @@
     include "../conexion.php";
     $idtipo = $_GET['id'];
     $nueva = base64_decode($idtipo);
-        $r="SELECT c.IdContenedor, t.Concepto, c.Origen, c.Capacidad, c.Descripcion, c.Latitud, c.Longitud, c.UltimaFechaRecoleccion, c.InstruccionesManejo, c.ReferenciaPermiso, t.idTipoCont FROM tipocontenedor as t inner join contenedores as c on c.IdTipoCont=t.idTipoCont WHERE IdContenedor=".$nueva;
+        $r="SELECT c.IdContenedor, t.Concepto, c.Origen, u.Nombre AS 'Responsables', c.Capacidad, c.Descripcion, c.Latitud, c.Longitud, c.UltimaFechaRecoleccion, c.InstruccionesManejo, c.ReferenciaPermiso, t.idTipoCont FROM tipocontenedor as t inner join contenedores as c on c.IdTipoCont=t.idTipoCont INNER JOIN usuarios AS u ON c.IdUsuario=u.IdUsuario WHERE c.IdContenedor= ".$nueva;
         $comando= mysqli_query($enlace, $r);
         $row=mysqli_fetch_array($comando);
         
     ?>
-      <form class="row g-4 container-fluid" id="frm" method="POST" action="actualizar.php" onsubmit="return valdez()" enctype="multipart/form-data">
+      <form class="row g-4 container-fluid" id="frm" method="POST" action="actualizar.php"  enctype="multipart/form-data">
 
       <div class="col-md-2">
           <label for="inid" class="form-label">IdContenedor</label>
-          <input type="text" class="form-control" id="inid"  name="inid" maxlength="60" required value="<?php echo($row[0]);?>" disabled>
+          <input type="text" class="form-control" id="inid"  name="inid" maxlength="60" required value="<?php echo($row[0]);?>" readonly>
         </div>
 
         <div class="col-md-2">
           <label for="intipocont" class="form-label">Tipo de contenedor</label>
           <select name="intipocont" id="intipocont" class="form-select" disabled required>
-            <option value="<?php echo($row[10]);?>"><?php echo($row[1]);?></option>
+            <option value="<?php echo($row[11]);?>"><?php echo($row[1]);?></option>
             </select>
         </div>
 
         <div class="col-sm-2">
           <label for="intipoorigen" class="form-label">Tipo de origen</label>
           <select name="intipoorigen" id="intipoorigen" class="form-select" disabled>
-          <option value="<?php echo($row[2]);?>"><?php echo($row[2]);?></option>
-                <option value="Amocalli">Amocalli</option>
-                <option value="Distribuidor">Dist.</option>
-                <option value="CAT">CAT</option>
-                <option value="Recicladora">Recicladora</option>
-                <option value="Municipio">Municipio</option>
-                <option value="Empresa">Empresa</option>
-            </select>
+            <option value="<?php echo($row[2]);?>"><?php echo($row[2]);?></option>
+            <option value="AMOCALI">Amocalli</option>
+            <option value="Distribuidores">Dist.</option> //Este si registra entregas
+            <option value="CAT">CAT</option>
+            <option value="Empresa Recicladora">Recicladora</option> 
+            <option value="Municipios">Municipio</option> //Este si registra entregas
+            <option value="Empresa Recolectora">Empresa</option> //Este si registra entregas
+          </select>
+        </div>
+
+        <div class="col-4">
+          <label for="inrespon" class="form-label">Responsable</label>
+          <select name="inrespon" id="inrespon" class="form-select" disabled>
+            <option hidden><?php echo($row[3]);?></option>
+          </select>
         </div>
       
         <div class="col-2">
             <label for="incap" class="form-label">Capacidad (Kg)</label>
-            <input type="number" class="form-control" id="incap" maxlength="10" name="incap" disabled required value="<?php echo($row[3]);?>">
+            <input type="number" class="form-control" id="incap" maxlength="10" name="incap" disabled required value="<?php echo($row[4]);?>">
         </div>
 
         <div class="col-sm-4">
           <label for="indes" class="form-label">Descripción</label>
-          <input type="text" class="form-control" id="indes"  name="indes" maxlength="60" disabled required value="<?php echo($row[4]);?>">
+          <input type="text" class="form-control" id="indes"  name="indes" maxlength="60" disabled required value="<?php echo($row[5]);?>">
         </div>
         
         <div class="col-sm-4">
           <label for="inulti" class="form-label">Última recolección</label>
-          <input type="date" class="form-control" id="inulti"  name="inulti" maxlength="60" disabled required value="<?php echo($row[7]);?>">
+          <input type="date" class="form-control" id="inulti"  name="inulti" maxlength="60" disabled required value="<?php echo($row[8]);?>">
         </div>
 
         <div class="col-md-4">
@@ -69,23 +76,23 @@
 
         <div class="col-md-4">
           <label for="inarch" class="form-label">Permiso Actual</label>
-          <a href="<?php echo($row[9]);?>" class="form-control">Permiso</a>
+          <a href="<?php echo($row[10]);?>" class="form-control">Permiso</a>
         </div>
 
         <div class="col-sm-4">
           <label for="inman" class="form-label">Instrucciones de manejo</label>
           <br>
-          <textarea name="inman" id="inman" cols="30" rows="4" class="form-control" disabled required placeholder="Escribe las instrucciones" value="<?php echo($row[8]);?>"><?php echo($row[8]);?></textarea>
+          <textarea name="inman" id="inman" cols="30" rows="4" class="form-control" disabled required placeholder="Escribe las instrucciones" value="<?php echo($row[9]);?>"><?php echo($row[9]);?></textarea>
         </div>
         
         <div class="col-sm-4">
           <label for="inlat" class="form-label">Latitud</label>
-          <input type="text" class="form-control" id="inlat"  name="inlat" maxlength="60" disabled required value="<?php echo($row[5]);?>">
+          <input type="text" class="form-control" id="inlat"  name="inlat" maxlength="60" disabled required value="<?php echo($row[6]);?>">
         </div>
 
         <div class="col-sm-4">
           <label for="inlon" class="form-label">Longitud</label>
-          <input type="text" class="form-control" id="inlon"  name="inlon" maxlength="60" disabled required value="<?php echo($row[6]);?>">
+          <input type="text" class="form-control" id="inlon"  name="inlon" maxlength="60" disabled required value="<?php echo($row[7]);?>">
         </div>
 
         <br><br>
@@ -94,7 +101,7 @@
           <button type="button" class="btn btn-primary" onclick="habilitar();" name="Editar" id="btnEditar">Editar</button>
         </div>
         <div class="col-2">
-          <button type="submit" class="btn btn-success" onclick="" name="guardar" id="btnGuardar">Guardar</button>
+          <button type="submit" class="btn btn-success" onclick="" name="guardar" id="btnGuardar" disabled>Guardar</button>
         </div>
 
         <br><br>
@@ -130,17 +137,10 @@
           return 0;
         }
         function habilitar()
-        {
-          document.getElementById("indes").disabled=false;
-          document.getElementById("incap").disabled=false;
-          document.getElementById("intipocont").disabled=false;
-          document.getElementById("inulti").disabled=false;
-          document.getElementById("inlat").disabled=false;
-          document.getElementById("inlon").disabled=false;
-          document.getElementById("inman").disabled=false;
-          document.getElementById("btnGuardar").disabled=false;
-          document.getElementById("btnEditar").disabled=true;
-          document.getElementById("intipoorigen").disabled=false;
+        { 
+          $('#frm :input').not('#inid').not('#intipocont').not('#intipoorigen').not('#inrespon').prop("disabled", false);
+          $('#btnGuardar').prop("disabled", false);
+          $('#btnEditar').prop("disabled", true);
         }
         function initMap(){
           let latitud=document.getElementById("inlat").value;
