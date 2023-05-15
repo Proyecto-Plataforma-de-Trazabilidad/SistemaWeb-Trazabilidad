@@ -14,8 +14,11 @@
     }
 
     //Obtener las credenciales enviadas desde la aplicación de React Native
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    echo 'Email: ' . $email . '<br>';
+echo 'Password: ' . $password . '<br>';
 
     //Transformar la contraseña a MD5
     $psw = md5($password);
