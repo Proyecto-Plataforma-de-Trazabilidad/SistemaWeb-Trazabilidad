@@ -69,6 +69,12 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;
+        case 'Rep2P':
+            $query="SELECT Nombre,PuntosAcumulados as Puntos,TotalPiezasOrden as Orden,TotalPiezasEntregadas as Entregas,(TotalPiezasOrden-TotalPiezasEntregadas) As SaldoPiezas FROM `productores` GROUP by Nombre";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;   
     }
         echo json_encode($res);
         $conn = null; //Limpia la conexión
