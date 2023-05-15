@@ -20,6 +20,7 @@ if ($enlace->connect_error) {
     $idUusario = $fila[2];
     mysqli_free_result($comando);
     $mensaje = "TodoCorrecto";
+
     //Validaciones de recolector
     switch ($tipoRecolec) {
         case 'Distribuidores':
