@@ -100,6 +100,14 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break; 
+        case 'Rep1Co':
+            $ori=$_POST['ori'];
+            $tc=$_POST['tc'];
+            $query="select C.IdContenedor,C.Capacidad,C.CapacidadStatus,(C.Capacidad-C.CapacidadStatus)as EspacioD from contenedores as C inner join tipocontenedor as T on C.IdTipoCont=T.idTipoCont where C.Origen='$ori' and T.Concepto='$tc'";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break; 
     }
         echo json_encode($res);
         $conn = null; //Limpia la conexión
