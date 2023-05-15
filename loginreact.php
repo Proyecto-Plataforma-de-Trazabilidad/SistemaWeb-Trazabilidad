@@ -17,8 +17,6 @@
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    var_dump($_POST);
-    
     //Transformar la contraseña a MD5
     $psw = md5($password);
 
@@ -28,6 +26,8 @@
     mysqli_stmt_bind_param($stmt, 'ss', $email, $psw);
     mysqli_stmt_execute($stmt);
     $resultado = mysqli_stmt_get_result($stmt);
+
+    header('Content-Type: application/json');
 
     //Verificar si se encontró el usuario
     if(mysqli_num_rows($resultado) > 0){
