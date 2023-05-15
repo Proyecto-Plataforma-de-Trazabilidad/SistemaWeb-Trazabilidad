@@ -23,17 +23,20 @@
     $psw = md5($password);
 
     //Realizar la consulta para verificar las credenciales
-    $query = "SELECT * From usuarios where Correo = '$email' AND Contrasena = '$psw'";
-    $resultado = mysqli_query($conn, $query);
+    $query = "SELECT * From usuarios where Correo = ? AND Contrasena = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, 'ss', $email, $psw);
+    mysqli_stmt_execute($stmt);
+    $resultado = mysqli_stmt_get_result($stmt);
 
     //Verificar si se encontró el usuario
     if(mysqli_num_rows($resultado) > 0){
         //Los datos son correctos, se puede iniciar sesión
-        $response = array("success" => true, "message" => "Inicio de sesión exitoso");
+        $response = array("success" => true, "message" => "Bienvenido");
 
     } else{
         //Los datos no son válidos, no se puede iniciar sesión
-        $response = array("success" => false, "message" => "Datos inválidos. Intentar de nuevo");
+        $response = array("success" => false, "message" => "Datos incorrectos. Intentar de nuevo");
     }
 
     //Devolver la respuesta como JSON
