@@ -120,7 +120,19 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $resultado=$conn->prepare($query);
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
-            break;  
+            break; 
+        case 'RepGMu':
+            $query="select count(*) as TotalMu from municipio";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break; 
+        case 'Rep1VMu':
+            $query="SELECT M.NombreLugar,count(*) as TotalVMu FROM municipiovehiculos as VM INNER JOIN municipio as M on VM.IdMunicipio=M.IdMunicipio GROUP by M.IdMunicipio";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
     }
         echo json_encode($res);
         $conn = null; //Limpia la conexión
