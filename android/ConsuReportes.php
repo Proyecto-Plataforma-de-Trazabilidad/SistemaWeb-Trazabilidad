@@ -108,6 +108,19 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break; 
+        case 'Rep1EEDF':
+            $query="SELECT Edo,count(Edo) as TotalE FROM empresadestino GROUP by Edo;";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;  
+        case 'Rep1MEDF':
+            $edo=$_POST['edo'];
+            $query="select Municipio,count(Municipio)as TotalM from empresadestino where Edo='$edo' GROUP BY Municipio;";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;  
     }
         echo json_encode($res);
         $conn = null; //Limpia la conexión
