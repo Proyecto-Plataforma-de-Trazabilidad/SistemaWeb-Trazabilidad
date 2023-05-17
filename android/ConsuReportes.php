@@ -162,6 +162,16 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;
+         case 'RepEPP':
+            $pro=$_POST['pro'];
+            $fi=$_POST['fi'];
+            $ff=$_POST['ff'];
+
+            $query="select P.Nombre,SUM(E.CantidadPiezas) As TotalPiezas FROM extraviados as E inner join productores as P on E.IdProductor=P.IdProductor where P.Nombre='$pro' and E.fecha BETWEEN '$fi' and '$ff'";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
     }
         echo json_encode($res);
         $conn = null; //Limpia la conexión
