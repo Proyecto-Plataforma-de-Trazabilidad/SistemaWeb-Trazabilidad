@@ -133,6 +133,17 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;
+    //---------------Movimientos-Reportes-----------------------------------
+         case 'RepTPP':
+            $pro=$_POST['pro'];
+            $fi=$_POST['fi'];
+            $ff=$_POST['ff'];
+
+            $query="select P.Nombre,SUM(D.CantidadPiezas) As TotalPiezas FROM detalleorden as D INNER JOIN ordenproductos AS O on D.IdOrden=O.IdOrden inner join productores as P on O.IdProductor=P.IdProductor where P.Nombre='$pro' and O.Fecha BETWEEN '$fi' and '$ff'";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
     }
         echo json_encode($res);
         $conn = null; //Limpia la conexión
