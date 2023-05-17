@@ -144,6 +144,24 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;
+        case 'RepTQP':
+            $pro=$_POST['pro'];
+            $tq=$_POST['tq'];
+            
+            $query="select P.Nombre,Sum(D.CantidadPiezas) As TotalPiezas FROM detalleorden as D INNER JOIN ordenproductos AS O on D.IdOrden=O.IdOrden inner join productores as P on O.IdProductor=P.IdProductor INNER join tipoquimico as TQ on D.IdTipoQuimico=TQ.IdTipoQuimico where TQ.Concepto='$tq' and P.Nombre='$pro'";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
+        case 'RepTEP':
+            $pro=$_POST['pro'];
+            $te=$_POST['te'];
+            
+            $query="select P.Nombre,Sum(D.CantidadPiezas) As TotalPiezas FROM detalleorden as D INNER JOIN ordenproductos AS O on D.IdOrden=O.IdOrden inner join productores as P on O.IdProductor=P.IdProductor where D.TipoEnvase='$te' and P.Nombre='$pro'";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
     }
         echo json_encode($res);
         $conn = null; //Limpia la conexión
