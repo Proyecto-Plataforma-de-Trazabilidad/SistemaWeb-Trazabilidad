@@ -72,6 +72,11 @@ $filas = mysqli_fetch_array($res);
                     <p class="menu-item-titulo">Contenedores Con Menos Salidas</p>
                 </div>
 
+                <div class="menu-item" id="Ordenes" onclick="location.href='Reporte.php'">
+                    <img src="Recursos/Iconos/Ordenes.svg" alt="Icono de Contenedores Menos salidas" class="menu-item-imagen">
+                    <p class="menu-item-titulo">Envases ordenados por productor</p>
+                </div>
+
 
                 
             <?php
