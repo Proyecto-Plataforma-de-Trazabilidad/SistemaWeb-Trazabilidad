@@ -33,8 +33,8 @@ $filas = mysqli_fetch_array($res);
 
             ?>
                 <div class="menu-item" id="Ordenes" onclick="location.href='ReportesArchivos/Envases.php'">
-                    <img src="Recursos/Iconos/Envases.png" alt="Uso de Envases" class="menu-item-imagen">
-                    <p class="menu-item-titulo">Uso De Envases</p>
+                    <img src="Recursos/Iconos/Envases2.svg" alt="Uso de Envases" class="menu-item-imagen">
+                    <p class="menu-item-titulo">Uso de Envases</p>
                 </div>
 
                 <div class="menu-item" id="Ordenes" onclick="location.href='ReportesArchivos/EnvasesMasOrden.php'">
