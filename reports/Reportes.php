@@ -7,17 +7,20 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     switch($_POST['opcion']){
         //Reporte Envases mas ordenados
         case '1':
-$query = "SELECT TipoEnvase, SUM(CantidadPiezas) as Total from detalleorden GROUP BY TipoEnvase order by Total DESC";
-$resultado=$conn->prepare($query);
-            $resultado->execute();
-            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
-            break;
-//Reportes importantes 
-//Reporte de tendencias: un reporte donde muestre información del uso o porcentajes de los envases ordenados, usados, entregados y extraviados X fecha
-//Reporte de envases más ordenados
+        $query = "SELECT TipoEnvase, SUM(CantidadPiezas) as Total from detalleorden GROUP BY TipoEnvase order by Total DESC";
+        $resultado=$conn->prepare($query);
+        $resultado->execute();
+        $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
 //Reporte de distribuidores más concurridos 
 //Reporte de contenedores más concurridos 
 //Reporte de productores con más ordenes 
+case '2':
+    $query = "SELECT TipoEnvase, SUM(CantidadPiezas) as Total from detalleorden GROUP BY TipoEnvase order by Total DESC";
+    $resultado=$conn->prepare($query);
+    $resultado->execute();
+    $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+    break;
 //Reporte de municipios con menos entregas
 //Reporte de distribuidores con menos entregas
 //Reporte de contenedores con menos salidas 
@@ -54,4 +57,6 @@ $resultado=$conn->prepare($query);
 //Reporte de contenedores con fecha de ultima recolección mayor a X tiempo (1 mes o mas de un mes sin limpiar)
 //Reporte de contenedores con más movimiento (que se repitan mas en las salidas
 }
+echo json_encode($res);
+        $conn = null; //Limpia la conexión
 }
