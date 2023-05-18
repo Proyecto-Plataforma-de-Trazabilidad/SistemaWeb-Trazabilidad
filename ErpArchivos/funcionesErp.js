@@ -44,11 +44,13 @@ $(document).ready(function () {
             cache: false,
             processData: false,
             datatype: "json",
-            success: function (data) { //Las respuestas que reciba de la petición se deben imprimir con sweetalerts
+            success: function (res) { //Las respuestas que reciba de la petición se deben imprimir con sweetalerts
+                let data = JSON.parse(res);
+
                 if (data == "null") {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Seleccione los 3 archivos',
+                        title: 'Seleccione los 2 archivos',
                     });
                 } else if (data == "extension") {
                     Swal.fire({
@@ -66,7 +68,7 @@ $(document).ready(function () {
                         title: 'Hay un error con el servidor',
                         text: 'Intentar de nuevo mas tarde'
                     });
-                } else {
+                } else if (data == "archivos subidos") {
                     Swal.fire({
                         icon: 'success',
                         title: 'Se han registrado los datos correctamente',
@@ -84,6 +86,7 @@ $(document).ready(function () {
         function registrarUsuario() {
             //console.log(formData);
             formData.append("tipousuario", "5");
+            console.log(formData);
 
             $.ajax({
                 url: 'UserArchivos/nuevoRegistrar.php',
@@ -99,7 +102,7 @@ $(document).ready(function () {
                             icon: 'error',
                             title: 'Error al registrar al nuevo usuario',
                         })
-                    } else {
+                    } else if (data) { //Si se devolvio true se manda el mensaje de correcto
                         Swal.fire({
                             icon: 'success',
                             title: 'El usuario se a creado correctamente',
@@ -107,7 +110,7 @@ $(document).ready(function () {
                             confirmButtonText: 'Ok'
                         }).then((result) => {
                             if (result.value) {
-                                window.location.href = "EmpresaRecPrivada.php";
+                                //window.location.href = "EmpresaRecPrivada.php";
                             }
                         });
                     }

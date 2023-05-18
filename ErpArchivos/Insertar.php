@@ -39,7 +39,7 @@
         $arregloArchivo2=explode(".",$nombre_base2);
         $extension2=strtolower(end($arregloArchivo2));
 
-        if(in_array($extension, $permitidos)){
+        if(in_array($extension, $permitidos) && in_array($extension2, $permitidos)){
             $r="INSERT INTO empresarecolectoraprivada VALUES(NULL,'0','".$nom."','".$dom."','".$tel."','".$cp."','".$muni."','".$edo."','".$corr."','".$lat."','".$lon."','".$giro."','0','".$res."')";
             $resultado=mysqli_query($enlace,$r);
             $lastid=mysqli_insert_id($enlace);
@@ -63,8 +63,9 @@
             else{
                 $data = "error";//Error al subir el archivo
             }
+        }else{
+            $data="extension";//Solo se permiten archivos con extensión .pdf .jpg .jpeg .png 
         }
-        $data="extension";//Solo se permiten archivos con extensión .pdf .jpg .jpeg .png  
     }
     else{
         $data=null; //si ninguno de los 3 archivos es valido 
