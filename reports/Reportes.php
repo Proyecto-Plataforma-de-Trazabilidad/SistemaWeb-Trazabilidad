@@ -5,25 +5,37 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     $conn = new PDO('mysql:host='.$host_name.';dbname='.$database,$host_user,$host_password);
 
     switch($_POST['opcion']){
-        //Reporte Envases mas ordenados
+        //Reporte Envases mas ordenados1
         case '1':
         $query = "SELECT TipoEnvase, SUM(CantidadPiezas) as Total from detalleorden GROUP BY TipoEnvase order by Total DESC";
         $resultado=$conn->prepare($query);
         $resultado->execute();
         $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
-//Reporte de distribuidores más concurridos 
-//Reporte de contenedores más concurridos 
-//Reporte de productores con más ordenes 
-case '2':
-    $query = "SELECT TipoEnvase, SUM(CantidadPiezas) as Total from detalleorden GROUP BY TipoEnvase order by Total DESC";
+//Reporte de distribuidores más concurridos 2
+//Reporte de contenedores más concurridos 3
+//Reporte de productores con más ordenes 4
+case '4':
+    $query = "SELECT P.Nombre, count(*) as Total from productores as P INNER JOIN ordenproductos as OP on P.IdProductor = OP.IdProductor GROUP by P.Nombre Order By DESC";
     $resultado=$conn->prepare($query);
     $resultado->execute();
     $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
     break;
-//Reporte de municipios con menos entregas
-//Reporte de distribuidores con menos entregas
-//Reporte de contenedores con menos salidas 
+//Reporte de municipios con menos entregas 5
+case '5':   
+    $query = "SELECT U.Nombre, count(*) as total from entregas as E inner JOIN usuarios as U on E.IdUsuario = U.IdUsuario where U.Idtipousuario=4 GROUP by U.Nombre Order BY total ASC";
+    $resultado=$conn->prepare($query);
+    $resultado->execute();
+    $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+    break;
+//Reporte de distribuidores con menos entregas 6
+case '6':   
+    $query = "SELECT U.Nombre, count(*) as total from entregas as E inner JOIN usuarios as U on E.IdUsuario = U.IdUsuario where U.Idtipousuario=3 GROUP by U.Nombre Order BY total ASC";
+    $resultado=$conn->prepare($query);
+    $resultado->execute();
+    $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+    break;
+//Reporte de contenedores con menos salidas 7
 
 
 //Productor 
