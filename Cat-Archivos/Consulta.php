@@ -134,22 +134,10 @@
       <script>
         function habilitar()
         {
-          document.getElementById("innra").disabled=false;
-          document.getElementById("innom").disabled=false;
-          document.getElementById("info").disabled=false;
-          document.getElementById("indom").disabled=false;
-          document.getElementById("incp").disabled=false;
-          document.getElementById("inmuni").disabled=false;
-          document.getElementById("inest").disabled=false;
-          document.getElementById("intel").disabled=false;
-          document.getElementById("incorr").disabled=false;
-          document.getElementById("inhor").disabled=false;
-          document.getElementById("inlat").disabled=false;
-          document.getElementById("inlon").disabled=false;
-          document.getElementById("inplan").disabled=false;
+          $('#frm :input').not('#incat').prop("disabled", false);
           document.getElementById("guardar").disabled=false;
           document.getElementById("editar").disabled=true;
-          document.getElementById("inres").disabled=false;
+
         }
         function initMap(){
           let latitud=document.getElementById("inlat").value;
@@ -168,7 +156,8 @@
           marcador = new google.maps.Marker({
             map: mapa,
             draggable: true,
-            position: new google.maps.LatLng(coordenadas.lat, coordenadas.lng)
+            position: new google.maps.LatLng(coordenadas.lat, coordenadas.lng),
+            icon: "../Logos/Marcador.png",
           });
 
           marcador.addListener("dragend", function(event){
@@ -202,7 +191,7 @@
     <script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="funcionesConsulta.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASLyp51V8W65RPg92rTcqaFWCOXz6KrOg&callback=initMap"></script>
     <script src="../Layout/menujs.js"></script>
 </body>
 </html>

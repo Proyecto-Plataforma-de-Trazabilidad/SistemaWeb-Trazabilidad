@@ -49,7 +49,8 @@
                 bounds.extend(position);
                 marker = new google.maps.Marker({
                 position: position,
-                map: map
+                map: map,
+                icon: "../Logos/Marcador.png",
                 });
 
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
@@ -69,7 +70,7 @@
     <script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="funConsulta.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMyOsp5r4pG7Uh7gGRp6QonZU2P91cOeg&callback=initMap"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASLyp51V8W65RPg92rTcqaFWCOXz6KrOg&callback=initMap"></script>
     <script src="../Layout/menujs.js"></script>
 </body> 
 </html>
