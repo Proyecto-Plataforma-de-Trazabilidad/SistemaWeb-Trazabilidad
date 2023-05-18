@@ -172,6 +172,16 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;
+        case 'RepODis':
+            $dis=$_POST['dis'];
+            $fi=$_POST['fi'];
+            $ff=$_POST['ff'];
+
+            $query="select U.Nombre,count(*) As TotalE FROM entregas E inner join usuarios as U on E.IdUsuario=U.IdUsuario where U.Nombre='$dis' and E.fecha BETWEEN '$fi' and '$ff'";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
     }
         echo json_encode($res);
         $conn = null; //Limpia la conexión
