@@ -39,17 +39,17 @@ $filas = mysqli_fetch_array($res);
 
                 <div class="menu-item" id="Ordenes" onclick="location.href='ReportesArchivos/EnvasesMasOrden.php'">
                     <img src="Recursos/Iconos/OrdenesMas.svg" alt="Envases mas orden" class="menu-item-imagen">
-                    <p class="menu-item-titulo">Envases Mas Ordenados</p>
+                    <p class="menu-item-titulo">Envases Más Ordenados</p>
                 </div>
 
                 <div class="menu-item" id="Ordenes" onclick="location.href='ReportesArchivos/DistribuidoresConcurridos.php'">
                     <img src="Recursos/Iconos/DistribuidorConcurrido.svg" alt="Icono de Distribuidores" class="menu-item-imagen">
-                    <p class="menu-item-titulo">Distribuidores Mas Concurridos</p>
+                    <p class="menu-item-titulo">Distribuidores Más Concurridos</p>
                 </div>
 
                 <div class="menu-item" id="Ordenes" onclick="location.href='ReportesArchivos/ContenedoresConcurridos.php'">
                     <img src="Recursos/Iconos/ContenedoresConcurridos.svg" alt="Icono de Contenedores Concurridos" class="menu-item-imagen">
-                    <p class="menu-item-titulo">Contenedores Mas Concurridos</p>
+                    <p class="menu-item-titulo">Contenedores Más Concurridos</p>
                 </div>
 
                 <div class="menu-item" id="Ordenes" onclick="location.href='ReportesArchivos/ProductoresMasOrdenes.php'">
