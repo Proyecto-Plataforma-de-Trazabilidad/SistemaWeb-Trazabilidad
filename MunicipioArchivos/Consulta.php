@@ -143,7 +143,8 @@
           marcador = new google.maps.Marker({
             map: mapa,
             draggable: true,
-            position: new google.maps.LatLng(coordenadas.lat, coordenadas.lng)
+            position: new google.maps.LatLng(coordenadas.lat, coordenadas.lng),
+            icon: "../Logos/Marcador.png",
           });
 
           marcador.addListener("dragend", function(event){
@@ -159,7 +160,7 @@
     <script type="text/javascript" src="../datatables.min.js"></script>
     <script type="text/javascript" src="../tablas.js"></script>
     <script type="text/javascript" src="MunicipioArchivos/funcionesMuni.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoIir0y0RhmeX5MIfoHdiUgxTRQ21HE4w&callback=initMap"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASLyp51V8W65RPg92rTcqaFWCOXz6KrOg&callback=initMap"></script>
     <script src="../Layout/menujs.js"></script>
 </body>
 </html>

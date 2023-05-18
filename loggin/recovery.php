@@ -33,7 +33,7 @@ if ($row > 0) {
         $mail->SMTPAuth = true; 
         $mail->Username = 'soporte@campolimpiojal.com';
         $mail->Password = 'Y0ohg-sOth0Th_';
-        $mail->SMTPSecure = 'tls'; 
+        // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
         $mail->Port = 465;                                 //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
@@ -43,14 +43,14 @@ if ($row > 0) {
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Recuperar Password';
-        $mail->Body    = '<center>Este es un correo generado automáticamente para reestablecer la constraseña de su cuenta.<br><b>Por favor, visite la página <a href="http://campolimpiojal.com/loggin/changepsw.php?id=' . $row['IdUsuario'] . '"> Sistema de trazabilidad </a></b></center>';
+        $mail->Body    = '<center>Este es un correo generado automáticamente para restablecer la contraseña de su cuenta.<br><b>Por favor, visite la página <a href="http://campolimpiojal.com/loggin/changepsw.php?id=' . $row['IdUsuario'] . '"> Sistema de trazabilidad </a></b></center>';
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();
 
-        header("Location: ../index.php?message=ok");
+        //header("Location: ../index.php?message=ok");
     } catch (Exception $e) {
-        header("Location: ../index.php?message=error");
+        //header("Location: ../index.php?message=error");
     }
 } else {
     header("Location: ../index.php?message=notfound");
