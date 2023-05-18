@@ -27,17 +27,17 @@ if ($row > 0) {
         $mail = new PHPMailer(true);
         //Server settings
         $mail->CharSet = "UTF-8";
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output
         $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host = 'smtp.hostinger.com';  
+        $mail->Host = 'smtp.ionos.mx';  
         $mail->SMTPAuth = true; 
-        $mail->Username = 'soporte@campolimpiojal.com';
+        $mail->Username = 'support@sacnej.com';
         $mail->Password = 'Y0ohg-sOth0Th_';
-        // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
-        $mail->Port = 465;                                 //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        $mail->SMTPSecure = 'tls'; 
+        $mail->Port = 587;                                 //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
-        $mail->setFrom('soporte@campolimpiojal.com', 'Soporte');
+        $mail->setFrom('support@sacnej.com', 'Soporte');
         $mail->addAddress($email);   //Add a recipient
 
         //Content
@@ -48,9 +48,9 @@ if ($row > 0) {
 
         $mail->send();
 
-        //header("Location: ../index.php?message=ok");
+        header("Location: ../index.php?message=ok");
     } catch (Exception $e) {
-        //header("Location: ../index.php?message=error");
+        header("Location: ../index.php?message=error");
     }
 } else {
     header("Location: ../index.php?message=notfound");
