@@ -92,7 +92,7 @@ $filas = mysqli_fetch_array($res);
             </a>
 
             <!--Reportes-->
-            <a href="#">
+            <a href="../Reportes.php">
                 <div class="option">
                     <i class="fa-solid fa-file-circle-check" title="Reportes"></i>
                     <h4>Reportes</h4>
