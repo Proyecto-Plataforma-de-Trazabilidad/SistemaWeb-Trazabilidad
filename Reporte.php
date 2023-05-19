@@ -33,8 +33,8 @@ $filas = mysqli_fetch_array($res);
 <br>
 <br>
 
-<div width="90%" height="300px">
-  <canvas id="myChart"></canvas>
+<div >
+  <canvas id="myChart" width="60%" height="400px"></canvas>
 </div>
 
 <br><br>

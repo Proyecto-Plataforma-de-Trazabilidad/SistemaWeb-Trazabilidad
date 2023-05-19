@@ -81,7 +81,7 @@ $(document).ready(function () {
                 };
 
                 var barGraph = new Chart(graphTarget, {//asigancion de datos y tipo grafica
-                    type: 'horizontalBar',
+                    type: 'bar',
                     data: chartdata,
                     onAnimationComplete: function () {
                         this.fillText(this.datasets[0].bars, true);
