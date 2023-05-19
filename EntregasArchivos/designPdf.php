@@ -213,9 +213,9 @@ $currentsite = getcwd();
     <!-- encabezado -->
     <section class="container-encabezado">
         <div class="container-encabezado-imagen">
-            <img src="http://localhost/SistemaWeb-Trazabilidad/Logos/APEAJAL2.jpg" alt="Logo" class="logo" />
-            <img src="http://localhost/SistemaWeb-Trazabilidad/Logos/AMOCALI.jpg" alt="Logo" class="logo" />
-            <img src="http://localhost/SistemaWeb-Trazabilidad/Logos/ASICA.jpg" alt="Logo" class="logo" />
+            <img src="https://campolimpiojal.com/Logos/APEAJAL2.jpg" alt="Logo" class="logo" />
+            <img src="https://campolimpiojal.com/Logos/AMOCALI.jpg" alt="Logo" class="logo" />
+            <img src="https://campolimpiojal.com/Logos/ASICA.jpg" alt="Logo" class="logo" />
         </div>
 
         <div class="container-encabezado-recolector">
