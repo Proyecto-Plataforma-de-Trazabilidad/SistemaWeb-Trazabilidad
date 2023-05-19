@@ -78,6 +78,7 @@ include "../Layout/navMenu2.php";
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Numero Contenedor</th>
+                        <th scope="col">Origen de Contenedor</th>
                         <th scope="col">Recolector</th>
                         <th scope="col">Responsable</th>
                         <th scope="col">Peso</th>

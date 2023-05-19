@@ -108,6 +108,80 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break; 
+        case 'Rep1EEDF':
+            $query="SELECT Edo,count(Edo) as TotalE FROM empresadestino GROUP by Edo;";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;  
+        case 'Rep1MEDF':
+            $edo=$_POST['edo'];
+            $query="select Municipio,count(Municipio)as TotalM from empresadestino where Edo='$edo' GROUP BY Municipio;";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break; 
+        case 'RepGMu':
+            $query="select count(*) as TotalMu from municipio";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break; 
+        case 'Rep1VMu':
+            $query="SELECT M.NombreLugar,count(*) as TotalVMu FROM municipiovehiculos as VM INNER JOIN municipio as M on VM.IdMunicipio=M.IdMunicipio GROUP by M.IdMunicipio";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
+    //---------------Movimientos-Reportes-----------------------------------
+         case 'RepTPP':
+            $pro=$_POST['pro'];
+            $fi=$_POST['fi'];
+            $ff=$_POST['ff'];
+
+            $query="select P.Nombre,SUM(D.CantidadPiezas) As TotalPiezas FROM detalleorden as D INNER JOIN ordenproductos AS O on D.IdOrden=O.IdOrden inner join productores as P on O.IdProductor=P.IdProductor where P.Nombre='$pro' and O.Fecha BETWEEN '$fi' and '$ff'";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
+        case 'RepTQP':
+            $pro=$_POST['pro'];
+            $tq=$_POST['tq'];
+            
+            $query="select P.Nombre,Sum(D.CantidadPiezas) As TotalPiezas FROM detalleorden as D INNER JOIN ordenproductos AS O on D.IdOrden=O.IdOrden inner join productores as P on O.IdProductor=P.IdProductor INNER join tipoquimico as TQ on D.IdTipoQuimico=TQ.IdTipoQuimico where TQ.Concepto='$tq' and P.Nombre='$pro'";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
+        case 'RepTEP':
+            $pro=$_POST['pro'];
+            $te=$_POST['te'];
+            
+            $query="select P.Nombre,Sum(D.CantidadPiezas) As TotalPiezas FROM detalleorden as D INNER JOIN ordenproductos AS O on D.IdOrden=O.IdOrden inner join productores as P on O.IdProductor=P.IdProductor where D.TipoEnvase='$te' and P.Nombre='$pro'";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
+         case 'RepEPP':
+            $pro=$_POST['pro'];
+            $fi=$_POST['fi'];
+            $ff=$_POST['ff'];
+
+            $query="select P.Nombre,SUM(E.CantidadPiezas) As TotalPiezas FROM extraviados as E inner join productores as P on E.IdProductor=P.IdProductor where P.Nombre='$pro' and E.fecha BETWEEN '$fi' and '$ff'";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
+        case 'RepODis':
+            $dis=$_POST['dis'];
+            $fi=$_POST['fi'];
+            $ff=$_POST['ff'];
+
+            $query="select U.Nombre,count(*) As TotalE FROM entregas E inner join usuarios as U on E.IdUsuario=U.IdUsuario where U.Nombre='$dis' and E.fecha BETWEEN '$fi' and '$ff'";
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            break;
     }
         echo json_encode($res);
         $conn = null; //Limpia la conexión
