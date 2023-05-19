@@ -23,42 +23,63 @@ if ($enlace->connect_error) {
             }
             echo json_encode($data);
             mysqli_free_result($result); //limpiar comand
+            break;
 
         //Reporte de distribuidores más concurridos 2
         case '2':
             $query = "SELECT D.Nombre , COUNT(*) as total FROM ordenproductos as OP INNER JOIN distribuidores as D on OP.IdDistribuidor = D.IdDistribuidor GROUP by D.Nombre ORDER BY total ASC";
-            $resultado = $conn->prepare($query);
-            $resultado->execute();
-            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            $result = mysqli_query($enlace, $query);
+            $data = array();
+            foreach ($result as $row) {
+                $data[] = $row;
+            }
+            echo json_encode($data);
+            mysqli_free_result($result); //limpiar comand
             break;
 
         //Reporte de contenedores más concurridos 3
         case '3':
             $query = "SELECT D.Nombre , COUNT(*) as total FROM ordenproductos as OP INNER JOIN distribuidores as D on OP.IdDistribuidor = D.IdDistribuidor GROUP by D.Nombre ORDER BY total ASC";
-            $resultado = $conn->prepare($query);
-            $resultado->execute();
-            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            $result = mysqli_query($enlace, $query);
+            $data = array();
+            foreach ($result as $row) {
+                $data[] = $row;
+            }
+            echo json_encode($data);
+            mysqli_free_result($result); //limpiar comand
             break;
         //Reporte de productores con más ordenes 4
         case '4':
             $query = "SELECT P.Nombre, count(*) as Total from productores as P INNER JOIN ordenproductos as OP on P.IdProductor = OP.IdProductor GROUP by P.Nombre Order By Total DESC";
-            $resultado = $conn->prepare($query);
-            $resultado->execute();
-            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            $result = mysqli_query($enlace, $query);
+            $data = array();
+            foreach ($result as $row) {
+                $data[] = $row;
+            }
+            echo json_encode($data);
+            mysqli_free_result($result); //limpiar comand
             break;
         //Reporte de municipios con menos entregas 5
         case '5':
             $query = "SELECT U.Nombre, count(*) as total from entregas as E inner JOIN usuarios as U on E.IdUsuario = U.IdUsuario where U.Idtipousuario=4 GROUP by U.Nombre Order BY total ASC";
-            $resultado = $conn->prepare($query);
-            $resultado->execute();
-            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            $result = mysqli_query($enlace, $query);
+            $data = array();
+            foreach ($result as $row) {
+                $data[] = $row;
+            }
+            echo json_encode($data);
+            mysqli_free_result($result); //limpiar comand
             break;
         //Reporte de distribuidores con menos entregas 6
         case '6':
             $query = "SELECT U.Nombre, count(*) as total from entregas as E inner JOIN usuarios as U on E.IdUsuario = U.IdUsuario where U.Idtipousuario=3 GROUP by U.Nombre Order BY total ASC";
-            $resultado = $conn->prepare($query);
-            $resultado->execute();
-            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            $result = mysqli_query($enlace, $query);
+            $data = array();
+            foreach ($result as $row) {
+                $data[] = $row;
+            }
+            echo json_encode($data);
+            mysqli_free_result($result); //limpiar comand
             break;
         //Reporte de contenedores con menos salidas 7
 
