@@ -6,7 +6,7 @@ $(document).ready(function () {
     $('#consu').click(function (e) {
         e.preventDefault();
 
-        let opcion = '1';
+        let opcion = '2';
 
         let parametros = { "opcion": opcion }
 
@@ -23,11 +23,11 @@ $(document).ready(function () {
                 // let enteros = [];
 
                 var cant = [];
-                var tipo = [];
+                var nombre = [];
 
                 for (var i in array) {
                     //tomar la cantidad 
-                    dat = (array[i].Total);//extraer valores del json
+                    dat = (array[i].total);//extraer valores del json
                     if (dat == null)//si la suma es 0 para que no marque error
                     {
                         let n = 0;
@@ -40,10 +40,10 @@ $(document).ready(function () {
                         cant.push(n);
                     }
 
-                    dat = (array[i].TipoEnvase);//extraer valores del json
+                    dat = (array[i].Nombre);//extraer valores del json
                     //la grafica solo recibe arreglos de etiquetas o de datos
-                    tipo.push("TipoEnvase " + dat);//indicando que la etiqueta sera el productor y su nombre
-                    console.log(tipo);
+                    nombre.push("Distribuidor " + dat);//indicando que la etiqueta sera el productor y su nombre
+                    console.log(nombre);
                 }
 
 
@@ -67,7 +67,7 @@ $(document).ready(function () {
 
                 //aqui todo lo dela grafica config
                 var chartdata = {
-                    labels: tipo,
+                    labels: nombre,
                     datasets: [
                         {
                             label: 'Piezas',
@@ -81,7 +81,7 @@ $(document).ready(function () {
                 };
 
                 var barGraph = new Chart(graphTarget, {//asigancion de datos y tipo grafica
-                    type: 'bar',
+                    type: 'doughnut',
                     data: chartdata,
                     onAnimationComplete: function () {
                         this.fillText(this.datasets[0].bars, true);
@@ -95,7 +95,7 @@ $(document).ready(function () {
                             }
                         }
                     }
-                });
+                    });
 
 
             }

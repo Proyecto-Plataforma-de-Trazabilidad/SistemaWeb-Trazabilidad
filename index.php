@@ -85,7 +85,7 @@
 </head>
 
 <body>
-        <br><br><br><br>
+        
     <div class="container w-50 bg-white" id="contenido">
         <div class="row">
             <div class="col bg">
@@ -107,6 +107,7 @@
                         </center>
                     </div>
                 </div>
+
 
                 <h2 class="fw-bold text-center py-5">Bienvenido</h2>
 

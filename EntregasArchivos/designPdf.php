@@ -24,37 +24,53 @@ $currentsite = getcwd();
             background: #ffffff;
             width: 195mm;
             height: 279.4mm;
-            border: solid;
+            /* border: solid; */
         }
 
         .container-encabezado-imagen {
             text-align: center;
-            width: 270px;
-            height: 160px;
-            margin-left: auto;
+            width: 80%;
+            height: 10%;
+            margin-left: 16%;
             margin-right: auto;
-            margin-top: 10px;
+            margin-top: 40px;
         }
 
-        .container-identificacion{
+        .container-identificacion {
             margin-top: 0%;
         }
 
         .logo {
             display: inline-block;
-            width: 140px;
-            height: 140px;
-            margin-right: 45px;
+            width: 80px;
+            height: 80px;
+            margin-right: 90px;
         }
 
         .container-encabezado-recolector {
             text-align: center;
             width: 270px;
-            height: 160px;
+            height: 100px;
             margin-left: auto;
             margin-right: auto;
             margin-top: 10px;
 
+        }
+
+        .container-identificacion {
+            padding-left: 10px;
+            padding-right: 25px;
+            margin-top: 0px;
+        }
+
+        .container-identificacion-fecha {
+            float: left;
+            margin-left: 15px;
+        }
+
+        .container-identificacion-numero {
+            float: right;
+            margin-right: 15px;
         }
 
         .recolector-nombre {
@@ -70,20 +86,6 @@ $currentsite = getcwd();
             font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
-        .container-identificacion {
-            clear: both;
-            margin-top: 10px;
-        }
-
-        .container-identificacion-fecha {
-            float: left;
-            margin-left: 15px;
-        }
-
-        .container-identificacion-numero {
-            float: right;
-            margin-right: 15px;
-        }
 
         .identificacion-texto {
             text-align: center;
@@ -100,9 +102,10 @@ $currentsite = getcwd();
         /* datos productor */
         .container-productor {
             border: solid;
+            margin-top: 50px;
             border-color: darkgreen;
             border-width: 3px;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
             margin-left: 15px;
             margin-right: 25px;
             padding-bottom: 5px;
@@ -162,6 +165,47 @@ $currentsite = getcwd();
             color: #ffffff;
             font-size: .85rem
         }
+
+        .declaracion-mensaje {
+            text-align: center;
+            padding: 0 10 0 10;
+        }
+
+        .container-firmaDeclaracion {
+            width: 80%;
+            display: inline-block;
+        }
+
+        .declaracion-firmas p {
+            float: left;
+            width: 80%;
+            /* Ajusta el ancho según tus necesidades */
+            box-sizing: border-box;
+        }
+
+        .container-responsables{
+            width: 80%;
+            margin-top: 10%;
+            text-align: left;
+            
+        }
+
+        .responsables-entrega{
+            width: 50%;
+            float: left;                        
+        }
+
+        .responsables-recepcion{
+            width: 50%;
+            float: right;
+            margin-left: 60px;
+        }
+
+
+
+
+
+
     </style>
 </head>
 
@@ -169,7 +213,9 @@ $currentsite = getcwd();
     <!-- encabezado -->
     <section class="container-encabezado">
         <div class="container-encabezado-imagen">
-            <img src="http://localhost/SistemaWeb-Trazabilidad/Logos/AMOCALI.jpg" alt="Logo" class="logo" />
+            <img src="https://campolimpiojal.com/Logos/APEAJAL2.jpg" alt="Logo" class="logo" />
+            <img src="https://campolimpiojal.com/Logos/AMOCALI.jpg" alt="Logo" class="logo" />
+            <img src="https://campolimpiojal.com/Logos/ASICA.jpg" alt="Logo" class="logo" />
         </div>
 
         <div class="container-encabezado-recolector">
@@ -184,27 +230,31 @@ $currentsite = getcwd();
                 francisco
             </p>
         </div>
-
-        <div class="container-encabezado-espacio"></div>
     </section>
 
     <!-- fecha y numero de recibo -->
     <section class="container-identificacion">
         <div class="container-identificacion-fecha">
-            <p class="identificacion-texto">Fecha: <?php echo $_POST['entrega']['fecha'] ?></p>
+            <p class="identificacion-texto">Fecha:
+                <?php echo $_POST['entrega']['fecha'] ?>
+            </p>
         </div>
         <div class="container-identificacion-numero">
             <p class="identificacion-texto">
-                Recibo de Entrega-Recepción: <em class="numRecibo"><?php echo $_POST['entrega']['idEntrega'] ?></em>
+                Recibo de Entrega-Recepción: <em class="numRecibo">
+                    <?php echo $_POST['entrega']['idEntrega'] ?>
+                </em>
             </p>
         </div>
     </section>
-        <?php
-            $comando = mysqli_query($enlace, "SELECT * FROM productores WHERE IdProductor = '" . $_POST['entrega']['idProduc'] . "'");
-            $fila = mysqli_fetch_array($comando);
-            mysqli_free_result($comando);
-     
-        ?>
+
+
+    <?php
+    $comando = mysqli_query($enlace, "SELECT * FROM productores WHERE IdProductor = '" . $_POST['entrega']['idProduc'] . "'");
+    $fila = mysqli_fetch_array($comando);
+    mysqli_free_result($comando);
+
+    ?>
     <!-- datos del productor que entrega -->
     <section class="container-productor">
         <div class="container-productor-titulo">
@@ -212,19 +262,28 @@ $currentsite = getcwd();
         </div>
 
         <div class="container-productor-nombre">
-            <p><strong>nombre:</strong> <?php echo $fila[1] ?></p>
-            <p><strong>Tel:</strong> <?php echo $fila[8] ?></p>
+            <p><strong>Nombre:</strong>
+                <?php echo $fila[1] ?>
+            </p>
+            <p><strong>Telefono:</strong>
+                <?php echo $fila[8] ?>
+            </p>
         </div>
 
         <div class="container-productor-domicilio">
             <p>
-                <strong>Domicilio:</strong> <?php echo $fila[3] ?>
+                <strong>Domicilio:</strong>
+                <?php echo $fila[3] ?>
             </p>
         </div>
 
         <div class="container-productor-lugar">
-            <p><strong>Municipio:</strong> <?php echo $fila[6] ?></p>
-            <p><strong>Estado:</strong> <?php echo $fila[7] ?></p>
+            <p><strong>Municipio:</strong>
+                <?php echo $fila[6] ?>
+            </p>
+            <p><strong>Estado:</strong>
+                <?php echo $fila[7] ?>
+            </p>
         </div>
     </section>
 
@@ -244,18 +303,26 @@ $currentsite = getcwd();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
-                        $detalle = $_POST['detalle'];
-                        foreach($detalle as $t){
-                            ?>
-                            <tr>
-                                <td><?php echo $t['tipoEnvase'] ?></td>
-                                <td><?php echo $t['cantidad'] ?></td>
-                                <td><?php echo $t['peso'] ?>kg</td>
-                                <td><?php echo $t['observa'] ?></td>
-                                </tr>
-                            <?php
-                        }
+                    <?php
+                    $detalle = $_POST['detalle'];
+                    foreach ($detalle as $t) {
+                        ?>
+                        <tr>
+                            <td>
+                                <?php echo $t['tipoEnvase'] ?>
+                            </td>
+                            <td>
+                                <?php echo $t['cantidad'] ?>
+                            </td>
+                            <td>
+                                <?php echo $t['peso'] ?>kg
+                            </td>
+                            <td>
+                                <?php echo $t['observa'] ?>
+                            </td>
+                        </tr>
+                        <?php
+                    }
                     ?>
                 </tbody>
             </table>
@@ -275,6 +342,9 @@ $currentsite = getcwd();
                 AUTORIDAD FEDERAL
             </p>
         </div>
+    </section>
+
+    <section class="container-firmaDeclaracion">
         <div class="declaracion-firmas">
             <p><strong>Nombre:</strong>________________________________</p>
             <p><strong>Firma:</strong>_______________________</p>
@@ -287,14 +357,18 @@ $currentsite = getcwd();
             <h1 class="titulo">Datos de Responsable</h1>
         </div>
         <div class="responsables-entrega">
-            <p>_________________________________</p>
-            <p><?php echo $_POST['entrega']['nomResEntrega'] ?></p>
-            <p>Responsable de entrega</p>
+            <p>_________________________________                  </p>
+            <strong>
+                <?php echo $_POST['entrega']['nomResEntrega'] ?>
+            </strong>
+            <p>            Responsable de entrega</p>
         </div>
 
         <div class="responsables-recepcion">
             <p>_________________________________</p>
-            <p><?php echo $_POST['entrega']['nomResRecibe'] ?></p>
+            <strong>
+                <?php echo $_POST['entrega']['nomResRecibe'] ?>
+            </strong>
             <p>Responsable de recepción</p>
         </div>
     </section>
@@ -312,7 +386,7 @@ $html = ob_get_clean();
 require_once '../Librerias/dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
 
- $dompdf = new Dompdf(); //crear objeto 
+$dompdf = new Dompdf(); //crear objeto 
 
 // //opciones para mostrar imagenes 
 $options = $dompdf->getOptions();
@@ -332,8 +406,6 @@ $dompdf->setPaper('letter');
 $dompdf->render();
 
 // //poder trabajar el archivo           para poder descargarlo o solo abrirlo
-echo base64_encode($dompdf->stream("archivo_.pdf", array("Attachment" => false))); 
-
-
+echo base64_encode($dompdf->stream("archivo_.pdf", array("Attachment" => false)));
 
 ?>
