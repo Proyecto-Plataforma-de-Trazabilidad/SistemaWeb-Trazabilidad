@@ -177,7 +177,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             $fi=$_POST['fi'];
             $ff=$_POST['ff'];
 
-            $query="select U.Nombre,count(*) As TotalE FROM entregas E inner join usuarios as U on E.IdUsuario=U.IdUsuario where U.Nombre='$dis' and E.fecha BETWEEN '$fi' and '$ff'";
+            $query="select D.Nombre,count(*) as TotalE FROM ordenproductos as O INNER JOIN distribuidores as D on O.IdDistribuidor=D.IdDistribuidor where D.Nombre='$dis' and O.Fecha BETWEEN '$fi' and '$ff'";
             $resultado=$conn->prepare($query);
             $resultado->execute();
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
