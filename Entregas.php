@@ -57,16 +57,17 @@ include "Layout/navMenu.php";
                     required placeholder="Nombre de Empresa, Distribuidor, Municipio" data-nomRecolector="">
             </div>
 
-            <!-- <div class="col-sm-3">
-                <label for="OrdNombre" class="form-label">Número de recolector</label>
-                <input disabled type="text" id="innombre" name="nomDistribuidor" class="form-control" maxlength="30"
-                    required placeholder="Número de recolector">
-            </div>-->
+            <div class="col-sm-4">
+                <label for="" class="form-label">Contenedor</label>
+                <select name="contene" id="contene" class="form-select" required>
+                    <option hidden>Selecciona un contenedor</option>
+                </select>
+            </div>
 
             <div class="col-sm-4">
                 <label for="formFileMultiple" class="form-label">Subir recibo de entrega <small>(con
                         firmas)</small></label>
-                <input class="form-control" type="file" id="recibo" name="archRecibo" multiple>
+                <input class="form-control" type="file" id="recibo" name="archRecibo" multiple disabled>
             </div> 
 
             <div class="col-sm-4">
@@ -107,9 +108,9 @@ include "Layout/navMenu.php";
                     <label for="tipoEnva" class="form-label">Tipo de Envase</label>
                     <select name="tipoEnva" id="tipoEnva" class="form-select" required>
                         <option hidden>Selecciona una opción</option>
-                        <option value="Rígidos lavable">Rígidos lavable</option>
-                        <option value="Rígidos no lavable">Rígidos no lavable</option>
-                        <option value="Flexible">Flexible</option>
+                        <option value="Rígidos lavable">Rígidos lavables</option>
+                        <option value="Rígidos no lavable">Rígidos no lavables</option>
+                        <option value="Flexible">Flexibles</option>
                         <option value="Tapas">Cubetas</option>
                         <option value="Tapas">Cartón</option>
                         <option value="Tapas">Tambos</option>

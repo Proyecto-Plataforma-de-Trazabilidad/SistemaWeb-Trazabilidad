@@ -31,5 +31,27 @@ $(document).ready(function(){
             scrollX:true,
         });
     },true);
+
+    
+    $('#intipoorigen').on('change', function() {
+        console.log(this.value);
+        let tipoOrigen = this.value;
+        
+        $.ajax({
+            url:'Contenedores-Archivos/metodosCont.php',
+            data:{"tipo":"responsables", "origen": tipoOrigen},
+            type:'POST',
+            success:function(response){
+                if (response == "No hay responsables") {
+                    $('#inrespon option').remove();
+                    //!Poner mensaje de que no hay recolectores
+                } else {
+                    $('#inrespon').html(response);
+                }
+
+                
+            }
+        });
+    });
 });
 

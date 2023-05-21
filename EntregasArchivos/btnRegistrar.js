@@ -1,4 +1,4 @@
-$('#frmEntrega').submit(function(e) {
+$('#frmEntrega').submit(function (e) {
 
     e.preventDefault();  //detener la recarga de la pagina
 
@@ -7,6 +7,7 @@ $('#frmEntrega').submit(function(e) {
     let entrega = document.getElementById('numEntrega');
     let IdEntrega = entrega.dataset.numEntrega;
     let tipoRecolect = document.getElementById("tipoRecol").value;
+    let contenedor = document.getElementById('contene').value;
     let nomRecole = document.getElementById('nomRecol').value;
     let idProd = document.getElementById('nomProdu').value;
     let nomResEntrega = document.getElementById('nomResEntrega').value;
@@ -16,6 +17,7 @@ $('#frmEntrega').submit(function(e) {
     let datos = {
         idEntrega: IdEntrega,
         tipoRecol: tipoRecolect,
+        idContenedor: contenedor,
         nomRecol: nomRecole,
         idProduc: idProd,
         nomResEntrega: nomResEntrega,
@@ -33,10 +35,10 @@ $('#frmEntrega').submit(function(e) {
 
     if (filas[1] == undefined) {
         mensajeAdvertencia("Fallo al registrar", "Debe añadir un registro al detalle");
-    }else{
+    } else {
         //ciclo que recorre las filas del detalle
         for (var i = 1; i < filas.length; i++) {
-            
+
             //ejecutara todo el numero de filas
             var celdas = filas[i].getElementsByTagName('td'); //solo tomara las que son de td       
             var fila = {
@@ -53,31 +55,31 @@ $('#frmEntrega').submit(function(e) {
     //console.log(arreglo);
     insertarArchivo();
 
-    function insertarArchivo(){
+    function insertarArchivo() {
         $.ajax({
-            url:'EntregasArchivos/insertarArchivo.php',
-            type:'POST',
-            data:formData,
+            url: 'EntregasArchivos/insertarArchivo.php',
+            type: 'POST',
+            data: formData,
             contentType: false,
             cache: false,
-            processData:false,
-            success:function(response){
+            processData: false,
+            success: function (response) {
                 resArchivo = JSON.parse(response);
                 console.log(resArchivo);
 
                 datos.recibo = resArchivo.rutaRecibo;
                 console.log(datos);
                 // //!Errores de extension
-                if(resArchivo.extCorrectaRecibo == "No permitida")
+                if (resArchivo.extCorrectaRecibo == "No permitida")
                     mensajeError('Extensión incorrecta', 'Del recibo', '#archRecibo');
-                else if(resArchivo.guardadoRecibo == "Fallido") //!Errores de guardado
+                else if (resArchivo.guardadoRecibo == "Fallido") //!Errores de guardado
                     mensajeError('Error al guardar', 'El recibo no se pudo guardar, intentelo de nuevo', '#archRecibo');
-                else{
+                else {
                     insertarEntrega(datos, arreglo);
-                //     if (opcion == "registra") 
+                    //     if (opcion == "registra") 
 
-                //     else
-                //         actualizarOrden(datos);
+                    //     else
+                    //         actualizarOrden(datos);
                 }
 
             }
@@ -92,7 +94,7 @@ $('#frmEntrega').submit(function(e) {
             url: 'EntregasArchivos/insertarEntrega.php',
             data: { entrega: datosValidos, detalle: arregloValido },
             type: 'POST',
-            success: function (response) {            
+            success: function (response) {
                 if (response == 'correcto') {
                     Swal.fire({
                         icon: 'success',
@@ -123,10 +125,10 @@ $('#frmEntrega').submit(function(e) {
                     title: 'No se pudo registrar por error',
                     text: thrownError,
                 });
-            }, 
+            },
         });
-        
-    } 
+
+    }
 });
 
 
