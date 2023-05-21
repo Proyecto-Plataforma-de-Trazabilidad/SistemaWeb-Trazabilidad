@@ -185,13 +185,9 @@ if($_SERVER['REQUEST_METHOD']=='POST')
             //Reporte Envases mas ordenados1
         case '1':
             $query = "SELECT TipoEnvase, SUM(CantidadPiezas) as Total from detalleorden GROUP BY TipoEnvase order by Total DESC";
-            $result = mysqli_query($enlace, $query);
-            $data = array();
-            foreach ($result as $row) {
-                $data[] = $row;
-            }
-            echo json_encode($data);
-            mysqli_free_result($result); //limpiar comand
+            $resultado=$conn->prepare($query);
+            $resultado->execute();
+            $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
             break;
 
         //Reporte de distribuidores más concurridos 2
