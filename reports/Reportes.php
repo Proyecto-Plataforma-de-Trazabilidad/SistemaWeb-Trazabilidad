@@ -39,7 +39,7 @@ if ($enlace->connect_error) {
 
         //Reporte de contenedores más concurridos 3
         case '3':
-            $query = "SELECT D.Nombre , COUNT(*) as total FROM ordenproductos as OP INNER JOIN distribuidores as D on OP.IdDistribuidor = D.IdDistribuidor GROUP by D.Nombre ORDER BY total ASC";
+            $query = "SELECT CONCAT(c.IdContenedor,',',c.Origen) as Contenedor,count(*) as Total from entregas as E INNER JOIN contenedores as c on E.IdContenedor=c.IdContenedor group BY Contenedor order by Total DESC";
             $result = mysqli_query($enlace, $query);
             $data = array();
             foreach ($result as $row) {
