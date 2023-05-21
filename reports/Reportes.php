@@ -61,7 +61,7 @@ if ($enlace->connect_error) {
             break;
         //Reporte de municipios con menos entregas 5
         case '5':
-            $query = "SELECT U.Nombre, count(*) as total from entregas as E inner JOIN usuarios as U on E.IdUsuario = U.IdUsuario where U.Idtipousuario=4 GROUP by U.Nombre Order BY total ASC";
+            $query = "SELECT U.Nombre, count(*) as Total from entregas as E inner JOIN usuarios as U on E.IdUsuario = U.IdUsuario inner join tipousuario as TU on U.Idtipousuario=TU.Idtipousuario where TU.Idtipousuario=4 GROUP by U.Nombre Order BY total ASC";
             $result = mysqli_query($enlace, $query);
             $data = array();
             foreach ($result as $row) {
