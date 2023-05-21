@@ -85,7 +85,7 @@
 </head>
 
 <body>
-        <br><br><br><br>
+        
     <div class="container w-50 bg-white" id="contenido">
         <div class="row">
             <div class="col bg">
