@@ -1,9 +1,9 @@
 <?php
-    $host="aws-dbinstance.cagy0earnfql.us-east-2.rds.amazonaws.com";
+    $host="156.67.73.0";
     $puerto="3306";
-    $usuario="admin";
+    $usuario="u517350403_admindb";
     $contrasena="Te-k3li-L!";
-    $baseDeDatos="apeajaldb";
+    $baseDeDatos="u517350403_campolimpiojal";
 
     $enlace=mysqli_connect($host.":".$puerto, $usuario, $contrasena, $baseDeDatos);
     if(!$enlace)
