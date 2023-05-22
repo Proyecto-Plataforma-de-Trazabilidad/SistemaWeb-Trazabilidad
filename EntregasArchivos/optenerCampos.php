@@ -95,11 +95,9 @@ if ($enlace->connect_error) {
     mysqli_free_result($comando);
 
 
-        $datos = json_encode(array('mensaje' => $mensaje, 'entrega' => $entrega, 'tipoRecol'=> $tipoRecolec, 'nomRecol'=> $nombreRecolec,'produtores' => $productores, 'contenedores' => $contenedores));
-        echo $datos;
-    
+    $datos = json_encode(array('mensaje' => $mensaje, 'entrega' => $entrega, 'tipoRecol'=> $tipoRecolec, 'nomRecol'=> $nombreRecolec,'produtores' => $productores, 'contenedores' => $contenedores));
+    echo $datos;
 
-    
     mysqli_close($enlace);
 }
 
