@@ -27,6 +27,10 @@
     }
 
     if ($tipo_funcion=="responsables") {
+
+        // if ($_POST["origen"] == "Amocalli" || $_POST["origen"] == "CAT" || $_POST["origen"] == "Empresa Recicladora") {
+            
+        // }
         $r="SELECT U.IdUsuario, U.Nombre AS 'NomRespon' FROM usuarios AS U INNER JOIN tipousuario AS T ON T.Idtipousuario=U.Idtipousuario WHERE T.Descripcion = '".$_POST["origen"]."';";
         $comando= mysqli_query($enlace, $r);
 
