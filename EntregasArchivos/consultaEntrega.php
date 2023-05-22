@@ -77,7 +77,7 @@ $rol = $filas['Idtipousuario'];
                     </div>                    
                 </div>
 
-                <div class="col-sm-1 button-buscar"> <!--Agrega el detalle a la tabla-->
+                <div class="col-sm-1 button-buscar"> 
                     <div class="button-buscar">
                         <button id="aceptar" type="button" class="btn btn-outline-dark" name="Aceptar">
                             <i class="fa-solid fa-magnifying-glass"></i>

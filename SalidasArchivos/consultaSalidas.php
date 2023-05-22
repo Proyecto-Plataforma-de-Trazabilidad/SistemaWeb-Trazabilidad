@@ -43,6 +43,9 @@ include "../Layout/navMenu2.php";
                     <label for="recolector" class="form-label" id="tituloProdu">Nombre de Recolector</label>
                     <select disabled name="nomRecolector" id="recolector" class="form-select" >
                         <option hidden>Selecciona un recolector </option>
+                        <option value="Distribuidores">Distribuidores</option>
+                        <option value="Empresa Recolectora">Empresa Recolectora</option>
+                        <option value="Municipios">Municipios</option>
                     </select>
                 </div>
 
@@ -60,7 +63,7 @@ include "../Layout/navMenu2.php";
                     </div>
                 </div>
 
-                <div class="col-sm-3 button-buscar"> <!--Agrega el detalle a la tabla-->
+                <div class="col-sm-3 button-buscar"> 
                     <div class="">
                         <button id="aceptar" type="button" class="btn btn-outline-dark" name="Aceptar">
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -101,7 +104,7 @@ include "../Layout/navMenu2.php";
     <script type="text/javascript" src="../bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../datatables.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript" src="consultas.js"></script>
+    <script type="text/javascript" src="Funciones/consultas.js"></script>
     <script src="../Layout/menujs.js"></script>
 
 </body>
