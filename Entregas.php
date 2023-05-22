@@ -108,13 +108,14 @@ include "Layout/navMenu.php";
                     <label for="tipoEnva" class="form-label">Tipo de Envase</label>
                     <select name="tipoEnva" id="tipoEnva" class="form-select" required>
                         <option hidden>Selecciona una opción</option>
-                        <option value="Rígidos lavable">Rígidos lavables</option>
-                        <option value="Rígidos no lavable">Rígidos no lavables</option>
-                        <option value="Flexible">Flexibles</option>
-                        <option value="Tapas">Cubetas</option>
-                        <option value="Tapas">Cartón</option>
-                        <option value="Tapas">Tambos</option>
-                        <option value="Tapas">Metal</option>
+                        <option value="Rígidos lavables">Rígidos lavables</option>
+                        <option value="Rígidos no lavables">Rígidos no lavables</option>
+                        <option value="Flexibles">Flexibles</option>
+                        <option value="Tapas">Tapas</option>
+                        <option value="Cubetas">Cubetas</option>
+                        <option value="Cartón">Cartón</option>
+                        <option value="Tambos">Tambos</option>
+                        <option value="Metal">Metal</option>
                     </select>
                 </div>
             </div>
@@ -141,8 +142,12 @@ include "Layout/navMenu.php";
                     placeholder="Escribe una descripción"></textarea>
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-2">
                 <button type="button" id="aceptar" class="btn btn-primary button-aceptar"  name="Aceptar">Aceptar</button>
+            </div>
+
+            <div class="col-sm-6">
+                <canvas id="myChart" width="100%" height="100px"></canvas>
             </div>
         </form>
 
@@ -185,10 +190,15 @@ include "Layout/navMenu.php";
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--Liberia delas graficas-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
     <script type="text/javascript" src="./EntregasArchivos/llenarCampos.js"></script> <!-- scrip para llenar los campos del form  -->
     <script type="text/javascript" src="./EntregasArchivos/llenarDetalle.js"></script> <!-- scrip para llenar el detalle -->
     <script type="text/javascript" src="./EntregasArchivos/btnGenerarPDF.js"></script> <!-- scrip para lanzar el generador de PDF-->
     <script type="text/javascript" src="./EntregasArchivos/btnRegistrar.js"></script>   <!-- scrip para realizar el registro -->
+
 
     <script src="Layout/menujs.js"></script>
     

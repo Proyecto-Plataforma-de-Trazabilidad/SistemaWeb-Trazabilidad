@@ -108,9 +108,9 @@ include "Layout/navMenu.php";
                     <label for="tipoEnva" class="form-label">Tipo de Envase</label>
                     <select name="tipoEnva" id="tipoEnva" class="form-select" required>
                         <option hidden>Selecciona un tipo</option>
-                        <option value="Rígidos lavable">Rígidos lavables</option>
-                        <option value="Rígidos no lavable">Rígidos no lavables</option>
-                        <option value="Flexible">Flexibles</option>
+                        <option value="Rígidos lavables">Rígidos lavables</option>
+                        <option value="Rígidos no lavables">Rígidos no lavables</option>
+                        <option value="Flexibles">Flexibles</option>
                     </select>
                 </div>
             </div>
