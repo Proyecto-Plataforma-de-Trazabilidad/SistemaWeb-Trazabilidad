@@ -63,7 +63,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $res = $resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
         //----------------Salidas distribuidor,Muni,ERP--------------------------------------------
-        case 'EnDME':
+        case 'SaDME':
             $re=$_POST['re'];
             $fi=$_POST['fi'];//fecha inicial
             $ff=$_POST['ff'];//fecha final
