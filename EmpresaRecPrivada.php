@@ -45,6 +45,8 @@ $filas = mysqli_fetch_array($res);
     <input type="text" class="form-control" id="incp" maxlength="5" name="incp" pattern="[0-9]{5}" placeholder="49000">
   </div>
 
+  
+
 
 
   <div class="col-4">

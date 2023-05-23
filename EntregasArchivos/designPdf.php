@@ -188,17 +188,19 @@ $currentsite = getcwd();
             margin-top: 10%;
             text-align: left;
             
+            
         }
 
         .responsables-entrega{
             width: 50%;
-            float: left;                        
+            float: left; 
+                                  
         }
 
         .responsables-recepcion{
             width: 50%;
             float: right;
-            margin-left: 60px;
+            
         }
 
 
@@ -372,6 +374,7 @@ $currentsite = getcwd();
             <p>Responsable de recepción</p>
         </div>
     </section>
+
 </body>
 
 </html>
