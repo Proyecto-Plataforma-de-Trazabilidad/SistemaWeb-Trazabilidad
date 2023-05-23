@@ -14,7 +14,18 @@ $(document).ready(function () {
       success: function (response) {
         let datos = JSON.parse(response);//Trae los datos en formato json y los pasa a objeto
         //console.log(datos);
-        piezasProductor = datos.TotalPiezasOrden;
+        piezasProductor = datos.TotalPiezasOrden - datos.TotalPiezasEntregadas;
+        console.log(piezasProductor);
+        if (piezasProductor <= 0) {
+          $('#aceptar').prop("disabled", true); //Desactiva el detalle para q o registre
+          Swal.fire({
+            icon: 'warning',
+            title: 'El productor no cuenta con piezas',
+            text: 'El productor ya entrego todas las piezas que ordeno',
+            showConfirmButton: false,
+            timer: 2500
+          });
+        }
       }
 
     });
@@ -141,6 +152,14 @@ $(document).ready(function () {
         showConfirmButton: false,
         timer: 2500
       });
+    } else if (valPiezas > piezasProductor) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'El productor no debería contar con esa cantidad de piezas',
+        text: 'Intente con otra cantidad',
+        showConfirmButton: false,
+        timer: 2500
+      });
     } else {
       let fila = '<tr id="row' + i + '"> <td>' + i + '</td> <td>' + valEnvase + '</td> <td>' + valPiezas + '</td> <td>' + valPeso + '</td> <td>' + valObser + '</td> <td><button style="background-color: #dc3545 !important" type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Eliminar</button></td></tr>';
 
@@ -156,9 +175,12 @@ $(document).ready(function () {
 
       StatusConten = parseInt(StatusConten) + parseInt(valPiezas);
       CapacidadConten = CapacidadConten - valPiezas;
+      piezasProductor = piezasProductor - valPiezas;
 
       console.log("Capacidad: " + CapacidadConten);
       console.log("Status: " + StatusConten);
+      console.log("Piezas del productor: " + piezasProductor);
+
       actualizaGrafico(CapacidadConten, StatusConten);
     }
   });
@@ -183,9 +205,12 @@ $(document).ready(function () {
         let cantidadPza = $('#row' + button_id + '').find("td:nth-child(3)").text();
         StatusConten = parseInt(StatusConten) - parseInt(cantidadPza);
         CapacidadConten = parseInt(CapacidadConten) + parseInt(cantidadPza);
+        piezasProductor = parseInt(piezasProductor) + parseInt(cantidadPza);
 
         console.log("Capacidad: " + CapacidadConten);
         console.log("Status: " + StatusConten);
+        console.log("Piezas del productor: " + piezasProductor);
+
         actualizaGrafico(CapacidadConten, StatusConten);
 
         //Elimina la fila
