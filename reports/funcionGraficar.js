@@ -18,8 +18,8 @@ $(document).ready(function () {
             //ajax para graficar
             $('#consu').click(function (e) {
                 e.preventDefault();
-
-                consulta(opcionEntero,'Nombre','Nombre Distribuidor');
+                //       numOpcion, columnaConsulta, titulos para grafica, tipoGrafica
+                consulta(opcionEntero, 'TipoEnvase', 'Tipo de Envase', 'bar');
             });
 
             break;
@@ -30,8 +30,52 @@ $(document).ready(function () {
             //ajax para graficar
             $('#consu').click(function (e) {
                 e.preventDefault();
+                //       numOpcion, columnaConsulta, titulos para grafica,  tipoGrafica
+                consulta(opcionEntero, 'Nombre', 'Nombre Distribuidor', 'doughnut');
+            });
+            break;
 
-                consulta(opcionEntero);
+        //Reporte de contenedores más concurridos 3
+        case 3:
+            texto.innerText = "Reporte de contenedores más concurridos"; //escribir titulo de reporte
+            //ajax para graficar
+            $('#consu').click(function (e) {
+                e.preventDefault();
+                //       numOpcion, columnaConsulta, titulos para grafica,  tipoGrafica
+                consulta(opcionEntero, 'Contenedor', 'Numero y Origen de Contenedor', 'bar');
+            });
+            break;
+
+        //Reporte de productores con más ordenes 4
+        case 4:
+            texto.innerText = "Reporte de productores con más ordenes"; //escribir titulo de reporte
+            //ajax para graficar
+            $('#consu').click(function (e) {
+                e.preventDefault();
+                //       numOpcion, columnaConsulta, titulos para grafica,  tipoGrafica
+                consulta(opcionEntero, 'Nombre', 'Nombre Productor', 'bar');
+            });
+            break;
+
+        //Reporte de municipios con menos entregas 5
+        case 5:
+            texto.innerText = "Reporte de municipios con menos entregas"; //escribir titulo de reporte
+            //ajax para graficar
+            $('#consu').click(function (e) {
+                e.preventDefault();
+                //       numOpcion, columnaConsulta, titulos para grafica,  tipoGrafica
+                consulta(opcionEntero, 'Nombre', 'Nombre de municipio', 'bar');
+            });
+            break;
+        
+        //Reporte de distribuidores con menos entregas 6
+        case 6:
+            texto.innerText = "Reporte de distribuidores con menos entregas"; //escribir titulo de reporte
+            //ajax para graficar
+            $('#consu').click(function (e) {
+                e.preventDefault();
+                //       numOpcion, columnaConsulta, titulos para grafica,  tipoGrafica
+                consulta(opcionEntero, 'Nombre', 'Nombre de distribuidor', 'pie');
             });
             break;
 
@@ -42,7 +86,7 @@ $(document).ready(function () {
 
 
 
-    function consulta(opc,col1,titulo1) {
+    function consulta(opc, col1, titulo1, grafica) {
         let parametros = { "opcion": opc }
         //console.log(parametros);//parametros
         $.ajax({
@@ -74,14 +118,15 @@ $(document).ready(function () {
                         cant.push(n);
                     }
 
-                    dat = (array[i].Nombre);//extraer valores del json
+                    var dat = array[i][col1];//extraer valores del json
+                    console.log(dat);
                     //la grafica solo recibe arreglos de etiquetas o de datos
-                    tipo.push("Distribuidor: " +dat);//indicando que la etiqueta sera el productor y su nombre
-                    //console.log(tipo);
+                    tipo.push(titulo1 + ": " + dat);//indicando que la etiqueta sera el productor y su nombre
+                    console.log(tipo);
                 }
 
                 //   subtitulos, datos, tipoGrafica
-                graficar(tipo, cant, 'bar');        //Generar grafica
+                graficar(tipo, cant, grafica);        //Generar grafica
 
             }
         });
@@ -90,7 +135,7 @@ $(document).ready(function () {
     };
 
 
-    function graficar(label, data, tipo, ) {
+    function graficar(label, data, tipo,) {
         let chartStatus = Chart.getChart("myChart"); // <canvas> id
         if (chartStatus != undefined) {//si ya existe destruyelo, si no no entra
             chartStatus.destroy();
