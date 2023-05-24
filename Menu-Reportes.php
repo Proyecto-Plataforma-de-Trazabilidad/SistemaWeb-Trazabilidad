@@ -51,17 +51,17 @@ $filas = mysqli_fetch_array($res);
                             aria-labelledby="panelsStayOpen-headingOne">
                             <div class="accordion-body">
 
-                                <div class="menu-item" id="Ordenes" onclick="location.href='ReportesArchivos/Envases.php'">
+                                <div class="menu-item"  data-url="ReportesArchivos/Envases.php" data-opcionreporte="2">
                                     <img src="Recursos/Iconos/Envases2.svg" alt="Uso de Envases" class="menu-item-imagen">
-                                    <p class="menu-item-titulo">Uso de Envases</p>
+                                    <p class="menu-item-titulo" >Uso de Envases</p>
                                 </div>
 
-                                <div class="menu-item" id="Ordenes"
-                                    onclick="location.href='ReportesArchivos/EnvasesMasOrden.php'">
+                                <div class="menu-item"  data-url="ReportesArchivos/EnvasesMasOrden.php" data-opcionreporte="1">
                                     <img src="Recursos/Iconos/OrdenesMas.svg" alt="Envases mas orden"
                                         class="menu-item-imagen">
                                     <p class="menu-item-titulo">Envases Más Ordenados</p>
-                                </div>
+                                </div>                                
+
                             </div>
 
                         </div>
@@ -78,15 +78,14 @@ $filas = mysqli_fetch_array($res);
                         <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
                             aria-labelledby="panelsStayOpen-headingTwo">
                             <div class="accordion-body">
-                                <div class="menu-item" id="Ordenes"
-                                    onclick="location.href='ReportesArchivos/DistribuidoresConcurridos.php'">
+                                <div class="menu-item"  data-url='ReportesArchivos/DistribuidoresConcurridos.php'" data-opcionreporte="2">
                                     <img src="Recursos/Iconos/DistribuidorConcurrido.svg" alt="Icono de Distribuidores"
                                         class="menu-item-imagen">
                                     <p class="menu-item-titulo">Distribuidores Más Concurridos</p>
                                 </div>
 
-                                <div class="menu-item" id="Ordenes"
-                                    onclick="location.href='ReportesArchivos/DistribuidorMenosEntregas.php'">
+                                <div class="menu-item" 
+                                    data-url='ReportesArchivos/DistribuidorMenosEntregas.php'">
                                     <img src="Recursos/Iconos/DistribuidorMenosEntregas.svg"
                                         alt="Icono de Distribuidor Menos Entregas" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Distribuidor Con Menos Entregas</p>
@@ -106,13 +105,13 @@ $filas = mysqli_fetch_array($res);
                         <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
                             aria-labelledby="panelsStayOpen-headingThree">
                             <div class="accordion-body">
-                                <div class="menu-item" id="Ordenes"
-                                    onclick="location.href='ReportesArchivos/ProductoresMasOrdenes.php'">
+                                <div class="menu-item" 
+                                    data-url='ReportesArchivos/ProductoresMasOrdenes.php'">
                                     <img src="Recursos/Iconos/MasOrdenes.svg" alt="Icono de Ordenes"
                                         class="menu-item-imagen">
                                     <p class="menu-item-titulo">Productores Con Más Ordenes</p>
                                 </div>
-                                <div class="menu-item" id="Ordenes" onclick="location.href='Reporte.php'">
+                                <div class="menu-item"  data-url='Reporte.php'">
                                     <img src="Recursos/Iconos/Ordenes.svg" alt="Icono de Contenedores Menos salidas"
                                         class="menu-item-imagen">
                                     <p class="menu-item-titulo">Envases ordenados por productor</p>
@@ -132,8 +131,8 @@ $filas = mysqli_fetch_array($res);
                         <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse"
                             aria-labelledby="panelsStayOpen-headingFour">
                             <div class="accordion-body">
-                                <div class="menu-item" id="Ordenes"
-                                    onclick="location.href='ReportesArchivos/MunicipioMenosEntregas.php'">
+                                <div class="menu-item" 
+                                    data-url='ReportesArchivos/MunicipioMenosEntregas.php'">
                                     <img src="Recursos/Iconos/Parlamento.svg" alt="Icono de Municipios Menos Entregas"
                                         class="menu-item-imagen">
                                     <p class="menu-item-titulo">Municipios Con Menos Entregas</p>
@@ -153,15 +152,15 @@ $filas = mysqli_fetch_array($res);
                         <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse"
                             aria-labelledby="panelsStayOpen-headingFive">
                             <div class="accordion-body">
-                                <div class="menu-item" id="Ordenes"
-                                    onclick="location.href='ReportesArchivos/ContenedoresConcurridos.php'">
+                                <div class="menu-item" 
+                                    data-url='ReportesArchivos/ContenedoresConcurridos.php'">
                                     <img src="Recursos/Iconos/ContenedoresConcurridos.svg"
                                         alt="Icono de Contenedores Concurridos" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Contenedores Más Concurridos</p>
                                 </div>
 
-                                <div class="menu-item" id="Ordenes"
-                                    onclick="location.href='ReportesArchivos/ContenedoresMenosSalidas.php'">
+                                <div class="menu-item" 
+                                    data-url='ReportesArchivos/ContenedoresMenosSalidas.php'">
                                     <img src="Recursos/Iconos/ContenedorMenos.svg" alt="Icono de Contenedores Menos salidas"
                                         class="menu-item-imagen">
                                     <p class="menu-item-titulo">Contenedores Con Menos Salidas</p>
@@ -246,32 +245,32 @@ $filas = mysqli_fetch_array($res);
             #Menu de los Productores
             elseif ($filas['Idtipousuario'] == 2) {
                 ?>
-                <div class="menu-item" id="Ordenes" onclick="location.href='Cat.php'">
+                <div class="menu-item"  data-url='Cat.php'">
                     <img src="Recursos/Iconos/CAT.svg" alt="Icono de CAT" class="menu-item-imagen">
                     <p class="menu-item-titulo">CAT<br /><small>(Centro de Acopio Temporal)</small></p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Contenedores.php'">
+                <div class="menu-item"  data-url='Contenedores.php'">
                     <img src="Recursos/Iconos/Contenedores.svg" alt="Icono de Contenedores" class="menu-item-imagen">
                     <p class="menu-item-titulo">Contenedores</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='EmpresaDestino.php'">
+                <div class="menu-item"  data-url='EmpresaDestino.php'">
                     <img src="Recursos/Iconos/EmpresaDestino.svg" alt="Icono de Empresa Destino" class="menu-item-imagen">
                     <p class="menu-item-titulo">Empresa Destino</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='DistArchivos/RODistribuidores.php'">
+                <div class="menu-item"  data-url='DistArchivos/RODistribuidores.php'">
                     <img src="Recursos/Iconos/Distribuidores.svg" alt="Icono de Distribuidores" class="menu-item-imagen">
                     <p class="menu-item-titulo">Distribuidores</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='EmpresaRecPrivada.php'">
+                <div class="menu-item"  data-url='EmpresaRecPrivada.php'">
                     <img src="Recursos/Iconos/EP.svg" alt="Icono de ERP" class="menu-item-imagen">
                     <p class="menu-item-titulo">ERP<br /><small>(Empresa Recolectora Privada)</small></p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Huertos.php'">
+                <div class="menu-item"  data-url='Huertos.php'">
                     <img src="Recursos/Iconos/Huertos.svg" alt="Icono de Huertos" class="menu-item-imagen">
                     <p class="menu-item-titulo">Huertos</p>
                 </div>
@@ -284,32 +283,32 @@ $filas = mysqli_fetch_array($res);
             #Menu de los Distribuidores
             elseif ($filas['Idtipousuario'] == 3) {
                 ?>
-                <div class="menu-item" id="Ordenes" onclick="location.href='Cat.php'">
+                <div class="menu-item"  data-url='Cat.php'">
                     <img src="Recursos/Iconos/CAT.svg" alt="Icono de CAT" class="menu-item-imagen">
                     <p class="menu-item-titulo">CAT<br /><small>(Centro de Acopio Temporal)</small></p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Contenedores.php'">
+                <div class="menu-item"  data-url='Contenedores.php'">
                     <img src="Recursos/Iconos/Contenedores.svg" alt="Icono de Contenedores" class="menu-item-imagen">
                     <p class="menu-item-titulo">Contenedores</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='EmpresaDestino.php'">
+                <div class="menu-item"  data-url='EmpresaDestino.php'">
                     <img src="Recursos/Iconos/EmpresaDestino.svg" alt="Icono de Empresa Destino" class="menu-item-imagen">
                     <p class="menu-item-titulo">Empresa Destino</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Distribuidores.php'">
+                <div class="menu-item"  data-url='Distribuidores.php'">
                     <img src="Recursos/Iconos/Distribuidores.svg" alt="Icono de Distribuidores" class="menu-item-imagen">
                     <p class="menu-item-titulo">Distribuidores</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='EmpresaRecPrivada.php'">
+                <div class="menu-item"  data-url='EmpresaRecPrivada.php'">
                     <img src="Recursos/Iconos/EP.svg" alt="Icono de ERP" class="menu-item-imagen">
                     <p class="menu-item-titulo">ERP<br /><small>(Empresa Recolectora Privada)</small></p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Productores.php'">
+                <div class="menu-item"  data-url='Productores.php'">
                     <img src="Recursos/Iconos/Productores.svg" alt="Icono de Productores" class="menu-item-imagen">
                     <p class="menu-item-titulo">Productores</p>
                 </div>
@@ -322,52 +321,52 @@ $filas = mysqli_fetch_array($res);
             elseif ($filas['Idtipousuario'] == 4) {
                 ?>
                 <!--CÓDIGO-->
-                <div class="menu-item" id="Ordenes" onclick="location.href='Cat.php'">
+                <div class="menu-item"  data-url='Cat.php'">
                     <img src="Recursos/Iconos/CAT.svg" alt="Icono de CAT" class="menu-item-imagen">
                     <p class="menu-item-titulo">CAT<br /><small>(Centro de Acopio Temporal)</small></p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='ResponsableCAT.php'">
+                <div class="menu-item"  data-url='ResponsableCAT.php'">
                     <img src="Recursos/Iconos/ResponsableCat.svg" alt="Responsables Cat" class="menu-item-imagen">
                     <p class="menu-item-titulo">Responsables Cat</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Contenedores.php'">
+                <div class="menu-item"  data-url='Contenedores.php'">
                     <img src="Recursos/Iconos/Contenedores.svg" alt="Icono de Contenedores" class="menu-item-imagen">
                     <p class="menu-item-titulo">Contenedores</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='TiposCont.php'">
+                <div class="menu-item"  data-url='TiposCont.php'">
                     <img src="Recursos/Iconos/TipoContenedores.svg" alt="Icono de Tipo Contenedor" class="menu-item-imagen">
                     <p class="menu-item-titulo">Tipo Contenedor</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='EmpresaDestino.php'">
+                <div class="menu-item"  data-url='EmpresaDestino.php'">
                     <img src="Recursos/Iconos/EmpresaDestino.svg" alt="Icono de Empresa Destino" class="menu-item-imagen">
                     <p class="menu-item-titulo">Empresa Destino</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='TipoQuimico.php'">
+                <div class="menu-item"  data-url='TipoQuimico.php'">
                     <img src="Recursos/Iconos/TipoQuimicos.svg" alt="Icono de Tipo Químico" class="menu-item-imagen">
                     <p class="menu-item-titulo">Tipo Químico</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Huertos.php'">
+                <div class="menu-item"  data-url='Huertos.php'">
                     <img src="Recursos/Iconos/Huertos.svg" alt="Icono de Huertos" class="menu-item-imagen">
                     <p class="menu-item-titulo">Huertos</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='EmpresaRecPrivada.php'">
+                <div class="menu-item"  data-url='EmpresaRecPrivada.php'">
                     <img src="Recursos/Iconos/EP.svg" alt="Icono de ERP" class="menu-item-imagen">
                     <p class="menu-item-titulo">ERP<br /><small>(Empresa Recolectora Privada)</small></p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Distribuidores.php'">
+                <div class="menu-item"  data-url='Distribuidores.php'">
                     <img src="Recursos/Iconos/Distribuidores.svg" alt="Icono de Distribuidores" class="menu-item-imagen">
                     <p class="menu-item-titulo">Distribuidores</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Productores.php'">
+                <div class="menu-item"  data-url='Productores.php'">
                     <img src="Recursos/Iconos/Productores.svg" alt="Icono de Productores" class="menu-item-imagen">
                     <p class="menu-item-titulo">Productores</p>
                 </div>
@@ -388,12 +387,12 @@ $filas = mysqli_fetch_array($res);
             elseif ($filas['Idtipousuario'] == 6) {
                 ?>
                 <!--CÓDIGO-->
-                <div class="menu-item" id="Ordenes" onclick="location.href='ResponsableCAT.php'">
+                <div class="menu-item"  data-url='ResponsableCAT.php'">
                     <img src="Recursos/Iconos/ResponsableCat.svg" alt="Responsables Cat" class="menu-item-imagen">
                     <p class="menu-item-titulo">Responsables Cat</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Cat.php'">
+                <div class="menu-item"  data-url='Cat.php'">
                     <img src="Recursos/Iconos/CAT.svg" alt="Icono de CAT" class="menu-item-imagen">
                     <p class="menu-item-titulo">CAT<br /><small>(Centro de Acopio Temporal)</small></p>
                 </div>
@@ -406,27 +405,27 @@ $filas = mysqli_fetch_array($res);
             elseif ($filas['Idtipousuario'] == 7) {
                 ?>
                 <!--CÓDIGO-->
-                <div class="menu-item" id="Ordenes" onclick="location.href='Cat.php'">
+                <div class="menu-item"  data-url='Cat.php'">
                     <img src="Recursos/Iconos/CAT.svg" alt="Icono de CAT" class="menu-item-imagen">
                     <p class="menu-item-titulo">CAT<br /><small>(Centro de Acopio Temporal)</small></p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='ResponsableCAT.php'">
+                <div class="menu-item"  data-url='ResponsableCAT.php'">
                     <img src="Recursos/Iconos/ResponsableCat.svg" alt="Responsables Cat" class="menu-item-imagen">
                     <p class="menu-item-titulo">Responsables Cat</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='TiposCont.php'">
+                <div class="menu-item"  data-url='TiposCont.php'">
                     <img src="Recursos/Iconos/TipoContenedores.svg" alt="Icono de Tipo Contenedor" class="menu-item-imagen">
                     <p class="menu-item-titulo">Tipo Contenedor</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Contenedores.php'">
+                <div class="menu-item"  data-url='Contenedores.php'">
                     <img src="Recursos/Iconos/Contenedores.svg" alt="Icono de Contenedores" class="menu-item-imagen">
                     <p class="menu-item-titulo">Contenedores</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='EmpresaDestino.php'">
+                <div class="menu-item"  data-url='EmpresaDestino.php'">
                     <img src="Recursos/Iconos/EmpresaDestino.svg" alt="Icono de Empresa Destino" class="menu-item-imagen">
                     <p class="menu-item-titulo">Empresa Destino</p>
                 </div>
@@ -440,52 +439,52 @@ $filas = mysqli_fetch_array($res);
             elseif ($filas['Idtipousuario'] == 8) {
                 ?>
                 <!--CÓDIGO-->
-                <div class="menu-item" id="Ordenes" onclick="location.href='Cat.php'">
+                <div class="menu-item"  data-url='Cat.php'">
                     <img src="Recursos/Iconos/CAT.svg" alt="Icono de CAT" class="menu-item-imagen">
                     <p class="menu-item-titulo">CAT<br /><small>(Centro de Acopio Temporal)</small></p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='ResponsableCAT.php'">
+                <div class="menu-item"  data-url='ResponsableCAT.php'">
                     <img src="Recursos/Iconos/ResponsableCat.svg" alt="Responsables Cat" class="menu-item-imagen">
                     <p class="menu-item-titulo">Responsables Cat</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='TiposCont.php'">
+                <div class="menu-item"  data-url='TiposCont.php'">
                     <img src="Recursos/Iconos/TipoContenedores.svg" alt="Icono de Tipo Contenedor" class="menu-item-imagen">
                     <p class="menu-item-titulo">Tipo Contenedor</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Contenedores.php'">
+                <div class="menu-item"  data-url='Contenedores.php'">
                     <img src="Recursos/Iconos/Contenedores.svg" alt="Icono de Contenedores" class="menu-item-imagen">
                     <p class="menu-item-titulo">Contenedores</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='EmpresaDestino.php'">
+                <div class="menu-item"  data-url='EmpresaDestino.php'">
                     <img src="Recursos/Iconos/EmpresaDestino.svg" alt="Icono de Empresa Destino" class="menu-item-imagen">
                     <p class="menu-item-titulo">Empresa Destino</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='TipoQuimico.php'">
+                <div class="menu-item"  data-url='TipoQuimico.php'">
                     <img src="Recursos/Iconos/TipoQuimicos.svg" alt="Icono de Tipo Químico" class="menu-item-imagen">
                     <p class="menu-item-titulo">Tipo Químico</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Huertos.php'">
+                <div class="menu-item"  data-url='Huertos.php'">
                     <img src="Recursos/Iconos/Huertos.svg" alt="Icono de Huertos" class="menu-item-imagen">
                     <p class="menu-item-titulo">Huertos</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='EmpresaRecPrivada.php'">
+                <div class="menu-item"  data-url='EmpresaRecPrivada.php'">
                     <img src="Recursos/Iconos/EP.svg" alt="Icono de ERP" class="menu-item-imagen">
                     <p class="menu-item-titulo">ERP<br /><small>(Empresa Recolectora Privada)</small></p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Distribuidores.php'">
+                <div class="menu-item"  data-url='Distribuidores.php'">
                     <img src="Recursos/Iconos/Distribuidores.svg" alt="Icono de Distribuidores" class="menu-item-imagen">
                     <p class="menu-item-titulo">Distribuidores</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Productores.php'">
+                <div class="menu-item"  data-url='Productores.php'">
                     <img src="Recursos/Iconos/Productores.svg" alt="Icono de Productores" class="menu-item-imagen">
                     <p class="menu-item-titulo">Productores</p>
                 </div>
@@ -516,41 +515,41 @@ $filas = mysqli_fetch_array($res);
                 ?>
                 <!--CÓDIGO-->
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Cat.php'">
+                <div class="menu-item"  data-url='Cat.php'">
                     <img src="Recursos/Iconos/CAT.svg" alt="Icono de CAT" class="menu-item-imagen">
                     <p class="menu-item-titulo">CAT<br /><small>(Centro de Acopio Temporal)</small></p>
                 </div>
 
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='ResponsableCAT.php'">
+                <div class="menu-item"  data-url='ResponsableCAT.php'">
                     <img src="Recursos/Iconos/ResponsableCat.svg" alt="Responsables Cat" class="menu-item-imagen">
                     <p class="menu-item-titulo">Responsables Cat</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Contenedores.php'">
+                <div class="menu-item"  data-url='Contenedores.php'">
                     <img src="Recursos/Iconos/Contenedores.svg" alt="Icono de Contenedores" class="menu-item-imagen">
                     <p class="menu-item-titulo">Contenedores</p>
                 </div>
 
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Distribuidores.php'">
+                <div class="menu-item"  data-url='Distribuidores.php'">
                     <img src="Recursos/Iconos/Distribuidores.svg" alt="Icono de Distribuidores" class="menu-item-imagen">
                     <p class="menu-item-titulo">Distribuidores</p>
                 </div>
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='EmpresaDestino.php'">
+                <div class="menu-item"  data-url='EmpresaDestino.php'">
                     <img src="Recursos/Iconos/EmpresaDestino.svg" alt="Icono de Empresa Destino" class="menu-item-imagen">
                     <p class="menu-item-titulo">Empresa Destino</p>
                 </div>
 
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='EmpresaRecPrivada.php'">
+                <div class="menu-item"  data-url='EmpresaRecPrivada.php'">
                     <img src="Recursos/Iconos/EP.svg" alt="Icono de ERP" class="menu-item-imagen">
                     <p class="menu-item-titulo">ERP<br /><small>(Empresa Recolectora Privada)</small></p>
                 </div>
 
 
-                <div class="menu-item" id="Ordenes" onclick="location.href='Productores.php'">
+                <div class="menu-item"  data-url='Productores.php'">
                     <img src="Recursos/Iconos/Productores.svg" alt="Icono de Productores" class="menu-item-imagen">
                     <p class="menu-item-titulo">Productores</p>
                 </div>
@@ -569,7 +568,10 @@ $filas = mysqli_fetch_array($res);
     </main>
 
     <script src="Layout/menujs.js"></script>
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="reports/funcionMenu.js"></script>
+    
 
 </body>
 
