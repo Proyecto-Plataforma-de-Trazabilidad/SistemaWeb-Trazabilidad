@@ -68,6 +68,45 @@ $filas = mysqli_fetch_array($res);
                         </div>
                     </div>
 
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseTwo">
+                                Listas
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                            aria-labelledby="panelsStayOpen-headingTwo">
+                            <div class="accordion-body">
+                                <div class="menu-item" data-opcionreporte="">
+                                    <img src="Recursos/Iconos/Distribuidores.svg" alt="Icono de Distribuidores"
+                                        class="menu-item-imagen">
+                                    <p class="menu-item-titulo">Lista de Distribuidores</p>
+                                </div>
+
+                                <div class="menu-item" data-opcionreporte="">
+                                    <img src="Recursos/Iconos/Productores.svg"
+                                        alt="Icono de Distribuidor Menos Entregas" class="menu-item-imagen">
+                                    <p class="menu-item-titulo">Lista de Productores</p>
+                                </div>
+
+                                <div class="menu-item" data-opcionreporte="">
+                                    <img src="Recursos/Iconos/Huertos.svg" alt="Icono de Distribuidores"
+                                        class="menu-item-imagen">
+                                    <p class="menu-item-titulo">Lista de Huertos</p>
+                                </div>
+
+                                <div class="menu-item" data-opcionreporte="">
+                                    <img src="Recursos/Iconos/CAT.svg"
+                                        alt="Icono de Distribuidor Menos Entregas" class="menu-item-imagen">
+                                    <p class="menu-item-titulo">Lista de CAT</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
