@@ -74,7 +74,7 @@ $(document).ready(function () {
                         this.fillText(this.datasets[0].bars, true);
                     },
                     options: {
-                        plugins: { legend: { display: false, },},//quitar la leyenda de arriba 
+                       // plugins: { legend: { display: false, },},//quitar la leyenda de arriba 
                         responsive: true, // Hace que el gráfico sea responsivo al tamaño del contenedor
                         maintainAspectRatio: false, // Permite cambiar la relación de aspecto del gráfico
                         scales: {
