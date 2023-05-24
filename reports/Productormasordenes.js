@@ -40,8 +40,8 @@ $(document).ready(function () {
 
                     dat = (array[i].Nombre);//extraer valores del json
                     //la grafica solo recibe arreglos de etiquetas o de datos
-                    tipo.push("Nombre " + dat);//indicando que la etiqueta sera el productor y su nombre
-                    console.log(tipo);
+                    produc.push("Nombre " + dat);//indicando que la etiqueta sera el productor y su nombre
+                    console.log(produc);
                 }
 
 
@@ -55,7 +55,7 @@ $(document).ready(function () {
 
                 //aqui todo lo dela grafica config
                 var chartdata = {
-                    labels: tipo,
+                    labels: produc,
                     datasets: [
                         {
                             label: 'Piezas',
@@ -92,6 +92,6 @@ $(document).ready(function () {
     });
 
     //pdf
-    
+
 
 });
