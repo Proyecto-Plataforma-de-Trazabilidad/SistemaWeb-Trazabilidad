@@ -103,7 +103,7 @@ $nombre = strtok($nombrec, " ");
             </a>
 
             <!--Reportes-->
-            <a href="Reportes.php">
+            <a href="Menu-Reportes.php">
                 <div class="option">
                     <i class="fa-solid fa-file-circle-check" title="Reportes"></i>
                     <h4>Reportes</h4>
