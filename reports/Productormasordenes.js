@@ -58,7 +58,6 @@ $(document).ready(function () {
                     labels: produc,
                     datasets: [
                         {
-                            label: 'Ordenes',
                             backgroundColor: ['#8C7472', '#D9A9A5', '#D4D9BA', '#A5BDD9', '#878C6B',],
                             borderColor: ['#8C7472', '#D9A9A5', '#D4D9BA', '#A5BDD9', '#878C6B',],
                             hoverBackgroundColor: '#3C7335',
@@ -75,6 +74,7 @@ $(document).ready(function () {
                         this.fillText(this.datasets[0].bars, true);
                     },
                     options: {
+                        plugins: { legend: { display: false, },},//quitar la leyenda de arriba 
                         responsive: true, // Hace que el gráfico sea responsivo al tamaño del contenedor
                         maintainAspectRatio: false, // Permite cambiar la relación de aspecto del gráfico
                         scales: {
