@@ -58,6 +58,7 @@ $(document).ready(function () {
                     labels: produc,
                     datasets: [
                         {
+                            label:"Ordenes",
                             backgroundColor: ['#8C7472', '#D9A9A5', '#D4D9BA', '#A5BDD9', '#878C6B',],
                             borderColor: ['#8C7472', '#D9A9A5', '#D4D9BA', '#A5BDD9', '#878C6B',],
                             hoverBackgroundColor: '#3C7335',
