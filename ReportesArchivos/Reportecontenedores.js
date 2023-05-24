@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
 
 
@@ -6,7 +5,7 @@ $(document).ready(function () {
     $('#consu').click(function (e) {
         e.preventDefault();
 
-        let opcion = '4';
+        let opcion = '3';
 
         let parametros = { "opcion": opcion }
 
@@ -21,7 +20,7 @@ $(document).ready(function () {
                 
 
                 var cant = [];
-                var produc= [];
+                var conte= [];
 
                 for (var i in array) {
                     //tomar la cantidad 
@@ -38,10 +37,10 @@ $(document).ready(function () {
                         cant.push(n);
                     }
 
-                    dat = (array[i].Nombre);//extraer valores del json
+                    dat = (array[i].Contenedor);//extraer valores del json
                     //la grafica solo recibe arreglos de etiquetas o de datos
-                    produc.push("Nombre " + dat);//indicando que la etiqueta sera el productor y su nombre
-                    console.log(produc);
+                    conte.push("Contenedor " + dat);//indicando que la etiqueta sera el productor y su nombre
+                    console.log(conte);
                 }
 
 
@@ -55,10 +54,10 @@ $(document).ready(function () {
 
                 //aqui todo lo dela grafica config
                 var chartdata = {
-                    labels: produc,
+                    labels: conte,
                     datasets: [
                         {
-                            label: 'Ordenes',
+                            label: 'Entregas',
                             backgroundColor: ['#8C7472', '#D9A9A5', '#D4D9BA', '#A5BDD9', '#878C6B',],
                             borderColor: ['#8C7472', '#D9A9A5', '#D4D9BA', '#A5BDD9', '#878C6B',],
                             hoverBackgroundColor: '#3C7335',
