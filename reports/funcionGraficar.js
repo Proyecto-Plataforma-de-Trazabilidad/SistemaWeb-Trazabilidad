@@ -31,9 +31,10 @@ $(document).ready(function () {
 
             //generar PDF
             $('#pdf').click(function (e) {
-                e.preventDefault(canvas);
+                e.preventDefault();
+                const canvas=document.getElementById("myChart");
                 //funcion pdf
-                generaPdf();
+                generaPdf(canvas);
             });
 
             break;
