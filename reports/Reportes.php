@@ -129,7 +129,7 @@ if ($enlace->connect_error) {
             echo json_encode($data);
             mysqli_free_result($result);
             break;
-            // Reporte de entregas (envases vacíos recibidos ) por distribuidor 
+            // Reporte de entregas por distribuidor 
         case '11':
             $query = "SELECT P.Nombre,COUNT(*) as Total from ordenproductos as O INNER JOIN productores as P on O.IdProductor = P.IdProductor GROUP BY P.Nombre";
             $result = mysqli_query($enlace, $query);

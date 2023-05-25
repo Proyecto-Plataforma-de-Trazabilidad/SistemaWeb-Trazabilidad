@@ -108,15 +108,15 @@ $filas = mysqli_fetch_array($res);
                     </div>
 
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
-                                aria-controls="panelsStayOpen-collapseTwo">
+                                data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseThree">
                                 Distribuidores
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingTwo">
+                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                            aria-labelledby="panelsStayOpen-headingThree">
                             <div class="accordion-body">
                                 <div class="menu-item" data-opcionreporte="2">
                                     <img src="Recursos/Iconos/DistribuidorConcurrido.svg" alt="Icono de Distribuidores"
@@ -134,15 +134,15 @@ $filas = mysqli_fetch_array($res);
                     </div>
 
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingFour">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-                                aria-controls="panelsStayOpen-collapseThree">
+                                data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseFour">
                                 Productores
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingThree">
+                        <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse"
+                            aria-labelledby="panelsStayOpen-headingFour">
                             <div class="accordion-body">
                                 <div class="menu-item" data-opcionreporte="4">
                                     <img src="Recursos/Iconos/MasOrdenes.svg" alt="Icono de Ordenes"
@@ -159,15 +159,15 @@ $filas = mysqli_fetch_array($res);
                     </div>
 
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingFive">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
-                                aria-controls="panelsStayOpen-collapseFour">
+                                data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseFive">
                                 Municipios
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingFour">
+                        <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse"
+                            aria-labelledby="panelsStayOpen-headingFive">
                             <div class="accordion-body">
                                 <div class="menu-item" data-opcionreporte="5">
                                     <img src="Recursos/Iconos/Parlamento.svg" alt="Icono de Municipios Menos Entregas"
@@ -179,15 +179,15 @@ $filas = mysqli_fetch_array($res);
                     </div>
 
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingSix">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false"
-                                aria-controls="panelsStayOpen-collapseFive">
+                                data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseSix">
                                 Contenedores
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingFive">
+                        <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse"
+                            aria-labelledby="panelsStayOpen-headingSix">
                             <div class="accordion-body">
                                 <div class="menu-item" data-opcionreporte="3">
                                     <img src="Recursos/Iconos/ContenedoresConcurridos.svg"
@@ -205,16 +205,22 @@ $filas = mysqli_fetch_array($res);
                     </div>
 
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingSix">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false"
-                                aria-controls="panelsStayOpen-collapseSix">
+                                data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseSeven">
                                 Ordenes
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingSix">
+                        <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse"
+                            aria-labelledby="panelsStayOpen-headingSeven">
                             <div class="accordion-body">
+
+                            <div class="menu-item" data-opcionreporte="10">
+                                    <img src="Recursos/Iconos/DistribuidorConcurrido.svg"
+                                        alt="Icono de Contenedores Concurridos" class="menu-item-imagen">
+                                    <p class="menu-item-titulo">Ordenes por Productor</p>
+                                </div>
 
                             </div>
                         </div>
@@ -222,15 +228,15 @@ $filas = mysqli_fetch_array($res);
 
 
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingEigth">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false"
-                                aria-controls="panelsStayOpen-collapseSeven">
+                                data-bs-target="#panelsStayOpen-collapseEigth" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseEigth">
                                 Entregas
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingSeven">
+                        <div id="panelsStayOpen-collapseEigth" class="accordion-collapse collapse"
+                            aria-labelledby="panelsStayOpen-headingEigth">
                             <div class="accordion-body">
                             <div class="menu-item" data-opcionreporte="8">
 
@@ -254,15 +260,15 @@ $filas = mysqli_fetch_array($res);
 
 
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingEight">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingNine">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false"
-                                aria-controls="panelsStayOpen-collapseEight">
+                                data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseNine">
                                 Extravidados
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingEight">
+                        <div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse"
+                            aria-labelledby="panelsStayOpen-headingNine">
                             <div class="accordion-body">
 
                             </div>
@@ -270,15 +276,15 @@ $filas = mysqli_fetch_array($res);
                     </div>
 
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="panelsStayOpen-headingNine">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingTen">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="false"
-                                aria-controls="panelsStayOpen-collapseNine">
+                                data-bs-target="#panelsStayOpen-collapseTen" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseTen">
                                 Salidas
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingNine">
+                        <div id="panelsStayOpen-collapseTen" class="accordion-collapse collapse"
+                            aria-labelledby="panelsStayOpen-headingTen">
                             <div class="accordion-body">
 
                             </div>

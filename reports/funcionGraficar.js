@@ -189,6 +189,24 @@ $(document).ready(function () {
             });
             break;
 
+            case 10:
+            var titulo = "Total Ordenes por Productor";
+            texto.innerText = titulo;
+            // escribir titulo de reporte
+            // ajax para graficar
+            $('#consu').click(function (e) {
+                e.preventDefault();
+                //       numOpcion, columnaConsulta, titulos para grafica,  tipoGrafica
+                consulta(opcionEntero, 'Nombre', 'P.Nombre', 'pie');
+            });
+
+            // generar archivo csv
+            $('#csv').click(function (e) {
+                e.preventDefault();
+                // funcion csv
+                generaCSV(opcionEntero, titulo);
+            });
+            break;
 
         default:
             console.log("Opcion no valida");
