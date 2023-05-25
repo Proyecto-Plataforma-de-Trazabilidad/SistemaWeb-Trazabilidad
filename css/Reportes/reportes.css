@@ -1,6 +1,7 @@
 .Botones{
     display: flex;
     justify-content: center;
+    padding-left: 14%;
 }
 
 .Grafica{
@@ -8,8 +9,6 @@
     width: 95%;
     height: 400px;
 }
-
-
 
 .titulo {
     margin-bottom: 2rem;
