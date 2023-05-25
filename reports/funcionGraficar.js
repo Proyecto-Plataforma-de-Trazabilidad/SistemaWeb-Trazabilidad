@@ -14,6 +14,7 @@ $(document).ready(function () {
     switch (opcionEntero) { // Reporte Envases mas ordenados 1
         case 1:
             var titulo = "Reporte Envases mas ordenados";
+            const canvas=getElementById("myChart");
             texto.innerText = titulo; //escribir titulo de reporte
             //ajax para graficar              
             $('#consu').click(function (e) {
@@ -31,7 +32,7 @@ $(document).ready(function () {
 
             //generar PDF
             $('#pdf').click(function (e) {
-                e.preventDefault();
+                e.preventDefault(canvas);
                 //funcion pdf
                 generaPdf();
             });
@@ -426,8 +427,36 @@ $(document).ready(function () {
         btnPdf.disabled = false;
     };
 
-    function generaPdf() {
+    function generaPdf(canvas) {
+        const canvasImage=canvas.toDataURL('image/jpeg',1.0);
+        console.log("imagen",canvasImage);
 
+        $.ajax({
+            url: 'diseñoPdf.php',
+            data: canvasImage,
+            type: 'POST',
+            contentType:false,
+            cache:false,
+            processData:false,
+            success: function (response) {
+                //console.log(response);
+               /* var blob = new Blob([response], { type: 'application/pdf' });
+                var file = new File([blob], "archivo.pdf");
+                var link = document.createElement('a');
+                link.href = URL.createObjectURL(file);
+                link.download = file.name;
+                link.click();*/
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'No se pudo registrar por error',
+                    text: thrownError,
+                });
+            }
+        });
+
+       
     };
 
 });
