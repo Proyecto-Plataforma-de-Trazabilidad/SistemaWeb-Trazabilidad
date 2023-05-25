@@ -14,7 +14,8 @@ $(document).ready(function () {
     switch (opcionEntero) {
         //Reporte Envases mas ordenados 1
         case 1:
-            texto.innerText = "Reporte Envases mas ordenados"; //escribir titulo de reporte
+            var titulo =  "Reporte Envases mas ordenados";
+            texto.innerText = titulo ; //escribir titulo de reporte
             //ajax para graficar
             $('#consu').click(function (e) {
                 e.preventDefault();
@@ -22,60 +23,108 @@ $(document).ready(function () {
                 consulta(opcionEntero, 'TipoEnvase', 'Tipo de Envase', 'bar');
             });
 
+            //generar archivo csv
+            $('#csv').click(function (e) {
+                e.preventDefault();
+                //funcion csv
+                generaCSV(opcionEntero, titulo );
+            });
+
+
             break;
 
         //Reporte de distribuidores más concurridos 2
         case 2:
-            texto.innerText = "Reporte de distribuidores más concurridos"; //escribir titulo de reporte
+            var titulo =  "Reporte de distribuidores más concurridos";
+            texto.innerText = titulo ; //escribir titulo de reporte
             //ajax para graficar
             $('#consu').click(function (e) {
                 e.preventDefault();
                 //       numOpcion, columnaConsulta, titulos para grafica,  tipoGrafica
                 consulta(opcionEntero, 'Nombre', 'Nombre Distribuidor', 'doughnut');
             });
+
+            //generar archivo csv
+            $('#csv').click(function (e) {
+                e.preventDefault();
+                //funcion csv
+                generaCSV(opcionEntero, titulo );
+            });
             break;
 
         //Reporte de contenedores más concurridos 3
         case 3:
-            texto.innerText = "Reporte de contenedores más concurridos"; //escribir titulo de reporte
+            var titulo =  "Reporte de contenedores más concurridos";
+            texto.innerText = titulo ; //escribir titulo de reporte
             //ajax para graficar
             $('#consu').click(function (e) {
                 e.preventDefault();
                 //       numOpcion, columnaConsulta, titulos para grafica,  tipoGrafica
                 consulta(opcionEntero, 'Contenedor', 'Numero y Origen de Contenedor', 'bar');
             });
+
+            //generar archivo csv
+            $('#csv').click(function (e) {
+                e.preventDefault();
+                //funcion csv
+                generaCSV(opcionEntero, titulo );
+            });
             break;
 
         //Reporte de productores con más ordenes 4
         case 4:
-            texto.innerText = "Reporte de productores con más ordenes"; //escribir titulo de reporte
+            var titulo =  "Reporte de productores con más ordenes";
+            texto.innerText = titulo; //escribir titulo de reporte
             //ajax para graficar
             $('#consu').click(function (e) {
                 e.preventDefault();
                 //       numOpcion, columnaConsulta, titulos para grafica,  tipoGrafica
                 consulta(opcionEntero, 'Nombre', 'Nombre Productor', 'bar');
             });
+
+            //generar archivo csv
+            $('#csv').click(function (e) {
+                e.preventDefault();
+                //funcion csv
+                generaCSV(opcionEntero, titulo );
+            });
             break;
 
         //Reporte de municipios con menos entregas 5
         case 5:
-            texto.innerText = "Reporte de municipios con menos entregas"; //escribir titulo de reporte
+            var titulo =  "Reporte de municipios con menos entregas";
+            texto.innerText = titulo; //escribir titulo de reporte
             //ajax para graficar
             $('#consu').click(function (e) {
                 e.preventDefault();
                 //       numOpcion, columnaConsulta, titulos para grafica,  tipoGrafica
                 consulta(opcionEntero, 'Nombre', 'Nombre de municipio', 'bar');
             });
+
+            //generar archivo csv
+            $('#csv').click(function (e) {
+                e.preventDefault();
+                //funcion csv
+                generaCSV(opcionEntero, titulo );
+            });
             break;
-        
+
         //Reporte de distribuidores con menos entregas 6
         case 6:
-            texto.innerText = "Reporte de distribuidores con menos entregas"; //escribir titulo de reporte
+            var titulo =  "Reporte de distribuidores con menos entregas";
+            texto.innerText = titulo; //escribir titulo de reporte
             //ajax para graficar
             $('#consu').click(function (e) {
                 e.preventDefault();
                 //       numOpcion, columnaConsulta, titulos para grafica,  tipoGrafica
                 consulta(opcionEntero, 'Nombre', 'Nombre de distribuidor', 'pie');
+            });
+
+            //generar archivo csv
+            $('#csv').click(function (e) {
+                e.preventDefault();
+                //funcion csv
+                generaCSV(opcionEntero, titulo );
             });
             break;
 
@@ -171,6 +220,42 @@ $(document).ready(function () {
                         beginAtZero: true
                     }
                 }
+            }
+        });
+    };
+
+    function generaCSV(opc,titulo) {
+        let nombre = titulo.replace(/\s/g, "");  //quitar espacios del titulo   
+        let parametros = { "opcion": opc }
+        //console.log(parametros);//parametros
+        $.ajax({
+            url: 'Reportes.php',
+            data: parametros,
+            type: 'POST',
+            success: function (response) {
+                console.log("response : " + response);//ver respuesta servidor
+                let array = JSON.parse(response);//convertir a json
+                console.log(array);
+
+                //generar archivo csv
+                var csv = Papa.unparse(array, {
+                    //delimiter: ";", // Delimitador personalizado
+                    header: true, // Incluir encabezados
+                    newline: "\n", // Salto de línea personalizado
+                    quoteChar: '"', // Carácter de cita personalizado
+                    encoding: "utf-8" // Codificación del archivo CSV
+                });
+                var csvData = '\ufeff' + csv; // Añadir el BOM (Byte Order Mark) para especificar UTF-8
+                //console.log(csv);
+                var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                var url = URL.createObjectURL(blob);
+                var link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', nombre+ '.csv');
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
             }
         });
     };
