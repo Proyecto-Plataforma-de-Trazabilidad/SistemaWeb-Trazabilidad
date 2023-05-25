@@ -205,6 +205,7 @@ $(document).ready(function () {
                 e.preventDefault();
                 //       numOpcion, columnaConsulta, titulos para grafica,  tipoGrafica
                 consulta(opcionEntero, 'Nombre', 'P.Nombre', 'bar');
+                activaPdf();
             });
 
             // generar archivo csv
@@ -231,6 +232,7 @@ $(document).ready(function () {
                 e.preventDefault();
                 //       numOpcion, columnaConsulta, titulos para grafica,  tipoGrafica
                 consulta(opcionEntero, 'Nombre', 'P.Nombre', 'bar');
+                activaPdf();
             });
 
             // generar archivo csv
@@ -257,6 +259,7 @@ $(document).ready(function () {
                 e.preventDefault();
                 //       numOpcion, columnaConsulta, titulos para grafica,  tipoGrafica
                 consulta(opcionEntero, 'Nombre', 'P.Nombre', 'pie');
+                activaPdf();
             });
 
             // generar archivo csv
