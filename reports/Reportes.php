@@ -157,14 +157,7 @@ if ($enlace->connect_error) {
             // Reporte de contenedores sin capacidad (ósea llenos)
             // Reporte de contenedores sin capacidad (ósea llenos) X municipio
             // Reporte de contenedores con fecha de ultima recolección mayor a X tiempo (1 mes o mas de un mes sin limpiar)
-            // Reporte de contenedores con más movimiento (que se repitan mas en las salidas)
-
-
-
-
-
-
-
+            // Reporte de contenedores con más movimiento (que se repitan mas en las salidas
 
     }
     //echo json_encode($res);
