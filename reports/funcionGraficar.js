@@ -14,7 +14,6 @@ $(document).ready(function () {
     switch (opcionEntero) { // Reporte Envases mas ordenados 1
         case 1:
             var titulo = "Reporte Envases mas ordenados";
-            const canvas=getElementById("myChart");
             texto.innerText = titulo; //escribir titulo de reporte
             //ajax para graficar              
             $('#consu').click(function (e) {
