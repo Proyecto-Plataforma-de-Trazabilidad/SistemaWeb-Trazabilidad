@@ -37,7 +37,7 @@ include "../Layout/navMenu2.php";
         </div>
 
         <div class="col-sm-3">
-            <button type="submit" id="pdf" class="btn btn-success" onclick="" name="Registrar">Generar
+            <button type="submit" id="pdf" class="btn btn-success" onclick="" name="Registrar" disabled>Generar
                 PDF</button>
         </div>
 
