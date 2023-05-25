@@ -127,6 +127,27 @@ $(document).ready(function () {
                 generaCSV(opcionEntero, titulo );
             });
             break;
+        //Reporte de contenedores con menos salidas 7
+        case 7:
+            var titulo =  "Reporte de contenedores con menos salidas";
+            texto.innerText = titulo; //escribir titulo de reporte
+            //ajax para graficar
+            $('#consu').click(function (e) {
+                e.preventDefault();
+                //       numOpcion, columnaConsulta, titulos para grafica,  tipoGrafica
+                consulta(opcionEntero, 'Contenedor', 'Nombre de contenedor', 'pie');
+            });
+
+            //generar archivo csv
+            $('#csv').click(function (e) {
+                e.preventDefault();
+                //funcion csv
+                generaCSV(opcionEntero, titulo );
+            });
+            break;
+
+        
+        
 
         default:
             console.log("Opcion no valida");

@@ -149,7 +149,7 @@ $filas = mysqli_fetch_array($res);
                                         class="menu-item-imagen">
                                     <p class="menu-item-titulo">Productores Con Más Ordenes</p>
                                 </div>
-                                <div class="menu-item" data-url='Reporte.php'">
+                                <div class="menu-item" data-opcionreporte="7">
                                             <img src=" Recursos/Iconos/Ordenes.svg"
                                     alt="Icono de Contenedores Menos salidas" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Envases ordenados por productor</p>
