@@ -232,6 +232,21 @@ $filas = mysqli_fetch_array($res);
                         <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse"
                             aria-labelledby="panelsStayOpen-headingSeven">
                             <div class="accordion-body">
+                            <div class="menu-item" data-opcionreporte="8">
+
+                                    <img src="Recursos/Iconos/DistribuidorConcurrido.svg"
+                                        alt="Icono de Contenedores Concurridos" class="menu-item-imagen">
+                                    <p class="menu-item-titulo">Todas las entregas por Productor</p>
+                                </div>
+
+                                <div class="menu-item" data-opcionreporte="9">
+
+                                    <img src="Recursos/Iconos/Extraviados.svg"
+                                        alt="Icono de Contenedores Concurridos" class="menu-item-imagen">
+                                    <p class="menu-item-titulo">Todas los Extraviados por Productor</p>
+                                </div>
+                            
+                            
 
                             </div>
                         </div>

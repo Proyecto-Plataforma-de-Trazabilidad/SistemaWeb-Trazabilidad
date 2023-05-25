@@ -95,7 +95,7 @@ if ($enlace->connect_error) {
 
             // Reporte de todas las entregas por productor 8
         case '8':
-            $query = "SELECT P.Nombre,COUNT(*) as totalEntregas from entregas as E INNER JOIN productores as P on E.IdProductor = P.IdProductor GROUP BY P.Nombre";
+            $query = "SELECT P.Nombre,COUNT(*) as Total from entregas as E INNER JOIN productores as P on E.IdProductor = P.IdProductor GROUP BY P.Nombre";
             $result = mysqli_query($enlace, $query);
             $data = array();
             foreach ($result as $row) {
@@ -107,7 +107,7 @@ if ($enlace->connect_error) {
 
             // Reporte de todos los extraviados por productor 9
         case '9':
-            $query = "SELECT P.Nombre,COUNT(*) as totalExtraviados from extraviados as E INNER JOIN productores as P on E.IdProductor = P.IdProductor GROUP BY P.Nombre";
+            $query = "SELECT P.Nombre,COUNT(*) as Total from extraviados as E INNER JOIN productores as P on E.IdProductor = P.IdProductor GROUP BY P.Nombre";
             $result = mysqli_query($enlace, $query);
             $data = array();
             foreach ($result as $row) {
@@ -120,7 +120,7 @@ if ($enlace->connect_error) {
             // Distribuidores  ***********************************************************************************************************************
             // Reporte de ordenes generadas por productor 10
         case '10':
-            $query = "SELECT P.Nombre,COUNT(*) as totalOrdenes from ordenproductos as O INNER JOIN productores as P on O.IdProductor = P.IdProductor GROUP BY P.Nombre";
+            $query = "SELECT P.Nombre,COUNT(*) as Total from ordenproductos as O INNER JOIN productores as P on O.IdProductor = P.IdProductor GROUP BY P.Nombre";
             $result = mysqli_query($enlace, $query);
             $data = array();
             foreach ($result as $row) {
@@ -131,7 +131,7 @@ if ($enlace->connect_error) {
             break;
             // Reporte de entregas (envases vacíos recibidos ) por distribuidor 
         case '11':
-            $query = "SELECT P.Nombre,COUNT(*) as totalOrdenes from ordenproductos as O INNER JOIN productores as P on O.IdProductor = P.IdProductor GROUP BY P.Nombre";
+            $query = "SELECT P.Nombre,COUNT(*) as Total from ordenproductos as O INNER JOIN productores as P on O.IdProductor = P.IdProductor GROUP BY P.Nombre";
             $result = mysqli_query($enlace, $query);
             $data = array();
             foreach ($result as $row) {
