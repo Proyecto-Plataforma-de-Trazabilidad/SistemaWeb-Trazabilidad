@@ -437,20 +437,21 @@ $(document).ready(function () {
         formData.append('img', canvasImage); //Se agrega la imagen que se genero al objeto formdata con el identificador 'img'
 
         $.ajax({
-            url: 'procesarImagen.php', //Archivo que genera la imagen
+            url: 'diseñoPdf.php', //Archivo que genera la imagen
             data: formData, //el objeto que contiene la imagen 
             type: 'POST',
             contentType: false,
             cache: false,
             processData: false,
+            xhrFields: { responseType: 'blob' }, //Esta configuracion permite recibir contenido tipo blob(la codificacion que usa pdf)
             success: function (response) {
-                //console.log(response);
-                /* var blob = new Blob([response], { type: 'application/pdf' });
-                 var file = new File([blob], "archivo.pdf");
-                 var link = document.createElement('a');
-                 link.href = URL.createObjectURL(file);
-                 link.download = file.name;
-                 link.click();*/
+                console.log(response);
+                var blob = new Blob([response], { type: 'application/pdf' });
+                var file = new File([blob], "reporte.pdf");
+                var link = document.createElement('a');
+                link.href = URL.createObjectURL(file);
+                link.download = file.name;
+                link.click();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 Swal.fire({
