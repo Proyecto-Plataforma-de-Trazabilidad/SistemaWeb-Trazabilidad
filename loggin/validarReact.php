@@ -18,15 +18,13 @@
     
     
     if($filas=mysqli_num_rows($resultado) >= 1){
-        $data = mysqli_fetch_all($resultado);
-        $_SESSION["usuario"]=$email;
+        print json_encode("Usuario logeado");
     }
     else{
-        $_SESSION["usuario"]= null;
-        $data = null;
+        print json_encode("Error Usuario");;
     }
-    
-    echo json_encode("Usuario logeado");
+
+  
     print json_encode($data);
     
 
