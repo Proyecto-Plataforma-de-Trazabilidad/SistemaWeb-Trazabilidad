@@ -1,9 +1,27 @@
 <?php
-include("../conexion.php"); //$enlace es la conexion a db
-session_start();
+// include("../conexion.php"); //$enlace es la conexion a db
+// session_start();
+
+//Genera la imagen del grafico
+$my_base64_string = $_POST['img']; //Se recupera la imagen codificada enviada por ajax
+//echo $base64_string;
+function base64ToImage($base64_string, $output_file) {
+    $file = fopen($output_file, "wb"); //se indica que se va a crear un archivo (la 'wb' son los permisos de escritura)
+
+    $data = explode(',', $base64_string); //La imagen esta codificada en base64 y para poder decodificar se le quita la descripcion   
+
+    fwrite($file, base64_decode($data[1])); //Se decodifica la imagen y se escribe en el archivo que se abrio 
+    fclose($file); //Se cierra el archivo ya que se termino de escribir
+    return $output_file; //retorna el archivo de la imagen
+}
+
+$image = base64ToImage( $my_base64_string, 'imagen.jpeg' ); //Se llama a la funcion con la imagen codifica y el nombre del archivo que se va agenerar
+
 
 ob_start(); //iniciar el buffer para poder guardar la informacion html en una variable 
 $currentsite = getcwd();
+
+
 ?>
 
 
@@ -76,8 +94,7 @@ $currentsite = getcwd();
         </div>
     </section>
 
-    canva
-
+    <img src="https://campolimpiojal.com/reports/imagen.jpeg"  width="500" height="250">
 
 </body>
 </html>
@@ -111,6 +128,7 @@ $dompdf->setPaper('letter');
 $dompdf->render();
 
 // //poder trabajar el archivo           para poder descargarlo o solo abrirlo
-echo base64_encode($dompdf->stream("archivo_.pdf", array("Attachment" => false)));
+echo base64_encode($dompdf->stream("reporte.pdf", array("Attachment" => false)));
 
+unlink('imagen.jpeg'); //Borrra la imagen para no tener el monton de imagenes ahi nomas
 ?>
