@@ -32,9 +32,9 @@ $(document).ready(function () {
             //generar PDF
             $('#pdf').click(function (e) {
                 e.preventDefault();
-                const canvas=document.getElementById("myChart");
+                const canvas = document.getElementById("myChart");
                 //funcion pdf
-                generaPdf(canvas);
+                generaPdf();
             });
 
             break;
@@ -427,25 +427,30 @@ $(document).ready(function () {
         btnPdf.disabled = false;
     };
 
-    function generaPdf(canvas) {
-        const canvasImage=canvas.toDataURL('image/jpeg',1.0);
-        console.log("imagen",canvasImage);
+    function generaPdf() {
+        const canvas = document.getElementById("myChart");
+        const canvasImage = canvas.toDataURL('image/jpeg', 1.0);
+
+        console.log("imagen", canvasImage); //La imagen esta codificada en base64 
+        let formData = new FormData(); //Esta funcion normalmente se usa en formularios para guardar informacion
+
+        formData.append('img', canvasImage); //Se agrega la imagen que se genero al objeto formdata con el identificador 'img'
 
         $.ajax({
-            url: 'diseñoPdf.php',
-            data: canvasImage,
+            url: 'procesarImagen.php', //Archivo que genera la imagen
+            data: formData, //el objeto que contiene la imagen 
             type: 'POST',
-            contentType:false,
-            cache:false,
-            processData:false,
+            contentType: false,
+            cache: false,
+            processData: false,
             success: function (response) {
                 //console.log(response);
-               /* var blob = new Blob([response], { type: 'application/pdf' });
-                var file = new File([blob], "archivo.pdf");
-                var link = document.createElement('a');
-                link.href = URL.createObjectURL(file);
-                link.download = file.name;
-                link.click();*/
+                /* var blob = new Blob([response], { type: 'application/pdf' });
+                 var file = new File([blob], "archivo.pdf");
+                 var link = document.createElement('a');
+                 link.href = URL.createObjectURL(file);
+                 link.download = file.name;
+                 link.click();*/
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 Swal.fire({
@@ -456,7 +461,7 @@ $(document).ready(function () {
             }
         });
 
-       
+
     };
 
 });
