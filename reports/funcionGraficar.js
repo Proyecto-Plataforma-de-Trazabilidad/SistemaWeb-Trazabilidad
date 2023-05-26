@@ -277,6 +277,33 @@ $(document).ready(function () {
             });
             break;
 
+            case 11:
+            var titulo = "Total Entregas por Distribuidor";
+            texto.innerText = titulo;
+            // escribir titulo de reporte
+            // ajax para graficar
+            $('#consu').click(function (e) {
+                e.preventDefault();
+                //       numOpcion, columnaConsulta, titulos para grafica,  tipoGrafica
+                consulta(opcionEntero, 'Nombre', 'Distribuidor', 'pie');
+                activaPdf();
+            });
+
+            // generar archivo csv
+            $('#csv').click(function (e) {
+                e.preventDefault();
+                // funcion csv
+                generaCSV(opcionEntero, titulo);
+            });
+
+            //generar PDF
+            $('#pdf').click(function (e) {
+                e.preventDefault();
+                //funcion pdf
+                generaPdf();
+            });
+            break;
+
         default:
             console.log("Opcion no valida");
             break;
