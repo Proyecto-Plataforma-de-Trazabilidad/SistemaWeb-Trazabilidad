@@ -437,7 +437,7 @@ $(document).ready(function () {
         formData.append('img', canvasImage); //Se agrega la imagen que se genero al objeto formdata con el identificador 'img'
 
         $.ajax({
-            url: 'diseñoPdf.php', //Archivo que genera la imagen
+            url: 'procesarImagen.php', //Archivo que genera la imagen
             data: formData, //el objeto que contiene la imagen 
             type: 'POST',
             contentType: false,

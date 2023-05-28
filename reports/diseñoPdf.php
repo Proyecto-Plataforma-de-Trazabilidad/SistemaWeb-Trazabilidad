@@ -93,8 +93,9 @@ $currentsite = getcwd();
             </p>
         </div>
     </section>
-
-    <img src="https://campolimpiojal.com/reports/imagen.png" style="background-color: rgba(0, 0, 0, 0)" width="500" height="250">
+   
+    <img src="https://campolimpiojal.com/reports/imagen.png" width="500" height="250">
+    
 
 </body>
 </html>
