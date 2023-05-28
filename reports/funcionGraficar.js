@@ -439,14 +439,14 @@ $(document).ready(function () {
         const canvasImage = canvas.toDataURL("image/png");       
         
         console.log("imagen", canvasImage); //La imagen esta codificada en base64 
-        let formData = new FormData(); //Esta funcion normalmente se usa en formularios para guardar informacion
+        //let formData = new FormData(); //Esta funcion normalmente se usa en formularios para guardar informacion
 
-        formData.append('img', canvasImage); //Se agrega la imagen que se genero al objeto formdata con el identificador 'img'
+       // formData.append('img', canvasImage); //Se agrega la imagen que se genero al objeto formdata con el identificador 'img'
       
 
         $.ajax({
             url: 'diseñoPdf.php', //Archivo que genera la imagen
-            data: formData, //el objeto que contiene la imagen 
+            data: canvasImage, //el objeto que contiene la imagen 
             type: 'POST',
             contentType: false,
             cache: false,
