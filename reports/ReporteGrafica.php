@@ -49,7 +49,7 @@ include "../Layout/navMenu2.php";
     </section>
 
     <section class="Grafica">
-        <canvas id="myChart">
+        <canvas id="myChart" style="background-color: rgba(0, 0, 0, 0)">
 
         </canvas>
     </section>
