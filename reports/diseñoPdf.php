@@ -15,7 +15,7 @@ function base64ToImage($base64_string, $output_file) {
     return $output_file; //retorna el archivo de la imagen
 }
 
-$image = base64ToImage( $my_base64_string, 'imagen.jpeg' ); //Se llama a la funcion con la imagen codifica y el nombre del archivo que se va agenerar
+$image = base64ToImage( $my_base64_string, 'imagen.png' ); //Se llama a la funcion con la imagen codifica y el nombre del archivo que se va agenerar
 
 
 ob_start(); //iniciar el buffer para poder guardar la informacion html en una variable 
