@@ -21,6 +21,7 @@ include "../Layout/navMenu2.php";
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <title>APEJAL-Reporte</title>
+    
 </head>
 
 <body>
@@ -51,7 +52,6 @@ include "../Layout/navMenu2.php";
     <section class="Grafica">
         <canvas id="myChart"></canvas>
     </section>
-
 
     <script src="../Layout/menujs.js"></script>
     <script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
