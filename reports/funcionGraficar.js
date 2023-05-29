@@ -369,6 +369,16 @@ $(document).ready(function () {
             ]
         };
 
+        const bgColor={
+            id:'bgColor',
+            beforeDraw:(chart,steps,options)=>{
+                const{ctx,width,height}=chart;
+                ctx.fillStyle=options.backgroundColor;
+                ctx.fillRect(0,0,width,height);
+                ctx.restore();
+            }
+        }
+
         var barGraph = new Chart(document.getElementById("myChart"),{ // asigancion de datos y tipo grafica
             type: tipo,
             data: chartdata,
@@ -383,8 +393,14 @@ $(document).ready(function () {
                         beginAtZero: true
                     }
                 },
+                plugins:{
+                    bgColor:{
+                        backgroundColor:'white'
+                    }
+                }
             },
-        }  );   
+            plugins:[bgColor]
+        });   
        
   
        

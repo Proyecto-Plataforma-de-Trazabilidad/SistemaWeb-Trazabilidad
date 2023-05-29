@@ -130,5 +130,5 @@ $dompdf->render();
 // //poder trabajar el archivo           para poder descargarlo o solo abrirlo
 echo base64_encode($dompdf->stream("reporte.pdf", array("Attachment" => false)));
 
-unlink('imagen.jpg'); //Borrra la imagen para no tener el monton de imagenes ahi nomas
+unlink('imagen.png'); //Borrra la imagen para no tener el monton de imagenes ahi nomas
 ?>
