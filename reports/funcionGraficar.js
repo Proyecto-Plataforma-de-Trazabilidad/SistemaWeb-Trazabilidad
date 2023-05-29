@@ -372,9 +372,9 @@ $(document).ready(function () {
         const bgColor={
             id:'bgColor',
             beforeDraw:(chart,steps,options)=>{
-                const{ctx,width,height}=chart;
+                const{ctx}=chart;
                 ctx.fillStyle=options.backgroundColor;
-                ctx.fillRect(0,0,width,height);
+                ctx.fillRect(0,0,500,250);
                 ctx.restore();
             }
         }
@@ -395,7 +395,7 @@ $(document).ready(function () {
                 },
                 plugins:{
                     bgColor:{
-                        backgroundColor:'blue'
+                        backgroundColor:'white'
                     }
                 }
             },
@@ -461,7 +461,7 @@ $(document).ready(function () {
 
         $.ajax({
             url: 'diseñoPdf.php', //Archivo que genera la imagen
-            data: canvasImage, //el objeto que contiene la imagen 
+            data: formData, //el objeto que contiene la imagen 
             type: 'POST',
             contentType: false,
             cache: false,
