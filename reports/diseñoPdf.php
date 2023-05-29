@@ -15,7 +15,7 @@ function base64ToImage($base64_string, $output_file) {
     return $output_file; //retorna el archivo de la imagen
 }
 
-$image = base64ToImage( $my_base64_string, 'imagen.png' ); //Se llama a la funcion con la imagen codifica y el nombre del archivo que se va agenerar
+$image = base64ToImage( $my_base64_string, 'imagen.jpg' ); //Se llama a la funcion con la imagen codifica y el nombre del archivo que se va agenerar
 
 
 ob_start(); //iniciar el buffer para poder guardar la informacion html en una variable 
@@ -94,7 +94,7 @@ $currentsite = getcwd();
         </div>
     </section>
 
-    <img src="https://campolimpiojal.com/reports/imagen.png" style="background-color: rgba(0, 0, 0, 0)" width="500" height="250">
+    <img src="https://campolimpiojal.com/reports/imagen.jpg" style="background-color: rgba(0, 0, 0, 0)" width="500" height="250">
 
 </body>
 </html>
@@ -130,5 +130,5 @@ $dompdf->render();
 // //poder trabajar el archivo           para poder descargarlo o solo abrirlo
 echo base64_encode($dompdf->stream("reporte.pdf", array("Attachment" => false)));
 
-unlink('imagen.png'); //Borrra la imagen para no tener el monton de imagenes ahi nomas
+unlink('imagen.jpg'); //Borrra la imagen para no tener el monton de imagenes ahi nomas
 ?>

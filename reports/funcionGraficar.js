@@ -452,7 +452,7 @@ $(document).ready(function () {
     function generaPdf() {
         const canvas = document.getElementById("myChart");
 
-        const canvasImage = canvas.toDataURL("image/png");       
+        const canvasImage = canvas.toDataURL("image/jpeg",1.0);       
         
         console.log("imagen", canvasImage); //La imagen esta codificada en base64 
         //let formData = new FormData(); //Esta funcion normalmente se usa en formularios para guardar informacion
