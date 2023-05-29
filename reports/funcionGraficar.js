@@ -395,7 +395,7 @@ $(document).ready(function () {
                 },
                 plugins:{
                     bgColor:{
-                        backgroundColor:'white'
+                        backgroundColor:'blue'
                     }
                 }
             },
@@ -455,9 +455,8 @@ $(document).ready(function () {
         const canvasImage = canvas.toDataURL("image/jpeg",1.0);       
         
         console.log("imagen", canvasImage); //La imagen esta codificada en base64 
-        //let formData = new FormData(); //Esta funcion normalmente se usa en formularios para guardar informacion
-
-       // formData.append('img', canvasImage); //Se agrega la imagen que se genero al objeto formdata con el identificador 'img'
+        let formData = new FormData(); //Esta funcion normalmente se usa en formularios para guardar informacion
+        formData.append('img', canvasImage); //Se agrega la imagen que se genero al objeto formdata con el identificador 'img'
       
 
         $.ajax({
