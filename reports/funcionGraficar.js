@@ -374,7 +374,7 @@ $(document).ready(function () {
             beforeDraw:(chart,steps,options)=>{
                 const{ctx}=chart;
                 ctx.fillStyle=options.backgroundColor;
-                ctx.fillRect(0,0,800,650);
+                ctx.fillRect(0,0,1200,950);
                 ctx.restore();
             }
         }
