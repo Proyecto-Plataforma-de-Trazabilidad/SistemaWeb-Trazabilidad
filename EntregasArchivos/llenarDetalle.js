@@ -30,6 +30,8 @@ $(document).ready(function () {
 
     });
   });
+
+
   //Funcion para generar el grafico
   $('#contene').on('change', function () {
 
