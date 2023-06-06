@@ -20,17 +20,17 @@ $currentsite = getcwd();
     <title>APEJAL-PDF</title>
 
     <style>
-        .container-main
-        {
-            background-image: url("https://campolimpiojal.com/Logos/AMOCALI_SIN_FONDO.png");
-            width: 80%;
-            height: 10%;
-            margin-left: 16%;
-            margin-right: auto;
-            margin-top: 40px;
-            opacity: 0.5;
-        }
         body {
+            background: url(https://campolimpiojal.com/Logos/AMOCALI-fondo.png) no-repeat center center fixed;
+            -webkit-background-size: contain;
+        -moz-background-size: contain;
+        -o-background-size: contain;
+        background-size: contain;
+            width: 195mm;
+            height: 279.4mm;
+            /* border: solid; */
+        }
+        .bgimage {
             background: #ffffff;
             width: 195mm;
             height: 279.4mm;
@@ -212,17 +212,12 @@ $currentsite = getcwd();
             float: right;
             
         }
-
-
-
-
-
-
     </style>
 </head>
 
-<body>
-<section> <!-- fondo logo-->
+
+<body >
+
     <!-- encabezado -->
     <section class="container-encabezado">
         <div class="container-encabezado-imagen">
@@ -385,8 +380,7 @@ $currentsite = getcwd();
             <p>Responsable de recepción</p>
         </div>
     </section>
-
-</section><!-- fin fondo logo-->
+               
 
 </body>
 
