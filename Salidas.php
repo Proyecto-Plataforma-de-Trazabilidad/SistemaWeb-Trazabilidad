@@ -61,10 +61,9 @@ include "Layout/navMenu.php";
             </div>
 
             <div class="col-sm-4">
-                <label for="Responsable" class="form-label">Nombre de Responsable</label>
-                <!-- debe de cargar dependiendo el inicio de seccion  -->
+                <label for="Responsable" class="form-label">Nombre del Responsable de Salida</label>
                 <input  type="text" id="Responsable" name="nomResponsable" class="form-control" maxlength="30"
-                    required placeholder="Nombre de responsable" data-idProduc="">
+                    required placeholder="Nombre del Responsable de Salida">
             </div>
 
             <div class="col-sm-3">

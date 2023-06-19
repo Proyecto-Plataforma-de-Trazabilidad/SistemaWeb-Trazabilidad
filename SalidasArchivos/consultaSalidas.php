@@ -1,6 +1,12 @@
 <!-- Incluir menu lateral -->
 <?php
 include "../Layout/navMenu2.php";
+
+include '../conexion.php';
+$r = "SELECT * FROM usuarios where Correo = '$varses'";
+$res = mysqli_query($enlace, $r);
+$filas = mysqli_fetch_array($res);
+$rol = $filas['Idtipousuario'];
 ?>
 
 <!DOCTYPE html>
@@ -40,9 +46,9 @@ include "../Layout/navMenu2.php";
                 style="justify-content:center;">   
                 
                 <div class="col-sm-3">
-                    <label for="recolector" class="form-label" id="tituloProdu">Nombre de Recolector</label>
-                    <select disabled name="nomRecolector" id="recolector" class="form-select" >
-                        <option hidden>Selecciona un recolector </option>
+                    <label for="tipoRecol" class="form-label tipoRecole">Tipo de Recolector</label>
+                    <select name="nomRecolector" id="tipoRecol" class="form-select tipoRecole" >
+                        <option hidden>Selecciona un recolector</option>
                         <option value="Distribuidores">Distribuidores</option>
                         <option value="Empresa Recolectora">Empresa Recolectora</option>
                         <option value="Municipios">Municipios</option>
@@ -80,10 +86,9 @@ include "../Layout/navMenu2.php";
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Numero Contenedor</th>
                         <th scope="col">Origen de Contenedor</th>
-                        <th scope="col">Recolector</th>
-                        <th scope="col">Responsable</th>
+                        <th class="tablaTipoRecole" scope="col">Recolector</th>
+                        <th scope="col">Responsable de Salida</th>
                         <th scope="col">Peso</th>
                         <th scope="col">Fecha</th>                                      
                         <!-- aqui agregamos el icono y funcion de eliminar por si se equivoca en algo -->
@@ -95,16 +100,22 @@ include "../Layout/navMenu2.php";
             </table>
         </div>
     </section>
-    <!-- Linea para separar el detalle -->
-    <!-- <div>
-        <hr class="divider">
-    </div> -->
+
+    <script type="text/javascript">
+    var rol = "<?php echo $rol; ?>";
+
+    if (rol == 3 || rol == 4 || rol == 5){ //Rol distribuidor o Municipios o ERP
+        $('.tipoRecole').hide();
+        $('.tablaTipoRecole').remove();
+    }
+
+    </script>
 
     <script type="text/javascript" src="../jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../datatables.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript" src="Funciones/consultas.js"></script>
+    <script type="text/javascript" src="Funciones/consultaFunciones.js"></script>
     <script src="../Layout/menujs.js"></script>
 
 </body>
