@@ -2,7 +2,7 @@ $(document).ready(function () {
     const nombreProdu = document.getElementById("nomProdu");
     añadirProductores(nombreProdu); //Funcion que carga la combo de productores
 
-    mostrarEntrega("", "", "", "");  //Función que se encarga de llenar el datatable
+    //mostrarEntrega("", "", "", "");  //Función que se encarga de llenar el datatable
 });
 
 //Función jQuery  que se ejecuta cuando das clic al botón
