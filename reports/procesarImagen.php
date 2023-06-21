@@ -11,5 +11,5 @@
         return $output_file; //retorna el archivo de la imagen
     }
 
-    $image = base64ToImage( $my_base64_string, 'imagen.jpeg' ); //Se llama a la funcion con la imagen codifica y el nombre del archivo que se va agenerar
+    $image = base64ToImage( $my_base64_string, 'imagen.png' ); //Se llama a la funcion con la imagen codifica y el nombre del archivo que se va agenerar
 ?>

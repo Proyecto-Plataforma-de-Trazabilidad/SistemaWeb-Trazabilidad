@@ -61,10 +61,9 @@ include "Layout/navMenu.php";
             </div>
 
             <div class="col-sm-4">
-                <label for="Responsable" class="form-label">Nombre de Responsable</label>
-                <!-- debe de cargar dependiendo el inicio de seccion  -->
+                <label for="Responsable" class="form-label">Nombre del Responsable de Salida</label>
                 <input  type="text" id="Responsable" name="nomResponsable" class="form-control" maxlength="30"
-                    required placeholder="Nombre de responsable" data-idProduc="">
+                    required placeholder="Nombre del Responsable de Salida">
             </div>
 
             <div class="col-sm-3">
@@ -73,6 +72,10 @@ include "Layout/navMenu.php";
                     <input type="number" class="form-control" id="peso" min="1" maxlength="10" name="incap" required pattern="[1-9]\d*(\.\d+)?"
                         placeholder="Ingrese el peso">
                 </div>
+            </div>
+
+            <div class="col-sm-6">
+                <canvas id="myChart" width="100%" height="100px"></canvas>
             </div>
 
             <div class="col-sm-3">
@@ -96,8 +99,14 @@ include "Layout/navMenu.php";
     <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
+    <!--Liberia delas graficas-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
     <script type="text/javascript" src="SalidasArchivos/Funciones/funcion.js"></script>
     <script type="text/javascript" src="SalidasArchivos/Funciones/insertar.js"></script>
+    <script type="text/javascript" src="SalidasArchivos/Funciones/cargarGrafico.js"></script>
+
     <script src="Layout/menujs.js"></script>
 </body>
 

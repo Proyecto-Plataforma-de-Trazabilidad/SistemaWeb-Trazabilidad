@@ -326,6 +326,9 @@ if ($tipoUser == 'Distribuidores' && $_POST['IdProdu'] == "" && $_POST['FF'] == 
         case 'entregas':
                 $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' LIMIT 1;";
             break;
+        case 'salidas':
+            $queryOrden = "SELECT * FROM salidas WHERE IdUsuario = '" . $IdUsuario . "' LIMIT 1;";
+        break;
         default:
             break;
     }
@@ -346,6 +349,9 @@ if ($tipoUser == 'Distribuidores' && $_POST['IdProdu'] == "" && $_POST['FF'] == 
         case 'entregas':
                 $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
             break;
+        case 'salidas':
+            $queryOrden = "SELECT * FROM salidas WHERE IdUsuario = '" . $IdUsuario . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
+        break;
         default:
             break;
     }
@@ -406,6 +412,9 @@ if ($tipoUser == 'Municipios'  && $_POST['IdProdu'] == "" && $_POST['FF'] == "" 
         case 'entregas':
                 $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' LIMIT 1;";
             break;
+        case 'salidas':
+            $queryOrden = "SELECT * FROM salidas WHERE IdUsuario = '" . $IdUsuario . "' LIMIT 1;";
+        break;
         default:
             break;
     }
@@ -423,6 +432,9 @@ if ($tipoUser == 'Municipios'  && $_POST['IdProdu'] == "" && $_POST['FF'] == "" 
         case 'entregas':
                 $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
             break;
+        case 'salidas':
+            $queryOrden = "SELECT * FROM salidas WHERE IdUsuario = '" . $IdUsuario . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
+        break;
         default:
             break;
     }
@@ -475,6 +487,9 @@ if ($tipoUser == 'Empresa Recolectora'  && $_POST['IdProdu'] == "" && $_POST['FF
         case 'entregas':
                 $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' LIMIT 1;";
             break;
+        case 'salidas':
+            $queryOrden = "SELECT * FROM salidas WHERE IdUsuario = '" . $IdUsuario . "' LIMIT 1;";
+        break;
         default:
             break;
     }
@@ -492,6 +507,9 @@ if ($tipoUser == 'Empresa Recolectora'  && $_POST['IdProdu'] == "" && $_POST['FF
         case 'entregas':
                 $queryOrden = "SELECT * FROM entregas WHERE IdUsuario = '" . $IdUsuario . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
             break;
+        case 'salidas':
+            $queryOrden = "SELECT * FROM salidas WHERE IdUsuario = '" . $IdUsuario . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";
+        break;
         default:
             break;
     }

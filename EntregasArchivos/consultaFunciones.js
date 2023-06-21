@@ -2,7 +2,7 @@ $(document).ready(function () {
     const nombreProdu = document.getElementById("nomProdu");
     añadirProductores(nombreProdu); //Funcion que carga la combo de productores
 
-    mostrarEntrega("","","", "");  //Función que se encarga de llenar el datatable
+    //mostrarEntrega("", "", "", "");  //Función que se encarga de llenar el datatable
 });
 
 //Función jQuery  que se ejecuta cuando das clic al botón
@@ -26,8 +26,8 @@ $('#aceptar').click(function () {
 function mostrarEntrega(fechaI, fechaF, idProdud, tipoRecol) {
     $.ajax({
         type: 'POST',
-        url:'../OrdenesArchivos/validacionesConsulta.php',
-        data:{'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud, 'IdTipo': tipoRecol, 'movi': 'entregas'},
+        url: '../OrdenesArchivos/validacionesConsulta.php',
+        data: { 'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud, 'IdTipo': tipoRecol, 'movi': 'entregas' },
         success: function (res) {
             let datos = JSON.parse(res);//Trae los datos en formato json y los pasa a objeto
             let opc = datos.mensaje;
@@ -122,19 +122,20 @@ function mostrarEntrega(fechaI, fechaF, idProdud, tipoRecol) {
             }
         }
     });
-    
+
 }
 
 function generarTabla(opc, fechaI, fechaF, idProdud, tipoRecolec) {
     let tablaEntrega = $('#entrega').DataTable({
-        destroy:true,
-        scrollX:true,
+        destroy: true,
+        scrollX: true,
         scrollCollapse: true,
         processing: true,
+        deferRender: true,
         ajax: {
-            "method":"POST",
-            "url":"metodosConsulta.php",
-            "data":{'Opcion': opc, 'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud, 'TipoRecol': tipoRecolec},
+            "method": "POST",
+            "url": "metodosConsulta.php",
+            "data": { 'Opcion': opc, 'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud, 'TipoRecol': tipoRecolec },
             "error": function (res) {
                 if (res.responseText == "Error") {
                     console.log(res.responseText);
@@ -143,29 +144,30 @@ function generarTabla(opc, fechaI, fechaF, idProdud, tipoRecolec) {
                         title: 'No hay datos disponibles',
                         text: 'No se encontraron registros del distribuidor',
                     });
-                }else 
-                    return res.responseText;                   
+                } else
+                    return res.responseText;
             }
         },
-        columns:[
-            {data: "IdEntrega"},
-            {data: "TipoRecolector"},
-            {data: "NomRecolector"},
-            {data: "Productor"},
-            {data: "Recibo",       //Aquí esta el recibo
-                render: function (data, type, row) {  
-                    if (data == "Faltante" || data == "" ) {
+        columns: [
+            { data: "IdEntrega" },
+            { data: "TipoRecolector" },
+            { data: "NomRecolector" },
+            { data: "Productor" },
+            {
+                data: "Recibo",       //Aquí esta el recibo
+                render: function (data, type, row) {
+                    if (data == "Faltante" || data == "") {
                         return "<button class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes32NoEncontrado.svg' alt='No hay archivo' ></button>";
-                    }else
-                        return "<a href='"+data+"' target='_blank' class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes32.svg' alt='Abrir archivo' ></a>";
+                    } else
+                        return "<a href='" + data + "' target='_blank' class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes32.svg' alt='Abrir archivo' ></a>";
                 }
-            },  
-            {data: "ResponsableEntrega"},
-            {data: "ResponsableRecepcion"},
-            {data: "fecha"},
-            {defaultContent: "<button class='detalle-btn detalle'><img src='../Recursos/Iconos/detalle.svg' alt='Abrir detalle'></button>"},
+            },
+            { data: "ResponsableEntrega" },
+            { data: "ResponsableRecepcion" },
+            { data: "fecha" },
+            { defaultContent: "<button class='detalle-btn detalle'><img src='../Recursos/Iconos/detalle.svg' alt='Abrir detalle'></button>" },
             //{defaultContent: "<button class='detalle-btn editar'><img src='../Recursos/Iconos/editar.svg' alt='Editar'></button>"}
-            
+
         ],
         language: {
             url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/es-MX.json'
@@ -187,20 +189,19 @@ function generarTabla(opc, fechaI, fechaF, idProdud, tipoRecolec) {
         if (datosFila != undefined) {
             editar(datosFila);
         }
-        
     });
 }
 
 function generarTablaV2(opc, fechaI, fechaF, idProdud, tipoRecolec) {
     let tablaEntrega = $('#entrega').DataTable({
-        destroy:true,
-        scrollX:true,
+        destroy: true,
+        scrollX: true,
         scrollCollapse: true,
         processing: true,
         ajax: {
-            "method":"POST",
-            "url":"metodosConsulta.php",
-            "data":{'Opcion2': opc, 'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud, 'TipoRecol': tipoRecolec},
+            "method": "POST",
+            "url": "metodosConsulta.php",
+            "data": { 'Opcion2': opc, 'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud, 'TipoRecol': tipoRecolec },
             "error": function (res) {
                 if (res.responseText == "Error") {
                     console.log(res.responseText);
@@ -209,27 +210,28 @@ function generarTablaV2(opc, fechaI, fechaF, idProdud, tipoRecolec) {
                         title: 'No hay datos disponibles',
                         text: 'No se encontraron registros del distribuidor',
                     });
-                }else 
-                    return res.responseText;                   
+                } else
+                    return res.responseText;
             }
         },
-        columns:[
-            {data: "IdEntrega"},
-            {data: "Productor"},
-            {data: "Recibo",       //Aquí esta el recibo
-                render: function (data, type, row) {  
-                    if (data == "Faltante" || data == "" ) {
+        columns: [
+            { data: "IdEntrega" },
+            { data: "Productor" },
+            {
+                data: "Recibo",       //Aquí esta el recibo
+                render: function (data, type, row) {
+                    if (data == "Faltante" || data == "") {
                         return "<button class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes32NoEncontrado.svg' alt='No hay archivo' ></button>";
-                    }else
-                        return "<a href='"+data+"' target='_blank' class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes32.svg' alt='Abrir archivo' ></a>";
+                    } else
+                        return "<a href='" + data + "' target='_blank' class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes32.svg' alt='Abrir archivo' ></a>";
                 }
-            },  
-            {data: "ResponsableEntrega"},
-            {data: "ResponsableRecepcion"},
-            {data: "fecha"},
-            {defaultContent: "<button class='detalle-btn detalle'><img src='../Recursos/Iconos/detalle.svg' alt='Abrir detalle'></button>"},
+            },
+            { data: "ResponsableEntrega" },
+            { data: "ResponsableRecepcion" },
+            { data: "fecha" },
+            { defaultContent: "<button class='detalle-btn detalle'><img src='../Recursos/Iconos/detalle.svg' alt='Abrir detalle'></button>" },
             //{defaultContent: "<button class='detalle-btn editar'><img src='../Recursos/Iconos/editar.svg' alt='Editar'></button>"}
-            
+
         ],
         language: {
             url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/es-MX.json'
@@ -243,7 +245,7 @@ function generarTablaV2(opc, fechaI, fechaF, idProdud, tipoRecolec) {
             mostrarDetalle(datosFila);
             console.log(datosFila);
         }
-        
+
     });
 
     //Evento que permite editar cuando se da clic al botón de editar 
@@ -252,7 +254,7 @@ function generarTablaV2(opc, fechaI, fechaF, idProdud, tipoRecolec) {
         if (datosFila != undefined) {
             editar(datosFila);
         }
-        
+
     });
 }
 
@@ -260,20 +262,20 @@ function mostrarDetalle(datosFila) {
 
     //Llenar tabla detalle 
     $('#detalle').DataTable({
-        destroy:true,
+        destroy: true,
         ajax: {
-            "method":"POST",
-            "url":"obtenerDetalle.php",
-            "data":{'IdEntrega': datosFila.IdEntrega} //Se le manda el IdEntrega dependiendo de la fila presionada
+            "method": "POST",
+            "url": "obtenerDetalle.php",
+            "data": { 'IdEntrega': datosFila.IdEntrega } //Se le manda el IdEntrega dependiendo de la fila presionada
         },
-        columns:[
-            {data: "IdEntrega"},
-            {data: "Consecutivo"},
-            {data: "TipoEnvaseVacio"},
-            {data: "CantidadPiezas"},
-            {data: "Peso"},
-            {data: "Observaciones"},
-            {defaultContent: "<button class='detalle-btn editar'><img src='../Recursos/Iconos/editar.svg' alt='Icono de detalle'></button>"}
+        columns: [
+            { data: "IdEntrega" },
+            { data: "Consecutivo" },
+            { data: "TipoEnvaseVacio" },
+            { data: "CantidadPiezas" },
+            { data: "Peso" },
+            { data: "Observaciones" },
+            { defaultContent: "<button class='detalle-btn editar'><img src='../Recursos/Iconos/editar.svg' alt='Icono de detalle'></button>" }
         ]
     });
 
@@ -347,21 +349,21 @@ function editar(datosFila) {
     </section>`);
 
     const nombreProdu = document.getElementById("nomProdu");
-    añadirProductores(nombreProdu);            
+    añadirProductores(nombreProdu);
 }
 
-function añadirProductores(comboProduc){
+function añadirProductores(comboProduc) {
     $.ajax({
-        url:'optenerCampos.php',
+        url: 'optenerCampos.php',
         type: 'GET',
         success: function (res) {
             let datos = JSON.parse(res);//Trae los datos en formato json y los pasa a objeto
             if (datos.produtores == "No hay productores") {
                 mensajeError('No hay ningún productor registrado', "Por favor vaya a registrar uno");
-            }else
-            datos.produtores.map(productor => {
-                comboProduc.insertAdjacentHTML('beforeend', `<option value="${productor.IdProductor}">${productor.Nombre}</option>`);//Rellena la combo proveedores    
-            });  
+            } else
+                datos.produtores.map(productor => {
+                    comboProduc.insertAdjacentHTML('beforeend', `<option value="${productor.IdProductor}">${productor.Nombre}</option>`);//Rellena la combo proveedores    
+                });
         }
     })
 }

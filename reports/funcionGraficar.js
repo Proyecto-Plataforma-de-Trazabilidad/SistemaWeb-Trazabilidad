@@ -349,9 +349,11 @@ $(document).ready(function () {
                     tipo.push(titulo1 + ": " + dat); // indicando que la etiqueta sera el productor y su nombre
                     console.log(tipo);
                 }
-
+                
                 // subtitulos, datos, tipoGrafica
-                graficar(tipo, cant, grafica); // Generar grafica
+              graficar(tipo, cant, grafica); // Generar grafica
+               
+                
 
             }
         });
@@ -362,13 +364,12 @@ $(document).ready(function () {
 
     function graficar(label, data, tipo,) {
         let chartStatus = Chart.getChart("myChart"); // <canvas> id
+       
         if (chartStatus != undefined) { // si ya existe destruyelo, si no no entra
             chartStatus.destroy();
         }
 
-        var graphTarget = $("#myChart");
-        // asigno ala grafica
-        // aqui todo lo dela grafica config
+       
         var chartdata = {
             labels: label,
             datasets: [
@@ -395,7 +396,17 @@ $(document).ready(function () {
             ]
         };
 
-        var barGraph = new Chart(graphTarget, { // asigancion de datos y tipo grafica
+        const bgColor={
+            id:'bgColor',
+            beforeDraw:(chart,steps,options)=>{
+                const{ctx}=chart;
+                ctx.fillStyle=options.backgroundColor;
+                ctx.fillRect(0,0,1200,950);
+                ctx.restore();
+            }
+        }
+
+        var barGraph = new Chart(document.getElementById("myChart"),{ // asigancion de datos y tipo grafica
             type: tipo,
             data: chartdata,
             onAnimationComplete: function () {
@@ -408,10 +419,20 @@ $(document).ready(function () {
                     y: {
                         beginAtZero: true
                     }
+                },
+                plugins:{
+                    bgColor:{
+                        backgroundColor:'white'
+                    }
                 }
-            }
-        });
+            },
+            plugins:[bgColor]
+        });   
+       
+  
+       
     };
+    
 
     function generaCSV(opc, titulo) {
         let nombre = titulo.replace(/\s/g, "");  //quitar espacios del titulo   
@@ -453,15 +474,17 @@ $(document).ready(function () {
         let btnPdf = document.getElementById("pdf");
         btnPdf.disabled = false;
     };
-
+   
+    
     function generaPdf() {
         const canvas = document.getElementById("myChart");
-        const canvasImage = canvas.toDataURL("image/png");
+
+        const canvasImage = canvas.toDataURL("image/jpeg",1.0);       
         
         console.log("imagen", canvasImage); //La imagen esta codificada en base64 
         let formData = new FormData(); //Esta funcion normalmente se usa en formularios para guardar informacion
-
         formData.append('img', canvasImage); //Se agrega la imagen que se genero al objeto formdata con el identificador 'img'
+      
 
         $.ajax({
             url: 'diseñoPdf.php', //Archivo que genera la imagen

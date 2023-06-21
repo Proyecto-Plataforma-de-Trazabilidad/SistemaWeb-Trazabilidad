@@ -1,11 +1,17 @@
 <?php
 include("../../conexion.php"); //$enlace es la conexion a db
+session_start();
 
 //verificar conexion
 if ($enlace->connect_error) {
     //mandar mensaje y salir
     die("Conexion fallida: " . $enlace->connect_error);
 } else { //si todo funciona correctamente
+
+    $comando = mysqli_query($enlace, "SELECT IdUsuario FROM usuarios where Correo = '" . $_SESSION['usuario'] . "'");
+    $fila = mysqli_fetch_array($comando);
+    $IdUsuario = $fila[0];
+    mysqli_free_result($comando);
 
     //traer los datos ajax
     if (isset($_POST['salidas'])) { //validar que se mando bien la opcion
@@ -30,6 +36,10 @@ if ($enlace->connect_error) {
                 $registro = "INSERT INTO salidas VALUES (null, $contenedor, $recolector, '$responsable', $peso , '$fecha')";
                 //echo($registro);
                 mysqli_query($enlace, $registro);
+                
+                //query de actualizar el estatus del contenedor
+                $queryContenedor = "UPDATE contenedores SET CapacidadStatus = CapacidadStatus - " . $_POST['salidas']['peso'] . " WHERE IdUsuario = ". $IdUsuario;
+                mysqli_query($enlace, $queryContenedor);
                 
                 //ejecutar transaccion
                 $enlace->commit();
