@@ -35,20 +35,17 @@ $filas = mysqli_fetch_array($res);
             #MENU DEL ADMINISTRADOR
             if ($filas['Idtipousuario'] == 1) {
 
-                ?>
+            ?>
                 <!-- menu tipo acordeon  -->
                 <div class="accordion" id="accordionPanelsStayOpenExample">
                     <div class="accordion-item">
 
                         <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                                aria-controls="panelsStayOpen-collapseOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                                 Generales
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
-                            aria-labelledby="panelsStayOpen-headingOne">
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                             <div class="accordion-body">
 
                                 <div class="menu-item" data-url="ReportesArchivos/Envases.php" data-opcionreporte="">
@@ -56,10 +53,8 @@ $filas = mysqli_fetch_array($res);
                                     <p class="menu-item-titulo">Uso de Envases</p>
                                 </div>
 
-                                <div class="menu-item" data-url="ReportesArchivos/EnvasesMasOrden.php"
-                                    data-opcionreporte="1">
-                                    <img src="Recursos/Iconos/OrdenesMas.svg" alt="Envases mas orden"
-                                        class="menu-item-imagen">
+                                <div class="menu-item" data-url="ReportesArchivos/EnvasesMasOrden.php" data-opcionreporte="1">
+                                    <img src="Recursos/Iconos/OrdenesMas.svg" alt="Envases mas orden" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Envases Más Ordenados</p>
                                 </div>
 
@@ -71,36 +66,29 @@ $filas = mysqli_fetch_array($res);
 
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
-                                aria-controls="panelsStayOpen-collapseTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
                                 Listas
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingTwo">
+                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                             <div class="accordion-body">
                                 <div class="menu-item" data-opcionreporte="">
-                                    <img src="Recursos/Iconos/Distribuidores.svg" alt="Icono de Distribuidores"
-                                        class="menu-item-imagen">
+                                    <img src="Recursos/Iconos/Distribuidores.svg" alt="Icono de Distribuidores" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Lista de Distribuidores</p>
                                 </div>
 
                                 <div class="menu-item" data-opcionreporte="">
-                                    <img src="Recursos/Iconos/Productores.svg"
-                                        alt="Icono de Distribuidor Menos Entregas" class="menu-item-imagen">
+                                    <img src="Recursos/Iconos/Productores.svg" alt="Icono de Distribuidor Menos Entregas" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Lista de Productores</p>
                                 </div>
 
                                 <div class="menu-item" data-opcionreporte="">
-                                    <img src="Recursos/Iconos/Huertos.svg" alt="Icono de Distribuidores"
-                                        class="menu-item-imagen">
+                                    <img src="Recursos/Iconos/Huertos.svg" alt="Icono de Distribuidores" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Lista de Huertos</p>
                                 </div>
 
                                 <div class="menu-item" data-opcionreporte="">
-                                    <img src="Recursos/Iconos/CAT.svg"
-                                        alt="Icono de Distribuidor Menos Entregas" class="menu-item-imagen">
+                                    <img src="Recursos/Iconos/CAT.svg" alt="Icono de Distribuidor Menos Entregas" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Lista de CAT</p>
                                 </div>
                             </div>
@@ -109,24 +97,19 @@ $filas = mysqli_fetch_array($res);
 
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-                                aria-controls="panelsStayOpen-collapseThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
                                 Distribuidores
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingThree">
+                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                             <div class="accordion-body">
                                 <div class="menu-item" data-opcionreporte="2">
-                                    <img src="Recursos/Iconos/DistribuidorConcurrido.svg" alt="Icono de Distribuidores"
-                                        class="menu-item-imagen">
+                                    <img src="Recursos/Iconos/DistribuidorConcurrido.svg" alt="Icono de Distribuidores" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Distribuidores Más Concurridos</p>
                                 </div>
 
                                 <div class="menu-item" data-opcionreporte="6">
-                                    <img src="Recursos/Iconos/DistribuidorMenosEntregas.svg"
-                                        alt="Icono de Distribuidor Menos Entregas" class="menu-item-imagen">
+                                    <img src="Recursos/Iconos/DistribuidorMenosEntregas.svg" alt="Icono de Distribuidor Menos Entregas" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Distribuidor Con Menos Entregas</p>
                                 </div>
                             </div>
@@ -135,23 +118,18 @@ $filas = mysqli_fetch_array($res);
 
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingFour">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
-                                aria-controls="panelsStayOpen-collapseFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
                                 Productores
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingFour">
+                        <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
                             <div class="accordion-body">
                                 <div class="menu-item" data-opcionreporte="4">
-                                    <img src="Recursos/Iconos/MasOrdenes.svg" alt="Icono de Ordenes"
-                                        class="menu-item-imagen">
+                                    <img src="Recursos/Iconos/MasOrdenes.svg" alt="Icono de Ordenes" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Productores Con Más Ordenes</p>
                                 </div>
-                                <div class="menu-item" >
-                                            <img src=" Recursos/Iconos/Ordenes.svg"
-                                    alt="Icono de Contenedores Menos salidas" class="menu-item-imagen">
+                                <div class="menu-item">
+                                    <img src=" Recursos/Iconos/Ordenes.svg" alt="Icono de Contenedores Menos salidas" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Envases ordenados por productor</p>
                                 </div>
                             </div>
@@ -160,18 +138,14 @@ $filas = mysqli_fetch_array($res);
 
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingFive">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false"
-                                aria-controls="panelsStayOpen-collapseFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
                                 Municipios
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingFive">
+                        <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
                             <div class="accordion-body">
                                 <div class="menu-item" data-opcionreporte="5">
-                                    <img src="Recursos/Iconos/Parlamento.svg" alt="Icono de Municipios Menos Entregas"
-                                        class="menu-item-imagen">
+                                    <img src="Recursos/Iconos/Parlamento.svg" alt="Icono de Municipios Menos Entregas" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Municipios Con Menos Entregas</p>
                                 </div>
                             </div>
@@ -180,24 +154,19 @@ $filas = mysqli_fetch_array($res);
 
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingSix">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false"
-                                aria-controls="panelsStayOpen-collapseSix">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">
                                 Contenedores
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingSix">
+                        <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
                             <div class="accordion-body">
                                 <div class="menu-item" data-opcionreporte="3">
-                                    <img src="Recursos/Iconos/ContenedoresConcurridos.svg"
-                                        alt="Icono de Contenedores Concurridos" class="menu-item-imagen">
+                                    <img src="Recursos/Iconos/ContenedoresConcurridos.svg" alt="Icono de Contenedores Concurridos" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Contenedores Más Concurridos</p>
                                 </div>
 
-                                <div class="menu-item" data-opcionreporte="7" >
-                                    <img src="Recursos/Iconos/ContenedorMenos.svg" alt="Icono de Contenedores Menos salidas"
-                                        class="menu-item-imagen">
+                                <div class="menu-item" data-opcionreporte="7">
+                                    <img src="Recursos/Iconos/ContenedorMenos.svg" alt="Icono de Contenedores Menos salidas" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Contenedores Con Menos Salidas</p>
                                 </div>
                             </div>
@@ -206,19 +175,15 @@ $filas = mysqli_fetch_array($res);
 
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false"
-                                aria-controls="panelsStayOpen-collapseSeven">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false" aria-controls="panelsStayOpen-collapseSeven">
                                 Ordenes
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingSeven">
+                        <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
                             <div class="accordion-body">
 
-                            <div class="menu-item" data-opcionreporte="10">
-                                    <img src="Recursos/Iconos/DistribuidorConcurrido.svg"
-                                        alt="Icono de Contenedores Concurridos" class="menu-item-imagen">
+                                <div class="menu-item" data-opcionreporte="10">
+                                    <img src="Recursos/Iconos/DistribuidorConcurrido.svg" alt="Icono de Contenedores Concurridos" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Ordenes por Productor</p>
                                 </div>
 
@@ -229,30 +194,30 @@ $filas = mysqli_fetch_array($res);
 
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingEigth">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseEigth" aria-expanded="false"
-                                aria-controls="panelsStayOpen-collapseEigth">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEigth" aria-expanded="false" aria-controls="panelsStayOpen-collapseEigth">
                                 Entregas
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseEigth" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingEigth">
+                        <div id="panelsStayOpen-collapseEigth" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingEigth">
                             <div class="accordion-body">
-                            <div class="menu-item" data-opcionreporte="8">
+                                <div class="menu-item" data-opcionreporte="8">
 
-                                    <img src="Recursos/Iconos/DistribuidorConcurrido.svg"
-                                        alt="Icono de Contenedores Concurridos" class="menu-item-imagen">
+                                    <img src="Recursos/Iconos/DistribuidorConcurrido.svg" alt="Icono de Contenedores Concurridos" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Todas las entregas por Productor</p>
                                 </div>
 
                                 <div class="menu-item" data-opcionreporte="9">
 
-                                    <img src="Recursos/Iconos/Extraviados.svg"
-                                        alt="Icono de Contenedores Concurridos" class="menu-item-imagen">
+                                    <img src="Recursos/Iconos/Extraviados.svg" alt="Icono de Contenedores Concurridos" class="menu-item-imagen">
                                     <p class="menu-item-titulo">Todas los Extraviados por Productor</p>
                                 </div>
-                            
-                            
+                                <div class="menu-item" data-opcionreporte="11">
+
+                                    <img src="Recursos/Iconos/Extraviados.svg" alt="Icono de Contenedores Concurridos" class="menu-item-imagen">
+                                    <p class="menu-item-titulo">Todas las Entregas por Distribuidor</p>
+                                </div>
+
+
 
                             </div>
                         </div>
@@ -261,14 +226,11 @@ $filas = mysqli_fetch_array($res);
 
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingNine">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="false"
-                                aria-controls="panelsStayOpen-collapseNine">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="false" aria-controls="panelsStayOpen-collapseNine">
                                 Extravidados
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingNine">
+                        <div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingNine">
                             <div class="accordion-body">
 
                             </div>
@@ -277,14 +239,11 @@ $filas = mysqli_fetch_array($res);
 
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingTen">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#panelsStayOpen-collapseTen" aria-expanded="false"
-                                aria-controls="panelsStayOpen-collapseTen">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTen" aria-expanded="false" aria-controls="panelsStayOpen-collapseTen">
                                 Salidas
                             </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseTen" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingTen">
+                        <div id="panelsStayOpen-collapseTen" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTen">
                             <div class="accordion-body">
 
                             </div>
@@ -294,13 +253,13 @@ $filas = mysqli_fetch_array($res);
                 <!-- ---------- -->
 
 
-                <?php
+            <?php
 
             }
 
             #Menu de los Productores
             elseif ($filas['Idtipousuario'] == 2) {
-                ?>
+            ?>
                 <div class="menu-item">
                     <img src="Recursos/Iconos/CAT.svg" alt="Icono de CAT" class="menu-item-imagen">
                     <p class="menu-item-titulo">CAT<br /><small>(Centro de Acopio Temporal)</small></p>
@@ -333,12 +292,12 @@ $filas = mysqli_fetch_array($res);
 
 
 
-                <?php
+            <?php
             }
 
             #Menu de los Distribuidores
             elseif ($filas['Idtipousuario'] == 3) {
-                ?>
+            ?>
                 <div class="menu-item">
                     <img src="Recursos/Iconos/CAT.svg" alt="Icono de CAT" class="menu-item-imagen">
                     <p class="menu-item-titulo">CAT<br /><small>(Centro de Acopio Temporal)</small></p>
@@ -370,12 +329,12 @@ $filas = mysqli_fetch_array($res);
                 </div>
 
 
-                <?php
+            <?php
             }
 
             #Menu de los Municipios
             elseif ($filas['Idtipousuario'] == 4) {
-                ?>
+            ?>
                 <!--CÓDIGO-->
                 <div class="menu-item">
                     <img src="Recursos/Iconos/CAT.svg" alt="Icono de CAT" class="menu-item-imagen">
@@ -427,21 +386,21 @@ $filas = mysqli_fetch_array($res);
                     <p class="menu-item-titulo">Productores</p>
                 </div>
 
-                <?php
+            <?php
             }
 
 
             #Menu de las Empresas Recolectoras Privadas
             elseif ($filas['Idtipousuario'] == 5) {
-                ?>
+            ?>
                 <!--CÓDIGO-->
 
-                <?php
+            <?php
             }
 
             #Menu de las Empresas Recicladoras
             elseif ($filas['Idtipousuario'] == 6) {
-                ?>
+            ?>
                 <!--CÓDIGO-->
                 <div class="menu-item">
                     <img src="Recursos/Iconos/ResponsableCat.svg" alt="Responsables Cat" class="menu-item-imagen">
@@ -454,12 +413,12 @@ $filas = mysqli_fetch_array($res);
                 </div>
 
 
-                <?php
+            <?php
             }
 
             #Menu de AMOCALI (Administrador)
             elseif ($filas['Idtipousuario'] == 7) {
-                ?>
+            ?>
                 <!--CÓDIGO-->
                 <div class="menu-item">
                     <img src="Recursos/Iconos/CAT.svg" alt="Icono de CAT" class="menu-item-imagen">
@@ -488,12 +447,12 @@ $filas = mysqli_fetch_array($res);
 
 
 
-                <?php
+            <?php
             }
 
             #Menu de ASICA (Administrador)
             elseif ($filas['Idtipousuario'] == 8) {
-                ?>
+            ?>
                 <!--CÓDIGO-->
                 <div class="menu-item">
                     <img src="Recursos/Iconos/CAT.svg" alt="Icono de CAT" class="menu-item-imagen">
@@ -546,29 +505,29 @@ $filas = mysqli_fetch_array($res);
                 </div>
 
 
-                <?php
+            <?php
             }
 
             #Menu de CESAVEJAL
             elseif ($filas['Idtipousuario'] == 9) {
-                ?>
+            ?>
                 <!--CÓDIGO-->
 
 
-                <?php
+            <?php
             }
 
             #Menu de APEAJAL
             elseif ($filas['Idtipousuario'] == 10) {
-                ?>
+            ?>
                 <!--CÓDIGO-->
 
-                <?php
+            <?php
             }
 
             #Menu de los CAT
             elseif ($filas['Idtipousuario'] == 11) {
-                ?>
+            ?>
                 <!--CÓDIGO-->
 
                 <div class="menu-item">
@@ -612,7 +571,7 @@ $filas = mysqli_fetch_array($res);
 
 
 
-                <?php
+            <?php
             }
 
 

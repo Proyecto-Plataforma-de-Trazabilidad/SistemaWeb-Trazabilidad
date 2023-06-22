@@ -129,7 +129,7 @@ if ($enlace->connect_error) {
             echo json_encode($data);
             mysqli_free_result($result);
             break;
-            // Reporte de entregas por distribuidor 
+            // Reporte de entregas por distribuidor 11
         case '11':
             $query = "SELECT P.Nombre,COUNT(*) as Total from ordenproductos as O INNER JOIN productores as P on O.IdProductor = P.IdProductor GROUP BY P.Nombre";
             $result = mysqli_query($enlace, $query);
@@ -140,11 +140,47 @@ if ($enlace->connect_error) {
             echo json_encode($data);
             mysqli_free_result($result);
             break;
-            // Reporte de salidas (limpieza de contenedores) por distribuidor 
-            // Reporte de salidas (limpieza de contenedores) General X fecha
+
+            // Reporte de salidas por distribuidor 12
+
+            // case '12':
+            //     $query = "SELECT P.Nombre,COUNT(*) as Total from ordenproductos as O INNER JOIN productores as P on O.IdProductor = P.IdProductor GROUP BY P.Nombre";
+            //     $result = mysqli_query($enlace, $query);
+            //     $data = array();
+            //     foreach ($result as $row) {
+            //         $data[] = $row;
+            //     }
+            //     echo json_encode($data);
+            //     mysqli_free_result($result);
+            //     break;
+
+            // Reporte de salidas (limpieza de contenedores) General X fecha 13
+            
+            // case '13':
+            //     $query = "SELECT P.Nombre,COUNT(*) as Total from ordenproductos as O INNER JOIN productores as P on O.IdProductor = P.IdProductor GROUP BY P.Nombre";
+            //     $result = mysqli_query($enlace, $query);
+            //     $data = array();
+            //     foreach ($result as $row) {
+            //         $data[] = $row;
+            //     }
+            //     echo json_encode($data);
+            //     mysqli_free_result($result);
+            //     break;
+
+
 
             // Municipio 
-            // Reporte de entregas (envases vacíos recibidos ) por municipio  
+            // Reporte de entregas por municipio  
+            case '11':
+                $query = "SELECT P.Nombre,COUNT(*) as Total from ordenproductos as O INNER JOIN productores as P on O.IdProductor = P.IdProductor GROUP BY P.Nombre";
+                $result = mysqli_query($enlace, $query);
+                $data = array();
+                foreach ($result as $row) {
+                    $data[] = $row;
+                }
+                echo json_encode($data);
+                mysqli_free_result($result);
+                break;
             // Reporte de entregas (envases vacíos recibidos ) General X fechas 
             // Reporte de salidas (limpieza de contenedores) por municipio 
             // Reporte de salidas (limpieza de contenedores) General X fecha
@@ -160,7 +196,5 @@ if ($enlace->connect_error) {
             // Reporte de contenedores con más movimiento (que se repitan mas en las salidas
 
     }
-    //echo json_encode($res);
-    //$conn = null; //Limpia la conexión
     mysqli_close($enlace);
 }
