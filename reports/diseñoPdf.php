@@ -5,7 +5,8 @@
 //Genera la imagen del grafico
 $my_base64_string = $_POST['img']; //Se recupera la imagen codificada enviada por ajax
 //echo $base64_string;
-function base64ToImage($base64_string, $output_file) {
+function base64ToImage($base64_string, $output_file)
+{
     $file = fopen($output_file, "wb"); //se indica que se va a crear un archivo (la 'wb' son los permisos de escritura)
 
     $data = explode(',', $base64_string); //La imagen esta codificada en base64 y para poder decodificar se le quita la descripcion   
@@ -15,7 +16,7 @@ function base64ToImage($base64_string, $output_file) {
     return $output_file; //retorna el archivo de la imagen
 }
 
-$image = base64ToImage( $my_base64_string, 'imagen.jpg' ); //Se llama a la funcion con la imagen codifica y el nombre del archivo que se va agenerar
+$image = base64ToImage($my_base64_string, 'imagen.jpg'); //Se llama a la funcion con la imagen codifica y el nombre del archivo que se va agenerar
 
 
 ob_start(); //iniciar el buffer para poder guardar la informacion html en una variable 
@@ -31,7 +32,7 @@ $currentsite = getcwd();
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script>
     <title>Reporte-PDF</title>
 
@@ -46,7 +47,7 @@ $currentsite = getcwd();
         .container-encabezado-imagen {
             text-align: center;
             width: 80%;
-            height: 10%;
+            height: 8%;
             margin-left: 16%;
             margin-right: auto;
             margin-top: 40px;
@@ -62,12 +63,12 @@ $currentsite = getcwd();
         .container-encabezado-recolector {
             text-align: center;
             width: 350px;
-            height: 100px;
             margin-left: auto;
             margin-right: auto;
-            margin-top: 40px;
+            margin-top: 20px;
 
         }
+
         .recolector-nombre {
             text-align: center;
             font-size: .85rem;
@@ -75,6 +76,28 @@ $currentsite = getcwd();
             font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
+        .container-encabezado-fecha {
+            text-align: right;
+            width: 120px;
+            margin-top: 5px;
+
+        }
+
+        .fecha-fecha {
+            text-align: right;
+            font-size: .85rem;
+            font-weight: bolder;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .container-grafica {
+            text-align: center;
+        }
+
+        .grafica {
+            width: 650px;
+            height: 350px;
+        }
     </style>
 </head>
 
@@ -92,11 +115,26 @@ $currentsite = getcwd();
                 Reporte de contenedores menos concurridos
             </p>
         </div>
+
     </section>
 
-    <img src="https://campolimpiojal.com/reports/imagen.jpg" style="background-color: rgba(0, 0, 0, 0)" width="500" height="250">
+    <section>
+        <div class="container-encabezado-fecha">
+            <p class="fecha-fecha">
+                Generado: 21/06/2023
+            </p>
+        </div>
+    </section>
+
+
+
+    <section class="container-grafica">
+        <img src="https://campolimpiojal.com/reports/imagen.jpg" style="background-color: rgba(0, 0, 0, 0)"
+            class="grafica">
+    </section>
 
 </body>
+
 </html>
 
 <?php

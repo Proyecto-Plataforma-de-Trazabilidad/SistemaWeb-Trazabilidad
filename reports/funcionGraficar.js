@@ -34,7 +34,7 @@ $(document).ready(function () {
                 e.preventDefault();
                 const canvas = document.getElementById("myChart");
                 //funcion pdf
-                generaPdf();
+                generaPdf(titulo);
             });
 
             break;
@@ -62,7 +62,7 @@ $(document).ready(function () {
             $('#pdf').click(function (e) {
                 e.preventDefault();
                 //funcion pdf
-                generaPdf();
+                generaPdf(titulo);
             });
             break;
 
@@ -89,7 +89,7 @@ $(document).ready(function () {
             $('#pdf').click(function (e) {
                 e.preventDefault();
                 //funcion pdf
-                generaPdf();
+                generaPdf(titulo);
             });
             break;
 
@@ -116,7 +116,7 @@ $(document).ready(function () {
             $('#pdf').click(function (e) {
                 e.preventDefault();
                 //funcion pdf
-                generaPdf();
+                generaPdf(titulo);
             });
             break;
 
@@ -143,7 +143,7 @@ $(document).ready(function () {
             $('#pdf').click(function (e) {
                 e.preventDefault();
                 //funcion pdf
-                generaPdf();
+                generaPdf(titulo);
             });
             break;
 
@@ -170,7 +170,7 @@ $(document).ready(function () {
             $('#pdf').click(function (e) {
                 e.preventDefault();
                 //funcion pdf
-                generaPdf();
+                generaPdf(titulo);
             });
             break;
         // Reporte de contenedores con menos salidas 7
@@ -194,7 +194,7 @@ $(document).ready(function () {
             $('#pdf').click(function (e) {
                 e.preventDefault();
                 //funcion pdf
-                generaPdf();
+                generaPdf(titulo);
             });
             break;
         case 8:
@@ -220,7 +220,7 @@ $(document).ready(function () {
             $('#pdf').click(function (e) {
                 e.preventDefault();
                 //funcion pdf
-                generaPdf();
+                generaPdf(titulo);
             });
             break;
 
@@ -247,7 +247,7 @@ $(document).ready(function () {
             $('#pdf').click(function (e) {
                 e.preventDefault();
                 //funcion pdf
-                generaPdf();
+                generaPdf(titulo);
             });
             break;
 
@@ -274,7 +274,7 @@ $(document).ready(function () {
             $('#pdf').click(function (e) {
                 e.preventDefault();
                 //funcion pdf
-                generaPdf();
+                generaPdf(titulo);
             });
             break;
 
@@ -301,7 +301,7 @@ $(document).ready(function () {
             $('#pdf').click(function (e) {
                 e.preventDefault();
                 //funcion pdf
-                generaPdf();
+                generaPdf(titulo);
             });
             break;
 
@@ -476,7 +476,8 @@ $(document).ready(function () {
     };
    
     
-    function generaPdf() {
+    function generaPdf(titulo) {
+        let nombre = titulo.replace(/\s/g, "");  //quitar espacios del titulo  
         const canvas = document.getElementById("myChart");
 
         const canvasImage = canvas.toDataURL("image/jpeg",1.0);       
@@ -497,7 +498,7 @@ $(document).ready(function () {
             success: function (response) {
                 console.log(response);
                 var blob = new Blob([response], { type: 'application/pdf' });
-                var file = new File([blob], "reporte.pdf");
+                var file = new File([blob], nombre + '.pdf');
                 var link = document.createElement('a');
                 link.href = URL.createObjectURL(file);
                 link.download = file.name;
