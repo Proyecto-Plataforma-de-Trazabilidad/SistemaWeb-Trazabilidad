@@ -74,7 +74,7 @@ include "Layout/navMenu.php";
             <div class="col-sm-4">
                 <div>
                     <label for="nomProdu" class="form-label">Nombre de Productor</label>
-                    <select name="nomProdu" id="nomProdu" class="form-select" required>
+                    <select name="nomProdu" id="nomProdu" class="form-select" >
                         <option hidden>Selecciona un productor registrado</option>
                     </select>
                 </div>
