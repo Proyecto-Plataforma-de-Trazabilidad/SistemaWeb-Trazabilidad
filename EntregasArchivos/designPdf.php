@@ -220,7 +220,7 @@ $currentsite = getcwd();
 
 
 <body>
-    <div class="bgimage">
+    <!-- <div class="bgimage"> -->
         <!-- encabezado -->
         <section class="container-encabezado">
             <div class="container-encabezado-imagen">
@@ -383,7 +383,7 @@ $currentsite = getcwd();
                 <p>Responsable de recepción</p>
             </div>
         </section>
-    </div>
+    <!-- </div> -->
 
 </body>
 
