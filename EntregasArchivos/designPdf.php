@@ -21,18 +21,18 @@ $currentsite = getcwd();
 
     <style>
         body {
-            background: url(https://campolimpiojal.com/Logos/AMOCALI-fondo.png) rgba(255, 255, 255, 0.3) no-repeat center center fixed;
-            -webkit-background-size: contain;
-            -moz-background-size: contain;
-            -o-background-size: contain;
-            background-size: contain;
             width: 195mm;
-            height: 279.4mm;            
+            height: 279.4mm;
             /* border: solid; */
         }
 
         .bgimage {
-            background: #ffffff;
+            background: url(https://campolimpiojal.com/Logos/AMOCALI-fondo.png) no-repeat center center fixed;
+            -webkit-background-size: contain;
+            -moz-background-size: contain;
+            -o-background-size: contain;
+            background-size: contain;
+            /* background: #ffffff; */
             width: 170mm;
             height: 255mm;
             opacity: 0.3;
@@ -219,170 +219,170 @@ $currentsite = getcwd();
 
 
 <body>
+    <div class="bgimage">
+        <!-- encabezado -->
+        <section class="container-encabezado">
+            <div class="container-encabezado-imagen">
+                <img src="https://campolimpiojal.com/Logos/APEAJAL2.jpg" alt="Logo" class="logo" />
+                <img src="https://campolimpiojal.com/Logos/AMOCALI.jpg" alt="Logo" class="logo" />
+                <img src="https://campolimpiojal.com/Logos/ASICA.jpg" alt="Logo" class="logo" />
+            </div>
 
-    <!-- encabezado -->
-    <section class="container-encabezado">
-        <div class="container-encabezado-imagen">
-            <img src="https://campolimpiojal.com/Logos/APEAJAL2.jpg" alt="Logo" class="logo" />
-            <img src="https://campolimpiojal.com/Logos/AMOCALI.jpg" alt="Logo" class="logo" />
-            <img src="https://campolimpiojal.com/Logos/ASICA.jpg" alt="Logo" class="logo" />
-        </div>
+            <div class="container-encabezado-recolector">
+                <p class="recolector-nombre">
+                    CENTRO DE ACOPIO TEMPORAL ENVASES VACÍOS DE AGROQUÍMICOS Y
+                    AFINES
+                    CIUDAD GUZMAN, JALISCO
+                </p>
+                <p class="recolector-domicilio">
+                    Dirección: Carretera tonila, km 64.3 comunidad la valencia
+                    de san
+                    francisco
+                </p>
+            </div>
+        </section>
 
-        <div class="container-encabezado-recolector">
-            <p class="recolector-nombre">
-                CENTRO DE ACOPIO TEMPORAL ENVASES VACÍOS DE AGROQUÍMICOS Y
-                AFINES
-                CIUDAD GUZMAN, JALISCO
-            </p>
-            <p class="recolector-domicilio">
-                Dirección: Carretera tonila, km 64.3 comunidad la valencia
-                de san
-                francisco
-            </p>
-        </div>
-    </section>
-
-    <!-- fecha y numero de recibo -->
-    <section class="container-identificacion">
-        <div class="container-identificacion-fecha">
-            <p class="identificacion-texto">Fecha:
-                <?php echo $_POST['entrega']['fecha'] ?>
-            </p>
-        </div>
-        <div class="container-identificacion-numero">
-            <p class="identificacion-texto">
-                Recibo de Entrega-Recepción: <em class="numRecibo">
-                    <?php echo $_POST['entrega']['idEntrega'] ?>
-                </em>
-            </p>
-        </div>
-    </section>
+        <!-- fecha y numero de recibo -->
+        <section class="container-identificacion">
+            <div class="container-identificacion-fecha">
+                <p class="identificacion-texto">Fecha:
+                    <?php echo $_POST['entrega']['fecha'] ?>
+                </p>
+            </div>
+            <div class="container-identificacion-numero">
+                <p class="identificacion-texto">
+                    Recibo de Entrega-Recepción: <em class="numRecibo">
+                        <?php echo $_POST['entrega']['idEntrega'] ?>
+                    </em>
+                </p>
+            </div>
+        </section>
 
 
-    <?php
-    $comando = mysqli_query($enlace, "SELECT * FROM productores WHERE IdProductor = '" . $_POST['entrega']['idProduc'] . "'");
-    $fila = mysqli_fetch_array($comando);
-    mysqli_free_result($comando);
+        <?php
+        $comando = mysqli_query($enlace, "SELECT * FROM productores WHERE IdProductor = '" . $_POST['entrega']['idProduc'] . "'");
+        $fila = mysqli_fetch_array($comando);
+        mysqli_free_result($comando);
 
-    ?>
-    <!-- datos del productor que entrega -->
-    <section class="container-productor">
-        <div class="container-productor-titulo">
-            <h1 class="titulo">Datos del productor</h1>
-        </div>
+        ?>
+        <!-- datos del productor que entrega -->
+        <section class="container-productor">
+            <div class="container-productor-titulo">
+                <h1 class="titulo">Datos del productor</h1>
+            </div>
 
-        <div class="container-productor-nombre">
-            <p><strong>Nombre:</strong>
-                <?php echo $fila[1] ?>
-            </p>
-            <p><strong>Telefono:</strong>
-                <?php echo $fila[8] ?>
-            </p>
-        </div>
+            <div class="container-productor-nombre">
+                <p><strong>Nombre:</strong>
+                    <?php echo $fila[1] ?>
+                </p>
+                <p><strong>Telefono:</strong>
+                    <?php echo $fila[8] ?>
+                </p>
+            </div>
 
-        <div class="container-productor-domicilio">
-            <p>
-                <strong>Domicilio:</strong>
-                <?php echo $fila[3] ?>
-            </p>
-        </div>
+            <div class="container-productor-domicilio">
+                <p>
+                    <strong>Domicilio:</strong>
+                    <?php echo $fila[3] ?>
+                </p>
+            </div>
 
-        <div class="container-productor-lugar">
-            <p><strong>Municipio:</strong>
-                <?php echo $fila[6] ?>
-            </p>
-            <p><strong>Estado:</strong>
-                <?php echo $fila[7] ?>
-            </p>
-        </div>
-    </section>
+            <div class="container-productor-lugar">
+                <p><strong>Municipio:</strong>
+                    <?php echo $fila[6] ?>
+                </p>
+                <p><strong>Estado:</strong>
+                    <?php echo $fila[7] ?>
+                </p>
+            </div>
+        </section>
 
-    <!-- datos de entrega -->
-    <section class="container-entrega">
-        <div class="entrega-titulo">
-            <h1 class="titulo">Datos de entrega</h1>
-        </div>
-        <div class="entrega-tabla">
-            <table class="tabla">
-                <thead>
-                    <tr>
-                        <th>Tipo Envase</th>
-                        <th>Piezas</th>
-                        <th>Peso</th>
-                        <th>Observaciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $detalle = $_POST['detalle'];
-                    foreach ($detalle as $t) {
-                        ?>
+        <!-- datos de entrega -->
+        <section class="container-entrega">
+            <div class="entrega-titulo">
+                <h1 class="titulo">Datos de entrega</h1>
+            </div>
+            <div class="entrega-tabla">
+                <table class="tabla">
+                    <thead>
                         <tr>
-                            <td>
-                                <?php echo $t['tipoEnvase'] ?>
-                            </td>
-                            <td>
-                                <?php echo $t['cantidad'] ?>
-                            </td>
-                            <td>
-                                <?php echo $t['peso'] ?>kg
-                            </td>
-                            <td>
-                                <?php echo $t['observa'] ?>
-                            </td>
+                            <th>Tipo Envase</th>
+                            <th>Piezas</th>
+                            <th>Peso</th>
+                            <th>Observaciones</th>
                         </tr>
+                    </thead>
+                    <tbody>
                         <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
-    </section>
+                        $detalle = $_POST['detalle'];
+                        foreach ($detalle as $t) {
+                            ?>
+                            <tr>
+                                <td>
+                                    <?php echo $t['tipoEnvase'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $t['cantidad'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $t['peso'] ?>kg
+                                </td>
+                                <td>
+                                    <?php echo $t['observa'] ?>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-    <!-- mensaje de declaracion -->
-    <section class="container-declaracion">
-        <div class="declaracion-mensaje">
-            <p>
-                DECLARO QUE LOS ENVASES ENTREGADOS ESTÁN SECOS Y SE LES
-                REALIZO EL
-                TRIPLE LAVADO A LOS ENVASES LAVABLES, EN CASO CONTRARIO
-                CUBRIRÉ EL
-                IMPORTE POR LA INCINERACIÓN CONTROLADA EN HORNOS
-                AUTOMATIZADOS POR LA
-                AUTORIDAD FEDERAL
-            </p>
-        </div>
-    </section>
+        <!-- mensaje de declaracion -->
+        <section class="container-declaracion">
+            <div class="declaracion-mensaje">
+                <p>
+                    DECLARO QUE LOS ENVASES ENTREGADOS ESTÁN SECOS Y SE LES
+                    REALIZO EL
+                    TRIPLE LAVADO A LOS ENVASES LAVABLES, EN CASO CONTRARIO
+                    CUBRIRÉ EL
+                    IMPORTE POR LA INCINERACIÓN CONTROLADA EN HORNOS
+                    AUTOMATIZADOS POR LA
+                    AUTORIDAD FEDERAL
+                </p>
+            </div>
+        </section>
 
-    <section class="container-firmaDeclaracion">
-        <div class="declaracion-firmas">
-            <p><strong>Nombre:</strong>________________________________</p>
-            <p><strong>Firma:</strong>_______________________</p>
-        </div>
-    </section>
+        <section class="container-firmaDeclaracion">
+            <div class="declaracion-firmas">
+                <p><strong>Nombre:</strong>________________________________</p>
+                <p><strong>Firma:</strong>_______________________</p>
+            </div>
+        </section>
 
-    <!-- datos del responsable y firma -->
-    <section class="container-responsables">
-        <div class="responsables-titulo">
-            <h1 class="titulo">Datos de Responsable</h1>
-        </div>
-        <div class="responsables-entrega">
-            <p>_________________________________ </p>
-            <strong>
-                <?php echo $_POST['entrega']['nomResEntrega'] ?>
-            </strong>
-            <p> Responsable de entrega</p>
-        </div>
+        <!-- datos del responsable y firma -->
+        <section class="container-responsables">
+            <div class="responsables-titulo">
+                <h1 class="titulo">Datos de Responsable</h1>
+            </div>
+            <div class="responsables-entrega">
+                <p>_________________________________ </p>
+                <strong>
+                    <?php echo $_POST['entrega']['nomResEntrega'] ?>
+                </strong>
+                <p> Responsable de entrega</p>
+            </div>
 
-        <div class="responsables-recepcion">
-            <p>_________________________________</p>
-            <strong>
-                <?php echo $_POST['entrega']['nomResRecibe'] ?>
-            </strong>
-            <p>Responsable de recepción</p>
-        </div>
-    </section>
-
+            <div class="responsables-recepcion">
+                <p>_________________________________</p>
+                <strong>
+                    <?php echo $_POST['entrega']['nomResRecibe'] ?>
+                </strong>
+                <p>Responsable de recepción</p>
+            </div>
+        </section>
+    </div>
 
 </body>
 
