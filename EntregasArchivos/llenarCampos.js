@@ -73,6 +73,6 @@ $.ajax({
             });//Rellena la combo proveedores  
         }
 
-
     }
 })
+

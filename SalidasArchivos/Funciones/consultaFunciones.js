@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    //mostrarEntrega("", "", "");  //Función que se encarga de llenar el datatable
+    mostrarEntrega("", "", "");  //Función que se encarga de llenar el datatable
 });
 
 $('#aceptar').click(function () {

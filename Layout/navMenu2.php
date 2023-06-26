@@ -26,9 +26,27 @@ $filas = mysqli_fetch_array($res);
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
+        <!-- Icono de carga -->
+        <!-- <style>
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('../Recursos/Iconos/Loading-Icon-TEP2.gif') 50% 50% no-repeat rgb(249,249,249);
+            background-size: 20%;
+            opacity: .8;
+        }
+    </style>
+    <div class="loader"></div> -->
+
     <!--SWEET ALERT-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="Datatables-1.11.3/css/dataTables.bootstrap5.min.css">
@@ -153,3 +171,10 @@ $filas = mysqli_fetch_array($res);
             </div>
             <hr style="background-color: green; height:5px;">
         </div>
+
+    <!-- <script>
+        $(window).on("load", function() {
+            console.log("Loaded");
+            $('.loader').fadeOut('slow');
+        });
+    </script> -->
