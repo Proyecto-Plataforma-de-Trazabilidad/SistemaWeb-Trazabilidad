@@ -60,7 +60,7 @@ include "Layout/navMenu.php";
 
             <div class="col-sm-4">
                 <label for="" class="form-label">Contenedor</label>
-                <select name="contene" id="contene" class="form-select" required>
+                <select name="contene" id="contene" class="form-select" >
                     <option hidden>Selecciona un contenedor</option>
                 </select>
             </div>
