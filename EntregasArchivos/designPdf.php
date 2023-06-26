@@ -23,6 +23,7 @@ $currentsite = getcwd();
         body {
             width: 195mm;
             height: 279.4mm;
+            background: #ffffff; 
             /* border: solid; */
         }
 
