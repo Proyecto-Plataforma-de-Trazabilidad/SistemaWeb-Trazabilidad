@@ -27,11 +27,12 @@ $currentsite = getcwd();
         }
 
         .bgimage {
-            background: url(https://campolimpiojal.com/Logos/AMOCALI-fondo.png) no-repeat center center fixed;
+            background-image: url(https://campolimpiojal.com/Logos/AMOCALI-fondo.png) no-repeat center center fixed;
             -webkit-background-size: contain;
             -moz-background-size: contain;
             -o-background-size: contain;
             background-size: contain;
+            background-position: center;
             /* background: #ffffff; */
             width: 170mm;
             height: 255mm;
