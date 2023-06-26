@@ -26,15 +26,15 @@ $currentsite = getcwd();
         -moz-background-size: contain;
         -o-background-size: contain;
         background-size: contain;
-            width: 170mm;
-            height: 240mm;
-            opacity: 0.3;
+            width: 195mm;
+            height: 279.4mm;
             /* border: solid; */
         }
         .bgimage {
             background: #ffffff;
-            width: 195mm;
-            height: 279.4mm;
+            width: 170mm;
+            height: 255mm;
+            opacity: 0.3;
             /* border: solid; */
         }
 
