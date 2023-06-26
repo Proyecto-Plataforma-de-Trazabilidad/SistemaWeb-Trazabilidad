@@ -27,7 +27,7 @@ $filas = mysqli_fetch_array($res);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
         <!-- Icono de carga -->
-        <!-- <style>
+        <style>
         .loader {
             position: fixed;
             left: 0px;
@@ -40,13 +40,13 @@ $filas = mysqli_fetch_array($res);
             opacity: .8;
         }
     </style>
-    <div class="loader"></div> -->
+    <div class="loader"></div>
 
     <!--SWEET ALERT-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
-    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="Datatables-1.11.3/css/dataTables.bootstrap5.min.css">
@@ -172,9 +172,9 @@ $filas = mysqli_fetch_array($res);
             <hr style="background-color: green; height:5px;">
         </div>
 
-    <!-- <script>
+    <script>
         $(window).on("load", function() {
             console.log("Loaded");
             $('.loader').fadeOut('slow');
         });
-    </script> -->
+    </script>
