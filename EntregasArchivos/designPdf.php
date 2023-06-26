@@ -20,17 +20,18 @@ $currentsite = getcwd();
     <title>APEJAL-PDF</title>
 
     <style>
-        body {
-            background: url(https://campolimpiojal.com/Logos/AMOCALI-fondo.png) no-repeat center center fixed;
-            -webkit-background-size: contain;
-        -moz-background-size: contain;
-        -o-background-size: contain;
-        background-size: contain;
+        body {            
             width: 195mm;
             height: 279.4mm;
             /* border: solid; */
         }
+
         .bgimage {
+            background: url(https://campolimpiojal.com/Logos/AMOCALI-fondo.png) no-repeat center center fixed;
+            -webkit-background-size: contain;
+            -moz-background-size: contain;
+            -o-background-size: contain;
+            background-size: contain;
             background: #ffffff;
             width: 170mm;
             height: 255mm;
@@ -194,30 +195,30 @@ $currentsite = getcwd();
             box-sizing: border-box;
         }
 
-        .container-responsables{
+        .container-responsables {
             width: 80%;
             margin-top: 10%;
             text-align: left;
-            
-            
+
+
         }
 
-        .responsables-entrega{
+        .responsables-entrega {
             width: 50%;
-            float: left; 
-                                  
+            float: left;
+
         }
 
-        .responsables-recepcion{
+        .responsables-recepcion {
             width: 50%;
             float: right;
-            
+
         }
     </style>
 </head>
 
 
-<body >
+<body class="bgimage">
 
     <!-- encabezado -->
     <section class="container-encabezado">
@@ -366,11 +367,11 @@ $currentsite = getcwd();
             <h1 class="titulo">Datos de Responsable</h1>
         </div>
         <div class="responsables-entrega">
-            <p>_________________________________                  </p>
+            <p>_________________________________ </p>
             <strong>
                 <?php echo $_POST['entrega']['nomResEntrega'] ?>
             </strong>
-            <p>            Responsable de entrega</p>
+            <p> Responsable de entrega</p>
         </div>
 
         <div class="responsables-recepcion">
@@ -381,7 +382,7 @@ $currentsite = getcwd();
             <p>Responsable de recepción</p>
         </div>
     </section>
-               
+
 
 </body>
 
