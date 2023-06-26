@@ -21,14 +21,13 @@ $currentsite = getcwd();
 
     <style>
         body {
-            background: url(https://campolimpiojal.com/Logos/AMOCALI-fondo.png) no-repeat center center fixed;
+            background: url(https://campolimpiojal.com/Logos/AMOCALI-fondo.png) rgba(255, 255, 255, 0.3) no-repeat center center fixed;
             -webkit-background-size: contain;
             -moz-background-size: contain;
             -o-background-size: contain;
             background-size: contain;
             width: 195mm;
-            height: 279.4mm;
-            background-color: rgba(0, 0, 0, 0.3);
+            height: 279.4mm;            
             /* border: solid; */
         }
 
