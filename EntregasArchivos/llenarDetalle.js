@@ -4,8 +4,27 @@ $(document).ready(function () {
   let CapacidadConten = 0, CapacidadTotalConten = 0, StatusConten = 0;
   let piezasProductor = 0;
 
+  //Mensaje de advertising
+  function mensajeAdvertencia(titulo, texto) {
+    Swal.fire({
+      icon: 'warning',
+      title: titulo,
+      text: texto,
+      showConfirmButton: false,
+      timer: 1800
+    });
+  }
+
+  //Si se selacciona un elemento de la combo de tipo envace se marca como valida
+  $('#tipoEnva').on('change', function () {
+    $('#tipoEnva').get(0).setCustomValidity('');
+  });
+
   //Funcion ara traer las piezas que ordeno el productor
   $('#nomProdu').on('change', function () {
+
+    $('#nomProdu').get(0).setCustomValidity('');//Si se selecciono un elemento ya pone la combo como valida
+
     let idProductor = this.value;
     $.ajax({
       url: 'EntregasArchivos/datosGrafico.php',
@@ -16,6 +35,17 @@ $(document).ready(function () {
         //console.log(datos);
         piezasProductor = datos.TotalPiezasOrden - datos.TotalPiezasEntregadas;
         console.log(piezasProductor);
+
+        if ($('#mostrarPiezas').text()) {
+          $('#mostrarPiezas').remove();
+        }
+        //Muestra las piezas que tiene el productor
+        $('#frmEntrega div:last').after(`<div id="mostrarPiezas" class="col-sm-4">
+        <label class="form-label">Piezas del productor: </label>
+        <label id="piezasProductor" class="form-label"> ${piezasProductor}</label>
+        </div>`);
+
+
         if (piezasProductor <= 0) {
           $('#aceptar').prop("disabled", true); //Desactiva el detalle para q o registre
           Swal.fire({
@@ -35,6 +65,8 @@ $(document).ready(function () {
   //Funcion para generar el grafico
   $('#contene').on('change', function () {
 
+    $('#contene').get(0).setCustomValidity('');
+
     let idContenedor = this.value;
 
     $.ajax({
@@ -51,6 +83,12 @@ $(document).ready(function () {
         StatusConten = Status[0];
 
         let graphTarget = $("#myChart");//asigno ala grafica 
+
+        //Borra la grafica si ya existe
+        let chartStatus = Chart.getChart("myChart"); // <canvas> id
+        if (chartStatus != undefined) { // si ya existe destruyelo, si no no entra
+          chartStatus.destroy();
+        }
 
         //aqui todo lo dela grafica config
         let chartdata = {
@@ -137,54 +175,56 @@ $(document).ready(function () {
 
   //Funcion que llena la tabla
   $('#aceptar').click(function () {
-    let valEnvase = document.getElementById("tipoEnva").value;
-    let valPiezas = document.getElementById("cantiPza").value;
-    let valPeso = document.getElementById("peso").value;
-    let valObser = document.getElementById("observa").value;
 
-    $('#contene').prop("disabled", true); //Se desactiva la combo para que no alteren la grafica
+    if (!$('#contene')[0].checkValidity()) {
+      mensajeAdvertencia('No a seleccionado un contenedor', '');
+    } else if (!$('#nomProdu')[0].checkValidity()) {
+      mensajeAdvertencia('No a seleccionado un productor', '');
 
-    //Se llena la grafica coon las piezas
-    let nuevoStatus = parseInt(valPiezas) + parseInt(StatusConten);
-    if (nuevoStatus > CapacidadTotalConten) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'Capacidad Maxima',
-        text: 'Sobrepaso la capacidad del contenedor',
-        showConfirmButton: false,
-        timer: 2500
-      });
-    } else if (valPiezas > piezasProductor) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'El productor no debería contar con esa cantidad de piezas',
-        text: 'Intente con otra cantidad',
-        showConfirmButton: false,
-        timer: 2500
-      });
-    } else {
-      let fila = '<tr id="row' + i + '"> <td>' + i + '</td> <td>' + valEnvase + '</td> <td>' + valPiezas + '</td> <td>' + valPeso + '</td> <td>' + valObser + '</td> <td><button style="background-color: #dc3545 !important" type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Eliminar</button></td></tr>';
+    } else { //Hace el resto
+      let valEnvase = document.getElementById("tipoEnva").value;
+      let valPiezas = document.getElementById("cantiPza").value;
+      let valPeso = document.getElementById("peso").value;
+      let valObser = document.getElementById("observa").value;
 
-      i++;
+      $('#contene').prop("disabled", true); //Se desactiva la combo para que no alteren la grafica
+      $('#nomProdu').prop("disabled", true); //Se desactiva la combo para que no alteren el conteo de piezas
 
-      numDetalle.textContent = "Detalle de entrega: 00" + i;
+      //Se llena la grafica coon las piezas
+      let nuevoStatus = parseInt(valPiezas) + parseInt(StatusConten);
+      if (nuevoStatus > CapacidadTotalConten) {
+        mensajeAdvertencia('Capacidad Maxima', 'Sobrepaso la capacidad del contenedor');
+      } else if (valPiezas > piezasProductor) {
 
-      $('#detalle tbody:first').before(fila);
-      document.getElementById("tipoEnva").value = "";
-      document.getElementById("cantiPza").value = "";
-      document.getElementById("peso").value = "";
-      document.getElementById("observa").value = "";
+        mensajeAdvertencia('Intente con otra cantidad', 'El productor ya no cuenta con piezas ordenadas');
+      } else {
+        let fila = '<tr id="row' + i + '"> <td>' + i + '</td> <td>' + valEnvase + '</td> <td>' + valPiezas + '</td> <td>' + valPeso + '</td> <td>' + valObser + '</td> <td><button style="background-color: #dc3545 !important" type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Eliminar</button></td></tr>';
 
-      StatusConten = parseInt(StatusConten) + parseInt(valPiezas);
-      CapacidadConten = CapacidadConten - valPiezas;
-      piezasProductor = piezasProductor - valPiezas;
+        i++;
 
-      console.log("Capacidad: " + CapacidadConten);
-      console.log("Status: " + StatusConten);
-      console.log("Piezas del productor: " + piezasProductor);
+        numDetalle.textContent = "Detalle de entrega: 00" + i;
 
-      actualizaGrafico(CapacidadConten, StatusConten);
+        $('#detalle tbody:first').before(fila);
+        document.getElementById("tipoEnva").value = "";
+        document.getElementById("cantiPza").value = "";
+        document.getElementById("peso").value = "";
+        document.getElementById("observa").value = "";
+
+        StatusConten = parseInt(StatusConten) + parseInt(valPiezas);
+        CapacidadConten = CapacidadConten - valPiezas;
+        piezasProductor = piezasProductor - valPiezas;
+
+        console.log("Capacidad: " + CapacidadConten);
+        console.log("Status: " + StatusConten);
+        console.log("Piezas del productor: " + piezasProductor);
+
+        $('#piezasProductor').text(piezasProductor); //Cambia el numero de piezas que se va a mostrar
+
+        actualizaGrafico(CapacidadConten, StatusConten);
+      }
     }
+
+
   });
 
   //Funcion para borrar un elemento de la tabla 
@@ -213,6 +253,8 @@ $(document).ready(function () {
         console.log("Status: " + StatusConten);
         console.log("Piezas del productor: " + piezasProductor);
 
+        $('#piezasProductor').text(piezasProductor); //Cambia el numero de piezas que se va a mostrar
+
         actualizaGrafico(CapacidadConten, StatusConten);
 
         //Elimina la fila
@@ -229,6 +271,11 @@ $(document).ready(function () {
             celdasId[i].childNodes[1].textContent = i;      //Coloca la numeración en la primera columna
             celdasId[i].lastChild.childNodes[0].id = i;     //Reasigna la id del botón que elimina
           }
+        }
+
+        if (celdasId.length == 1) {
+          $('#contene').prop("disabled", false); //Se vuelve a a activar la combo ya que no hay registros en el detalle
+          $('#nomProdu').prop("disabled", false); //Se vuelve a a activar la combo ya que no hay registros en el detalle
         }
         Swal.fire(
           'Borrado!',

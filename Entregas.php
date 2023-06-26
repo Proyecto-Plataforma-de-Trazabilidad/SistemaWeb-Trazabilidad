@@ -17,6 +17,7 @@ include "Layout/navMenu.php";
 </head>
 
 <body>
+
     <section class="titulo">
         <div>
             <h1>Entregas</h1>
@@ -107,7 +108,7 @@ include "Layout/navMenu.php";
                 <div>
                     <label for="tipoEnva" class="form-label">Tipo de Envase</label>
                     <select name="tipoEnva" id="tipoEnva" class="form-select" required>
-                        <option hidden>Selecciona una opción</option>
+                        <option hidden >Selecciona una opción</option>
                         <option value="Rígidos lavables">Rígidos lavables</option>
                         <option value="Rígidos no lavables">Rígidos no lavables</option>
                         <option value="Flexibles">Flexibles</option>
@@ -131,7 +132,7 @@ include "Layout/navMenu.php";
             <div class="col-sm-4">
                 <div>
                     <label for="peso" class="form-label">Peso <small>(Opcional)</small> </label>
-                    <input type="number" class="form-control" id="peso" min="1" maxlength="10" name="peso" required pattern="[1-9]\d*(\.\d+)?"
+                    <input type="number" class="form-control" id="peso" min="1" maxlength="10" name="peso" pattern="[1-9]\d*(\.\d+)?"
                         placeholder="Ingrese una cantidad">
                 </div>
             </div>
@@ -184,7 +185,18 @@ include "Layout/navMenu.php";
         const inputFecha= document.getElementById('fecha');
         const hoy = new Date().toISOString().slice(0,10);
         inputFecha.value=hoy;
+
+        //Marca los combos como invalidos asta que se eliga una opcion
+        $('#contene').get(0).setCustomValidity('Elija una opción');
+        $('#nomProdu').get(0).setCustomValidity('Elija una opción');
+        $('#tipoEnva').get(0).setCustomValidity('Elija una opción');
+
+        //const contenedor = document.getElementById("contene");
+        //console.log(contenedor.validity);
+
     </script>
+
+
 
     <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
@@ -199,9 +211,8 @@ include "Layout/navMenu.php";
     <script type="text/javascript" src="./EntregasArchivos/btnGenerarPDF.js"></script> <!-- scrip para lanzar el generador de PDF-->
     <script type="text/javascript" src="./EntregasArchivos/btnRegistrar.js"></script>   <!-- scrip para realizar el registro -->
 
-
     <script src="Layout/menujs.js"></script>
-    
+
 
 </body>
 

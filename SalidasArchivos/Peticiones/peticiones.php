@@ -67,10 +67,11 @@ if ($enlace->connect_error) {
     }
 
     //Búsqueda de contenedores
+    $contenedores = [];
     if ($mensaje != "RecoleUsuarioNoValido" && $mensaje != "UsuarioNoPermitido") {
         $comando = mysqli_query($enlace, "SELECT * FROM contenedores WHERE IdUsuario = ".$idRecolector.";") or die(mysqli_error());
         if (mysqli_num_rows($comando) == 0) {          //Valida si hay contenedores registrados en la db
-            $contenedores = "No hay contenedores";
+            $contenedores[] = "No hay contenedores";
         }else {
             while($fila1 = mysqli_fetch_array($comando)){
                 $contenedores[] = array(

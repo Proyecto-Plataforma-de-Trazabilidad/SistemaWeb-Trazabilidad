@@ -21,13 +21,30 @@ $('#frmSalidas').submit(function (e) {
         idRec: idRec,
         Contenedor: Contenedores,
         Responsable: Responsable,
-        peso: peso,        
+        peso: peso,
         fecha: fecha,
     };
     console.log(datos);
 
     //realizar ejecucion 
-    insertarSalidas(datos);
+    let chartStatus = Chart.getChart("myChart");
+    //console.log(chartStatus.config.data.datasets[0].data[0]);
+
+    let status = chartStatus.config.data.datasets[0].data[0];
+    if (parseInt(peso) > parseInt(status)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'El peso es mayor al Status',
+            text: 'Ingrese otra cantidad',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $('#peso').val('');
+            }
+        });
+    } else {
+        insertarSalidas(datos);
+    }
+
 
     function insertarSalidas(datosValidos) {
         //mandar datos del formulario con ajax

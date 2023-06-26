@@ -20,6 +20,12 @@ $(document).ready(function () {
 
                 let graphTarget = $("#myChart");//asigno ala grafica 
 
+                //Borra la grafica si ya existe
+                let chartStatus = Chart.getChart("myChart"); // <canvas> id
+                if (chartStatus != undefined) { // si ya existe destruyelo, si no no entra
+                    chartStatus.destroy();
+                }
+
                 //aqui todo lo dela grafica config
                 let chartdata = {
                     labels: idContenedor,
