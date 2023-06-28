@@ -47,9 +47,7 @@ if (isset($_SESSION['usuario'])) {
                 realizarConsulta($querySalidas);
                 break; 
 
-        }
-
-        
+        }  
     }
 
     $querySalidas2 = "SELECT S.IdSalida, C.Origen, S.Responsable, S.Cantidad, S.fecha FROM salidas as S inner join contenedores as C on S.IdContenedor= C.IdContenedor inner join usuarios as U on S.IdUsuario = U.IdUsuario";
