@@ -263,7 +263,7 @@ if ($tipoUser == 'admin' && $_POST['IdTipo'] != "" && $_POST['IdProdu'] != "" &&
 
 ///!Usuario productor----------------
 if ($tipoUser == 'Productores' && $_POST['FF'] == "" && $_POST['FI'] == "") {
-
+//Consulta general del productor
     switch ($_POST['movi']) {
         case 'ordenes':
                 $queryOrden = "SELECT * FROM ordenproductos WHERE IdProductor = '" . $IdProductor . "' LIMIT 1;";
@@ -289,7 +289,8 @@ if ($tipoUser == 'Productores' && $_POST['FF'] == "" && $_POST['FI'] == "") {
         
 
     mysqli_free_result($comando);
-}elseif ($tipoUser == 'Productores' && $fechaCorrecta ) { //Consulta por fecha 
+}elseif ($tipoUser == 'Productores' && $fechaCorrecta ) { 
+//Consulta por fecha 
     switch ($_POST['movi']) {
         case 'ordenes':
                 $queryOrden = "SELECT * FROM ordenproductos WHERE IdProductor = '" . $IdProductor . "' AND Fecha BETWEEN '" . $_POST['FI'] . "' AND '" . $_POST['FF'] . "' LIMIT 1;";

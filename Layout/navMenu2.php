@@ -48,8 +48,8 @@ $filas = mysqli_fetch_array($res);
 
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="Datatables-1.11.3/css/dataTables.bootstrap5.min.css">
+    <!-- <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Datatables-1.11.3/css/dataTables.bootstrap5.min.css"> -->
 
 
     <link rel="stylesheet" href="../Layout/menucss.css">
@@ -174,7 +174,6 @@ $filas = mysqli_fetch_array($res);
 
     <script>
         $(window).on("load", function() {
-            console.log("Loaded");
             $('.loader').fadeOut('slow');
         });
     </script>
