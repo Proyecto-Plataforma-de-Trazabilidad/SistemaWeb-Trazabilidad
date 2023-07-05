@@ -4,7 +4,7 @@ $r = "SELECT * FROM usuarios where Correo = '$varses'";
 $res = mysqli_query($enlace, $r);
 $filas = mysqli_fetch_array($res);
 ?>
-<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+
 
 <div class="container">
   <h1>Registrar Tipo de Químico</h1>
@@ -60,7 +60,6 @@ $rol = $filas['Idtipousuario'];
   }
 </script>
 
-<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="datatables.min.js"></script>
 <script type="text/javascript" src="QuimicoArchivos/funcionesQuimico.js"></script>

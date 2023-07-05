@@ -5,13 +5,6 @@ $r = "SELECT * FROM usuarios where Correo = '$varses'";
 $res = mysqli_query($enlace, $r);
 $filas = mysqli_fetch_array($res);
 ?>
-<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
-<!--SweetAlert en linea-->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
-<!--SweetAlert en local-->
-<link rel="stylesheet" href="..\plugins\Sweetalert2\sweetalert2.min.css">
-<script src="..\plugins\Sweetalert2\sweetalert2.all.min.js"></script>
 
 <!--Combos responsivos-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

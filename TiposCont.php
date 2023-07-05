@@ -4,7 +4,6 @@ $consulta = "SELECT * FROM usuarios where Correo = '$varses'";
 $res = mysqli_query($enlace, $consulta);      
 $filas = mysqli_fetch_array($res);
 ?>
-<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 
 <div class="container">
   <h1>Tipo de Contenedor</h1>
@@ -63,7 +62,6 @@ $filas = mysqli_fetch_array($res);
       </script>    
     
 
-    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
     <script type="text/javascript" src="TipoCont/funcionesTipoCont.js"></script>

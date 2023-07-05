@@ -43,24 +43,36 @@ $nombre = strtok($nombrec, " ");
     </style>
     <div class="loader"></div>
 
+    <!-- Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
-    <!--SWEET ALERT-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <!--SweetAlert en linea-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
     
+
+    <!--SweetAlert en local por mis webos-->
+    <link rel="stylesheet" href="plugins\Sweetalert2\sweetalert2.min.css">
+    <script src="plugins\Sweetalert2\sweetalert2.all.min.js"></script>
+
+    <!--Jquery-->
     <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 
-
+    <!-- Bootstrap local-->
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.min.css">
+
+
+    <!--DataTables-->
     <link rel="stylesheet" href="Datatables-1.11.3/css/dataTables.bootstrap5.min.css">
 
+    <!--Pooper-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="./Layout/menucss.css">
     <link rel="stylesheet" href="botones.css">
     
-    
-
+    <!-- iconos -->
     <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script>
 
     <style>

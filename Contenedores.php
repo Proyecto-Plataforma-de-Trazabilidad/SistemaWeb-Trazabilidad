@@ -5,7 +5,6 @@ $r = "SELECT * FROM usuarios where Correo = '$varses'";
 $res = mysqli_query($enlace, $r);
 $filas = mysqli_fetch_array($res);
 ?>
-<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 
 <head>
   <style>
@@ -216,7 +215,7 @@ $filas = mysqli_fetch_array($res);
 
 
 
-<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+
 <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="datatables.min.js"></script>
 <script type="text/javascript" src="Contenedores-Archivos/funcionesCont.js"></script>
@@ -224,7 +223,7 @@ $filas = mysqli_fetch_array($res);
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASLyp51V8W65RPg92rTcqaFWCOXz6KrOg&callback=initMap"></script>
 
 <script src="Layout/menujs.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </body>
 
 </html>

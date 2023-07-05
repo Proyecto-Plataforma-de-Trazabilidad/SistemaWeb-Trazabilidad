@@ -8,6 +8,9 @@
     <title>TEP</title>
     <link rel="icon" type="image/png" href="/Logos/LogoTep.png"/>
 
+    <!-- Configuración del manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#285430">
 
     <!-- Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -21,6 +24,14 @@
 
 
     <style>
+
+        html, body {
+            overscroll-behavior-y: contain;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+
         .btn-primary {
             background: #285430;
             border: #285430;
@@ -182,10 +193,7 @@
     <script src="poper\popper.min.js"></script>
     <script type="text/javascript" src="loggin/codigologin.js"></script>
 
-
-
-
-
+    <script type="text/javascript" src="registraServiceWorker.js"></script>
 </body>
 
 </html>

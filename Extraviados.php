@@ -11,7 +11,6 @@ include "Layout/navMenu.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/movimientos/Extraviados/Extraviados.css">
-    <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script> <!-- iconos -->
 
 </head>
 
@@ -100,7 +99,6 @@ include "Layout/navMenu.php";
         inputFecha.value = hoy;
     </script>
 
-    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
     <script type="text/javascript" src="./ExtraviadosArchivos/funciones/funcion.js"></script>

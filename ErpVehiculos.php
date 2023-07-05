@@ -90,7 +90,6 @@ include "Layout/navMenu.php";
             
         }
     </script>
-      <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
     <script type="text/javascript" src="ErpVehiculosArchivos/funcionesErpVehi.js"></script>
