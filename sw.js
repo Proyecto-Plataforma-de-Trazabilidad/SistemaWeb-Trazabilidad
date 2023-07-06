@@ -22,26 +22,54 @@ self.addEventListener('install', e => {
     const cachePromise = caches.open(CACHE_STATIC_NAME).then(cache => {
 
         return cache.addAll([
-            '/index.php',
+            './index.php',
             './Logos/LogoTep.png',
             './Logos/pead.jpg',
             './Logos/APEAJAL2.jpg',
             './Logos/AMOCALI.jpg',
             './Logos/ASICA.jpg',
+            './Recursos/Iconos/Loading-Icon-TEP2.gif',
+            './Recursos/Iconos/ResponsableCat.svg',
+            './Recursos/Iconos/CAT.svg',
+            './Recursos/Iconos/Distribuidores.svg',
+            './Recursos/Iconos/Productores.svg',
+            './Recursos/Iconos/Huertos.svg',
+            './Recursos/Iconos/TipoQuimicos.svg',
+            './Recursos/Iconos/EP.svg',
+            './Recursos/Iconos/ERPVehiculos.svg',
+            './Recursos/Iconos/distribuidoresVehiculos.svg',
+            './Recursos/Iconos/Contenedores.svg',
+            './Recursos/Iconos/TipoContenedores.svg',
+            './Recursos/Iconos/EmpresaDestino.svg',
+            './Recursos/Iconos/Municipio.svg',
+            './Recursos/Iconos/MunicipioVehiculos.svg',
+            './Recursos/Iconos/Ordenes.svg',
+            './Recursos/Iconos/Entregas.svg',
+            './Recursos/Iconos/Extraviados.svg',
+            './Recursos/Iconos/Salidas2.svg',
         ]);
     });
 
     const cacheInmutable = caches.open(CACHE_INMUNE_NAME).then(cache => {
 
         return cache.addAll([
-            'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css',
             'https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js',
             'https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css',
+            './plugins/Sweetalert2/sweetalert2.min.css',
+            './plugins/Sweetalert2/sweetalert2.all.min.js',
             './jquery-3.6.0.min.js',
+            'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css',
             'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js',
+            './bootstrap-5.1.3-dist/css/bootstrap.min.css',
+            './bootstrap-5.1.3-dist/js/bootstrap.min.js',
             'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js',
             './poper/popper.min.js',
             'https://cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js',
+            'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css',
+            'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js',
+            'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,800;1,300;1,400;1,500;1,600&display=swap',
+            'https://kit.fontawesome.com/c65c1f4f0a.js',
+            'https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
         ]);
     });
 
@@ -67,40 +95,50 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
+    let respuesta;
 
-    const respuesta = caches.match(e.request).then(res => {
+    if (e.request.url.includes('loggin/logout.php') || e.request.method === 'POST' || e.request.url.includes('maps')) {
+        //console.log(e.request.url);
 
-        //Si si exiten los archivos en el cache los retorna como estan y acaba
-        if (res) {
+        respuesta = fetch(e.request).then(res => {
             return res;
-        } else {
-            //Si no existen los va a buscar a la web
-            return fetch(e.request).then(newRes => {
+        });
 
-                if (newRes.ok) { //Valida que la respuesta sea de una pagina que si se encontro (filtra el error 404)
+    } else {
 
-                    if (!newRes.url.includes('extension')) { //Filtro para que no se intente añadir las extenciones de chrome al cache
-                        //console.log(newRes.url);
-                        caches.open(CACHE_DYNAMIC_NAME).then(cache => {
-                            cache.put(e.request, newRes) //Añade al cache los nuevos recursos que se encontraron
-                            //limpiarCache.put(CACHE_DYNAMIC_NAME, 100); //El segundo parametro indica la cantidad de recursos que se van a borrar
-                        });
+        respuesta = caches.match(e.request).then(res => {
+
+            //Si si exiten los archivos en el cache los retorna como estan y acaba
+            if (res) {
+                return res;
+            } else {
+                //Si no existen los va a buscar a la web
+                return fetch(e.request).then(newRes => {
+
+                    if (newRes.ok) { //Valida que la respuesta sea de una pagina que si se encontro (filtra el error 404)
+
+                        if (!newRes.url.includes('extension')) { //Filtro para que no se intente añadir las extenciones de chrome al cache
+                            //console.log(newRes.url);
+                            caches.open(CACHE_DYNAMIC_NAME).then(cache => {
+                                cache.put(e.request, newRes) //Añade al cache los nuevos recursos que se encontraron
+                                //limpiarCache.put(CACHE_DYNAMIC_NAME, 100); //El segundo parametro indica la cantidad de recursos que se van a borrar
+                            });
+                        }
+
+                        return newRes.clone(); //Se debe clonar la respuesta porque se esta usando 2 veces (La primera vez que se utiliza se limpia y queda vacia)
                     }
 
-                    return newRes.clone(); //Se debe clonar la respuesta porque se esta usando 2 veces (La primera vez que se utiliza se limpia y queda vacia)
-                }
+                });//.catch(err => {
+                //     if (e.request.headers.get('accept').includes('text/html')) {
+                //         return caches.match(); //Añadir una pagina para mostrar offline
+                //     }
+                // });
+            }
 
-            });//.catch(err => {
-            //     if (e.request.headers.get('accept').includes('text/html')) {
-            //         return caches.match(); //Añadir una pagina para mostrar offline
-            //     }
-            // });
-        }
+        });
+    }
 
 
-    }).catch(err => {
-        console.log("No se encontro el recurso" + err);
-    })
 
     e.respondWith(respuesta);
 });
