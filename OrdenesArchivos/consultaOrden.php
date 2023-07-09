@@ -14,7 +14,7 @@ include "../Layout/navMenu2.php";
     <link rel="stylesheet" href="../css/movimientos/Orden/orden.css">
     <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script> <!-- iconos -->
     <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css">
 
     <!-- js de tabla  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -127,7 +127,7 @@ include "../Layout/navMenu2.php";
     <script type="text/javascript" src="../bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../datatables.min.js"></script>
     <script type="text/javascript" src="../tablas.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
     <script type="text/javascript" src="consultaFunciones.js"></script>
     <script src="../Layout/menujs.js"></script>
 

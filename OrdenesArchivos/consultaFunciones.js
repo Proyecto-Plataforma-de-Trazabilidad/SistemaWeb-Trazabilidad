@@ -2,7 +2,7 @@ $(document).ready(function () {
     const nombreProdu = document.getElementById("nomProdu");
     añadirProductores(nombreProdu); //Funcion que carga la combo de productores
 
-    mostrarOrden("","","");  //Función que se encarga de llenar el datatable
+    mostrarOrden("", "", "");  //Función que se encarga de llenar el datatable
 });
 
 //Función jQuery  que se ejecuta cuando das clic al botón
@@ -12,20 +12,20 @@ $('#aceptar').click(function () {
     let idProd = document.getElementById('nomProdu').value;
     if (idProd == "Selecciona un productor") {
         mostrarOrden(fechaIni, fechaFin, "");
-    }else
+    } else
         mostrarOrden(fechaIni, fechaFin, idProd);
 });
 
 function generarTabla(fechaI, fechaF, idProdud) {
     let tablaOrden = $('#orden').DataTable({
-        destroy:true,
-        scrollX:true,
+        destroy: true,
+        scrollX: true,
         scrollCollapse: true,
         processing: true,
         ajax: {
-            "method":"POST",
-            "url":"metodosConsulta.php",
-            "data":{'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud },
+            "method": "POST",
+            "url": "metodosConsulta.php",
+            "data": { 'FI': fechaI, 'FF': fechaF, 'IdProdu': idProdud },
             "error": function (res) {
                 console.log(res);
                 if (res.responseText == "Error") {
@@ -35,43 +35,45 @@ function generarTabla(fechaI, fechaF, idProdud) {
                         title: 'No hay datos disponibles',
                         text: 'No se encontraron registros del distribuidor',
                     });
-                }else  
-                    return res.responseText;                   
+                } else
+                    return res.responseText;
             }
         },
-        columns:[
-            {data: "IdOrden"},
-            {data: "Distribuidor"},
-            {data: "Productor"},
-            {data: "NumFactura"}, 
-            {data: "Factura",       //Aqui esta el archivo factura
-                render: function (data, type, row) {  
-                    if (data == "Faltante" || data == "" ) {
-                        return "<button class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes32NoEncontrado.svg' alt='No hay archivo' ></button>";
-                    }else
-                        return "<a href='"+data+"' target='_blank' class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes32.svg' alt='Abrir archivo' ></a>";
-                }
-            },  
-            {data: "NumReceta"},
-            {data: "Receta",         //Aqui esta el archivo recteta
+        columns: [
+            { data: "IdOrden" },
+            { data: "Distribuidor" },
+            { data: "Productor" },
+            { data: "NumFactura" },
+            {
+                data: "Factura",       //Aqui esta el archivo factura
                 render: function (data, type, row) {
-                    if (data == "Faltante" || data == "" ) {
+                    if (data == "Faltante" || data == "") {
                         return "<button class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes32NoEncontrado.svg' alt='No hay archivo' ></button>";
-                    }else
-                        return "<a href='"+data+"' target='_blank' class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes32.svg' alt='Abrir archivo' ></a>";
+                    } else
+                        return "<a href='" + data + "' target='_blank' class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes32.svg' alt='Abrir archivo' ></a>";
                 }
-            }, 
-            {data: "Fecha"},
-            {defaultContent: "<button class='detalle-btn detalle'><img src='../Recursos/Iconos/detalle.svg' alt='Abrir detalle'></button>"},
-            {defaultContent: "<button class='detalle-btn editar'><img src='../Recursos/Iconos/editar.svg' alt='Editar'></button>"}
-            
+            },
+            { data: "NumReceta" },
+            {
+                data: "Receta",         //Aqui esta el archivo recteta
+                render: function (data, type, row) {
+                    if (data == "Faltante" || data == "") {
+                        return "<button class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes32NoEncontrado.svg' alt='No hay archivo' ></button>";
+                    } else
+                        return "<a href='" + data + "' target='_blank' class='archivo-btn'><img  src='../Recursos/Iconos/Ordenes32.svg' alt='Abrir archivo' ></a>";
+                }
+            },
+            { data: "Fecha" },
+            { defaultContent: "<button class='detalle-btn detalle'><img src='../Recursos/Iconos/detalle.svg' alt='Abrir detalle'></button>" },
+            { defaultContent: "<button class='detalle-btn editar'><img src='../Recursos/Iconos/editar.svg' alt='Editar'></button>" }
+
         ],
         language: {
-            url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/es-MX.json'
+            url: 'http://cdn.datatables.net/plug-ins/1.13.4/i18n/es-MX.json'
         }
     });
 
-        // $.fn.dataTable.ext.errMode = function ( settings, helpPage, message ) { 
+    // $.fn.dataTable.ext.errMode = function ( settings, helpPage, message ) { 
     //     console.log(message);
     // };
 
@@ -82,7 +84,7 @@ function generarTabla(fechaI, fechaF, idProdud) {
             mostrarDetalle(datosFila);
             console.log(datosFila);
         }
-        
+
     });
 
     //Evento que permite editar cuando se da clic al botón de editar 
@@ -91,7 +93,7 @@ function generarTabla(fechaI, fechaF, idProdud) {
         if (datosFila != undefined) {
             editar(datosFila);
         }
-        
+
     });
 }
 
@@ -110,12 +112,12 @@ function mensajeError(titulo, texto) {
 function mostrarOrden(fechaI, fechaF, idProdud) {
     $.ajax({
         type: 'POST',
-        url:'validacionesConsulta.php',
-        data:{'FI': fechaI, 'FF': fechaF, 'IdTipo': "", 'IdProdu': idProdud, 'movi': 'ordenes'},
+        url: 'validacionesConsulta.php',
+        data: { 'FI': fechaI, 'FF': fechaF, 'IdTipo': "", 'IdProdu': idProdud, 'movi': 'ordenes' },
         success: function (res) {
             let datos = JSON.parse(res);//Trae los datos en formato json y los pasa a objeto
             let opc = datos.mensaje;
-            
+
             switch (opc) {
                 //Mensajes de error
                 case "UsuarioNoPermitido":
@@ -143,55 +145,55 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
                 //Consultas admin
                 case "ConsultaGeneral":
                     console.log("ConsultaGeneral");
-                    generarTabla('','','');
+                    generarTabla('', '', '');
                     break;
                 case "ConsultaXFechaYProduct":
                     console.log("ConsultaXFechaYProduct");
                     $('#detalle tbody').children().remove();
-                    generarTabla(fechaI,fechaF,idProdud)
+                    generarTabla(fechaI, fechaF, idProdud)
                     break;
                 case "ConsultaXProductor":
                     console.log("ConsultaXProductor");
                     $('#detalle tbody').children().remove();
-                    generarTabla('','',idProdud)
+                    generarTabla('', '', idProdud)
                     break;
                 case "ConsultaXFecha":
                     console.log("ConsultaXFecha");
                     $('#detalle tbody').children().remove();
-                    generarTabla(fechaI,fechaF,'')
+                    generarTabla(fechaI, fechaF, '')
                     break;
                 //Productor
                 case "ProductorConsultaGeneral":
                     console.log("ProductorConsultaGeneral");
                     $('#tituloProdu').hide();
                     $('#nomProdu').hide();
-                    generarTabla("","",datos.data)
+                    generarTabla("", "", datos.data)
                     break;
                 case "ProductorConsultaXFecha":
                     console.log("ProductorConsultaXFecha");
                     $('#detalle tbody').children().remove();
-                    generarTabla(fechaI,fechaF,datos.data)
+                    generarTabla(fechaI, fechaF, datos.data)
                     break;
                 //Distribuidor  
                 case "DistribuidorConsultaGeneral":
                     console.log("DistribuidorConsultaGeneral");
                     $('#detalle tbody').children().remove();
-                    generarTabla("","","")
+                    generarTabla("", "", "")
                     break;
                 case "DistribuidorConsultaXFecha":
                     console.log("DistribuidorConsultaXFecha");
                     $('#detalle tbody').children().remove();
-                    generarTabla(fechaI,fechaF,"")
+                    generarTabla(fechaI, fechaF, "")
                     break;
                 case "DistribuidorConsultaXProductor":
                     console.log("DistribuidorConsultaXProductor");
                     $('#detalle tbody').children().remove();
-                    generarTabla("","",idProdud)
+                    generarTabla("", "", idProdud)
                     break;
                 case "DistribuidorConsultaXFechaYProduct":
                     console.log("DistribuidorConsultaXFechaYProduct");
                     $('#detalle tbody').children().remove();
-                    generarTabla(fechaI,fechaF,idProdud)
+                    generarTabla(fechaI, fechaF, idProdud)
                     break;
                 default:
 
@@ -199,32 +201,32 @@ function mostrarOrden(fechaI, fechaF, idProdud) {
             }
         }
     });
-    
+
 }
 
 
 
 function mostrarDetalle(datosFila) {
 
-        //Llenar tabla detalle 
-        $('#detalle').DataTable({
-            destroy:true,
-            ajax: {
-                "method":"POST",
-                "url":"obtenerDetalle.php",
-                "data":{'IdOrden': datosFila.IdOrden} //Se le manda el IdOrden dependiendo de la fila presionada
-            },
-            columns:[
-                {data: "IdOrden"},
-                {data: "Consecutivo"},
-                {data: "IdTipoQuimico"},
-                {data: "TipoEnvase"},
-                {data: "Color"},
-                {data: "CantidadPiezas"},
-                {defaultContent: "<button class='detalle-btn editar'><img src='../Recursos/Iconos/editar.svg' alt='Icono de detalle'></button>"}
-            ]
-        });
-    
+    //Llenar tabla detalle 
+    $('#detalle').DataTable({
+        destroy: true,
+        ajax: {
+            "method": "POST",
+            "url": "obtenerDetalle.php",
+            "data": { 'IdOrden': datosFila.IdOrden } //Se le manda el IdOrden dependiendo de la fila presionada
+        },
+        columns: [
+            { data: "IdOrden" },
+            { data: "Consecutivo" },
+            { data: "IdTipoQuimico" },
+            { data: "TipoEnvase" },
+            { data: "Color" },
+            { data: "CantidadPiezas" },
+            { defaultContent: "<button class='detalle-btn editar'><img src='../Recursos/Iconos/editar.svg' alt='Icono de detalle'></button>" }
+        ]
+    });
+
 }
 
 function editar(datosFila) {
@@ -292,28 +294,28 @@ function editar(datosFila) {
 </section>
 <script type="text/javascript" src="btn_Registrar.js"></script>`);
 
-const nombreProdu = document.getElementById("nomProdu");
-const orden = document.getElementById("numOrden");
-const distri = document.getElementById("nomDistri");
+    const nombreProdu = document.getElementById("nomProdu");
+    const orden = document.getElementById("numOrden");
+    const distri = document.getElementById("nomDistri");
 
-orden.dataset.numOrden=""+datosFila.IdOrden;
-distri.dataset.idDistribuidor = ""+datosFila.Distribuidor; //Asigna el id del distribuidor al dataset
-añadirProductores(nombreProdu);
+    orden.dataset.numOrden = "" + datosFila.IdOrden;
+    distri.dataset.idDistribuidor = "" + datosFila.Distribuidor; //Asigna el id del distribuidor al dataset
+    añadirProductores(nombreProdu);
 
 }
 
-function añadirProductores(comboProduc){
+function añadirProductores(comboProduc) {
     $.ajax({
-        url:'peticiones.php',
+        url: 'peticiones.php',
         type: 'GET',
         success: function (res) {
             let datos = JSON.parse(res);//Trae los datos en formato json y los pasa a objeto
             if (datos.produtores == "No hay productores") {
                 mensajeError('No hay ningún productor registrado', "Por favor vaya a registrar uno");
-            }else
-            datos.produtores.map(productor => {
-                comboProduc.insertAdjacentHTML('beforeend', `<option value="${productor.IdProductor}">${productor.Nombre}</option>`);//Rellena la combo proveedores    
-            });  
+            } else
+                datos.produtores.map(productor => {
+                    comboProduc.insertAdjacentHTML('beforeend', `<option value="${productor.IdProductor}">${productor.Nombre}</option>`);//Rellena la combo proveedores    
+                });
         }
     })
 }

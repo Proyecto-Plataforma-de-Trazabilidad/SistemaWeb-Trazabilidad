@@ -1,3 +1,7 @@
+//Imports
+importScripts('https://cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js');
+importScripts('./js/sw-db.js');
+
 const CACHE_STATIC_NAME = 'cache-static-01';
 const CACHE_DYNAMIC_NAME = 'cache-dyna-01';
 const CACHE_INMUNE_NAME = 'cache-inmune-01';
@@ -70,6 +74,9 @@ self.addEventListener('install', e => {
             'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,800;1,300;1,400;1,500;1,600&display=swap',
             'https://kit.fontawesome.com/c65c1f4f0a.js',
             'https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
+            'https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css',
+            './datatables.min.js',
+            'http://cdn.datatables.net/plug-ins/1.13.4/i18n/es-MX.json',
         ]);
     });
 
@@ -97,10 +104,29 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
     let respuesta;
 
-    if (e.request.url.includes('loggin/logout.php') || e.request.method === 'POST' || e.request.url.includes('maps')) {
+    if (e.request.url.includes('loggin/logout.php') || e.request.url.includes('maps')) {
         //console.log(e.request.url);
 
         respuesta = fetch(e.request).then(res => {
+            return res;
+        });
+
+    } else if (e.request.method === 'POST') {
+
+        e.request.clone().text().then(body => {
+            //let decodificado = decodeURIComponent(body);
+            var datos = new Object();
+
+            const params = new URLSearchParams(body);
+            for (const [key, value] of params) {
+                //console.log(key + ":" + value);
+                datos[key] = value;
+            }
+            console.log(datos);
+            guardaRegistro(datos);
+        });
+
+        respuesta = fetch(e.request.clone()).then(res => {
             return res;
         });
 
