@@ -76,7 +76,6 @@ self.addEventListener('install', e => {
             'https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
             'https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css',
             './datatables.min.js',
-            'http://cdn.datatables.net/plug-ins/1.13.4/i18n/es-MX.json',
         ]);
     });
 
