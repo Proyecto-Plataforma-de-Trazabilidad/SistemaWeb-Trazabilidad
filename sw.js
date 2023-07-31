@@ -2,8 +2,8 @@
 importScripts('https://cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js');
 importScripts('./js/sw-db.js');
 
-const CACHE_STATIC_NAME = 'cache-static-01';
-const CACHE_DYNAMIC_NAME = 'cache-dyna-01';
+const CACHE_STATIC_NAME = 'cache-static-03'
+const CACHE_DYNAMIC_NAME = 'cache-dyna-03';
 const CACHE_INMUNE_NAME = 'cache-inmune-01';
 
 function limpiarCache(cacheName, numeroItems) {
@@ -51,6 +51,7 @@ self.addEventListener('install', e => {
             './Recursos/Iconos/Entregas.svg',
             './Recursos/Iconos/Extraviados.svg',
             './Recursos/Iconos/Salidas2.svg',
+            './js/sw-db.js'
         ]);
     });
 
@@ -76,6 +77,9 @@ self.addEventListener('install', e => {
             'https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
             'https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css',
             './datatables.min.js',
+            './Librerias/MaterialToast/mdtoast.min.css',
+            './Librerias/MaterialToast/mdtoast.min.js',
+            'https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js',
         ]);
     });
 
@@ -100,37 +104,64 @@ self.addEventListener('activate', e => {
 
 });
 
+///////////////////////////////////////////
 self.addEventListener('fetch', e => {
     let respuesta;
 
-    if (e.request.url.includes('loggin/logout.php') || e.request.url.includes('maps')) {
+    if (e.request.url.includes('maps') || e.request.url.includes('/serviciopush/') || e.request.url.includes('obtenerSession')) { //Pasan las peticiones sin ser guardadas
         //console.log(e.request.url);
 
-        respuesta = fetch(e.request).then(res => {
+        respuesta = fetch(e.request).then(res => { //Ase el fetch del request y lo deja pasar sin guardarlo en el cache
             return res;
         });
 
-    } else if (e.request.method === 'POST') {
+    } else if (e.request.url.includes('loggin/logout.php')) {//Pasan las peticiones sin ser guardadas
 
-        e.request.clone().text().then(body => {
-            //let decodificado = decodeURIComponent(body);
-            var datos = new Object();
+        caches.delete(CACHE_DYNAMIC_NAME);  //Borra el cache dinamico para eliminar los datos de la session
 
-            const params = new URLSearchParams(body);
-            for (const [key, value] of params) {
-                //console.log(key + ":" + value);
-                datos[key] = value;
-            }
-            console.log(datos);
-            guardaRegistro(datos);
+        respuesta = fetch(e.request).then(res => { //Ase el fetch del request y lo deja pasar sin guardarlo en el cache
+            return res;
         });
 
+    } else if (e.request.method === 'POST' && e.request.url.includes('insertar')) { //Si la peticion es de tipo post y esta insertando
         respuesta = fetch(e.request.clone()).then(res => {
-            return res;
+            if (res.clone().ok) {
+                return res.clone().json(); //Devuelve la respuesta del fetch
+            }
+
+        }).then(data => {
+            ///console.log(data);
+            const response = new Response(JSON.stringify(data));
+            return response.clone();
+
+        }).catch(err => {
+            console.log("No se pudo acceder a:" + e.request.url);
+            return procesaPOST(e.request.clone());
+
         });
+
+    } else if (e.request.url.includes('generarPDF')) {
+
+        respuesta = fetch(e.request.clone()).then(res => { //Ase el fetch del request y lo deja pasar sin guardarlo en el cache
+            if (res.clone().ok) {
+                return res.clone().blob(); //Devuelve la respuesta del fetch
+            }
+        }).then(blob => {
+            console.log(blob);
+            const response = new Response(blob);
+            return response.clone();
+
+        }).catch(err => {
+            console.log("No se pudo generar el archivo de:" + e.request.url);
+            return procesaPOST(e.request.clone());
+
+        });
+
+    } else if (e.request.url.includes('obtener')) {  //Primero envia la respuesta con internet y si se cae envia lo que hay en cache
+        //console.log("procesando campos");
+        respuesta = procesarCampos(CACHE_DYNAMIC_NAME, e.request);
 
     } else {
-
         respuesta = caches.match(e.request).then(res => {
 
             //Si si exiten los archivos en el cache los retorna como estan y acaba
@@ -148,9 +179,12 @@ self.addEventListener('fetch', e => {
                                 cache.put(e.request, newRes) //Añade al cache los nuevos recursos que se encontraron
                                 //limpiarCache.put(CACHE_DYNAMIC_NAME, 100); //El segundo parametro indica la cantidad de recursos que se van a borrar
                             });
-                        }
 
+                        }
                         return newRes.clone(); //Se debe clonar la respuesta porque se esta usando 2 veces (La primera vez que se utiliza se limpia y queda vacia)
+
+                    } else {
+                        return newRes;
                     }
 
                 });//.catch(err => {
@@ -160,13 +194,59 @@ self.addEventListener('fetch', e => {
                 // });
             }
 
-        });
+        }); //Verifica si el archivo de la petición se encuentra en el cache (cierre)
     }
 
 
 
     e.respondWith(respuesta);
 });
+
+//////////////////////////////////////////
+self.addEventListener('sync', e => {
+    console.log('Ejecutando sync')
+
+    if (e.tag === 'Nuevo-POST') {
+        const registros = sincronizarRegistros();
+
+        e.waitUntil(registros);
+    }
+});
+
+
+
+//////////////////////////////// 
+//!PushManager
+
+self.addEventListener('push', e => {
+
+    const datos = JSON.parse(e.data.text());
+
+    const title = datos.titulo;
+    const options = {
+        body: datos.cuerpo,
+        icon: './Logos/LogoTep-72.png',
+        badge: './Logos/logo-tep-ico.ico',
+        image: './Logos/pead.jpg',
+        data: {
+            url: datos.url
+        }
+    };
+
+    e.waitUntil(self.registration.showNotification(title, options));
+
+});
+
+self.addEventListener('notificationclick', e => {
+
+    const notificacion = e.notification;
+    console.log(notificacion);
+
+    clients.openWindow(notificacion.data.url);
+
+    notificacion.close();
+});
+
 
 // self.addEventListener('fetch', event => {
 //     //console.log(event.request.url);

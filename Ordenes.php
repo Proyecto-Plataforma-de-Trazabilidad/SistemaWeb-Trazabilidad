@@ -11,6 +11,8 @@ include "Layout/navMenu.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/movimientos/Orden/orden.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css">
+    <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script> <!-- iconos -->
 
 </head>
 
@@ -172,21 +174,18 @@ include "Layout/navMenu.php";
         inputFecha.value = hoy;
     </script>
 
-
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
-    <!-- Manejador del indexedBD -->
-    <script src="https://cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js"></script>
-
-    <script type="text/javascript" src="./OrdenesArchivos/funcionesOrdenes.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- funciones de formulario -->
+    <script type="text/javascript" src="./OrdenesArchivos/FuncionesJS/llenarCampos.js"></script>
+    <script type="text/javascript" src="./OrdenesArchivos/FuncionesJS/llenarTabla.js"></script>
     <!-- scrip para la funcion del la tabla detalle orden  -->
-    <script type="text/javascript" src="./OrdenesArchivos/btn_Registrar.js"></script>
+    <script type="text/javascript" src="./OrdenesArchivos/FuncionesJS/btnRegistrar.js"></script>
     <!-- scrip para la funcion del boton registrar  -->
-    <script type="text/javascript" src="./OrdenesArchivos/llenarTabla.js"></script>
-
-    <!-- <script type="text/javascript" src="./OrdenesArchivos/pruebaPuchDB.js"></script> -->
-
     <script src="Layout/menujs.js"></script>
+    
 </body>
 
 </html>

@@ -11,6 +11,7 @@ include "Layout/navMenu.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/movimientos/Extraviados/Extraviados.css">
+    <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script> <!-- iconos -->
 
 </head>
 
@@ -39,7 +40,7 @@ include "Layout/navMenu.php";
                 </div>
 
                 <div class="col-sm-2">
-                    <input id="fecha" class="form-control" type="date" />
+                    <input id="fecha" class="form-control" type="date" name="fecha"/>
                 </div>
             </div>
 
@@ -70,7 +71,7 @@ include "Layout/navMenu.php";
             <div class="col-sm-4">
                 <div>
                     <label for="numPiezas" class="form-label">Número de piezas</label>
-                    <input type="number" class="form-control" id="numPiezas" min="1" maxlength="10" name="incap" required pattern="[1-9]\d*(\.\d+)?"
+                    <input type="number" class="form-control" id="numPiezas" min="1" maxlength="10" name="numPiezas" required pattern="[1-9]\d*(\.\d+)?"
                         placeholder="Ingrese una cantidad">
                 </div>
             </div>
@@ -78,7 +79,7 @@ include "Layout/navMenu.php";
             <div class="col-sm-4">
                 <label for="aclaracion" class="form-label">Aclaración</label>
                 <textarea class="form-control" id="aclaracion" rows="5" required
-                    placeholder="Escribe una descripción"></textarea>
+                    placeholder="Escribe una descripción" name="aclaracion"></textarea>
             </div>
 
             <div class="col-sm-4">
@@ -99,10 +100,11 @@ include "Layout/navMenu.php";
         inputFecha.value = hoy;
     </script>
 
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
-    <script type="text/javascript" src="./ExtraviadosArchivos/funciones/funcion.js"></script>
-    <script type="text/javascript" src="./ExtraviadosArchivos/funciones/insertar.js"></script>
+    <script type="text/javascript" src="./ExtraviadosArchivos/funciones/llenarCampos.js"></script>
+    <script type="text/javascript" src="./ExtraviadosArchivos/funciones/btnRegistrar.js"></script>
     <script src="Layout/menujs.js"></script>
 </body>
 

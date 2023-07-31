@@ -11,6 +11,8 @@ include "Layout/navMenu.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/movimientos/Entregas/entregas.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css">
+    <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script> <!-- iconos -->
     
 </head>
 
@@ -38,7 +40,7 @@ include "Layout/navMenu.php";
                 </div>
 
                 <div class="col-sm-2">
-                    <input id="fecha" class="form-control" type="date" required/>
+                    <input id="fecha" name="fecha" class="form-control" type="date" required/>
                 </div>
             </div>
 
@@ -171,9 +173,7 @@ include "Layout/navMenu.php";
             </table>
             <label for="" class="form-Detalle-mensaje">Detalles de entregas</label>
             <div class="col align-self-center">
-                <button type="button" id="generarPDF" class="btn btn-success button-registrar " name="Generar">Generar PDF</button>
-                <button type="submit" id="registrar" class="btn btn-success button-registrar " name="Registrar" form="frmEntrega">Registrar</button>
-            </div>
+                <button type="submit" id="generarPDF" class="btn btn-success button-registrar " name="Generar" form="frmEntrega">Generar PDF</button>            </div>
         </div>
 
     </section>
@@ -196,18 +196,18 @@ include "Layout/navMenu.php";
 
 
 
-
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!--Liberia delas graficas-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
-    <script type="text/javascript" src="./EntregasArchivos/llenarCampos.js"></script> <!-- scrip para llenar los campos del form  -->
-    <script type="text/javascript" src="./EntregasArchivos/llenarDetalle.js"></script> <!-- scrip para llenar el detalle -->
-    <script type="text/javascript" src="./EntregasArchivos/btnGenerarPDF.js"></script> <!-- scrip para lanzar el generador de PDF-->
-    <script type="text/javascript" src="./EntregasArchivos/btnRegistrar.js"></script>   <!-- scrip para realizar el registro -->
+    <script type="text/javascript" src="./EntregasArchivos/FuncionesJS/llenarCampos.js"></script> <!-- scrip para llenar los campos del form  -->
+    <script type="text/javascript" src="./EntregasArchivos/FuncionesJS/llenarDetalle.js"></script> <!-- scrip para llenar el detalle -->
+    <script type="text/javascript" src="./EntregasArchivos/FuncionesJS/btnGenerarPDF.js"></script> <!-- scrip para lanzar el generador de PDF-->
+    <!-- <script type="text/javascript" src="./EntregasArchivos/FuncionesJS/btnRegistrar.js"></script>   scrip para realizar el registro -->
 
     <script src="Layout/menujs.js"></script>
 

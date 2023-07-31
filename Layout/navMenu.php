@@ -2,6 +2,9 @@
 session_start();
 
 $varses = $_SESSION['usuario'];
+
+// $estatus = $_SESSION["notifiStatus"];
+// echo $estatus;
 if ($varses == null || $varses == '') {
     header("Location: index.php");
 }
@@ -40,6 +43,8 @@ $nombre = strtok($nombrec, " ");
             background-size: 20%;
             opacity: .8;
         }
+
+        
     </style>
     <div class="loader"></div>
 
@@ -74,6 +79,10 @@ $nombre = strtok($nombrec, " ");
     
     <!-- iconos -->
     <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script>
+
+    <!-- Material Toast -->
+    <link rel="stylesheet" type="text/css" href="Librerias/MaterialToast/mdtoast.min.css">
+    <script type="text/javascript" src="Librerias/MaterialToast/mdtoast.min.js"></script>
 
     <style>
         a {
@@ -199,8 +208,22 @@ $nombre = strtok($nombrec, " ");
 
         <hr style="background-color: green; height:5px;">
 
+
+
     <script>
         $(window).on("load", function() {
             $('.loader').fadeOut('slow');
         });
+
+        function verificarInternet() {
+            if (navigator.onLine) {
+                mdtoast('Volvio la conexion.', { duration: 5000, type: mdtoast.INFO });
+            } else {
+                mdtoast('Se callo el internet :(', { interaction: true, actionText: 'OK', type: mdtoast.ERROR });
+            }
+        }
+
+        window.addEventListener('online', verificarInternet);
+        window.addEventListener('offline', verificarInternet);
+
     </script>

@@ -128,7 +128,6 @@ $rol = $filas['Idtipousuario'];
                         <th scope="col">Piezas</th>
                         <th scope="col">Peso </th>
                         <th scope="col">Observaciones</th>
-                        <th scope="col">Editar</th>
                         <!-- aqui agregamos el icono y funcion de eliminar por si se equivoca en algo -->
                     </tr>
                 </thead>
@@ -159,7 +158,7 @@ $rol = $filas['Idtipousuario'];
     <script type="text/javascript" src="../datatables.min.js"></script>
     <script type="text/javascript" src="../tablas.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript" src="consultaFunciones.js"></script>
+    <script type="text/javascript" src="FuncionesJS/consultaFunciones.js"></script>
     <script src="../Layout/menujs.js"></script>
 
 </body>

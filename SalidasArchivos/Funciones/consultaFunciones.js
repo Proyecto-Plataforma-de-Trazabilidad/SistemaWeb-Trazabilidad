@@ -104,7 +104,7 @@ function mensajeError(titulo, texto) {
 function mostrarEntrega(fechaI, fechaF, tipoRecol) {
     $.ajax({
         type: 'POST',
-        url: '../OrdenesArchivos/validacionesConsulta.php',
+        url: '../validacionesMovimientos.php',
         data: { 'FI': fechaI, 'FF': fechaF, 'IdProdu': "", 'IdTipo': tipoRecol, 'movi': 'salidas' },
         success: function (res) {
             let datos = JSON.parse(res);//Trae los datos en formato json y los pasa a objeto

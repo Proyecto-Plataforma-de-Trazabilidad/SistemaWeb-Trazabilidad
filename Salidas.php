@@ -11,7 +11,7 @@ include "Layout/navMenu.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/movimientos/Salidas/Salidas.css">
-
+    <script src="https://kit.fontawesome.com/c65c1f4f0a.js" crossorigin="anonymous"></script> <!-- iconos -->
 
 </head>
 
@@ -96,14 +96,15 @@ include "Layout/navMenu.php";
         inputFecha.value = hoy;
     </script>
 
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="datatables.min.js"></script>
     <!--Liberia delas graficas-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
-    <script type="text/javascript" src="SalidasArchivos/Funciones/funcion.js"></script>
-    <script type="text/javascript" src="SalidasArchivos/Funciones/insertar.js"></script>
+    <script type="text/javascript" src="SalidasArchivos/Funciones/llenarCampos.js"></script>
+    <script type="text/javascript" src="SalidasArchivos/Funciones/btnRegistrar.js"></script>
     <script type="text/javascript" src="SalidasArchivos/Funciones/cargarGrafico.js"></script>
 
     <script src="Layout/menujs.js"></script>

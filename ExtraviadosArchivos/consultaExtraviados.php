@@ -92,7 +92,7 @@ include "../Layout/navMenu2.php";
     <script type="text/javascript" src="../bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../datatables.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript" src="./funciones/consultas.js"></script>
+    <script type="text/javascript" src="./funciones/consultaFunciones.js"></script>
     <script src="../Layout/menujs.js"></script>
 
 </body>

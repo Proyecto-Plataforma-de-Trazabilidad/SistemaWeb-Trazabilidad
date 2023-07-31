@@ -1,3 +1,4 @@
+<?php  header("Access-Control-Allow-Origin: *"); ?>
 <!DOCTYPE html>
 <html lang='es'>
 
@@ -185,6 +186,10 @@
             </div>
         </div>
     </div>
+    <script>
+
+
+    </script>
 
     <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
@@ -193,7 +198,7 @@
     <script src="poper\popper.min.js"></script>
     <script type="text/javascript" src="loggin/codigologin.js"></script>
 
-    <script type="text/javascript" src="registraServiceWorker.js"></script>
+
 </body>
 
 </html>
