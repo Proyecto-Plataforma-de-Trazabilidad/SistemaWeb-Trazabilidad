@@ -9,7 +9,7 @@ if (navigator.serviceWorker) {
 }
 
 //Notificaciones
-function notificarme() {
+function activaNotificaciones() {
     if (!window.Notification) {
         console.log("No soporta las notifiaciones");
     }
@@ -40,6 +40,8 @@ function verificaSubscripcion(estatus) {
 }
 
 $(document).ready(function () {
+    activaNotificaciones();
+
     fetch('./obtenerSession.php')
         .then(session => session.json())
         .then(datos => {
