@@ -132,7 +132,7 @@ self.addEventListener('fetch', e => {
         }).then(data => {
             ///console.log(data);
             const response = new Response(JSON.stringify(data));
-            return response.clone();
+            return response.clone();    //Devuelve la respuesta del fetch como respuesta
 
         }).catch(err => {
             console.log("No se pudo acceder a:" + e.request.url);
@@ -227,7 +227,7 @@ self.addEventListener('push', e => {
         body: datos.cuerpo,
         icon: './Logos/LogoTep-72.png',
         badge: './Logos/logo-tep-ico.ico',
-        image: './Logos/pead.jpg',
+        image: datos.imagen,
         data: {
             url: datos.url
         }

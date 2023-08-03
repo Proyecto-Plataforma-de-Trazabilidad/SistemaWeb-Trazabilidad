@@ -85,6 +85,17 @@ function procesarCampos(nombreCache, req) {
         });
 }
 
+function enviarNotificacion(mensaje) {
+
+    fetch('https://nodejs-api-tep-production.up.railway.app/serviciopush/enviar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(mensaje)
+    }).then(res => res.text())
+        .then(datos => console.log(datos));
+
+}
+
 //Funcion que registra en la BD cuando se recupera la conexion
 function sincronizarRegistros() {
 
@@ -113,7 +124,27 @@ function sincronizarRegistros() {
                 }).then(res => res.json())
                     .then(mensaje => {
                         if (mensaje.mensaje == "Correcto") {
+
+                            //Mandar una notificaion push para notificar al usuario 
                             console.log("Se a realizado un " + row.doc.accion + " el: " + row.doc._id);
+
+
+                            fetch('./obtenerSession.php')
+                                .then(session => session.json())
+                                .then(datos => {
+                                    const IdUsuario = datos.idUsuario;
+
+                                    let mensaje = {
+                                        opcion: "UnSoloUsuario",
+                                        parametros: IdUsuario,
+                                        titulo: "Aviso",
+                                        cuerpo: "Se creo tu registro Offline",
+                                        url: "http://localhost/SistemaWeb-Trazabilidad/ExtraviadosArchivos/consultaExtraviados.php"
+                                    }
+
+                                    enviarNotificacion(mensaje);
+                                });
+
                             return db.remove(datos);
                         }
 

@@ -14,14 +14,14 @@ function activaNotificaciones() {
         console.log("No soporta las notifiaciones");
     }
     if (Notification.permission === 'granted') {
-        new Notification('Estoy notificandote')
+
         console.log("notificandote");
 
     } else if (Notification.permission != 'denied' || Notification.permission === 'default') {
         Notification.requestPermission(function (permiso) {
             console.log(permiso);
             if (permiso === 'granted') {
-                new Notification('Estoy notificandote');
+                console.log("notificandote");
             }
         })
     }
